@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+  <head>
+
+    <meta charset='utf-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg'/>
+
+    <slot name='head'/>
+
+  </head>
+
+  <body class='font-sans antialiased'>
+
+    <header id='nav' class='sticky top-0 z-100 box-border h-header w-full'>
+    </header>
+
+    <main class='relative mx-auto w-full px-12 container'>
+      <slot name='main' />
+    </main>
+
+  </body>
+
+</html>

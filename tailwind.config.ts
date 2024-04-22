@@ -3,10 +3,10 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: ["./source/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    extend: {}
+    extend: {},
   },
 
-  plugins: []
+  plugins: [],
 };
 
 export default config;

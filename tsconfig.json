@@ -1,3 +1,14 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["./source/*"]
+    },
+
+    "jsx": "react-jsx",
+    "jsxImportSource": "@builder.io/qwik",
+
+    "verbatimModuleSyntax": true
+  }
 }
