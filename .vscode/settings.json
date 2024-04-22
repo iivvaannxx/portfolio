@@ -19,6 +19,7 @@
 
   "eslint.enable": false,
   "explorerExclude.backup": {},
+  "css.lint.unknownAtRules": "ignore",
 
   "files.exclude": {
     "**/.git": true,
