@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@app/*": ["./source/*"]
+      "@app/*": ["./source/*"],
+      "@common/*": ["./source/common/*"]
     },
 
     "jsx": "react-jsx",

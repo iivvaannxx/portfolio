@@ -1,11 +1,13 @@
 ---
-import Page from "@app/layouts/page.astro"
+import Page from "@common/layouts/page.astro"
+import UserLocation from "@common/components/user-location.astro"
 ---
+
 
 <Page>
 
   <Fragment slot="main">
-    <h1 class="font-bold underline">Hello World!</h1>
+    <UserLocation />
   </Fragment>
   
 </Page>

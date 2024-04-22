@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+type Props = HTMLAttributes<'span'>;
+---
+
+<script>
+  
+  import { getUserLocation } from '@common/utils/location';
+  const { city, country, flag } = await getUserLocation();
+
+  const elements = document.querySelectorAll('[data-location-placeholder]');
+  elements.forEach((element) => {
+    element.textContent = `Last visit from ${city}, ${country} ${flag}`;
+  });
+
+</script>
+
+<span data-location-placeholder {...Astro.props}></span>
