@@ -1,0 +1,57 @@
+.debug-screens:before {
+
+  background-color: #000;
+  bottom: 0;
+  box-shadow: 0 0 0 1px #fff;
+  color: #fff;
+  content: "screen: _";
+  font-family: sans-serif;
+  font-size: 12px;
+  left: 0;
+  line-height: 1;
+  padding: .3333333em .5em;
+  position: fixed;
+  z-index: 2147483647
+}
+
+@media (min-width: 450px) {
+
+  .debug-screens:before {
+    content: "screen: xs"
+  }
+}
+
+@media (min-width: 640px) {
+
+  .debug-screens:before {
+    content: "screen: sm"
+  }
+}
+
+@media (min-width: 768px) {
+
+  .debug-screens:before {
+    content: "screen: md"
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .debug-screens:before {
+    content: "screen: lg"
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .debug-screens:before {
+    content: "screen: xl"
+  }
+}
+
+@media (min-width: 1536px) {
+
+  .debug-screens:before {
+    content: "screen: 2xl"
+  }
+}

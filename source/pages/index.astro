@@ -1,13 +1,40 @@
 ---
-import Page from "@common/layouts/page.astro"
 import UserLocation from "@common/components/user-location.astro"
+import Page from "@common/layout/page.astro"
 ---
 
 
 <Page>
 
-  <Fragment slot="main">
-    <UserLocation class="text-3xl font-bold" />
-  </Fragment>
+  <section 
+    id="hero" 
+    slot="main" 
+    class="flex flex-col items-center justify-center"
+  >
+    <h1 class="block text-hero">
+      <span data-who class="block text-2xl text-foreground/50 font-semibold">Hi, my name is</span>
+      <span data-name class="inline-block font-extrabold text-transparent bg-gradient-to-br bg-clip-text from-gradient-start to-gradient-end">Ivan Porto</span>
+    </h1>
+
+    <h2 class="font-bold text-4xl">
+      <span class="text-foreground/50">I'm a</span>
+      <span class="text-foreground">software</span>
+      <span class="text-foreground/50">developer</span>
+    </h2>
+    
+  </section>
   
 </Page>
+
+<style>
+
+  #hero {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .text-hero > [data-name] {
+    font-size: clamp(2.5rem, 8.33333vw, 8rem);
+  }
+
+</style>
