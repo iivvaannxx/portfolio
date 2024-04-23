@@ -1,7 +1,7 @@
 pre-commit:
   commands:
     check:
-      glob: "*.{js,ts,jsx,tsx,.d.ts,json}"
+      glob: "*.{js,ts,jsx,tsx,.d.ts,json,astro}"
       run: bunx biome check --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
 
 commit-msg:

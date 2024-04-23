@@ -22,9 +22,11 @@
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/types": "^19.0.3",
+    "@iconify-json/lucide": "^1.1.184",
     "@playform/compress": "^0.0.3",
     "astro-robots-txt": "^1.0.0",
     "lefthook": "^1.6.10",
+    "unplugin-icons": "^0.18.5",
     "vite-tsconfig-paths": "^4.3.2"
   },
   "trustedDependencies": ["@biomejs/biome", "esbuild", "lefthook", "sharp"]

@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import Icons from "unplugin-icons/vite";
 
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -20,4 +21,12 @@ export default defineConfig({
     robotsTxt(),
     playformCompress(),
   ],
+
+  vite: {
+    plugins: [
+      Icons({
+        compiler: "astro",
+      }),
+    ],
+  },
 });

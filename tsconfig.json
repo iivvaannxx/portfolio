@@ -10,6 +10,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@builder.io/qwik",
 
+    "types": ["unplugin-icons/types/astro"],
     "verbatimModuleSyntax": true
   }
 }
