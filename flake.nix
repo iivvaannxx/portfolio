@@ -24,6 +24,11 @@
           
           pkgs.bun
           pkgs.biome
+
+          pkgs.fontforge
+          pkgs.bashInteractive
+          pkgs.python311Packages.brotli
+          pkgs.python311Packages.fonttools
         ];
       };
 
