@@ -1,6 +1,9 @@
 ---
-import UserLocation from "@common/components/user-location.astro"
-import Page from "@common/layout/page.astro"
+import Typewriter from "@app/common/components/effects/typewriter.astro";
+import UserLocation from "@common/components/user-location.astro";
+
+import Page from "@common/layout/page.astro";
+import MailIcon from "~icons/lucide/mail";
 ---
 
 
@@ -9,18 +12,43 @@ import Page from "@common/layout/page.astro"
   <section 
     id="hero" 
     slot="main" 
-    class="flex flex-col items-center justify-center"
+    class="flex flex-col justify-center"
   >
-    <h1 class="block text-hero">
-      <span data-who class="block text-2xl text-foreground/50 font-semibold">Hi, my name is</span>
-      <span data-name class="inline-block font-extrabold text-transparent bg-gradient-to-br bg-clip-text from-gradient-start to-gradient-end">Ivan Porto</span>
-    </h1>
 
-    <h2 class="font-bold text-4xl">
-      <span class="text-foreground/50">I'm a</span>
-      <span class="text-foreground">software</span>
-      <span class="text-foreground/50">developer</span>
-    </h2>
+    <div class="flex">
+      <div>
+        <h1 class="block text-hero">
+          <span data-who class="block text-2xl text-foreground/50 font-semibold">Hello! My name is</span>
+          <span data-name class="inline-block font-extrabold text-transparent bg-gradient-to-br bg-clip-text from-gradient-start to-gradient-end">Ivan Porto</span>
+        </h1>
+        
+        <h2 class="font-bold text-4xl mb-8">
+          <span class="text-foreground/50">I'm a</span>
+          <span class="text-foreground">software</span>
+          <span class="text-foreground/50">developer</span>
+        </h2>
+
+        <p class="text-foreground/75 text-balance text-xl">
+          Specialized in <strong>game development</strong> yet passionate about developing <strong>any kind</strong> of software.
+          With 6+ years of coding experience and 4+ years of professional experience.
+        </p>
+      </div>
+
+      <div class="bg-gray-900 border-2 border-border rounded-2xl overflow-clip w-full max-w-[60%] grid grid-rows-10 aspect-video">
+        <div class="row-span-1 bg-gray-900 flex gap-2 items-center px-4">
+          <div class="w-2 aspect-square bg-red-400 rounded-full"></div>
+          <div class="w-2 aspect-square bg-yellow-400 rounded-full"></div>
+          <div class="w-2 aspect-square bg-green-400 rounded-full"></div>
+        </div>
+        <div class="row-span-9 bg-gray-950 p-4 font-mono">
+          > Hello World!
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-8 text-3xl">
+    </div>
     
   </section>
   
@@ -34,7 +62,7 @@ import Page from "@common/layout/page.astro"
   }
 
   .text-hero > [data-name] {
-    font-size: clamp(2.5rem, 8.33333vw, 8rem);
+    font-size: clamp(2.5rem, 8.33333vw, 6rem);
   }
 
 </style>

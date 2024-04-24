@@ -1,7 +1,12 @@
 ---
-import '@app/assets/styles/index.css'
+import "@app/assets/styles/index.css";
 
-import Header from '@app/common/layout/header.astro'
+import Header from "@app/common/layout/header.astro";
+
+import FileBadgeIcon from "~icons/lucide/file-badge";
+import GithubIcon from "~icons/lucide/github";
+import LinkedInIcon from "~icons/lucide/linkedin";
+import TwitterIcon from "~icons/lucide/twitter";
 ---
 
 <!DOCTYPE html>
@@ -24,9 +29,18 @@ import Header from '@app/common/layout/header.astro'
 
     <Header />
 
+    <aside id="socials" class="fixed inset-y-0 left-0  w-[96px] flex-col justify-end gap-y-8 flex items-center">
+      <LinkedInIcon width={28} height={28} />
+      <GithubIcon width={28} height={28} />
+      <TwitterIcon width={28} height={28} />
+      <FileBadgeIcon width={28} height={28} />
+    </aside>
+
     <main class='relative mx-auto w-full px-12 container'>
       <slot name='main' />
     </main>
+  
+    <slot />
 
   </body>
 
@@ -59,6 +73,18 @@ import Header from '@app/common/layout/header.astro'
 
     min-height: 100%;
     min-height: 100dvh;
+  }
+
+  #socials::after {
+    content: '';
+    position: relative;
+
+    top: 0;
+    left: -0.1rem;
+
+    width: 2px;
+    height: 4rem;
+    background: white;
   }
 
 </style>

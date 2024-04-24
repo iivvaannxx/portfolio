@@ -1,18 +1,56 @@
 @font-face {
-  font-family: 'Satoshi-Variable';
+  font-family: 'Satoshi';
   src: url('/fonts/satoshi/satoshi.woff2') format('woff2'),
     url('/fonts/satoshi/satoshi.woff') format('woff'),
     url('/fonts/satoshi/satoshi.ttf') format('truetype');
+
   font-weight: 300 900;
   font-display: swap;
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Monaspace Neon';
+  src: url('/fonts/monaspace/monaspace-neon.woff2') format('woff2'),
+    url('/fonts/monaspace/monaspace-neon.woff') format('woff'),
+    url('/fonts/monaspace/monaspace-neon.ttf') format('truetype');
+
+  font-weight: 200 800;
+  font-stretch: 100% 125%;
+  font-display: swap;
+  font-style: oblique -11deg 0deg;
+}
+
+@font-face {
+  font-family: 'Monaspace Neon Fallback';
+  src: local("Arial");
+
+  ascent-override: 57.59%;
+  descent-override: 16.01%;
+  line-gap-override: 14.72%;
+  size-adjust: 135.87%;
+}
+
 @layer utilities {
 
   .font-sans {
-    /** Enable ligatures by default */
-    font-feature-settings: "liga" on, "dlig" on;
+    font-feature-settings:
+      "liga" on,
+      "dlig" on;
+  }
+
+  .font-mono {
+    font-feature-settings:
+      "calt" on,
+      "dlig" on,
+      "ss01" on,
+      "ss02" on,
+      "ss03" on,
+      "ss04" on,
+      "ss05" on,
+      "ss06" on,
+      "ss07" on,
+      "ss08" on;
   }
 
   .font-thin {

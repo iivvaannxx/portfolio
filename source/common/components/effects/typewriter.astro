@@ -1,0 +1,36 @@
+---
+import { cn } from "@app/common/utils/styles";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"span"> & {
+  text: string;
+};
+
+const { text, class: clazz, ...spanProps } = Astro.props;
+---
+
+<span 
+
+  {...spanProps}
+  class={cn('inline-block font-mono overflow-hidden whitespace-nowrap border-r-2 border-solid border-border', clazz)} 
+
+>{text}</span>
+
+<style define:vars={{ chars: text.length + 1 }}>
+  
+  span {
+    width: calc(var(--chars) * 1ch);
+    animation: 
+      typing 12s steps(var(--chars)) infinite alternate,
+      blink .5s infinite step-end alternate;
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+</style>

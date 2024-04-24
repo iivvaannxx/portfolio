@@ -1,7 +1,7 @@
 .debug-screens:before {
 
   background-color: #000;
-  bottom: 0;
+  top: 0;
   box-shadow: 0 0 0 1px #fff;
   color: #fff;
   content: "screen: _";

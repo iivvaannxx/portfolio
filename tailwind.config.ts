@@ -2,36 +2,78 @@ import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
+  darkMode: "class",
   content: ["./source/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+
   theme: {
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        primary: "hsl(var(--primary))",
-        secondary: "hsl(var(--secondary))",
-        accent: "hsl(var(--accent))",
-        card: "hsl(var(--card))",
-        destructive: "hsl(var(--destructive))",
-        muted: "hsl(var(--muted))",
-
-        foreground: "hsl(var(--foreground))",
-        "primary-foreground": "hsl(var(--primary-foreground))",
-        "secondary-foreground": "hsl(var(--secondary-foreground))",
-        "accent-foreground": "hsl(var(--accent-foreground))",
-        "card-foreground": "hsl(var(--card-foreground))",
-        "destructive-foreground": "hsl(var(--destructive-foreground))",
-        "muted-foreground": "hsl(var(--muted-foreground))",
-
-        ring: "hsl(var(--ring))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
 
-        "gradient-start": "var(--gradient-start)",
-        "gradient-end": "var(--gradient-end)",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+
+        primary: {
+          // biome-ignore lint/style/useNamingConvention: Tailwind requires this to be uppercase.
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          // biome-ignore lint/style/useNamingConvention: Tailwind requires this to be uppercase.
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          // biome-ignore lint/style/useNamingConvention: Tailwind requires this to be uppercase.
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          // biome-ignore lint/style/useNamingConvention: Tailwind requires this to be uppercase.
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          // biome-ignore lint/style/useNamingConvention: Tailwind requires this to be uppercase.
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          // biome-ignore lint/style/useNamingConvention: Tailwind requires this to be uppercase.
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          // biome-ignore lint/style/useNamingConvention: Tailwind requires this to be uppercase.
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        gradient: {
+          start: "var(--gradient-start)",
+          end: "var(--gradient-end)",
+        },
       },
 
       fontFamily: {
-        sans: ["Satoshi-Variable", ...defaultTheme.fontFamily.sans],
+        sans: ["Satoshi", ...defaultTheme.fontFamily.sans],
+        mono: [
+          "Monaspace Neon",
+          "Monaspace Neon Fallback",
+          ...defaultTheme.fontFamily.mono,
+        ],
+      },
+
+      animation: {
+        "background-shine": "background-shine 2s linear infinite",
+      },
+
+      keyframes: {
+        "background-shine": {
+          from: { backgroundPosition: "0 0" },
+          to: { backgroundPosition: "-200% 0" },
+        },
       },
     },
   },

@@ -1,8 +1,12 @@
-<header class='fixed container w-full inset-x-0 mx-auto top-0 z-100 flex justify-between items-center'>
+---
+import IconSun from "~icons/lucide/sun";
+---
+<header class='fixed container px-8 w-full border-b border-border h-[64px] inset-x-0 mx-auto top-0 z-100 flex justify-between items-center'>
 
-  <span>Ivan Porto</span>
-  <nav>
-    <ul class="flex items-center">
+  <span class="uppercase font-black text-xl">Ivan Porto</span>
+
+  <nav class="flex justify-center flex-grow">
+    <ul class="flex items-center gap-4 uppercase font-medium">
       <li>About</li>
       <li>Experience</li>
       <li>Education</li>
@@ -12,8 +16,10 @@
     </ul>
   </nav>
 
-  <div>
+  <div class="flex justify-end items-center gap-6">
     <span>ENG</span>
+    <IconSun />
   </div>
 
 </header>
+
