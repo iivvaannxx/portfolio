@@ -7,6 +7,12 @@ const config: Config = {
 
   theme: {
     extend: {
+      screens: {
+        xs: "360px",
+        ...defaultTheme.screens,
+        "3xl": "1650px",
+      },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -1,17 +1,34 @@
 ---
 import "@app/assets/styles/index.css";
+import "tippy.js/animations/scale.css";
+import "tippy.js/dist/tippy.css";
 
 import Header from "@app/common/layout/header.astro";
 
 import FileBadgeIcon from "~icons/lucide/file-badge";
 import GithubIcon from "~icons/lucide/github";
 import LinkedInIcon from "~icons/lucide/linkedin";
+import SquareTerminal from "~icons/lucide/square-terminal";
 import TwitterIcon from "~icons/lucide/twitter";
 ---
 
+<script>
+
+  import tippy from "tippy.js";
+  tippy("[data-tippy-content]", {
+
+    placement: "right",
+    offset: [0, 16],
+
+    animation: "scale",
+    inertia: true,
+  })
+
+</script>
+
 <!DOCTYPE html>
 
-<html lang='en'>
+<html lang='en' class="dark">
 
   <head>
 
@@ -25,18 +42,47 @@ import TwitterIcon from "~icons/lucide/twitter";
 
   </head>
 
-  <body class='debug-screens bg-background font-sans text-foreground antialiased'>
+  <body class='debug-screens relative bg-background font-sans text-foreground antialiased'>
 
     <Header />
 
-    <aside id="socials" class="fixed inset-y-0 left-0  w-[96px] flex-col justify-end gap-y-8 flex items-center">
-      <LinkedInIcon width={28} height={28} />
-      <GithubIcon width={28} height={28} />
-      <TwitterIcon width={28} height={28} />
-      <FileBadgeIcon width={28} height={28} />
+
+    <aside  class="fixed inset-y-0 left-0 w-[64px] z-[50] justify-end flex-col flex items-center gap-4">
+
+      <ul class="w-full flex flex-col items-center gap-y-8">
+
+        <li>
+          <button data-tippy-content="Terminal">
+            <SquareTerminal width={28} height={28} />
+          </button>
+        </li>
+      </ul>
+
+      <ul id="socials" class="w-full flex flex-col items-center gap-y-8">
+        <li>
+          <a data-tippy-content="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/ivan-porto-wigner">
+            <LinkedInIcon width={28} height={28} />
+          </a>
+        </li>
+        <li>
+          <a data-tippy-content="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer" href="https://github.com/iivvaannxx">
+            <GithubIcon width={28} height={28} />
+          </a>
+        </li>
+        <li>
+          <a data-tippy-content="Twitter" aria-label="Twitter" target="_blank" rel="noopener noreferrer" href="https://x.com/iivanportoo">
+            <TwitterIcon width={28} height={28} />
+          </a>
+        </li>
+        <li>
+          <a data-tippy-content="Resume" aria-label="Resume" target="_blank" rel="noopener noreferrer" href="https://read.cv/ivanporto">
+            <FileBadgeIcon  width={28} height={28} />
+          </a>
+        </li>
+      </ul>
     </aside>
 
-    <main class='relative mx-auto w-full px-12 container'>
+    <main class='relative w-full'>
       <slot name='main' />
     </main>
   
@@ -75,6 +121,7 @@ import TwitterIcon from "~icons/lucide/twitter";
     min-height: 100dvh;
   }
 
+  #socials::before,
   #socials::after {
     content: '';
     position: relative;

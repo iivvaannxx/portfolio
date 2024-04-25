@@ -3,55 +3,81 @@ import Typewriter from "@app/common/components/effects/typewriter.astro";
 import UserLocation from "@common/components/user-location.astro";
 
 import Page from "@common/layout/page.astro";
-import MailIcon from "~icons/lucide/mail";
----
 
+import MailIcon from "~icons/lucide/mail";
+import SendHorizontalIcon from "~icons/lucide/send-horizontal";
+---
 
 <Page>
 
-  <section 
-    id="hero" 
-    slot="main" 
-    class="flex flex-col justify-center"
-  >
+  <Fragment slot="main">
 
-    <div class="flex">
-      <div>
-        <h1 class="block text-hero">
-          <span data-who class="block text-2xl text-foreground/50 font-semibold">Hello! My name is</span>
-          <span data-name class="inline-block font-extrabold text-transparent bg-gradient-to-br bg-clip-text from-gradient-start to-gradient-end">Ivan Porto</span>
+    <section 
+      id="hero" 
+      class="relative w-full h-full flex flex-col justify-center items-center"
+    >
+
+      <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+
+      <div class="container mx-auto flex flex-col text-left mb-16">
+
+        <h1 class="block">
+          <span data-who class="block text-5xl text-foreground/50 font-semibold">Hello! My name is</span>
+          <span data-name class="block font-extrabold text-[8rem] text-primary">Ivan Porto</span>
+          <span class="font-bold text-6xl">
+            <span class="text-foreground/50">I'm a</span>
+            <span class="text-foreground">software</span>
+            <span class="text-foreground/50">developer</span>
+          </span>
         </h1>
-        
-        <h2 class="font-bold text-4xl mb-8">
-          <span class="text-foreground/50">I'm a</span>
-          <span class="text-foreground">software</span>
-          <span class="text-foreground/50">developer</span>
-        </h2>
-
-        <p class="text-foreground/75 text-balance text-xl">
-          Specialized in <strong>game development</strong> yet passionate about developing <strong>any kind</strong> of software.
+      
+        <p class="text-foreground/75 text-balance font-medium mt-8 text-3xl">
+          Specialized in <strong>game development</strong>, yet passionate about developing <strong>any kind</strong> of software.
           With 6+ years of coding experience and 4+ years of professional experience.
         </p>
+
+        <div class="mt-8 text-2xl">
+        <button class="group relative inline-flex items-center justify-center overflow-hidden rounded-md bg-primary px-6 py-4 font-medium text-primary-foreground duration-500">
+          <div class="translate-x-0 opacity-100 transition group-hover:-translate-x-[150%] group-hover:opacity-0 flex gap-4">
+            <MailIcon />
+            <span>Get In Touch!</span>
+          </div>
+          <div class="absolute translate-x-[150%] opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">
+            <SendHorizontalIcon />
+          </div>
+        </button>
       </div>
 
-      <div class="bg-gray-900 border-2 border-border rounded-2xl overflow-clip w-full max-w-[60%] grid grid-rows-10 aspect-video">
-        <div class="row-span-1 bg-gray-900 flex gap-2 items-center px-4">
-          <div class="w-2 aspect-square bg-red-400 rounded-full"></div>
-          <div class="w-2 aspect-square bg-yellow-400 rounded-full"></div>
-          <div class="w-2 aspect-square bg-green-400 rounded-full"></div>
+      </div>
+<!-- 
+      <div class="bg-gray-900 border-2 border-border rounded-2xl overflow-clip w-1/2">
+        <div class="h-12 bg-gray-900 flex gap-2 items-center px-4">
+          <div class="w-3 aspect-square bg-red-400 rounded-full"></div>
+          <div class="w-3 aspect-square bg-yellow-400 rounded-full"></div>
+          <div class="w-3 aspect-square bg-green-400 rounded-full"></div>
         </div>
-        <div class="row-span-9 bg-gray-950 p-4 font-mono">
-          > Hello World!
+        <div class="bg-gray-950 font-mono">
+          <span class="block p-4">
+            Hello World!
+          </span>
+          <hr class="border-border" />
+          <span class="inline-block p-4 text-foreground/40">
+            > Do you know how a terminal works? Try `help`!
+          </span>
         </div>
+      </div> -->
+      
+      <div class="absolute bottom-0 right-0 p-12 flex text-foreground/80 gap-4 items-center">
+        <UserLocation class="text-xl font-semibold" />
       </div>
 
-    </div>
+    </section>
 
-    <div class="mt-8 text-3xl">
-    </div>
-    
-  </section>
-  
+
+ 
+
+  </Fragment>
+
 </Page>
 
 <style>
@@ -61,8 +87,5 @@ import MailIcon from "~icons/lucide/mail";
     height: 100dvh;
   }
 
-  .text-hero > [data-name] {
-    font-size: clamp(2.5rem, 8.33333vw, 6rem);
-  }
-
 </style>
+
