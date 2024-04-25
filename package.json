@@ -5,6 +5,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "postinstall": "lefthook install"
   },
   "dependencies": {
@@ -18,19 +21,29 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.15.0",
     "@astrojs/check": "^0.5.10",
     "@astrojs/sitemap": "^3.1.4",
     "@astrojs/tailwind": "^5.1.0",
-    "@biomejs/biome": "1.6.3",
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/types": "^19.0.3",
     "@iconify-json/lucide": "^1.1.184",
     "@playform/compress": "^0.0.3",
     "astro-robots-txt": "^1.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-astro": "^0.34.0",
+    "eslint-plugin-format": "^0.1.1",
+    "eslint-plugin-tailwindcss": "^3.15.1",
     "lefthook": "^1.6.10",
+    "prettier-plugin-astro": "^0.13.0",
     "unplugin-icons": "^0.18.5",
     "vite-tsconfig-paths": "^4.3.2"
   },
-  "trustedDependencies": ["@biomejs/biome", "esbuild", "lefthook", "sharp"]
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "esbuild",
+    "lefthook",
+    "sharp"
+  ]
 }

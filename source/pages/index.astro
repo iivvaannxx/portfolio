@@ -1,5 +1,4 @@
 ---
-import Typewriter from "@app/common/components/effects/typewriter.astro";
 import UserLocation from "@common/components/user-location.astro";
 
 import Page from "@common/layout/page.astro";
@@ -9,47 +8,60 @@ import SendHorizontalIcon from "~icons/lucide/send-horizontal";
 ---
 
 <Page>
-
   <Fragment slot="main">
-
-    <section 
-      id="hero" 
-      class="relative w-full h-full flex flex-col justify-center items-center"
+    <section
+      id="hero"
+      class="relative flex size-full flex-col items-center justify-center"
     >
+      <div
+        class="absolute inset-0 -z-10 size-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
+      >
+      </div>
 
-      <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
-
-      <div class="container mx-auto flex flex-col text-left mb-16">
-
+      <div class="container mx-auto mb-16 flex flex-col text-left">
         <h1 class="block">
-          <span data-who class="block text-5xl text-foreground/50 font-semibold">Hello! My name is</span>
-          <span data-name class="block font-extrabold text-[8rem] text-primary">Ivan Porto</span>
-          <span class="font-bold text-6xl">
+          <span
+            data-who
+            class="block text-5xl font-semibold text-foreground/50"
+          >Hello! My name is</span
+          >
+          <span
+            data-name
+            class="block text-[8rem] font-extrabold text-primary"
+          >Ivan Porto</span
+          >
+          <span class="text-6xl font-bold">
             <span class="text-foreground/50">I'm a</span>
             <span class="text-foreground">software</span>
             <span class="text-foreground/50">developer</span>
           </span>
         </h1>
-      
-        <p class="text-foreground/75 text-balance font-medium mt-8 text-3xl">
-          Specialized in <strong>game development</strong>, yet passionate about developing <strong>any kind</strong> of software.
-          With 6+ years of coding experience and 4+ years of professional experience.
+
+        <p class="mt-8 text-balance text-3xl font-medium text-foreground/75">
+          Specialized in <strong>game development</strong>, yet passionate about
+          developing <strong>any kind</strong> of software. With 6+ years of coding
+          experience and 4+ years of professional experience.
         </p>
 
         <div class="mt-8 text-2xl">
-        <button class="group relative inline-flex items-center justify-center overflow-hidden rounded-md bg-primary px-6 py-4 font-medium text-primary-foreground duration-500">
-          <div class="translate-x-0 opacity-100 transition group-hover:-translate-x-[150%] group-hover:opacity-0 flex gap-4">
-            <MailIcon />
-            <span>Get In Touch!</span>
-          </div>
-          <div class="absolute translate-x-[150%] opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">
-            <SendHorizontalIcon />
-          </div>
-        </button>
+          <button
+            class="group relative inline-flex items-center justify-center overflow-hidden rounded-md bg-primary px-6 py-4 font-medium text-primary-foreground duration-500"
+          >
+            <div
+              class="flex translate-x-0 gap-4 opacity-100 transition group-hover:translate-x-[-150%] group-hover:opacity-0"
+            >
+              <MailIcon />
+              <span>Get In Touch!</span>
+            </div>
+            <div
+              class="absolute translate-x-[150%] opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100"
+            >
+              <SendHorizontalIcon />
+            </div>
+          </button>
+        </div>
       </div>
-
-      </div>
-<!-- 
+      <!--
       <div class="bg-gray-900 border-2 border-border rounded-2xl overflow-clip w-1/2">
         <div class="h-12 bg-gray-900 flex gap-2 items-center px-4">
           <div class="w-3 aspect-square bg-red-400 rounded-full"></div>
@@ -66,26 +78,22 @@ import SendHorizontalIcon from "~icons/lucide/send-horizontal";
           </span>
         </div>
       </div> -->
-      
-      <div class="absolute bottom-0 right-0 p-12 flex text-foreground/80 gap-4 items-center">
+
+      <div
+        class="absolute bottom-0 right-0 flex items-center gap-4 p-12 text-foreground/80"
+      >
         <UserLocation class="text-xl font-semibold" />
       </div>
-
     </section>
 
-
- 
+    <button class="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">...</button>
 
   </Fragment>
-
 </Page>
 
 <style>
-
   #hero {
     height: 100vh;
     height: 100dvh;
   }
-
 </style>
-

@@ -1,8 +1,9 @@
 @font-face {
-  font-family: 'Satoshi';
-  src: url('/fonts/satoshi/satoshi.woff2') format('woff2'),
-    url('/fonts/satoshi/satoshi.woff') format('woff'),
-    url('/fonts/satoshi/satoshi.ttf') format('truetype');
+  font-family: "Satoshi";
+  src:
+    url("/fonts/satoshi/satoshi.woff2") format("woff2"),
+    url("/fonts/satoshi/satoshi.woff") format("woff"),
+    url("/fonts/satoshi/satoshi.ttf") format("truetype");
 
   font-weight: 300 900;
   font-display: swap;
@@ -10,10 +11,11 @@
 }
 
 @font-face {
-  font-family: 'Monaspace Neon';
-  src: url('/fonts/monaspace/monaspace-neon.woff2') format('woff2'),
-    url('/fonts/monaspace/monaspace-neon.woff') format('woff'),
-    url('/fonts/monaspace/monaspace-neon.ttf') format('truetype');
+  font-family: "Monaspace Neon";
+  src:
+    url("/fonts/monaspace/monaspace-neon.woff2") format("woff2"),
+    url("/fonts/monaspace/monaspace-neon.woff") format("woff"),
+    url("/fonts/monaspace/monaspace-neon.ttf") format("truetype");
 
   font-weight: 200 800;
   font-stretch: 100% 125%;
@@ -22,7 +24,7 @@
 }
 
 @font-face {
-  font-family: 'Monaspace Neon Fallback';
+  font-family: "Monaspace Neon Fallback";
   src: local("Arial");
 
   ascent-override: 57.59%;
@@ -32,7 +34,6 @@
 }
 
 @layer utilities {
-
   .font-sans {
     font-feature-settings:
       "liga" on,
@@ -54,38 +55,38 @@
   }
 
   .font-thin {
-    font-variation-settings: 'wght' 100;
+    font-variation-settings: "wght" 100;
   }
 
   .font-extralight {
-    font-variation-settings: 'wght' 200;
+    font-variation-settings: "wght" 200;
   }
 
   .font-light {
-    font-variation-settings: 'wght' 300;
+    font-variation-settings: "wght" 300;
   }
 
   .font-normal {
-    font-variation-settings: 'wght' 400;
+    font-variation-settings: "wght" 400;
   }
 
   .font-medium {
-    font-variation-settings: 'wght' 500;
+    font-variation-settings: "wght" 500;
   }
 
   .font-semibold {
-    font-variation-settings: 'wght' 600;
+    font-variation-settings: "wght" 600;
   }
 
   .font-bold {
-    font-variation-settings: 'wght' 700;
+    font-variation-settings: "wght" 700;
   }
 
   .font-extrabold {
-    font-variation-settings: 'wght' 800;
+    font-variation-settings: "wght" 800;
   }
 
   .font-black {
-    font-variation-settings: 'wght' 900;
+    font-variation-settings: "wght" 900;
   }
 }

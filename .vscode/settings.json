@@ -1,28 +1,9 @@
 {
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome"
+  "[javascript][typescript][json][astro]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
 
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-
-  "[json]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-
-  "[astro]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "quickfix.biome": "always",
-    "source.organizeImports.biome": "always"
-  },
-
-  "eslint.enable": false,
-  "explorerExclude.backup": {},
+  "explorerExclude.backup": { },
   "css.lint.unknownAtRules": "ignore",
 
   "files.exclude": {
@@ -34,5 +15,36 @@
     "**/Thumbs.db": true,
     "**/.direnv": true,
     "**/node_modules": true
-  }
+  },
+
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "explicit"
+  },
+
+  "biome.enabled": false,
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.experimental.useFlatConfig": true,
+
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml",
+    "astro"
+  ],
+
+  "javascript.format.semicolons": "insert",
+  "typescript.format.semicolons": "insert"
 }

@@ -7,7 +7,6 @@ type Props = HTMLAttributes<"span">;
 ---
 
 <script>
-
   import tippy from "tippy.js";
 
   /**
@@ -15,7 +14,6 @@ type Props = HTMLAttributes<"span">;
    * @returns An object containing the user's country, flag, and city.
    */
   async function getUserLocation() {
-
     const response = await fetch("https://geolocation.microlink.io");
     const { country, city } = await response.json();
 
@@ -25,15 +23,16 @@ type Props = HTMLAttributes<"span">;
       city: city.name as string,
     };
   }
-  
+
   const { city, country, flag } = await getUserLocation();
-  const placeholder = document.querySelector('#location-placeholder') as HTMLSpanElement;
+  const placeholder = document.querySelector(
+    "#location-placeholder",
+  ) as HTMLSpanElement;
   placeholder.textContent = `Last visit from ${city}, ${country} ${flag}`;
-  
+
   // Sets the tooltip for the privacy notice.
   const template = document.getElementById("privacy-notice");
   tippy("#location-privacy-tooltip", {
-
     content: template?.innerHTML,
     theme: "location",
     offset: [0, 16],
@@ -41,32 +40,36 @@ type Props = HTMLAttributes<"span">;
     arrow: false,
     allowHTML: true,
     hideOnClick: false,
-  })
-
+  });
 </script>
 
-<button id="location-privacy-tooltip" aria-haspopup="true" aria-label="Location Privacy">
+<button
+  id="location-privacy-tooltip"
+  aria-haspopup="true"
+  aria-label="Location Privacy"
+>
   <CircleHelp aria-hidden="true" width={24} height={24} />
 </button>
 
-<span id="location-placeholder" {...Astro.props}>Fetching user location...</span>
+<span id="location-placeholder" {...Astro.props}>Fetching user location...</span
+>
 
 <div id="privacy-notice" class="hidden" aria-hidden="true">
-  <span class="block font-bold text-base mb-3">Privacy Notice</span>
-  
-  <p class="text-pretty font-medium text-sm">
-    The displayed location is an approximation of the most recent visitor's geographical area, derived from their IP address.
+  <span class="mb-3 block text-base font-bold">Privacy Notice</span>
+
+  <p class="text-pretty text-sm font-medium">
+    The displayed location is an approximation of the most recent visitor's
+    geographical area, derived from their IP address.
   </p>
   <br />
-  <p class="text-pretty font-medium text-sm">
-    I store this data temporarily for display purposes only and do not permanently store, share, or use it for any other purposes.
+  <p class="text-pretty text-sm font-medium">
+    I store this data temporarily for display purposes only and do not
+    permanently store, share, or use it for any other purposes.
   </p>
 </div>
 
 <style is:global>
-
-  .tippy-box[data-theme ~= "location"] .tippy-content {
+  .tippy-box[data-theme~="location"] .tippy-content {
     padding: 1rem;
   }
-
 </style>
