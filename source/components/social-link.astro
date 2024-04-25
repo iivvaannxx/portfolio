@@ -1,0 +1,30 @@
+---
+import { type SocialData } from "@app/data/socials";
+import type { HTMLAttributes } from "astro/types";
+
+export type Props = HTMLAttributes<"a"> & {
+  data: SocialData;
+  withTooltip?: boolean;
+};
+
+const { data, withTooltip = true, class: clazz, ...props } = Astro.props;
+const { label, href, Icon } = data;
+
+const optionalAttrs = {
+  ...(withTooltip && { "data-tippy-content": label }),
+};
+---
+
+<a
+  {...props}
+  {...optionalAttrs}
+  aria-label={label}
+  href={href}
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <slot>
+    <!-- By default if no children is provided we show the icon. -->
+    <Icon width={28} height={28} />
+  </slot>
+</a>

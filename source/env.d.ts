@@ -1,4 +1,5 @@
 /// <reference types="astro/client" />
+/// <reference types="typed-query-selector" />
 
 interface Document {
   startViewTransition: (updateCallback: () => Promise<void> | void) => ViewTransition;

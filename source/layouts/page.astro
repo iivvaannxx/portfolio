@@ -1,0 +1,22 @@
+---
+import Base from "@app/layouts/base.astro";
+import Header from "@app/layouts/header.astro";
+
+import SocialsSidelist from "@app/components/social-sidelist.astro";
+---
+
+<Base>
+  <Fragment slot="body">
+    <Header />
+
+    <aside
+      class="fixed inset-y-0 left-0 z-50 flex w-[64px] flex-col items-center justify-end gap-4"
+    >
+      <SocialsSidelist />
+    </aside>
+
+    <main class="relative size-full">
+      <slot name="main" />
+    </main>
+  </Fragment>
+</Base>

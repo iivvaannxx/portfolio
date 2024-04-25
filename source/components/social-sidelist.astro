@@ -1,0 +1,33 @@
+---
+import SocialLink from "@app/components/social-link.astro";
+import { socials } from "@app/data/socials";
+---
+
+<script>
+  import tippy from "tippy.js";
+  tippy("#socials a[data-tippy-content]", {
+    placement: "right",
+    offset: [0, 16],
+
+    animation: "scale",
+    inertia: true,
+  });
+</script>
+
+<ul id="socials" class="flex w-full flex-col items-center gap-y-8">
+  {socials.map((data) => <SocialLink {data} withTooltip />)}
+</ul>
+
+<style>
+  #socials::after {
+    content: "";
+    position: relative;
+
+    top: 0;
+    left: -0.1rem;
+
+    width: 2px;
+    height: 4rem;
+    background: white;
+  }
+</style>
