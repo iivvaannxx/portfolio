@@ -7,14 +7,13 @@ export default antfu(
   {
     astro: true,
     formatters: true,
-
     lessOpinionated: true,
+
     stylistic: {
 
       quotes: "double",
       semi: true,
       overrides: {
-
         "style/arrow-parens": ["error", "always"],
       },
     },
