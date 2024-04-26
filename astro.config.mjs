@@ -3,7 +3,6 @@ import Icons from "unplugin-icons/vite";
 
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import playformCompress from "@playform/compress";
 import qwikdev from "@qwikdev/astro";
 import robotsTxt from "astro-robots-txt";
 
@@ -14,12 +13,12 @@ export default defineConfig({
   outDir: "build",
   output: "static",
 
+  compressHTML: true,
   integrations: [
     tailwind({ applyBaseStyles: false }),
     qwikdev(),
     sitemap(),
     robotsTxt(),
-    playformCompress(),
   ],
 
   vite: {

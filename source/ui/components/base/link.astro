@@ -1,0 +1,38 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+// Extend the default attributes for extra functionality.
+export type Props = HTMLAttributes<"a"> & {
+  label: string;
+  targetBlank?: boolean;
+
+  withTooltip?: boolean;
+  tooltipContent?: string;
+};
+
+const {
+  label,
+  href,
+
+  withTooltip = false,
+  targetBlank = false,
+  tooltipContent = label,
+
+  ...props
+} = Astro.props;
+
+const optionalAttrs = {
+  ...(withTooltip && { "data-tippy-content": tooltipContent }),
+  ...(targetBlank && { target: "_blank" }),
+};
+---
+
+<a
+  {...props}
+  {...optionalAttrs}
+  aria-label={label}
+  href={href}
+  rel="noopener noreferrer"
+>
+  <slot />
+</a>

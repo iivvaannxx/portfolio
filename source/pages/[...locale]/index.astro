@@ -1,15 +1,15 @@
 ---
-import Page from "@app/layouts/page.astro";
-import Hero from "@app/sections/hero.astro";
-import type { GetStaticPaths } from "astro";
+import About from "@app/modules/sections/about.astro";
+import Page from "@app/ui/layouts/page.astro";
 
 import { getLocalizedStaticPaths } from "@app/modules/i18n/lib/locales";
+import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 ---
 
 <Page>
   <Fragment slot="main">
-    <Hero />
+    <About />
   </Fragment>
 </Page>

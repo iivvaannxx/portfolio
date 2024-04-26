@@ -7,35 +7,37 @@ import TwitterIcon from "~icons/lucide/twitter";
 export interface SocialData {
 
   href: string;
-  label: string;
   Icon: astroHTML.JSX.Element;
+
+  // This is the translation key (i18n).
+  key: string;
 }
 
 /** My LinkedIn profile. */
 export const linkedIn: SocialData = {
   href: "https://linkedin.com/in/ivan-porto-wigner",
-  label: "LinkedIn",
+  key: "linkedIn",
   Icon: LinkedInIcon,
 } as const;
 
 /** My GitHub profile. */
 export const github: SocialData = {
   href: "https://github.com/iivvaannxx",
-  label: "GitHub",
+  key: "github",
   Icon: GithubIcon,
 };
 
 /** My X (Twitter) profile. */
 export const xTwitter: SocialData = {
   href: "https://x.com/iivanportoo",
-  label: "X (Formerly Twitter)",
+  key: "xTwitter",
   Icon: TwitterIcon,
 };
 
 /** My online resume. */
 export const resume: SocialData = {
   href: "https://read.cv/ivanporto",
-  label: "Resume",
+  key: "resume",
   Icon: FileBadgeIcon,
 };
 

@@ -6,12 +6,11 @@ export default antfu(
 
   {
     astro: true,
-    formatters: {
-      astro: true,
-    },
+    formatters: true,
 
     lessOpinionated: true,
     stylistic: {
+
       quotes: "double",
       semi: true,
       overrides: {
@@ -21,6 +20,19 @@ export default antfu(
     },
 
     typescript: { tsconfigPath: "./tsconfig.json" },
+  },
+
+  {
+    languageOptions: {
+      globals: {
+        Fragment: "readonly",
+      },
+    },
+
+    rules: {
+
+      // "style/max-len": ["error", { code: 90, tabWidth: 2 }],
+    },
   },
 
   ...compat.config({
@@ -38,12 +50,4 @@ export default antfu(
       },
     ],
   }),
-
-).append({
-
-  languageOptions: {
-    globals: {
-      Fragment: "readonly",
-    },
-  },
-});
+);

@@ -1,5 +1,8 @@
 ---
-import UserLocation from "@app/components/user-location.astro";
+import { useTranslations } from "@app/modules/i18n/lib/hooks/use-translation";
+import UserLocation from "@app/ui/components/user-location.astro";
+
+const t = useTranslations(Astro.locals.locale);
 ---
 
 <section
@@ -14,7 +17,7 @@ import UserLocation from "@app/components/user-location.astro";
   <div class="container mx-auto mb-16 flex flex-col p-12 text-left">
     <h1 class="block">
       <span class="block text-5xl font-semibold text-foreground/50">
-        Hello! My name is
+        {t("sections.about.greeting")}
       </span>
 
       <span class="block text-[8rem] font-extrabold text-primary">
@@ -22,21 +25,25 @@ import UserLocation from "@app/components/user-location.astro";
       </span>
 
       <span class="text-6xl font-bold">
-        <span class="text-foreground/50">I'm a</span>
-        <span class="text-foreground">software</span>
-        <span class="text-foreground/50">developer</span>
+        <span class="text-foreground/50">
+          {t("sections.about.headline.left")}
+        </span>
+        <span class="text-foreground">
+          {t("sections.about.headline.main")}
+        </span>
+        <span class="text-foreground/50">
+          {t("sections.about.headline.right")}
+        </span>
       </span>
     </h1>
 
     <p class="mt-8 text-balance text-3xl font-medium text-foreground/75">
-      Specialized in <strong>game development</strong>, yet passionate about
-      developing <strong>any kind</strong> of software. With 6+ years of coding experience
-      and 4+ years of professional experience.
+      {t("sections.about.description")}
     </p>
   </div>
 
   <div
-    class="absolute bottom-0 right-0 flex items-center gap-4 p-12 text-foreground/80"
+    class="absolute bottom-0 right-0 flex items-center p-12 text-foreground/80"
   >
     <UserLocation class="text-xl font-semibold" />
   </div>

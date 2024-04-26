@@ -1,0 +1,48 @@
+---
+import Link from "@app/ui/components/base/link.astro";
+import { socials } from "@app/assets/data/socials";
+
+import { useTranslations } from "@app/modules/i18n/lib/hooks/use-translation";
+
+const t = useTranslations(Astro.locals.locale);
+---
+
+<script>
+  import tippy from "tippy.js";
+  tippy("#socials a[data-tippy-content]", {
+    placement: "right",
+    offset: [0, 16],
+
+    animation: "scale",
+    inertia: true,
+  });
+</script>
+
+<ul id="socials" class="flex w-full flex-col items-center gap-y-8">
+  {
+    socials.map(({ href, key, Icon }) => {
+      const translatedLabel = t(`socials.${key}`) as string;
+      return (
+        <li>
+          <Link {href} label={translatedLabel} withTooltip targetBlank>
+            <Icon width={28} height={28} />
+          </Link>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  #socials::after {
+    content: "";
+    position: relative;
+
+    top: 0;
+    left: -0.1rem;
+
+    width: 2px;
+    height: 4rem;
+    background: white;
+  }
+</style>
