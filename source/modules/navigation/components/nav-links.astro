@@ -1,0 +1,26 @@
+---
+import { useTranslations } from "@app/modules/i18n/lib/hooks/use-translation";
+import type { HTMLAttributes } from "astro/types";
+
+import Link from "@app/ui/components/base/link.astro";
+import { sections } from "../lib/sections";
+
+export type Props = HTMLAttributes<"nav">;
+
+const translations = useTranslations(Astro.locals.locale);
+const t = translations.sections;
+---
+
+<nav {...Astro.props}>
+  <ul class="flex items-center gap-4 font-medium uppercase">
+    {
+      sections.map((section) => (
+        <li>
+          <Link href={`#${t[section].id}`} label={section}>
+            {t[section].title}
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

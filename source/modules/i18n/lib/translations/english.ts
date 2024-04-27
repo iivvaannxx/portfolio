@@ -8,6 +8,7 @@ export const english = {
   sections: {
     about: {
       title: "About",
+      id: "about",
       headline: {
         content: ["I'm a", "{words}", "developer"],
         words: ["game", "web", "software"],
@@ -17,10 +18,10 @@ export const english = {
       description: "Specialized in game development, yet passionate about developing any kind of software. With 6+ years of coding experience and 4+ years of professional experience.",
     },
 
-    experience: "Experience",
-    projects: "Projects",
-    skills: "Skills",
-    contact: "Contact",
+    experience: { title: "Experience", id: "experience" },
+    projects: { title: "Projects", id: "projects" },
+    skills: { title: "Skills", id: "skills" },
+    contact: { title: "Contact", id: "contact" },
   },
 
   socials: {
