@@ -9,13 +9,12 @@ export const english = {
     about: {
       title: "About",
       headline: {
-        left: "I'm a",
-        main: "software",
-        right: "developer.",
+        content: ["I'm a", "{words}", "developer"],
+        words: ["game", "web", "software"],
       },
 
       greeting: "Hello! My name is",
-      description: "Specialized in game development, yet passionate about developing any kind of software. With 6+ years of experience and 4+ years of professional experience.",
+      description: "Specialized in game development, yet passionate about developing any kind of software. With 6+ years of coding experience and 4+ years of professional experience.",
     },
 
     experience: "Experience",

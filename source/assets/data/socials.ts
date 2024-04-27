@@ -1,7 +1,7 @@
-import XTwitterIcon from "~icons/devicon/twitter";
 import FileBadgeIcon from "~icons/lucide/file-badge";
 import GithubIcon from "~icons/lucide/github";
 import LinkedInIcon from "~icons/lucide/linkedin";
+import XTwitterIcon from "~icons/tabler/brand-x";
 
 /** Defines the data associated to a social media profile. */
 export interface SocialData {
@@ -32,7 +32,7 @@ export const github: SocialData = {
 export const xTwitter: SocialData = {
   href: "https://x.com/iivanportoo",
   key: "xTwitter",
-  size: 24,
+  size: 32,
   Icon: XTwitterIcon,
 };
 

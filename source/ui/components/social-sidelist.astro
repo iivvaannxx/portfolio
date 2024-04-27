@@ -4,7 +4,8 @@ import { socials } from "@app/assets/data/socials";
 
 import { useTranslations } from "@app/modules/i18n/lib/hooks/use-translation";
 
-const t = useTranslations(Astro.locals.locale);
+const translations = useTranslations(Astro.locals.locale);
+const t = translations.socials;
 ---
 
 <script>
@@ -21,7 +22,7 @@ const t = useTranslations(Astro.locals.locale);
 <ul id="socials" class="flex w-full flex-col items-center gap-y-8">
   {
     socials.map(({ href, key, size = 28, Icon }) => {
-      const translatedLabel = t(`socials.${key}`) as string;
+      const translatedLabel = t[key] as string;
       return (
         <li>
           <Link {href} label={translatedLabel} withTooltip targetBlank>

@@ -9,9 +9,8 @@ export const catalan = {
     about: {
       title: "Sobre Mi",
       headline: {
-        left: "Sóc",
-        main: "desenvolupador",
-        right: "de software.",
+        content: ["Sóc desenvolupador de", "{words}"],
+        words: ["videojocs", "pàgines web", "software"],
       },
 
       greeting: "Hola! Em dic",

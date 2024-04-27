@@ -2,7 +2,8 @@
 import { useTranslations } from "@app/modules/i18n/lib/hooks/use-translation";
 import UserLocation from "@app/ui/components/user-location.astro";
 
-const t = useTranslations(Astro.locals.locale);
+const translations = useTranslations(Astro.locals.locale);
+const t = translations.sections.about;
 ---
 
 <section
@@ -17,7 +18,7 @@ const t = useTranslations(Astro.locals.locale);
   <div class="container mx-auto mb-16 flex flex-col p-12 text-left">
     <h1 class="block">
       <span class="block text-5xl font-semibold text-foreground/50">
-        {t("sections.about.greeting")}
+        {t.greeting}
       </span>
 
       <span class="block text-[8rem] font-extrabold text-primary">
@@ -25,20 +26,26 @@ const t = useTranslations(Astro.locals.locale);
       </span>
 
       <span class="text-6xl font-bold">
-        <span class="text-foreground/50">
-          {t("sections.about.headline.left")}
-        </span>
-        <span class="text-foreground">
-          {t("sections.about.headline.main")}
-        </span>
-        <span class="text-foreground/50">
-          {t("sections.about.headline.right")}
-        </span>
+        {
+          t.headline.content.map((text) => {
+            // Because of the split, the placeholder is an empty string
+            const isRotatingWords = text === "{words}";
+            const style = isRotatingWords
+              ? "text-foreground"
+              : "text-foreground/50";
+
+            return (
+              <span class={style}>
+                {isRotatingWords ? t.headline.words.at(-1) : text}
+              </span>
+            );
+          })
+        }
       </span>
     </h1>
 
     <p class="mt-8 text-balance text-3xl font-medium text-foreground/75">
-      {t("sections.about.description")}
+      {t.description}
     </p>
   </div>
 
