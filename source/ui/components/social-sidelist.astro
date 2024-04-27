@@ -20,12 +20,12 @@ const t = useTranslations(Astro.locals.locale);
 
 <ul id="socials" class="flex w-full flex-col items-center gap-y-8">
   {
-    socials.map(({ href, key, Icon }) => {
+    socials.map(({ href, key, size = 28, Icon }) => {
       const translatedLabel = t(`socials.${key}`) as string;
       return (
         <li>
           <Link {href} label={translatedLabel} withTooltip targetBlank>
-            <Icon width={28} height={28} />
+            <Icon fill="white" width={size} height={size} />
           </Link>
         </li>
       );

@@ -1,13 +1,14 @@
+import XTwitterIcon from "~icons/devicon/twitter";
 import FileBadgeIcon from "~icons/lucide/file-badge";
 import GithubIcon from "~icons/lucide/github";
 import LinkedInIcon from "~icons/lucide/linkedin";
-import TwitterIcon from "~icons/lucide/twitter";
 
 /** Defines the data associated to a social media profile. */
 export interface SocialData {
 
   href: string;
   Icon: astroHTML.JSX.Element;
+  size?: number;
 
   // This is the translation key (i18n).
   key: string;
@@ -31,7 +32,8 @@ export const github: SocialData = {
 export const xTwitter: SocialData = {
   href: "https://x.com/iivanportoo",
   key: "xTwitter",
-  Icon: TwitterIcon,
+  size: 24,
+  Icon: XTwitterIcon,
 };
 
 /** My online resume. */

@@ -29,6 +29,7 @@
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/types": "^19.0.3",
+    "@iconify-json/devicon": "^1.1.40",
     "@iconify-json/lucide": "^1.1.184",
     "@playform/compress": "^0.0.3",
     "@types/object-path": "^0.11.4",
