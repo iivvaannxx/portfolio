@@ -27,7 +27,7 @@ export function isValidLocale(locale: string): locale is Locale {
 export function getCurrentLocale(defaultLoc = defaultLocale) {
   // We discard the initial slash.
   const [, slug] = window.location.pathname.split("/");
-  const locale = slug.substring(0, 2) as Locale;
+  const locale = slug.substring(0, 2);
 
   // Ensure it's a supported locale.
   if (isValidLocale(locale)) {
