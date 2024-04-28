@@ -1,0 +1,62 @@
+---
+import { skills } from "@app/assets/data/skills";
+import SkillCard from "@app/ui/components/skill-card.astro";
+import { useTranslations } from "../i18n/lib/hooks/use-translation";
+
+const translations = useTranslations(Astro.locals.locale);
+const t = translations.sections.skills;
+---
+
+<section
+  id={t.id}
+  class="container mx-auto flex w-full flex-col items-center p-12"
+>
+  <h2 class="mb-16 text-6xl font-bold">{t.title}</h2>
+
+  <div class="grid grid-cols-4 gap-4">
+    {skills.map((skill) => <SkillCard {...skill} variant="default" />)}
+  </div>
+
+  <h3 class="text-3xl font-medium">Games</h3>
+
+  <ul>
+    <li>C++</li>
+    <li>C#</li>
+    <li>TypeScript</li>
+    <li>JavaScript</li>
+    <li>Python</li>
+    <li>Nix</li>
+    <li>Linux</li>
+    <li>Windows</li>
+  </ul>
+
+  <ul>
+    <li>Unity</li>
+    <li>Unreal Engine</li>
+    <li>Godot</li>
+  </ul>
+
+  <h3 class="mt-12 text-3xl font-medium">Web</h3>
+  <ul>
+    <li>Astro</li>
+    <li>Svelte/SvelteKit</li>
+    <li>TypeScript</li>
+    <li>JavaScript</li>
+    <li>React/Next.js</li>
+    <li>Node.js</li>
+    <li>Docker</li>
+    <li>HTML/CSS</li>
+  </ul>
+
+  <h3 class="mt-12 text-3xl font-medium">Tools</h3>
+  <ul>
+    <li>Git</li>
+    <li>GitHub</li>
+    <li>TypeScript</li>
+    <li>JavaScript</li>
+    <li>React/Next.js</li>
+    <li>Node.js</li>
+    <li>Docker</li>
+    <li>HTML/CSS</li>
+  </ul>
+</section>

@@ -17,7 +17,7 @@ const t = translations.sections;
       sections.map((section) => (
         <li>
           <Link href={`#${t[section].id}`} label={section}>
-            {t[section].title}
+            {t[section].name}
           </Link>
         </li>
       ))

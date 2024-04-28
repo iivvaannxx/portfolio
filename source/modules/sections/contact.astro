@@ -1,0 +1,13 @@
+---
+import { useTranslations } from "../i18n/lib/hooks/use-translation";
+
+const translations = useTranslations(Astro.locals.locale);
+const t = translations.sections.contact;
+---
+
+<section
+  id={t.id}
+  class="container mx-auto flex w-full flex-col items-center p-12"
+>
+  <h2 class="mb-16 text-6xl font-bold">{t.title}</h2>
+</section>

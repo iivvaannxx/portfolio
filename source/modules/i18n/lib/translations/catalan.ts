@@ -7,7 +7,7 @@ export const catalan = {
 
   sections: {
     about: {
-      title: "Sobre Mi",
+      name: "Sobre Mi",
       id: "sobre-mi",
 
       headline: {
@@ -19,10 +19,29 @@ export const catalan = {
       description: "Especialitzat en desenvolupament de jocs, però apassionat per desenvolupar qualsevol tipus de software. Amb més de 6 anys d'experiència programant i més de 4 anys d'experiència professional.",
     },
 
-    experience: { title: "Experiència", id: "experiencia" },
-    projects: { title: "Projectes", id: "projectes" },
-    skills: { title: "Competències", id: "competencies" },
-    contact: { title: "Contacte", id: "contacte" },
+    experience: {
+      name: "Experiència",
+      id: "experiencia",
+      title: "Experiència Laboral",
+    },
+
+    projects: {
+      name: "Projectes",
+      id: "projectes",
+      title: "Projectes",
+    },
+
+    skills: {
+      name: "Competències",
+      id: "competencies",
+      title: "Competències",
+    },
+
+    contact: {
+      name: "Contacte",
+      id: "contacte",
+      title: "Contacte",
+    },
   },
 
   socials: {

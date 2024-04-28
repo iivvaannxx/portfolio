@@ -12,12 +12,17 @@
   "dependencies": {
     "@builder.io/qwik": "^1.5.2",
     "@qwikdev/astro": "^0.5.14",
-    "astro": "^4.6.3",
+    "@react-three/fiber": "^8.16.2",
+    "@types/three": "^0.164.0",
+    "astro": "4.7.0",
+    "astro-icon": "^1.1.0",
     "clsx": "^2.1.1",
     "nanostores": "^0.10.3",
     "object-path": "^0.11.8",
     "tailwind-merge": "^2.3.0",
+    "tailwind-variants": "^0.2.1",
     "tailwindcss": "^3.4.3",
+    "three": "^0.164.1",
     "tippy.js": "^6.3.7",
     "typescript": "^5.4.5"
   },

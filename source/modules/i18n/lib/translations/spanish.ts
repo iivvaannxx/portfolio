@@ -7,7 +7,7 @@ export const spanish = {
 
   sections: {
     about: {
-      title: "Sobre Mí",
+      name: "Sobre Mí",
       id: "sobre-mi",
 
       headline: {
@@ -19,10 +19,29 @@ export const spanish = {
       description: "Especializado en desarrollo de videojuegos, pero apasionado por desarrollar cualquier tipo de software. Con más de 6 años de experiencia programando y más de 4 años de experiencia profesional.",
     },
 
-    experience: { title: "Experiencia", id: "experiencia" },
-    projects: { title: "Proyectos", id: "proyectos" },
-    skills: { title: "Competencias", id: "competencias" },
-    contact: { title: "Contacto", id: "contacto" },
+    experience: {
+      name: "Experiencia",
+      id: "experiencia",
+      title: "Experiencia Laboral",
+    },
+
+    projects: {
+      name: "Proyectos",
+      id: "proyectos",
+      title: "Proyectos",
+    },
+
+    skills: {
+      name: "Competencias",
+      id: "competencias",
+      title: "Competencias",
+    },
+
+    contact: {
+      name: "Contacto",
+      id: "contacto",
+      title: "Contacto",
+    },
   },
 
   socials: {

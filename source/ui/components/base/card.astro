@@ -1,0 +1,17 @@
+---
+import { cn } from "@app/utils/style";
+import type { HTMLAttributes } from "astro/types";
+
+export type Props = HTMLAttributes<"div">;
+const { class: clazz, ...props } = Astro.props;
+---
+
+<div
+  class={cn(
+    "flex flex-col items-center justify-center rounded-md border border-border bg-card p-4",
+    clazz,
+  )}
+  {...props}
+>
+  <slot />
+</div>

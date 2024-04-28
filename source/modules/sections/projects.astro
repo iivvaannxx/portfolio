@@ -1,0 +1,36 @@
+---
+import { useTranslations } from "../i18n/lib/hooks/use-translation";
+
+const translations = useTranslations(Astro.locals.locale);
+const t = translations.sections.projects;
+---
+
+<section
+  id={t.id}
+  class="container mx-auto flex w-full flex-col items-center p-12"
+>
+  <h2 class="mb-16 text-6xl font-bold">{t.title}</h2>
+
+  <h3 class="text-3xl font-medium">Featured</h3>
+  <ul>
+    <li>Room</li>
+    <li>Home Manager</li>
+    <li>Link Shortener</li>
+  </ul>
+
+  <h3 class="mt-12 text-3xl font-medium">Other</h3>
+  <ul>
+    <li>Tetris</li>
+    <li>Isolated</li>
+    <li>Covid</li>
+    <li>The Izland</li>
+    <li>Pirateland</li>
+    <li>Sense Quiz</li>
+    <li>Agar.io</li>
+    <li>Channel Packer</li>
+    <li>Advent JS</li>
+    <li>Plataformes (Web)</li>
+    <li>Sense Quiz</li>
+    <li>VR Fruit Ninja</li>
+  </ul>
+</section>

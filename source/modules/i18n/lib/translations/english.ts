@@ -1,13 +1,14 @@
 /** The english strings for the website. */
 export const english = {
   meta: {
+
     name: "English",
     locale: "en",
   },
 
   sections: {
     about: {
-      title: "About",
+      name: "About",
       id: "about",
       headline: {
         content: ["I'm a", "{words}", "developer"],
@@ -18,10 +19,29 @@ export const english = {
       description: "Specialized in game development, yet passionate about developing any kind of software. With 6+ years of coding experience and 4+ years of professional experience.",
     },
 
-    experience: { title: "Experience", id: "experience" },
-    projects: { title: "Projects", id: "projects" },
-    skills: { title: "Skills", id: "skills" },
-    contact: { title: "Contact", id: "contact" },
+    experience: {
+      name: "Experience",
+      id: "experience",
+      title: "Work Experience",
+    },
+
+    projects: {
+      name: "Projects",
+      id: "projects",
+      title: "Projects",
+    },
+
+    skills: {
+      name: "Skills",
+      id: "skills",
+      title: "Skills",
+    },
+
+    contact: {
+      name: "Contact",
+      id: "contact",
+      title: "Contact",
+    },
   },
 
   socials: {
