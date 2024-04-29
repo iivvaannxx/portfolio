@@ -1,0 +1,17 @@
+---
+import { cn } from "@app/utils/style";
+import type { HTMLAttributes } from "astro/types";
+
+export type Props = HTMLAttributes<"span">;
+const { class: clazz, ...props } = Astro.props;
+---
+
+<span
+  class={cn(
+    "inline-flex cursor-pointer items-center justify-center rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-card-foreground",
+    clazz,
+  )}
+  {...props}
+>
+  <slot />
+</span>

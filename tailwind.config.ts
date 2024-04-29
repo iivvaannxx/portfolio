@@ -15,6 +15,10 @@ const config: Config = {
         "3xl": "1650px",
       },
 
+      borderRadius: {
+        theme: "var(--radius)",
+      },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -16,7 +16,7 @@ const { name, icon, categories, variant = "default" } = Astro.props;
 ---
 
 <Card class="px-4 py-8">
-  <Icon name={icon} width={48} height={48} />
+  <Icon name={`skills/${icon}`} width={48} height={48} />
 
   {
     variant === "default" && (

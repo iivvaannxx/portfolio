@@ -69,7 +69,7 @@ export const skills: Skill[] = [
     icon: "unreal",
   },
 
-  {
+  /* {
     name: "Godot",
     categories: [Category.Game],
     icon: "godot",
@@ -133,5 +133,5 @@ export const skills: Skill[] = [
     name: "Three.js",
     categories: [],
     icon: "threejs",
-  },
+  }, */
 ];

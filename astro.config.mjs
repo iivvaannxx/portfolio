@@ -1,11 +1,12 @@
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import qwikdev from "@qwikdev/astro";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
-import Icons from "unplugin-icons/vite";
 
 import icon from "astro-icon";
+import Icons from "unplugin-icons/vite";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
 
   compressHTML: true,
   integrations: [
+    react(),
     tailwind({
       applyBaseStyles: false,
     }),
@@ -31,8 +33,10 @@ export default defineConfig({
   ],
 
   vite: {
-    plugins: [Icons({
-      compiler: "astro",
-    })],
+    plugins: [
+      Icons({
+        compiler: "astro",
+      }),
+    ],
   },
 });

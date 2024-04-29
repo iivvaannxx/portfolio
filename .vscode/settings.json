@@ -3,7 +3,7 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
 
-  "explorerExclude.backup": { },
+  "explorerExclude.backup": {},
   "css.lint.unknownAtRules": "ignore",
 
   "files.exclude": {
@@ -14,7 +14,8 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/.direnv": true,
-    "**/node_modules": true
+    "**/node_modules": true,
+    "**/.astro": true
   },
 
   "editor.formatOnSave": false,
