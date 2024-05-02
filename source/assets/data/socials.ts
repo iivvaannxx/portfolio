@@ -10,28 +10,28 @@ export interface SocialData {
   Icon: astroHTML.JSX.Element;
   size?: number;
 
-  // This is the translation key (i18n).
-  key: string;
+  // This is the translation key.
+  i18nKey: string;
 }
 
 /** My LinkedIn profile. */
 export const linkedIn: SocialData = {
   href: "https://linkedin.com/in/ivan-porto-wigner",
-  key: "linkedIn",
+  i18nKey: "linkedIn",
   Icon: LinkedInIcon,
 } as const;
 
 /** My GitHub profile. */
 export const github: SocialData = {
   href: "https://github.com/iivvaannxx",
-  key: "github",
+  i18nKey: "github",
   Icon: GithubIcon,
 };
 
 /** My X (Twitter) profile. */
 export const xTwitter: SocialData = {
   href: "https://x.com/iivanportoo",
-  key: "xTwitter",
+  i18nKey: "xTwitter",
   size: 32,
   Icon: XTwitterIcon,
 };
@@ -39,7 +39,7 @@ export const xTwitter: SocialData = {
 /** My online resume. */
 export const resume: SocialData = {
   href: "https://read.cv/ivanporto",
-  key: "resume",
+  i18nKey: "resume",
   Icon: FileBadgeIcon,
 };
 

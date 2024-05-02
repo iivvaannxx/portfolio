@@ -21,7 +21,7 @@ const t = translations.socials;
 
 <ul id="socials" class="flex w-full flex-col items-center gap-y-8">
   {
-    socials.map(({ href, key, size = 28, Icon }) => {
+    socials.map(({ href, i18nKey: key, size = 28, Icon }) => {
       const translatedLabel = t[key] as string;
       return (
         <li>
