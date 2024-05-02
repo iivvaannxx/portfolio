@@ -3,7 +3,7 @@ import NavLinks from "@app/modules/navigation/components/nav-links.astro";
 import IconSun from "~icons/lucide/sun";
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 h-[64px] w-full bg-background px-8">
+<header class="fixed inset-x-0 top-0 z-50 h-[64px] w-full bg-background">
   <div
     class="container mx-auto flex size-full items-center justify-between border-b border-border"
   >
@@ -16,4 +16,22 @@ import IconSun from "~icons/lucide/sun";
       <IconSun />
     </div>
   </div>
+
+  <hr class="relative bottom-px border-border opacity-0" />
 </header>
+
+<style>
+
+  hr {
+    animation: fade linear;
+    animation-timeline: scroll();
+    animation-range-start: 200px 250px;
+  }
+
+  @keyframes fade {
+    to {
+      opacity: 1;
+    }
+  }
+
+</style>

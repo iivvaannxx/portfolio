@@ -4,12 +4,13 @@ import Badge from "./base/badge.astro";
 
 export type Props = {
   skill: string;
+  name?: string;
 };
 
-const { skill } = Astro.props;
+const { skill, name = skill } = Astro.props;
 ---
 
 <Badge class="space-x-2 px-4 py-2 font-semibold capitalize">
   <Icon name={`skills/${skill}`} class="size-4" />
-  <span>{skill}</span>
+  <span>{name}</span>
 </Badge>

@@ -1,16 +1,17 @@
 /** @jsxImportSource react */
 
-import { OrbitControls, Text3D, useMatcapTexture } from "@react-three/drei";
+import { Float, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 
-/* function MyModel() {
+function MyModel() {
   const model = useGLTF("/models/logos.glb");
 
   const obj = model.scene.getObjectByName("Docker")!;
   return <primitive object={obj} castShadow receiveShadow />;
-} */
+}
 
-function MyText({ text = "Hello" }) {
+/* function MyText({ text = "Hello" }) {
   const [texture] = useMatcapTexture("1D3FCC_051B5F_81A0F2_5579E9", 256);
   return (
     <Text3D font="/fonts/satoshi/typeface.json">
@@ -18,7 +19,7 @@ function MyText({ text = "Hello" }) {
       <meshMatcapMaterial matcap={texture} />
     </Text3D>
   );
-}
+} */
 
 export function Example() {
   return (
@@ -29,7 +30,7 @@ export function Example() {
         fov: 40,
         near: 0.1,
         far: 10,
-        position: [0, 0, 5],
+        position: [0, 0, 2],
       }}
     >
 
@@ -40,14 +41,14 @@ export function Example() {
 
       {/*       <Sparkles position-z={0.4} color="white" opacity={0.6} scale={0.4} count={20} speed={0.3} noise={0.5} />
  */}
-      {/* <Suspense>
+      <Suspense>
         <Float speed={5} rotationIntensity={2}>
           <MyModel />
         </Float>
-      </Suspense> */}
+      </Suspense>
 
-      <MyText />
-
+      {/*       <MyText />
+ */}
     </Canvas>
   );
 }

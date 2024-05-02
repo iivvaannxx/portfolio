@@ -30,12 +30,12 @@ const {
 
 <Card {...props} as="article">
   <header class="flex justify-between px-2 pb-2">
-    <h4 class="text-2xl font-semibold">{title}</h4>
+    <h4 class="flex items-center text-2xl font-semibold">{title}</h4>
     {
       githubLink !== undefined && liveLink !== undefined && (
-        <ul class="flex items-center gap-4">
+        <ul class="flex items-center">
           {githubLink !== undefined && (
-            <li>
+            <li class="cursor-pointer rounded-md bg-background p-2 text-accent-foreground hover:bg-accent">
               <Link href={githubLink} label="github-link" targetBlank>
                 <Icon name="lucide:github" class="size-6" />
               </Link>
@@ -43,7 +43,7 @@ const {
           )}
 
           {liveLink !== undefined && (
-            <li>
+            <li class="cursor-pointer rounded-md bg-background p-2 text-accent-foreground hover:bg-accent">
               <Link href={liveLink} label="live-link" targetBlank>
                 <Icon name="lucide:external-link" class="size-6" />
               </Link>
