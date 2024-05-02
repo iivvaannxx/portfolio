@@ -1,6 +1,6 @@
 ---
+import UserLocation from "@app/components/user-location.astro";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
-import UserLocation from "@app/ui/components/user-location.astro";
 
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.about;

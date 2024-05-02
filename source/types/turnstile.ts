@@ -1,4 +1,4 @@
-// This types are grabbed from: https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/cloudflare-turnstile/index.d.ts
+// This types are from: https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/cloudflare-turnstile/index.d.ts
 // For some reason Astro didn't detect them, so I manually add the source code here.
 
 export interface Turnstile {
