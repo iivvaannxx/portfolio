@@ -1,0 +1,64 @@
+---
+import type { ImageMetadata } from "astro";
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+import { Image } from "astro:assets";
+import Card from "./base/card.astro";
+import Link from "./base/link.astro";
+import SkillBadge from "./skill-badge.astro";
+
+export type Props = Omit<HTMLAttributes<"article">, "slot"> & {
+  title: string;
+  relatedSkills: string[];
+  description: string;
+  image: ImageMetadata;
+
+  githubLink?: string;
+  liveLink?: string;
+};
+
+const {
+  title,
+  relatedSkills,
+  image,
+  githubLink,
+  liveLink,
+  description,
+  ...props
+} = Astro.props;
+---
+
+<Card {...props} as="article">
+  <header class="flex justify-between px-2 pb-2">
+    <h4 class="text-2xl font-semibold">{title}</h4>
+    {
+      githubLink !== undefined && liveLink !== undefined && (
+        <ul class="flex items-center gap-4">
+          {githubLink !== undefined && (
+            <li>
+              <Link href={githubLink} label="github-link" targetBlank>
+                <Icon name="lucide:github" class="size-6" />
+              </Link>
+            </li>
+          )}
+
+          {liveLink !== undefined && (
+            <li>
+              <Link href={liveLink} label="live-link" targetBlank>
+                <Icon name="lucide:external-link" class="size-6" />
+              </Link>
+            </li>
+          )}
+        </ul>
+      )
+    }
+  </header>
+  <hr class="mb-4 border-border" />
+  <Image src={image} alt="Cover for My Room In 3D" class="rounded-lg" />
+  <p class="mt-2 px-2 text-lg font-medium">
+    <span>{description}</span>
+  </p>
+  <footer class="mt-4 flex gap-2">
+    {relatedSkills.map((skill) => <SkillBadge skill={skill} />)}
+  </footer>
+</Card>

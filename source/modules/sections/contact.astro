@@ -1,13 +1,40 @@
 ---
-import { useTranslations } from "../i18n/lib/hooks/use-translation";
+import Input from "@app/ui/components/base/input.astro";
+import { getTranslations } from "../i18n/lib/translations";
 
-const translations = useTranslations(Astro.locals.locale);
+const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.contact;
 ---
+
+<script>
+  const t = document.querySelector("div.cf-turnstile")!;
+  const form = document.querySelector("form#contact-form")!;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    console.log(event, t, window);
+  });
+</script>
 
 <section
   id={t.id}
   class="container mx-auto flex w-full flex-col items-center p-12"
 >
   <h2 class="mb-16 text-6xl font-bold">{t.title}</h2>
+
+  <form id="contact-form" class="justify-center-center grid grid-cols-2 gap-4">
+    <Input type="text" placeholder="John Doe" />
+    <Input type="text" placeholder="Subject" />
+    <Input type="email" placeholder="your.email@gmail.com" class="col-span-2" />
+    <Input placeholder="Your message" class="col-span-2" rows="5" multiline />
+
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAAMvB2JUUxIcQ2Y8"></div>
+    <button
+      type="submit"
+      value="Send"
+      class="col-span-2 cursor-pointer rounded-theme bg-primary px-4 py-2 text-primary-foreground"
+    >
+      Send
+    </button>
+  </form>
 </section>

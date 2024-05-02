@@ -3,6 +3,7 @@
 /// <reference types="typed-query-selector" />
 
 import type { Locale } from "@app/modules/i18n/lib/locales";
+import type { Turnstile } from "@app/types/turnstile";
 
 declare global {
 
@@ -12,6 +13,10 @@ declare global {
     interface Locals {
       locale: Locale;
     }
+  }
+
+  interface Window {
+    turnstile: Turnstile;
   }
 }
 

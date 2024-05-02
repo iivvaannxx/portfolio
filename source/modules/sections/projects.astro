@@ -1,13 +1,9 @@
 ---
-import { Image } from "astro:assets";
+import MyRoomImage from "@app/assets/images/my-room-project.webp";
+import ProjectCard from "@app/ui/components/project-card.astro";
+import { getTranslations } from "../i18n/lib/translations";
 
-import myRoomProject from "@app/assets/images/my-room-project.webp";
-import Badge from "@app/ui/components/base/badge.astro";
-import Link from "@app/ui/components/base/link.astro";
-import { Icon } from "astro-icon/components";
-import { useTranslations } from "../i18n/lib/hooks/use-translation";
-
-const translations = useTranslations(Astro.locals.locale);
+const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.projects;
 ---
 
@@ -19,57 +15,15 @@ const t = translations.sections.projects;
 
   <h3 class="text-3xl font-medium">Featured</h3>
 
-  <article class="rounded-theme border border-border bg-card p-6">
-    <header class="flex justify-between px-2 pb-2">
-      <h4 class="text-2xl font-semibold">My Room In 3D</h4>
-      <ul class="flex items-center gap-4">
-        <li>
-          <Link
-            href="https://github.com/iivvaannxx/my-room"
-            label="github-link"
-            targetBlank
-          >
-            <Icon name="lucide:github" class="size-6" />
-          </Link>
-        </li>
-
-        <li>
-          <Link href="https://my-room.pages.dev" label="live-link" targetBlank>
-            <Icon name="lucide:external-link" class="size-6" />
-          </Link>
-        </li>
-      </ul>
-    </header>
-    <hr class="mb-4 border-border" />
-    <Image
-      src={myRoomProject}
-      alt="Cover image for My Room In 3D"
-      class="rounded-lg"
-      width={600}
-    />
-    <p class="mt-2 px-2 text-lg font-medium">
-      <span class="relative bottom-1 mr-2">🛏️</span>
-      <span>A (quite bit more) fancy replica of my room. </span>
-    </p>
-    <footer class="mt-4 flex gap-2">
-      <Badge class="space-x-2 px-4 py-2 font-semibold">
-        <Icon name="skills/git" class="size-4" />
-        <span>Git</span>
-      </Badge>
-      <Badge class="space-x-2 px-4 py-2 font-semibold">
-        <Icon name="skills/blender" class="size-4" />
-        <span>Blender</span>
-      </Badge>
-      <Badge class="space-x-2 px-4 py-2 font-semibold">
-        <Icon name="skills/typescript" class="size-4" />
-        <span>TypeScript</span>
-      </Badge>
-      <Badge class="space-x-2 px-4 py-2 font-semibold">
-        <Icon name="skills/threejs" class="size-4" />
-        <span>Three.js</span>
-      </Badge>
-    </footer>
-  </article>
+  <ProjectCard
+    title="My Room In 3D"
+    description="A (quite a bit more) fancy replica of my room. This was my entry to the 9th edition of the Three.js Journey monthly challenge. It scored 3rd place! 🥉"
+    relatedSkills={["blender", "typescript", "threejs", "git"]}
+    image={MyRoomImage}
+    liveLink="https://my-room.pages.dev/"
+    githubLink="https://github.com/iivvaannxx/my-room"
+    class="w-1/2"
+  />
 
   <!--   <ul>
     <li>Room</li>

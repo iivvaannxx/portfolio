@@ -1,7 +1,7 @@
 ---
-import { useTranslations } from "../i18n/lib/hooks/use-translation";
+import { getTranslations } from "../i18n/lib/translations";
 
-const translations = useTranslations(Astro.locals.locale);
+const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.experience;
 ---
 

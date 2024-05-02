@@ -1,0 +1,21 @@
+---
+import { cn } from "@app/utils/style";
+import type { HTMLAttributes } from "astro/types";
+
+type InputProps = HTMLAttributes<"input"> & { multiline?: never };
+type TextAreaProps = HTMLAttributes<"textarea"> & { multiline: true };
+type Props = InputProps | TextAreaProps;
+
+// The 'slot' prop is not used, but it causes TypeScript to flag an error for some reason when spreading the rest props.
+const Tag = Astro.props.multiline === true ? "textarea" : "input";
+const { multiline, class: clazz, slot, ...props } = Astro.props;
+---
+
+<Tag
+  autocomplete="off"
+  class={cn(
+    "rounded-theme border border-border bg-input px-4 py-2 text-foreground",
+    clazz,
+  )}
+  {...props}
+/>

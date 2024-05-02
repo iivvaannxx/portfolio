@@ -12,6 +12,8 @@ import "tippy.js/dist/tippy.css";
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+
     <slot name="head" />
   </head>
 
@@ -61,6 +63,10 @@ import "tippy.js/dist/tippy.css";
 
     min-height: 100%;
     min-height: 100dvh;
+  }
+
+  textarea {
+    resize: none;
   }
 
   @supports selector(::-webkit-scrollbar) {

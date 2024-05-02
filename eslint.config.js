@@ -6,7 +6,6 @@ export default antfu(
 
   {
     astro: true,
-    formatters: true,
     lessOpinionated: true,
 
     stylistic: {
@@ -15,6 +14,7 @@ export default antfu(
       semi: true,
       overrides: {
         "style/arrow-parens": ["error", "always"],
+        "sort-imports": "off",
       },
     },
 

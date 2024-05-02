@@ -1,5 +1,5 @@
 ---
-import { useTranslations } from "@app/modules/i18n/lib/hooks/use-translation";
+import { getTranslations } from "@app/modules/i18n/lib/translations";
 import type { HTMLAttributes } from "astro/types";
 
 import Link from "@app/ui/components/base/link.astro";
@@ -7,7 +7,7 @@ import { sections } from "../lib/sections";
 
 export type Props = HTMLAttributes<"nav">;
 
-const translations = useTranslations(Astro.locals.locale);
+const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections;
 ---
 

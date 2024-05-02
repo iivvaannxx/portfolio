@@ -3,8 +3,9 @@
   "compilerOptions": {
 
     "jsx": "react-jsx",
-    "jsxImportSource": "@builder.io/qwik",
+    "jsxImportSource": "react",
     "baseUrl": ".",
+
     "paths": {
       "@app/*": ["./source/*"]
     },

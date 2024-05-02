@@ -15,7 +15,7 @@ export type Props = {
 const { name, icon, categories, variant = "default" } = Astro.props;
 ---
 
-<Card class="px-4 py-8">
+<Card as="div" class="items-center px-4 py-8">
   <Icon name={`skills/${icon}`} width={48} height={48} />
 
   {

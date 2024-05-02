@@ -1,12 +1,12 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { useTranslations } from "@app/modules/i18n/lib/hooks/use-translation";
+import { getTranslations } from "@app/modules/i18n/lib/translations";
 
 import CircleHelp from "~icons/lucide/circle-help";
 
 // TODO: Serverless function to synchronize last info on each visit.
 type Props = HTMLAttributes<"span">;
-const translations = useTranslations(Astro.locals.locale);
+const translations = getTranslations(Astro.locals.locale);
 const t = translations.userLocation;
 ---
 

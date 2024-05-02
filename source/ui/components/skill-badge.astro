@@ -1,0 +1,15 @@
+---
+import { Icon } from "astro-icon/components";
+import Badge from "./base/badge.astro";
+
+export type Props = {
+  skill: string;
+};
+
+const { skill } = Astro.props;
+---
+
+<Badge class="space-x-2 px-4 py-2 font-semibold capitalize">
+  <Icon name={`skills/${skill}`} class="size-4" />
+  <span>{skill}</span>
+</Badge>
