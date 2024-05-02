@@ -2,6 +2,7 @@
 import Base from "@app/layouts/base.astro";
 import Header from "@app/layouts/header.astro";
 
+import ScrollToTop from "@app/components/scroll-to-top.astro";
 import SocialsSidelist from "@app/components/social-sidelist.astro";
 ---
 
@@ -18,5 +19,8 @@ import SocialsSidelist from "@app/components/social-sidelist.astro";
     <main class="relative size-full">
       <slot name="main" />
     </main>
+
+    <ScrollToTop class="fixed bottom-0 right-0 m-12" />
+
   </Fragment>
 </Base>

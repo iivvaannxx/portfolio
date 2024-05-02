@@ -5,3 +5,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[data-reveal] {
+
+  animation: reveal linear both;
+  animation-iteration-count: 1;
+
+  animation-timeline: view();
+  animation-range: entry 30% cover 50%;
+}
+
+@keyframes reveal {
+
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

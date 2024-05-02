@@ -2,6 +2,7 @@
 import { skills } from "@app/assets/data/skills";
 import SkillCard from "@app/components/skill-card.astro";
 import { getTranslations } from "../i18n/lib/translations";
+import { Example } from "../three-fiber/components/example";
 
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.skills;
@@ -15,8 +16,8 @@ const t = translations.sections.skills;
 
   <div class="flex flex-col-reverse items-center justify-center gap-8">
     <div class="size-96">
-      <!--       <Example client:load />
- -->
+            <Example client:idle />
+
     </div>
 
     <div class="grid grid-cols-4 gap-4">

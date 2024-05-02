@@ -15,6 +15,7 @@
     "@react-three/fiber": "^8.16.2",
     "astro": "4.7.0",
     "astro-icon": "^1.1.0",
+    "balance-text": "^3.3.1",
     "clsx": "^2.1.1",
     "nanostores": "^0.10.3",
     "object-path": "^0.11.8",
