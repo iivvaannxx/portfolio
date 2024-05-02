@@ -63,6 +63,8 @@ const config: Config = {
 
       fontFamily: {
         sans: ["Satoshi", ...defaultTheme.fontFamily.sans],
+        header: ["Onest", "Arial", "Liberation Sans", "sans-serif"],
+
         mono: [
           "Monaspace Neon",
           "Monaspace Neon Fallback",
