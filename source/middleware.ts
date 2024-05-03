@@ -13,17 +13,19 @@ import { defaultLocale, isValidLocale } from "./modules/i18n/lib/locales";
  * @param redirect - The redirect function.
  * @param next - The next function.
  */
-const localize = defineMiddleware(async ({ params, locals, redirect }, next) => {
-  // Assign the locale or the default if it's not defined (or wrong).
-  const { locale = defaultLocale } = params;
+const localize = defineMiddleware(
+  async ({ params, locals, redirect }, next) => {
+    // Assign the locale or the default if it's not defined (or wrong).
+    const { locale = defaultLocale } = params;
 
-  // If the locale is not valid, redirect to the 404 page.
-  if (!isValidLocale(locale)) {
-    return redirect("/404");
-  }
+    // If the locale is not valid, redirect to the 404 page.
+    if (!isValidLocale(locale)) {
+      return redirect("/404");
+    }
 
-  locals.locale = locale;
-  return await next();
-});
+    locals.locale = locale;
+    return await next();
+  },
+);
 
 export const onRequest = localize;

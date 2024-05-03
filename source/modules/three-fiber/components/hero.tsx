@@ -26,7 +26,7 @@ export function Hero() {
       }}
     >
       {/*       <CameraControls makeDefault />
-       */}{" "}
+       */}
       <ambientLight />
       <hemisphereLight intensity={0.35} />
       <directionalLight

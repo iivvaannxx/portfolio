@@ -17,8 +17,15 @@ export type Props = Omit<HTMLAttributes<"article">, "slot"> & {
   liveLink?: string;
 };
 
-const { title, relatedSkills, image, githubLink, liveLink, description, ...props } =
-  Astro.props;
+const {
+  title,
+  relatedSkills,
+  image,
+  githubLink,
+  liveLink,
+  description,
+  ...props
+} = Astro.props;
 ---
 
 <Card

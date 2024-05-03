@@ -14,7 +14,7 @@ export default {
   bracketSpacing: true,
   bracketSameLine: false,
 
-  printWidth: 90,
+  printWidth: 80,
   quoteProps: "consistent",
 
   semi: true,

@@ -18,14 +18,18 @@ const t = translations.sections.about;
   >
   </div>
 
-  <div class="container mx-auto mb-16 flex items-center p-12 text-left font-header">
+  <div
+    class="container mx-auto mb-16 flex items-center p-12 text-left font-header"
+  >
     <div class="mt-20 w-full">
       <h1 class="block">
         <span class="block text-3xl font-semibold text-foreground/50">
           {t.greeting}
         </span>
 
-        <span class="block text-[7rem] font-extrabold tracking-wide text-primary">
+        <span
+          class="block text-[7rem] font-extrabold tracking-wide text-primary"
+        >
           Ivan Porto
         </span>
 
@@ -34,7 +38,9 @@ const t = translations.sections.about;
             t.headline.content.map((text) => {
               // Because of the split, the placeholder is an empty string
               const isRotatingWords = text === "{words}";
-              const style = isRotatingWords ? "text-foreground" : "text-foreground/50";
+              const style = isRotatingWords
+                ? "text-foreground"
+                : "text-foreground/50";
 
               return (
                 <span class={style}>
@@ -68,7 +74,9 @@ const t = translations.sections.about;
     <Hero client:load />
   </div>
 
-  <div class="absolute bottom-0 right-0 flex items-center p-12 text-foreground/80">
+  <div
+    class="absolute bottom-0 right-0 flex items-center p-12 text-foreground/80"
+  >
     <UserLocation class="text-xl font-semibold" />
   </div>
 </section>
