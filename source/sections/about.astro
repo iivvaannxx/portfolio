@@ -19,7 +19,6 @@ const t = translations.sections.about;
   </div>
 
   <div class="container mx-auto mb-16 flex items-center p-12 text-left font-header">
-
     <div class="mt-20 w-full">
       <h1 class="block">
         <span class="block text-3xl font-semibold text-foreground/50">
@@ -35,9 +34,7 @@ const t = translations.sections.about;
             t.headline.content.map((text) => {
               // Because of the split, the placeholder is an empty string
               const isRotatingWords = text === "{words}";
-              const style = isRotatingWords
-                ? "text-foreground"
-                : "text-foreground/50";
+              const style = isRotatingWords ? "text-foreground" : "text-foreground/50";
 
               return (
                 <span class={style}>
@@ -54,22 +51,24 @@ const t = translations.sections.about;
       </p>
 
       <div class="mt-12">
-        <button id="cta" class="inline-flex h-12 animate-background-shine items-center justify-center gap-4 rounded-theme border border-border px-6 font-medium text-foreground transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring">
-          <Icon name="lucide:mail" width={20} height={20} />
+        <button
+          id="cta"
+          class="inline-flex h-12 animate-background-shine items-center justify-center gap-4 rounded-theme border border-border px-6 font-medium text-foreground transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
+        >
+          <Icon
+            name="lucide:mail"
+            width={20}
+            height={20}
+          />
           Get In Touch
         </button>
       </div>
-
     </div>
 
     <Hero client:load />
   </div>
 
-
-
-  <div
-    class="absolute bottom-0 right-0 flex items-center p-12 text-foreground/80"
-  >
+  <div class="absolute bottom-0 right-0 flex items-center p-12 text-foreground/80">
     <UserLocation class="text-xl font-semibold" />
   </div>
 </section>
@@ -92,9 +91,12 @@ const t = translations.sections.about;
     will-change: transform, color;
     background-size: 200% 100%;
     background-image: linear-gradient(
-      110deg, theme("colors.background"),
-      45%, theme("colors.accent.DEFAULT"),
-      55%, theme("colors.background")
+      110deg,
+      theme("colors.background"),
+      45%,
+      theme("colors.accent.DEFAULT"),
+      55%,
+      theme("colors.background")
     );
   }
 </style>

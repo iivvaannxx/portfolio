@@ -16,7 +16,8 @@ export const spanish = {
       },
 
       greeting: "¡Hola! Me llamo",
-      description: "Especializado en desarrollo de videojuegos, pero apasionado por desarrollar cualquier tipo de software. Con más de 6 años de experiencia programando y más de 4 años de experiencia profesional.",
+      description:
+        "Especializado en desarrollo de videojuegos, pero apasionado por desarrollar cualquier tipo de software. Con más de 6 años de experiencia programando y más de 4 años de experiencia profesional.",
     },
 
     experience: {
@@ -52,7 +53,6 @@ export const spanish = {
   },
 
   userLocation: {
-
     lastVisit: "Última visita desde",
     notice: {
       title: "Aviso de Privacidad",

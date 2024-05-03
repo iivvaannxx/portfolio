@@ -18,7 +18,6 @@ export function Hero() {
     <Canvas
       className="aspect-square rounded-2xl"
       camera={{
-
         fov: 40,
         near: 0.1,
         far: 1000,
@@ -26,20 +25,18 @@ export function Hero() {
         rotation: [-2.35, 1.15, 2.4],
       }}
     >
-
       {/*       <CameraControls makeDefault />
- */}
-      {" "}
+       */}{" "}
       <ambientLight />
       <hemisphereLight intensity={0.35} />
-      <directionalLight position={[5, 0, -10]} intensity={1} />
-
+      <directionalLight
+        position={[5, 0, -10]}
+        intensity={1}
+      />
       <Suspense>
         <Home />
       </Suspense>
-
       <Helper />
-
     </Canvas>
   );
 }

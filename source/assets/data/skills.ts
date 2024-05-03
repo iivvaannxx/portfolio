@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-restricted-syntax
 export const enum Category {
-
   Game = "Game",
   Frontend = "Frontend",
   Backend = "Backend",
@@ -10,17 +9,15 @@ export const enum Category {
 }
 
 export interface Skill {
-
   name: string;
   categories: Category[];
 
   // This is the filename of the icon under the `assets/icons` directory.
   // Loaded via `astro-icon` See: https://www.astroicon.dev/
   icon: string;
-};
+}
 
 export const skills: Skill[] = [
-
   {
     name: "C++",
     categories: [Category.Code],

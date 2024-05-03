@@ -48,13 +48,20 @@ const t = translations.userLocation;
   template?.remove();
 </script>
 
-<div id="user-location" class="hidden gap-4">
+<div
+  id="user-location"
+  class="hidden gap-4"
+>
   <button
     id="location-privacy-tooltip"
     aria-haspopup="true"
     aria-label={t.notice.title}
   >
-    <CircleHelp aria-hidden="true" width={24} height={24} />
+    <CircleHelp
+      aria-hidden="true"
+      width={24}
+      height={24}
+    />
   </button>
 
   <p {...Astro.props}>
@@ -63,7 +70,11 @@ const t = translations.userLocation;
   </p>
 </div>
 
-<div id="privacy-notice" class="hidden" aria-hidden="true">
+<div
+  id="privacy-notice"
+  class="hidden"
+  aria-hidden="true"
+>
   <span class="block text-base font-bold">
     {t.notice.title}
   </span>

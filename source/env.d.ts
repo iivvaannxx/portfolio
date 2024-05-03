@@ -6,9 +6,7 @@ import type { Locale } from "@app/modules/i18n/lib/locales";
 import type { Turnstile } from "@app/types/turnstile";
 
 declare global {
-
   namespace App {
-
     // The locals attached during middleware.
     interface Locals {
       locale: Locale;

@@ -1,7 +1,13 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 
-import { LoopOnce, type AnimationAction, type Group, type Mesh, type MeshStandardMaterial } from "three";
+import {
+  LoopOnce,
+  type AnimationAction,
+  type Group,
+  type Mesh,
+  type MeshStandardMaterial,
+} from "three";
 import type { GLTF } from "three-stdlib";
 
 // The structure of our GLTF model.
@@ -39,7 +45,10 @@ export function Home(props: JSX.IntrinsicElements["group"]) {
   }, []);
 
   return (
-    <group ref={group} {...props}>
+    <group
+      ref={group}
+      {...props}
+    >
       <group name="Scene">
         <mesh
           name="Short"

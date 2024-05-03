@@ -20,7 +20,14 @@ const t = translations.sections.skills;
     </div>
 
     <div class="grid grid-cols-4 gap-4">
-      {skills.map((skill) => <SkillCard {...skill} variant="default" />)}
+      {
+        skills.map((skill) => (
+          <SkillCard
+            {...skill}
+            variant="default"
+          />
+        ))
+      }
     </div>
   </div>
 

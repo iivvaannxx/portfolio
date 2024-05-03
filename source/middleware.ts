@@ -18,7 +18,7 @@ const localize = defineMiddleware(async ({ params, locals, redirect }, next) => 
   const { locale = defaultLocale } = params;
 
   // If the locale is not valid, redirect to the 404 page.
-  if (!(isValidLocale(locale))) {
+  if (!isValidLocale(locale)) {
     return redirect("/404");
   }
 

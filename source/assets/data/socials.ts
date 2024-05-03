@@ -5,7 +5,6 @@ import XTwitterIcon from "~icons/tabler/brand-x";
 
 /** Defines the data associated to a social media profile. */
 export interface SocialData {
-
   href: string;
   Icon: astroHTML.JSX.Element;
   size?: number;

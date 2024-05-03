@@ -8,7 +8,6 @@ const { class: clazz, ...props } = Astro.props;
 ---
 
 <script>
-
   function scrollToTop() {
     window.scrollTo({
       top: 0,
@@ -18,16 +17,16 @@ const { class: clazz, ...props } = Astro.props;
 
   function handleScrollToTop() {
     const button = document.querySelector("button[data-scroll-to-top]");
-    if (!(button)) {
+    if (!button) {
       return;
     }
 
     const handleScroll = () => {
       if (window.scrollY > 300) {
         button.classList.remove("hidden");
-        button.classList.add("animate-in", "fade-in")
+        button.classList.add("animate-in", "fade-in");
       } else {
-        button.classList.remove("animate-in", "fade-in")
+        button.classList.remove("animate-in", "fade-in");
         button.classList.add("hidden");
       }
     };
@@ -38,7 +37,6 @@ const { class: clazz, ...props } = Astro.props;
   }
 
   handleScrollToTop();
-
 </script>
 
 <button
@@ -50,6 +48,10 @@ const { class: clazz, ...props } = Astro.props;
   {...props}
 >
   <slot>
-    <Icon name="lucide:arrow-big-up" width={32} height={32} />
+    <Icon
+      name="lucide:arrow-big-up"
+      width={32}
+      height={32}
+    />
   </slot>
 </button>

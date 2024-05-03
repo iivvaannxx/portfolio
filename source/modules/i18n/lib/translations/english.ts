@@ -1,7 +1,6 @@
 /** The english strings for the website. */
 export const english = {
   meta: {
-
     name: "English",
     locale: "en",
   },
@@ -16,7 +15,8 @@ export const english = {
       },
 
       greeting: "Hello! My name is",
-      description: "Specialized in game development, yet passionate about developing any kind of software. With 6+ years of coding experience and 4+ years of professional experience.",
+      description:
+        "Specialized in game development, yet passionate about developing any kind of software. With 6+ years of coding experience and 4+ years of professional experience.",
     },
 
     experience: {

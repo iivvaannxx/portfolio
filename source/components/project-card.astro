@@ -17,18 +17,14 @@ export type Props = Omit<HTMLAttributes<"article">, "slot"> & {
   liveLink?: string;
 };
 
-const {
-  title,
-  relatedSkills,
-  image,
-  githubLink,
-  liveLink,
-  description,
-  ...props
-} = Astro.props;
+const { title, relatedSkills, image, githubLink, liveLink, description, ...props } =
+  Astro.props;
 ---
 
-<Card {...props} as="article">
+<Card
+  {...props}
+  as="article"
+>
   <header class="flex justify-between px-2 pb-2">
     <h4 class="flex items-center text-2xl font-semibold">{title}</h4>
     {
@@ -36,16 +32,30 @@ const {
         <ul class="flex items-center">
           {githubLink !== undefined && (
             <li class="cursor-pointer rounded-md bg-background p-2 text-accent-foreground hover:bg-accent">
-              <Link href={githubLink} label="github-link" targetBlank>
-                <Icon name="lucide:github" class="size-6" />
+              <Link
+                href={githubLink}
+                label="github-link"
+                targetBlank
+              >
+                <Icon
+                  name="lucide:github"
+                  class="size-6"
+                />
               </Link>
             </li>
           )}
 
           {liveLink !== undefined && (
             <li class="cursor-pointer rounded-md bg-background p-2 text-accent-foreground hover:bg-accent">
-              <Link href={liveLink} label="live-link" targetBlank>
-                <Icon name="lucide:external-link" class="size-6" />
+              <Link
+                href={liveLink}
+                label="live-link"
+                targetBlank
+              >
+                <Icon
+                  name="lucide:external-link"
+                  class="size-6"
+                />
               </Link>
             </li>
           )}
@@ -54,7 +64,11 @@ const {
     }
   </header>
   <hr class="mb-4 border-border" />
-  <Image src={image} alt="Cover for My Room In 3D" class="rounded-lg" />
+  <Image
+    src={image}
+    alt="Cover for My Room In 3D"
+    class="rounded-lg"
+  />
   <p class="mt-2 px-2 text-lg font-medium">
     <span>{description}</span>
   </p>

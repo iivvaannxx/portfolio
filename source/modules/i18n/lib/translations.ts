@@ -8,11 +8,9 @@ import { spanish } from "./translations/spanish";
 
 // Map each local to it's respective language.
 export const translations = {
-
   ca: catalan,
   en: english,
   es: spanish,
-
 } as const;
 
 /**
@@ -25,7 +23,7 @@ export const translations = {
 export function getTranslations<L extends Locale>(locale: L) {
   const strings = translations[locale];
   return strings;
-};
+}
 
 /**
  * Retrieves the translation for a given key and locale.
@@ -34,7 +32,10 @@ export function getTranslations<L extends Locale>(locale: L) {
  * @param locale - The locale for which to retrieve the translation. Defaults to the defaultLocale.
  * @returns The translation value for the given key and locale.
  */
-export function getTranslation<L extends Locale, K extends Paths<typeof translations[L]>>(key: K, locale = defaultLocale) {
+export function getTranslation<
+  L extends Locale,
+  K extends Paths<(typeof translations)[L]>,
+>(key: K, locale = defaultLocale) {
   const strings = translations[locale];
-  return objectPath.get(strings, key) as Get<typeof translations[L], K>;
+  return objectPath.get(strings, key) as Get<(typeof translations)[L], K>;
 }
