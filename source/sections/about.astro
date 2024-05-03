@@ -1,6 +1,8 @@
 ---
 import UserLocation from "@app/components/user-location.astro";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
+import { Hero } from "@app/modules/three-fiber/components/hero";
+import { Icon } from "astro-icon/components";
 
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.about;
@@ -15,39 +17,55 @@ const t = translations.sections.about;
     class="absolute inset-0 -z-10 size-full items-center px-5 py-24"
   >
   </div>
-  <div class="container mx-auto mb-16 flex flex-col p-12 text-left font-header">
-    <h1 class="block">
-      <span class="block text-5xl font-semibold text-foreground/50">
-        {t.greeting}
-      </span>
 
-      <span class="block text-[8rem] font-extrabold text-primary">
-        Ivan Porto
-      </span>
+  <div class="container mx-auto mb-16 flex items-center p-12 text-left font-header">
 
-      <span class="text-6xl font-bold">
-        {
-          t.headline.content.map((text) => {
-            // Because of the split, the placeholder is an empty string
-            const isRotatingWords = text === "{words}";
-            const style = isRotatingWords
-              ? "text-foreground"
-              : "text-foreground/50";
+    <div class="mt-20 w-full">
+      <h1 class="block">
+        <span class="block text-3xl font-semibold text-foreground/50">
+          {t.greeting}
+        </span>
 
-            return (
-              <span class={style}>
-                {isRotatingWords ? t.headline.words.at(-1) : text}
-              </span>
-            );
-          })
-        }
-      </span>
-    </h1>
+        <span class="block text-[7rem] font-extrabold tracking-wide text-primary">
+          Ivan Porto
+        </span>
 
-    <p class="mt-8 text-balance text-3xl font-medium text-foreground/75">
-      {t.description}
-    </p>
+        <span class="text-5xl font-bold">
+          {
+            t.headline.content.map((text) => {
+              // Because of the split, the placeholder is an empty string
+              const isRotatingWords = text === "{words}";
+              const style = isRotatingWords
+                ? "text-foreground"
+                : "text-foreground/50";
+
+              return (
+                <span class={style}>
+                  {isRotatingWords ? t.headline.words.at(-1) : text}
+                </span>
+              );
+            })
+          }
+        </span>
+      </h1>
+
+      <p class="mt-8 text-balance text-2xl font-medium text-foreground/75">
+        {t.description}
+      </p>
+
+      <div class="mt-12">
+        <button id="cta" class="inline-flex h-12 animate-background-shine items-center justify-center gap-4 rounded-theme border border-border px-6 font-medium text-foreground transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring">
+          <Icon name="lucide:mail" width={20} height={20} />
+          Get In Touch
+        </button>
+      </div>
+
+    </div>
+
+    <Hero client:load />
   </div>
+
+
 
   <div
     class="absolute bottom-0 right-0 flex items-center p-12 text-foreground/80"
@@ -67,6 +85,16 @@ const t = translations.sections.about;
       125% 125% at 50% 10%,
       theme("colors.background") 50%,
       theme("colors.background") 100%
+    );
+  }
+
+  button#cta {
+    will-change: transform, color;
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+      110deg, theme("colors.background"),
+      45%, theme("colors.accent.DEFAULT"),
+      55%, theme("colors.background")
     );
   }
 </style>
