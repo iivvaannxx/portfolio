@@ -1,17 +1,15 @@
 import antfu from "@antfu/eslint-config";
-import { FlatCompat } from "@eslint/eslintrc";
 
-const compat = new FlatCompat();
 export default antfu(
-
   {
     astro: true,
     lessOpinionated: true,
+    formatters: false,
 
     stylistic: {
-
       quotes: "double",
       semi: true,
+
       overrides: {
         "style/arrow-parens": ["error", "always"],
         "sort-imports": "off",
@@ -27,26 +25,5 @@ export default antfu(
         Fragment: "readonly",
       },
     },
-
-    rules: {
-
-      // "style/max-len": ["error", { code: 90, tabWidth: 2 }],
-    },
   },
-
-  ...compat.config({
-
-    extends: ["plugin:tailwindcss/recommended"],
-    rules: {
-      "tailwindcss/classnames-order": "error",
-      "tailwindcss/no-custom-classname": "off",
-    },
-
-    overrides: [
-      {
-        files: ["*.astro"],
-        parser: "astro-eslint-parser",
-      },
-    ],
-  }),
 );

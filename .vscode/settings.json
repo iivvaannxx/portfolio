@@ -1,9 +1,11 @@
 {
   "[javascript][typescript][json][astro]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "explorerExclude.backup": {},
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
   "css.lint.unknownAtRules": "ignore",
 
   "files.exclude": {
@@ -18,19 +20,28 @@
     "**/.astro": true
   },
 
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always",
-    "source.organizeImports": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
 
   "biome.enabled": false,
   "eslint.enable": true,
-  "eslint.format.enable": true,
+  "eslint.format.enable": false,
   "eslint.experimental.useFlatConfig": true,
 
-  // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
+  "prettier.enable": true,
+  "prettier.documentSelectors": [
+    "**/*.astro",
+    "**/.js",
+    "**/.jsx",
+    "**/.ts",
+    "**/.tsx",
+    "**/.json",
+    "**/.css"
+  ],
+
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -44,8 +55,5 @@
     "yaml",
     "toml",
     "astro"
-  ],
-
-  "javascript.format.semicolons": "insert",
-  "typescript.format.semicolons": "insert"
+  ]
 }

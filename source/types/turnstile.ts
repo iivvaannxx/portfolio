@@ -14,7 +14,10 @@ export interface Turnstile {
    * @param params An object containing render parameters as key=value pairs, for example, {"sitekey": "your_site_key", "theme": "auto"}.
    * @return the ID of the newly created widget, or undefined if invocation is unsuccessful.
    */
-  render: (container: string | HTMLElement, params?: RenderParameters) => string | null | undefined;
+  render: (
+    container: string | HTMLElement,
+    params?: RenderParameters,
+  ) => string | null | undefined;
 
   /**
    * Invokes a Turnstile widget and returns the ID of the newly created widget.

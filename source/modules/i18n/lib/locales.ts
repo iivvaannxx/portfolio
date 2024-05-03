@@ -5,7 +5,7 @@ export const defaultLocale: Locale = "en";
 export const supportedLocales = ["en", "es", "ca"] as const;
 
 /** Defines a locale code of the website. */
-export type Locale = typeof supportedLocales[number];
+export type Locale = (typeof supportedLocales)[number];
 
 /**
  * Checks if a given locale is valid.
