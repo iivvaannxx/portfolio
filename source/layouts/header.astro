@@ -1,33 +1,58 @@
 ---
-import NavLinks from "@app/modules/navigation/components/nav-links.astro";
-import IconSun from "~icons/lucide/sun";
+import Hamburguer from "@app/modules/navigation/components/hamburguer.astro";
+
+import Link from "@app/components/base/link.astro";
+import { sections } from "@app/modules/navigation/lib/sections";
+import { getTranslations } from "@app/modules/i18n/lib/translations";
+import { Icon } from "astro-icon/components";
+
+const translations = getTranslations(Astro.locals.locale);
+const t = translations.sections;
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 h-[64px] w-full bg-background">
-  <div
-    class="container mx-auto flex size-full items-center justify-between border-b border-border"
+<header class="sticky inset-x-0 top-0 z-50 h-header w-full bg-background">
+  <nav
+    class="container mx-auto flex size-full items-center justify-between border-b border-border px-8"
   >
-    <span class="w-1/6 text-xl font-black uppercase">Ivan Porto</span>
+    <span class="text-xl font-black uppercase lg:w-1/6">Ivan Porto</span>
 
-    <NavLinks class="flex grow justify-center" />
+    <ul class="hidden items-center gap-4 font-medium uppercase lg:flex">
+      {
+        sections.map((section) => (
+          <li>
+            <Link
+              href={`#${t[section].id}`}
+              label={section}
+            >
+              {t[section].name}
+            </Link>
+          </li>
+        ))
+      }
+    </ul>
 
-    <div class="flex w-1/6 items-center justify-end gap-6">
+    <div class="hidden w-1/6 items-center justify-end gap-6 lg:flex">
       <span>ENG</span>
-      <IconSun />
+      <Icon name="lucide:sun" />
     </div>
-  </div>
 
-  <hr class="relative bottom-px border-border opacity-0" />
+    <Hamburguer class="lg:hidden" />
+  </nav>
+
+  <hr
+    id="header-separator"
+    class="relative bottom-px opacity-0"
+  />
 </header>
 
 <style>
-  hr {
-    animation: fade linear;
-    animation-timeline: scroll();
-    animation-range-start: 200px 250px;
+  hr#header-separator {
+    animation: fade-in linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0px theme("height.hero");
   }
 
-  @keyframes fade {
+  @keyframes fade-in {
     to {
       opacity: 1;
     }

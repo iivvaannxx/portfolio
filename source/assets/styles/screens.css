@@ -13,7 +13,13 @@
   z-index: 2147483647;
 }
 
-@media (min-width: 450px) {
+@media (min-width: 280px) {
+  .debug-screens:before {
+    content: "screen: fold";
+  }
+}
+
+@media (min-width: 375px) {
   .debug-screens:before {
     content: "screen: xs";
   }

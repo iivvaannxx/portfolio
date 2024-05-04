@@ -1,7 +1,7 @@
 import objectPath from "object-path";
 import type { Get, Paths } from "type-fest";
 
-import { defaultLocale, type Locale } from "./locales";
+import { type Locale, defaultLocale } from "./locales";
 import { catalan } from "./translations/catalan";
 import { english } from "./translations/english";
 import { spanish } from "./translations/spanish";

@@ -3,6 +3,7 @@ import Link from "@app/components/base/link.astro";
 import { socials } from "@app/assets/data/socials";
 
 import { getTranslations } from "@app/modules/i18n/lib/translations";
+import { Icon } from "astro-icon/components";
 
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.socials;
@@ -12,6 +13,7 @@ const t = translations.socials;
   import tippy from "tippy.js";
   tippy("#socials a[data-tippy-content]", {
     placement: "right",
+    theme: "socials",
     offset: [0, 16],
 
     animation: "scale",
@@ -24,8 +26,8 @@ const t = translations.socials;
   class="flex w-full flex-col items-center gap-y-8"
 >
   {
-    socials.map(({ href, i18nKey: key, size = 28, Icon }) => {
-      const translatedLabel = t[key] as string;
+    socials.map(({ href, i18nKey, size = 28, iconKey }) => {
+      const translatedLabel = t[i18nKey] as string;
       return (
         <li>
           <Link
@@ -35,6 +37,7 @@ const t = translations.socials;
             targetBlank
           >
             <Icon
+              name={iconKey}
               fill="white"
               width={size}
               height={size}
@@ -59,3 +62,14 @@ const t = translations.socials;
     background: white;
   }
 </style>
+
+<!-- <style is:global>
+  .tippy-box[data-theme~="socials"] {
+    background-color: theme("colors.popover.DEFAULT");
+    border: 1px solid theme("colors.border");
+    border-radius: theme("borderRadius.lg");
+    color: theme("colors.popover.foreground");
+
+    font-weight: 600;
+  }
+</style> -->

@@ -1,8 +1,7 @@
-/** @jsxImportSource react */
-
 import { Canvas, useFrame } from "@react-three/fiber";
 
 import { Suspense } from "react";
+import { degToRad } from "three/src/math/MathUtils.js";
 import { Home } from "../models/home";
 
 function Helper() {
@@ -16,26 +15,22 @@ function Helper() {
 export function Hero() {
   return (
     <Canvas
-      className="aspect-square rounded-2xl"
-      camera={{
-        fov: 40,
-        near: 0.1,
-        far: 1000,
-        position: [4.55, 2.85, -2.26],
-        rotation: [-2.35, 1.15, 2.4],
-      }}
+      className="aspect-square"
+      camera={{ fov: 45, near: 0.1, far: 1000, position: [0.1, 2, 5.5] }}
     >
-      {/*       <CameraControls makeDefault />
-       */}
       <ambientLight />
       <hemisphereLight intensity={0.35} />
       <directionalLight
-        position={[5, 0, -10]}
-        intensity={1}
+        position={[10, 0, 10]}
+        intensity={0.8}
       />
       <Suspense>
-        <Home />
+        <Home
+          position={[0, -0.5, 3]}
+          rotation-y={degToRad(270)}
+        />
       </Suspense>
+
       <Helper />
     </Canvas>
   );

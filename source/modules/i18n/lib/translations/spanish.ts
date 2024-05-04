@@ -11,13 +11,15 @@ export const spanish = {
       id: "sobre-mi",
 
       headline: {
-        content: ["Soy desarrollador de", "{words}"],
+        content: ["Soy desarrollador de", "%s"],
         words: ["videojuegos", "páginas web", "software"],
       },
 
       greeting: "¡Hola! Me llamo",
-      description:
-        "Especializado en desarrollo de videojuegos, pero apasionado por desarrollar cualquier tipo de software. Con más de 6 años de experiencia programando y más de 4 años de experiencia profesional.",
+      description: {
+        p1: "Especializado en desarrollo de videojuegos, pero apasionado por desarrollar cualquier tipo de software.",
+        p2: "Con más de 6 años de experiencia programando y más de 4 años de experiencia profesional.",
+      },
     },
 
     experience: {

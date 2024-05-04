@@ -3,27 +3,30 @@ import { getTranslations } from "@app/modules/i18n/lib/translations";
 import type { HTMLAttributes } from "astro/types";
 
 import Link from "@app/components/base/link.astro";
+import { cn } from "@app/utils/style";
 import { sections } from "../lib/sections";
 
-export type Props = HTMLAttributes<"nav">;
+export type Props = HTMLAttributes<"ul">;
+const { class: clazz, ...props } = Astro.props;
 
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections;
 ---
 
-<nav {...Astro.props}>
-  <ul class="flex items-center gap-4 font-medium uppercase">
-    {
-      sections.map((section) => (
-        <li>
-          <Link
-            href={`#${t[section].id}`}
-            label={section}
-          >
-            {t[section].name}
-          </Link>
-        </li>
-      ))
-    }
-  </ul>
-</nav>
+<ul
+  {...props}
+  class={cn("flex items-center gap-4 font-medium uppercase", clazz)}
+>
+  {
+    sections.map((section) => (
+      <li>
+        <Link
+          href={`#${t[section].id}`}
+          label={section}
+        >
+          {t[section].name}
+        </Link>
+      </li>
+    ))
+  }
+</ul>

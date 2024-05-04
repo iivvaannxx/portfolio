@@ -2,9 +2,9 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 
 import {
-  LoopOnce,
   type AnimationAction,
   type Group,
+  LoopOnce,
   type Mesh,
   type MeshStandardMaterial,
 } from "three";
@@ -16,7 +16,11 @@ type GLTFResult = GLTF & {
     Short: Mesh;
     Middle: Mesh;
     Large: Mesh;
+    House: Mesh;
+    Grass_1: Mesh;
+    Grass_2: Mesh;
   };
+
   materials: {
     Colormap: MeshStandardMaterial;
   };
@@ -49,31 +53,58 @@ export function Home(props: JSX.IntrinsicElements["group"]) {
       ref={group}
       {...props}
     >
-      <group name="Scene">
-        <mesh
-          name="Short"
-          castShadow
-          receiveShadow
-          geometry={nodes.Short.geometry}
-          material={materials.Colormap}
-          position={[0, -1.3, 0]}
-        />
-        <mesh
-          name="Middle"
-          castShadow
-          receiveShadow
-          geometry={nodes.Middle.geometry}
-          material={materials.Colormap}
-          position={[-0.5, -1.6, -0.866]}
-        />
+      <group name="Island">
         <mesh
           name="Large"
           castShadow
           receiveShadow
           geometry={nodes.Large.geometry}
           material={materials.Colormap}
-          position={[-1, -1.9, 0]}
-        />
+          position={[-0.5, -5.7, 0.289]}
+        >
+          <mesh
+            name="House"
+            castShadow
+            receiveShadow
+            geometry={nodes.House.geometry}
+            material={materials.Colormap}
+            position={[0, -0.1, 0]}
+          />
+        </mesh>
+        <mesh
+          name="Middle"
+          castShadow
+          receiveShadow
+          geometry={nodes.Middle.geometry}
+          material={materials.Colormap}
+          position={[0, -4.8, -0.577]}
+        >
+          <mesh
+            name="Grass_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Grass_1.geometry}
+            material={materials.Colormap}
+            position={[0, 1.4, 0]}
+          />
+        </mesh>
+        <mesh
+          name="Short"
+          castShadow
+          receiveShadow
+          geometry={nodes.Short.geometry}
+          material={materials.Colormap}
+          position={[0.5, -3.9, 0.289]}
+        >
+          <mesh
+            name="Grass_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Grass_2.geometry}
+            material={materials.Colormap}
+            position={[0, 1.2, 0]}
+          />
+        </mesh>
       </group>
     </group>
   );

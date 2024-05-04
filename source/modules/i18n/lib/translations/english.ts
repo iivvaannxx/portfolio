@@ -10,13 +10,15 @@ export const english = {
       name: "About",
       id: "about",
       headline: {
-        content: ["I'm a", "{words}", "developer"],
+        content: ["I'm a", "%s", "developer"],
         words: ["game", "web", "software"],
       },
 
       greeting: "Hello! My name is",
-      description:
-        "Specialized in game development, yet passionate about developing any kind of software. With 6+ years of coding experience and 4+ years of professional experience.",
+      description: {
+        p1: "Specialized in game development, yet passionate about developing any kind of software.",
+        p2: "With 6+ years of coding experience and 4+ years of professional experience.",
+      },
     },
 
     experience: {

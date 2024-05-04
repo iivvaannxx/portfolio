@@ -9,7 +9,6 @@
       "@app/*": ["./source/*"]
     },
 
-    "types": ["unplugin-icons/types/astro"],
     "verbatimModuleSyntax": true
   }
 }

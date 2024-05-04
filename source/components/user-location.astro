@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 
-import CircleHelp from "~icons/lucide/circle-help";
+import { Icon } from "astro-icon/components";
 
 // TODO: Serverless function to synchronize last info on each visit.
 type Props = HTMLAttributes<"span">;
@@ -57,7 +57,8 @@ const t = translations.userLocation;
     aria-haspopup="true"
     aria-label={t.notice.title}
   >
-    <CircleHelp
+    <Icon
+      name="lucide:circle-help"
       aria-hidden="true"
       width={24}
       height={24}
@@ -85,7 +86,14 @@ const t = translations.userLocation;
 </div>
 
 <style is:global>
-  .tippy-box[data-theme~="location"] .tippy-content {
-    padding: 1rem;
+  .tippy-box[data-theme~="location"] {
+    background-color: theme("colors.popover.DEFAULT");
+    border: 1px solid theme("colors.border");
+    border-radius: theme("borderRadius.lg");
+    color: theme("colors.popover.foreground");
+
+    & .tippy-content {
+      padding: 1rem;
+    }
   }
 </style>

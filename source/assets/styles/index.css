@@ -6,6 +6,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --hero-height: calc(100vh - theme("height.header"));
+  --hero-height: calc(100dvh - theme("height.header"));
+}
+
 [data-reveal] {
   animation: reveal linear both;
   animation-iteration-count: 1;

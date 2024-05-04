@@ -4,18 +4,9 @@ export default antfu(
   {
     astro: true,
     lessOpinionated: true,
+
     formatters: false,
-
-    stylistic: {
-      quotes: "double",
-      semi: true,
-
-      overrides: {
-        "style/arrow-parens": ["error", "always"],
-        "sort-imports": "off",
-      },
-    },
-
+    stylistic: false,
     typescript: { tsconfigPath: "./tsconfig.json" },
   },
 

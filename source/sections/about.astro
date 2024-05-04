@@ -2,6 +2,7 @@
 import UserLocation from "@app/components/user-location.astro";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 import { Hero } from "@app/modules/three-fiber/components/hero";
+import { cn } from "@app/utils/style";
 import { Icon } from "astro-icon/components";
 
 const translations = getTranslations(Astro.locals.locale);
@@ -10,34 +11,39 @@ const t = translations.sections.about;
 
 <section
   id={t.id}
-  class="relative flex size-full flex-col items-center justify-center"
+  class="relative flex size-full flex-col"
 >
   <div
     id="hero-bg"
-    class="absolute inset-0 -z-10 size-full items-center px-5 py-24"
+    class="absolute inset-0 -z-10 size-full"
   >
   </div>
 
   <div
-    class="container mx-auto mb-16 flex items-center p-12 text-left font-header"
+    class={cn(
+      "container mx-auto grid grid-areas-hero-v grid-cols-hero-v grid-rows-hero-v font-header size-full",
+      "xl:grid-areas-hero-h xl:grid-cols-hero-h xl:grid-rows-hero-h xl:items-center xl:p-12",
+    )}
   >
-    <div class="mt-20 w-full">
-      <h1 class="block">
-        <span class="block text-3xl font-semibold text-foreground/50">
+    <div class="my-auto w-full space-y-4 px-4 pt-4 text-center grid-in-content">
+      <h1 class="block p-4">
+        <span
+          class="block text-xl font-semibold text-foreground/50 lg:text-3xl"
+        >
           {t.greeting}
         </span>
 
         <span
-          class="block text-[7rem] font-extrabold tracking-wide text-primary"
+          class="block text-[3.5rem] font-extrabold tracking-wide text-primary lg:text-[7rem]"
         >
           Ivan Porto
         </span>
 
-        <span class="text-5xl font-bold">
+        <span class="text-2xl font-bold lg:text-5xl">
           {
             t.headline.content.map((text) => {
               // Because of the split, the placeholder is an empty string
-              const isRotatingWords = text === "{words}";
+              const isRotatingWords = text === "%s";
               const style = isRotatingWords
                 ? "text-foreground"
                 : "text-foreground/50";
@@ -52,30 +58,47 @@ const t = translations.sections.about;
         </span>
       </h1>
 
-      <p class="mt-8 text-balance text-2xl font-medium text-foreground/75">
-        {t.description}
+      <p
+        class="text-balance px-4 font-sans text-lg font-medium text-foreground/75 lg:text-2xl"
+      >
+        {t.description.p1}
       </p>
 
-      <div class="mt-12">
+      <p
+        class="hidden text-balance font-sans text-lg font-medium text-foreground/75 lg:text-2xl"
+      >
+        {t.description.p2}
+      </p>
+
+      <div class="mx-auto flex max-w-[70%] flex-col gap-4 pt-4">
         <button
           id="cta"
-          class="inline-flex h-12 animate-background-shine items-center justify-center gap-4 rounded-theme border border-border px-6 font-medium text-foreground transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
+          class="inline-flex h-12 items-center justify-center gap-4 rounded-lg border border-border bg-primary px-6 font-medium text-primary-foreground transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
         >
-          <Icon
-            name="lucide:mail"
-            width={20}
-            height={20}
-          />
-          Get In Touch
+          <span>
+            <Icon
+              name="lucide:mail"
+              class="size-[22px]"
+            />
+          </span>
+          <span> Get In Touch </span>
         </button>
+        <a
+          href={translations.sections.experience.id}
+          class="inline-flex h-12 items-center justify-center gap-4 rounded-lg border border-border px-6 font-medium text-foreground transition hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
+        >
+          Know Me
+        </a>
       </div>
     </div>
 
-    <Hero client:load />
+    <div class="w-full grid-in-canvas">
+      <Hero client:load />
+    </div>
   </div>
 
   <div
-    class="absolute bottom-0 right-0 flex items-center p-12 text-foreground/80"
+    class="absolute bottom-0 right-0 hidden items-center p-12 text-foreground/80 xl:flex"
   >
     <UserLocation class="text-xl font-semibold" />
   </div>
@@ -83,11 +106,11 @@ const t = translations.sections.about;
 
 <style>
   section {
-    height: 100vh;
-    height: 100dvh;
+    height: calc(100vh - theme("height.header"));
+    height: calc(100dvh - theme("height.header"));
   }
 
-  #hero-bg {
+  div#hero-bg {
     background: radial-gradient(
       125% 125% at 50% 10%,
       theme("colors.background") 50%,
@@ -97,7 +120,7 @@ const t = translations.sections.about;
 
   button#cta {
     will-change: transform, color;
-    background-size: 200% 100%;
+    /* background-size: 200% 100%;
     background-image: linear-gradient(
       110deg,
       theme("colors.background"),
@@ -105,6 +128,6 @@ const t = translations.sections.about;
       theme("colors.accent.DEFAULT"),
       55%,
       theme("colors.background")
-    );
+    ) */
   }
 </style>
