@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 
 import defaultTheme from "tailwindcss/defaultTheme";
 import tailwindcssAnimate from "tailwindcss-animate";
+import tailwindDebugScreens from "tailwindcss-debug-screens";
 
 // @ts-expect-error This package is not typed in any way.
 import tailwindGridAreas from "@savvywombat/tailwindcss-grid-areas";
@@ -18,9 +19,14 @@ const config = {
     },
 
     extend: {
-      height: {
+      spacing: {
         header: "64px",
-        hero: "var(--hero-height)",
+      },
+
+      height: {
+        "header": "var(--header-height)",
+        "main": "var(--main-height)",
+        "screen-safe": "var(--screen-safe-height)",
       },
 
       borderRadius: {
@@ -91,34 +97,40 @@ const config = {
           from: { backgroundPosition: "0 0" },
           to: { backgroundPosition: "-200% 0" },
         },
+        "beat": {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.1)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "background-shine": "background-shine 2s linear infinite",
+        "beat": "beat 1s infinite",
       },
 
       gridTemplateAreas: {
+        "hero-h": ["content canvas"],
         "hero-v": [
           // prettier-ignore
           "content",
           "canvas",
         ],
-        "hero-h": ["content canvas"],
       },
 
       gridTemplateColumns: {
-        "hero-v": "1fr",
         "hero-h": "auto minmax(0, 50%)",
+        "hero-v": "1fr",
       },
 
       gridTemplateRows: {
-        "hero-v": "auto minmax(0, 50%)",
         "hero-h": "1fr",
+        "hero-v": "auto minmax(0, 50%)",
       },
     },
   },
-  plugins: [tailwindcssAnimate, tailwindGridAreas],
+  plugins: [tailwindcssAnimate, tailwindGridAreas, tailwindDebugScreens],
 } satisfies Config;
 
 export default config;

@@ -1,5 +1,6 @@
 ---
 import UserLocation from "@app/components/user-location.astro";
+import ObservedSection from "@app/layouts/observed-section.astro";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 import { Hero } from "@app/modules/three-fiber/components/hero";
 import { cn } from "@app/utils/style";
@@ -9,8 +10,9 @@ const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.about;
 ---
 
-<section
+<ObservedSection
   id={t.id}
+  order={0}
   class="relative flex size-full flex-col"
 >
   <div
@@ -25,21 +27,23 @@ const t = translations.sections.about;
       "xl:grid-areas-hero-h xl:grid-cols-hero-h xl:grid-rows-hero-h xl:items-center xl:p-12",
     )}
   >
-    <div class="my-auto w-full space-y-4 px-4 pt-4 text-center grid-in-content">
+    <div
+      class="my-auto w-full space-y-4 px-2 pt-2 text-center grid-in-content xs:px-4 xs:pt-4"
+    >
       <h1 class="block p-4">
         <span
-          class="block text-xl font-semibold text-foreground/50 lg:text-3xl"
+          class="text-bae block font-semibold text-foreground/50 xs:text-xl lg:text-3xl"
         >
           {t.greeting}
         </span>
 
         <span
-          class="block text-[3.5rem] font-extrabold tracking-wide text-primary lg:text-[7rem]"
+          class="block text-[2.5rem] font-extrabold tracking-wide text-primary xs:text-[3.5rem] lg:text-[7rem]"
         >
           Ivan Porto
         </span>
 
-        <span class="text-2xl font-bold lg:text-5xl">
+        <span class="text-xl font-bold xs:text-2xl lg:text-5xl">
           {
             t.headline.content.map((text) => {
               // Because of the split, the placeholder is an empty string
@@ -59,7 +63,7 @@ const t = translations.sections.about;
       </h1>
 
       <p
-        class="text-balance px-4 font-sans text-lg font-medium text-foreground/75 lg:text-2xl"
+        class="text-balance px-2 font-sans text-base font-medium text-foreground/75 xs:px-4 xs:text-lg lg:text-2xl"
       >
         {t.description.p1}
       </p>
@@ -70,22 +74,22 @@ const t = translations.sections.about;
         {t.description.p2}
       </p>
 
-      <div class="mx-auto flex max-w-[70%] flex-col gap-4 pt-4">
+      <div class="mx-auto flex max-w-[60%] flex-col gap-4 pt-4 xs:max-w-[70%]">
         <button
           id="cta"
-          class="inline-flex h-12 items-center justify-center gap-4 rounded-lg border border-border bg-primary px-6 font-medium text-primary-foreground transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
+          class="inline-flex h-11 items-center justify-center gap-4 rounded-lg border border-border bg-primary px-4 text-[0.95rem] font-medium text-primary-foreground transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12 xs:px-6 xs:text-base"
         >
           <span>
             <Icon
               name="lucide:mail"
-              class="size-[22px]"
+              class="size-[18px] xs:size-[22px]"
             />
           </span>
           <span> Get In Touch </span>
         </button>
         <a
-          href={translations.sections.experience.id}
-          class="inline-flex h-12 items-center justify-center gap-4 rounded-lg border border-border px-6 font-medium text-foreground transition hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
+          href={`#${translations.sections.experience.id}`}
+          class="inline-flex h-11 items-center justify-center gap-4 rounded-lg border border-border px-6 font-medium text-foreground transition hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12"
         >
           Know Me
         </a>
@@ -102,7 +106,7 @@ const t = translations.sections.about;
   >
     <UserLocation class="text-xl font-semibold" />
   </div>
-</section>
+</ObservedSection>
 
 <style>
   section {

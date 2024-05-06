@@ -1,6 +1,7 @@
 ---
 import Link from "@app/components/base/link.astro";
 import SkillBadge from "@app/components/skill-badge.astro";
+import ObservedSection from "@app/layouts/observed-section.astro";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 import { Icon } from "astro-icon/components";
 
@@ -8,8 +9,9 @@ const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.experience;
 ---
 
-<section
+<ObservedSection
   id={t.id}
+  order={1}
   class="container mx-auto flex w-full flex-col items-center p-12"
 >
   <h2 class="relative mb-16 text-left">
@@ -95,7 +97,7 @@ const t = translations.sections.experience;
       </ul>
     </div>
   </div>
-</section>
+</ObservedSection>
 
 <style>
   h2::before {

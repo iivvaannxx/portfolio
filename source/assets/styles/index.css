@@ -1,5 +1,4 @@
 @import "./fonts.css";
-@import "./screens.css";
 @import "./theme.css";
 
 @tailwind base;
@@ -7,10 +6,13 @@
 @tailwind utilities;
 
 :root {
-  --hero-height: calc(100vh - theme("height.header"));
-  --hero-height: calc(100dvh - theme("height.header"));
-}
+  /** If dvh is supported, it will take priority, otherwise will fallback to vh. */
+  --screen-safe-height: 100vh;
+  --screen-safe-height: 100dvh;
 
+  --header-height: 64px;
+  --main-height: calc(var(--screen-safe-height) - var(--header-height));
+}
 [data-reveal] {
   animation: reveal linear both;
   animation-iteration-count: 1;

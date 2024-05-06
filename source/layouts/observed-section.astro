@@ -1,0 +1,99 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+export type Props = HTMLAttributes<"section"> & {
+  // Enforce an id for the section.
+  id: string;
+  order?: number;
+};
+
+const { order = 1, ...props } = Astro.props;
+---
+
+<script>
+  function compareSections(a: Element, b: Element) {
+    const aOrder = +a.getAttribute("data-observed-section")!;
+    const bOrder = +b.getAttribute("data-observed-section")!;
+
+    return aOrder - bOrder;
+  }
+
+  function getEntryInfo(entry: IntersectionObserverEntry) {
+    const order = +entry.target.getAttribute("data-observed-section")!;
+    const visible = entry.isIntersecting;
+
+    return { target: entry.target as HTMLElement, order, visible };
+  }
+
+  // We want the latest because there may be multiple sections visible at the same time.
+  // The "current" one should always be the (visible) one with the highest order (latest in the document).
+  function getLatestVisibleSection(sections: Section[]) {
+    const greaterOrder = -Infinity;
+    let latest = sections[0];
+
+    for (const section of sections) {
+      if (section.order > greaterOrder && section.visible) {
+        latest = section;
+      }
+    }
+
+    return latest;
+  }
+
+  type Section = {
+    order: number;
+    target: HTMLElement;
+    visible: boolean;
+  };
+
+  const documentLinks = document.querySelectorAll("a[href^='#']");
+  const sections = [...document.querySelectorAll("[data-observed-section]")];
+  sections.sort(compareSections);
+
+  const sectionStates: Record<string, Section> = {};
+  let lastVisibleSection: Section;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      // Update the state of each section.
+      for (const entry of entries) {
+        // The ID is an enforced prop, so we can safely assume it exists.
+        const id = entry.target.id;
+        sectionStates[id] = getEntryInfo(entry);
+      }
+
+      // Find the latest visible section.
+      const newLast = getLatestVisibleSection(Object.values(sectionStates));
+
+      // If there's a new section in view, update the corresponding links.
+      if (newLast !== lastVisibleSection) {
+        lastVisibleSection = newLast;
+
+        for (const link of documentLinks) {
+          const [, target] = link.href.split("#");
+          link.classList.toggle(
+            "active",
+            target === lastVisibleSection.target.id,
+          );
+        }
+      }
+    },
+    {
+      threshold: 0.5,
+      rootMargin: getComputedStyle(document.documentElement).getPropertyValue(
+        "--header-height",
+      ),
+    },
+  );
+
+  for (const section of sections) {
+    observer.observe(section);
+  }
+</script>
+
+<section
+  {...props}
+  data-observed-section={order}
+>
+  <slot />
+</section>
