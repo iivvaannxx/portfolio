@@ -1,5 +1,5 @@
 {
-  "[javascript][typescript][json][astro][css]": {
+  "[javascript][typescript][json][astro][css][svelte]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
@@ -34,6 +34,7 @@
   "prettier.enable": true,
   "prettier.documentSelectors": [
     "**/*.astro",
+    "**/*.svelte",
     "**/.js",
     "**/.jsx",
     "**/.ts",
@@ -54,6 +55,7 @@
     "jsonc",
     "yaml",
     "toml",
-    "astro"
+    "astro",
+    "svelte"
   ]
 }

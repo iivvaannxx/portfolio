@@ -24,7 +24,7 @@ export const english = {
     experience: {
       name: "Experience",
       id: "experience",
-      title: "Work Experience",
+      title: "Professional Experience",
     },
 
     projects: {

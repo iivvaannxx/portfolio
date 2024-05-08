@@ -1,0 +1,104 @@
+@import "./fonts.css";
+@import "./theme.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /** If dvh is supported, it will take priority, otherwise will fallback to vh. */
+  --screen-safe-height: 100vh;
+  --screen-safe-height: 100dvh;
+
+  --header-height: 64px;
+  --main-height: calc(var(--screen-safe-height) - var(--header-height));
+
+  --scrollbar-color-track: transparent;
+  --scrollbar-color-thumb: theme("colors.muted.DEFAULT");
+  --scrollbar-color-thumb-active: theme("colors.muted.foreground");
+  --scrollbar-color-thumb-hover: color-mix(
+    in hsl,
+    var(--scrollbar-color-thumb),
+    var(--scrollbar-color-thumb-active) 50%
+  );
+
+  --scrollbar-width: thin;
+  --scrollbar-width-legacy: 8px;
+  --scrollbar-thumb-radius: theme("borderRadius.full");
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+
+  /** If supported this will be applied. */
+  height: 100dvh;
+
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+
+  min-height: 100%;
+  min-height: 100dvh;
+}
+
+strong {
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+}
+
+@supports selector(::-webkit-scrollbar) {
+  html::-webkit-scrollbar {
+    width: var(--scrollbar-width-legacy, 0);
+  }
+
+  html::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  html::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-color-track);
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color-thumb);
+
+    border-block: 2px solid transparent;
+    border-radius: var(--scrollbar-thumb-radius);
+    background-clip: content-box;
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-color-thumb-hover);
+
+    border-block: 2px solid transparent;
+    border-radius: var(--scrollbar-thumb-radius);
+    background-clip: content-box;
+  }
+
+  html::-webkit-scrollbar-thumb:active {
+    background-color: var(--scrollbar-color-thumb-active);
+
+    border-block: 2px solid transparent;
+    border-radius: var(--scrollbar-thumb-radius);
+    background-clip: content-box;
+  }
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+    scrollbar-width: var(--scrollbar-width);
+  }
+}

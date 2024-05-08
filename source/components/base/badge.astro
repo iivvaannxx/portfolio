@@ -1,17 +1,26 @@
 ---
-import { cn } from "@app/utils/style";
+import { cn } from "@app/lib/helpers/style";
 import type { HTMLAttributes } from "astro/types";
 
-export type Props = HTMLAttributes<"span">;
-const { class: clazz, ...props } = Astro.props;
+export type BadgeProps = { hoverGlow?: boolean };
+export type Props = HTMLAttributes<"span"> & BadgeProps;
+const { class: clazz, hoverGlow = false, ...props } = Astro.props;
 ---
 
 <span
   class={cn(
-    "inline-flex cursor-pointer items-center justify-center rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-card-foreground",
+    "group/badge relative inline-flex select-none items-center justify-center overflow-hidden rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-card-foreground",
     clazz,
   )}
   {...props}
 >
   <slot />
+
+  {
+    hoverGlow && (
+      <div class="absolute inset-0 flex size-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover/badge:duration-1000 group-hover/badge:[transform:skew(-12deg)_translateX(100%)]">
+        <div class="relative h-full w-8 bg-foreground/20" />
+      </div>
+    )
+  }
 </span>

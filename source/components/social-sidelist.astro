@@ -26,10 +26,10 @@ const t = translations.socials;
   class="flex w-full flex-col items-center gap-y-8"
 >
   {
-    socials.map(({ href, i18nKey, size = 28, iconKey }) => {
+    socials.map(({ href, i18nKey, iconKey }) => {
       const translatedLabel = t[i18nKey] as string;
       return (
-        <li>
+        <li class="rounded-lg bg-background text-accent-foreground transition duration-200 hover:bg-accent">
           <Link
             {href}
             label={translatedLabel}
@@ -38,9 +38,7 @@ const t = translations.socials;
           >
             <Icon
               name={iconKey}
-              fill="white"
-              width={size}
-              height={size}
+              class="box-content size-7 p-2 text-white"
             />
           </Link>
         </li>

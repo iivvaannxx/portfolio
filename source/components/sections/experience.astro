@@ -1,0 +1,243 @@
+---
+import Timeline from "@app/components/timeline/timeline.svelte";
+import TimelineEntry from "@app/components/timeline/timeline-entry.svelte";
+import ObservedSection from "@app/layouts/observed-section.astro";
+import { getTranslations } from "@app/modules/i18n/lib/translations";
+import Link from "@app/components/base/link.astro";
+import SkillBadge from "@app/components/skill-badge.astro";
+
+const translations = getTranslations(Astro.locals.locale);
+const t = translations.sections.experience;
+
+const jobData = {
+  jobTitle: "Computer Science Educator for Kids and Teens",
+  companyName: "Codelearn",
+  companyLink: "https://codelearn.com",
+  location: "Barcelona, Spain",
+  startDate: new Date("2021-11"),
+  endDate: new Date("2024-5"),
+  description:
+    "I teach computer science to kids and teens using Python and Scratch.",
+  bullets: [
+    "Teaching Python and Scratch to kids and teens",
+    "Creating educational content for the platform",
+    "Mentoring students",
+  ],
+  skills: ["python"],
+};
+
+const { locale } = Astro.locals;
+
+const formatter = new Intl.DateTimeFormat(locale, {
+  month: "long",
+  year: "numeric",
+});
+
+const { startDate, endDate } = jobData;
+const start = formatter.format(startDate);
+const end = formatter.format(endDate);
+---
+
+<ObservedSection
+  id={t.id}
+  order={1}
+  class="container mx-auto flex w-full flex-col items-center p-12"
+>
+  <h2 class="relative mb-16 text-left">
+    <span class="font-mono text-3xl font-semibold tabular-nums">01.</span>
+    <span class="pl-4 font-header text-6xl font-extrabold tracking-wide">
+      {t.title}
+    </span>
+  </h2>
+
+  <Timeline
+    itemCount={2}
+    client:load
+  >
+    <TimelineEntry index={1}>
+      <article class="group relative flex max-w-screen-lg flex-col p-4">
+        <div
+          class:list={[
+            "absolute -inset-x-4 -inset-y-4 -z-10 hidden rounded-lg transition",
+            "lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg",
+          ]}
+        >
+        </div>
+
+        <header class="mb-8 space-y-3">
+          <h3
+            class="text-3xl font-black transition duration-200 group-hover:text-accent"
+          >
+            <Link
+              href={jobData.companyLink}
+              label="something here"
+              targetBlank
+              withExternalLinkArrow
+            >
+              <span
+                class="absolute -inset-x-4 -inset-y-2.5 hidden rounded-lg md:-inset-x-6 md:-inset-y-4 lg:block"
+              ></span>
+
+              <span>
+                {jobData.jobTitle} · {jobData.companyName}
+              </span>
+            </Link>
+          </h3>
+
+          <div class="pl-1 text-xl font-semibold text-accent">
+            <span> {jobData.location}</span>
+            <span class="opacity-60">|</span>
+            <span aria-label="">
+              <time
+                datetime={`${startDate.getFullYear()}-${startDate.getMonth() + 1}`}
+              >
+                {start}
+              </time> -
+
+              <time
+                datetime={`${endDate.getFullYear()}-${endDate.getMonth() + 1}`}
+              >
+                {end}
+              </time>
+            </span>
+          </div>
+        </header>
+
+        <p class="max-w-screen-md text-balance text-lg text-foreground/80">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sint
+          natus doloremque corrupti enim officia esse laborum provident. Ea rem
+          deleniti dolore aperiam quis corporis a fugit expedita possimus
+          temporibus! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Minus asperiores sit voluptates quam, vitae ratione suscipit impedit
+          tempora aut vel hic id soluta dicta minima nulla provident nihil
+          facere earum.
+        </p>
+
+        <ul class="mt-4 list-disc pl-12 text-lg text-foreground/80">
+          {
+            jobData.bullets.map((bullet) => (
+              <li class="text-balance">{bullet}</li>
+            ))
+          }
+        </ul>
+
+        <footer class="mt-10">
+          {jobData.skills.map((skill) => <SkillBadge skill={skill} />)}
+        </footer>
+      </article>
+    </TimelineEntry>
+
+    <TimelineEntry index={2}>
+      <article class="group relative flex max-w-screen-lg flex-col p-4">
+        <div
+          class:list={[
+            "absolute -inset-x-4 -inset-y-4 -z-10 hidden rounded-lg transition",
+            "lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg",
+            "motion-reduce:transition-none",
+          ]}
+        >
+        </div>
+
+        <header class="mb-8 space-y-3">
+          <h3
+            class="text-3xl font-black transition duration-200 group-hover:text-accent"
+          >
+            <Link
+              href={jobData.companyLink}
+              label="something here"
+              targetBlank
+              withExternalLinkArrow
+            >
+              <span
+                class="absolute -inset-x-4 -inset-y-2.5 hidden rounded-lg md:-inset-x-6 md:-inset-y-4 lg:block"
+              ></span>
+
+              <span>
+                {jobData.jobTitle} · {jobData.companyName}
+              </span>
+            </Link>
+          </h3>
+
+          <div class="pl-1 text-xl font-semibold text-accent">
+            <span> {jobData.location}</span>
+            <span class="opacity-60">|</span>
+            <span aria-label="">
+              <time
+                datetime={`${startDate.getFullYear()}-${startDate.getMonth() + 1}`}
+              >
+                {start}
+              </time> -
+
+              <time
+                datetime={`${endDate.getFullYear()}-${endDate.getMonth() + 1}`}
+              >
+                {end}
+              </time>
+            </span>
+          </div>
+        </header>
+
+        <p class="max-w-screen-md text-balance text-lg text-foreground/80">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sint
+          natus doloremque corrupti enim officia esse laborum provident. Ea rem
+          deleniti dolore aperiam quis corporis a fugit expedita possimus
+          temporibus! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Minus asperiores sit voluptates quam, vitae ratione suscipit impedit
+          tempora aut vel hic id soluta dicta minima nulla provident nihil
+          facere earum.
+        </p>
+
+        <ul class="mt-4 list-disc pl-12 text-lg text-foreground/80">
+          {
+            jobData.bullets.map((bullet) => (
+              <li class="text-balance">{bullet}</li>
+            ))
+          }
+        </ul>
+
+        <footer class="mt-10">
+          {jobData.skills.map((skill) => <SkillBadge skill={skill} />)}
+        </footer>
+      </article>
+    </TimelineEntry>
+  </Timeline>
+
+  <!-- <Timeline
+    as="div"
+    class="w-fit max-w-screen-xl"
+    itemCount={2}
+  >
+    <WorkTimelineEntry
+      jobTitle="Computer Science Educator for Kids and Teens"
+      companyName="Codelearn"
+      companyLink="https://codelearn.com"
+      location="Barcelona, Spain"
+      startDate={new Date("2021-11")}
+      endDate={new Date("2024-5")}
+      description="I teach computer science to kids and teens using Python and Scratch."
+      bullets={[
+        "Teaching Python and Scratch to kids and teens",
+        "Creating educational content for the platform",
+        "Mentoring students",
+      ]}
+      skills={["python"]}
+      index={1}
+    />
+    <WorkTimelineEntry
+      jobTitle="Unity Game Developer"
+      companyName="GILAB (University of Girona)"
+      companyLink="https://gilab.udg.edu"
+      location="Girona, Spain"
+      startDate={new Date("2020-11")}
+      endDate={new Date("2022-9")}
+      description="Developed a Unity game for a research project."
+      bullets={[
+        "Developed a Unity game for a research project",
+        "Worked with a team of researchers",
+        "Used C# and Unity",
+      ]}
+      skills={["unity", "csharp"]}
+      index={2}
+    />
+  </Timeline> -->
+</ObservedSection>

@@ -1,4 +1,6 @@
 ---
+import { cn } from "@app/lib/helpers/style";
+import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 
 // Extend the default attributes for extra functionality.
@@ -8,13 +10,17 @@ export type Props = HTMLAttributes<"a"> & {
 
   withTooltip?: boolean;
   tooltipContent?: string;
+
+  withExternalLinkArrow?: boolean;
 };
 
 const {
   label,
   href,
+  class: clazz,
 
   withTooltip = false,
+  withExternalLinkArrow = false,
   targetBlank = false,
   tooltipContent = label,
 
@@ -30,9 +36,26 @@ const optionalAttrs = {
 <a
   {...props}
   {...optionalAttrs}
-  aria-label={label}
   {href}
+  aria-label={label}
   rel="noopener noreferrer"
+  class={cn("group", clazz)}
 >
-  <slot />
+  {
+    withExternalLinkArrow ? (
+      <>
+        <slot />
+        <Icon
+          name="lucide:arrow-up-right"
+          class:list={[
+            "relative bottom-[2px] right-px inline-block  transition-transform duration-300 will-change-transform",
+            "group-hover:-translate-y-1 group-hover:translate-x-1 ",
+            "group-focus-visible:-translate-y-1 group-focus-visible:translate-x-1",
+          ]}
+        />
+      </>
+    ) : (
+      <slot />
+    )
+  }
 </a>

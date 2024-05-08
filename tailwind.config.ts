@@ -2,9 +2,10 @@ import type { Config } from "tailwindcss";
 
 import defaultTheme from "tailwindcss/defaultTheme";
 import tailwindcssAnimate from "tailwindcss-animate";
-import tailwindDebugScreens from "tailwindcss-debug-screens";
 
-// @ts-expect-error This package is not typed in any way.
+// These packages are not typed.
+import tailwindcssAnimated from "tailwindcss-animated";
+import tailwindDebugScreens from "tailwindcss-debug-screens";
 import tailwindGridAreas from "@savvywombat/tailwindcss-grid-areas";
 
 const config = {
@@ -19,6 +20,10 @@ const config = {
     },
 
     extend: {
+      content: {
+        empty: "''",
+      },
+
       spacing: {
         header: "64px",
       },
@@ -130,7 +135,12 @@ const config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate, tailwindGridAreas, tailwindDebugScreens],
+  plugins: [
+    tailwindcssAnimate,
+    tailwindcssAnimated,
+    tailwindGridAreas,
+    tailwindDebugScreens,
+  ],
 } satisfies Config;
 
 export default config;

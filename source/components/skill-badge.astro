@@ -1,19 +1,23 @@
 ---
 import { Icon } from "astro-icon/components";
-import Badge from "./base/badge.astro";
+import { skills } from "@app/assets/data/skills";
+import Badge, { type BadgeProps } from "./base/badge.astro";
 
-export type Props = {
+export type Props = BadgeProps & {
   skill: string;
   name?: string;
 };
 
-const { skill, name = skill } = Astro.props;
+const { skill, name = skill, ...props } = Astro.props;
 ---
 
-<Badge class="space-x-2 px-4 py-2 font-semibold capitalize">
+<Badge
+  {...props}
+  class="space-x-2 px-4 py-2 font-semibold"
+>
   <Icon
     name={`skills/${skill}`}
     class="size-4"
   />
-  <span>{name}</span>
+  <span>{skills.find((skill) => skill.icon === name)?.name}</span>
 </Badge>

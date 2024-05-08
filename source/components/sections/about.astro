@@ -3,7 +3,7 @@ import UserLocation from "@app/components/user-location.astro";
 import ObservedSection from "@app/layouts/observed-section.astro";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 import { Hero } from "@app/modules/three-fiber/components/hero";
-import { cn } from "@app/utils/style";
+import { cn } from "@app/lib/helpers/style";
 import { Icon } from "astro-icon/components";
 
 const translations = getTranslations(Astro.locals.locale);
@@ -89,7 +89,7 @@ const t = translations.sections.about;
         </button>
         <a
           href={`#${translations.sections.experience.id}`}
-          class="inline-flex h-11 items-center justify-center gap-4 rounded-lg border border-border px-6 font-medium text-foreground transition hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12"
+          class="inline-flex h-11 items-center justify-center gap-4 rounded-lg border border-border px-6 font-medium text-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12"
         >
           Know Me
         </a>

@@ -46,7 +46,7 @@ const { order = 1, ...props } = Astro.props;
     visible: boolean;
   };
 
-  const documentLinks = document.querySelectorAll("a[href^='#']");
+  const documentLinks = document.querySelectorAll("nav a[href^='#']");
   const sections = [...document.querySelectorAll("[data-observed-section]")];
   sections.sort(compareSections);
 
