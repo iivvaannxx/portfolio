@@ -1,134 +1,43 @@
-// eslint-disable-next-line no-restricted-syntax
-export const enum Category {
-  Game = "Game",
-  Frontend = "Frontend",
-  Backend = "Backend",
-  Creative = "Creative",
-  Code = "Code",
-  Scripting = "Scripting",
+export type SkillCategory = "code" | "creative";
+
+/**
+ * Creates a skill object with the specified name, icon, and categories.
+ *
+ * @param name  The name of the skill.
+ * @param icon  The icon of the skill.
+ * @param categories  The categories associated with the skill.
+ */
+function makeSkill<const Name, const Icon, const Categories>(
+  name: Name,
+  icon: Icon,
+  ...categories: Categories[]
+) {
+  // The icon is the name of the corresponding SVG under "assets/icons".
+  // They get picked by the `astro-icon` integration automatically.
+  return { name, categories, icon } as const;
 }
 
-export interface Skill {
-  name: string;
-  categories: Category[];
+export const skills = [
+  makeSkill("C++", "c++", "code"),
+  makeSkill("C#", "csharp", "code"),
+  makeSkill("JavaScript", "javascript", "code"),
+  makeSkill("TypeScript", "typescript", "code"),
+  makeSkill("Python", "python", "code"),
+  makeSkill("Bash", "bash", "code"),
+  makeSkill("Unity", "unity", "code"),
+  makeSkill("Unreal Engine", "unreal", "code"),
+  makeSkill("Godot", "godot", "code"),
+  makeSkill("Git", "git", "code"),
+  makeSkill("Docker", "docker", "code"),
+  makeSkill("React", "react", "code"),
+  makeSkill("Deno", "deno", "code"),
+  makeSkill("Node", "node", "code"),
+  makeSkill("TailwindCSS", "tailwindcss", "code"),
+  makeSkill("Blender", "blender", "creative"),
+  makeSkill("Photoshop", "photoshop", "creative"),
+  makeSkill("Svelte", "svelte", "code"),
+  makeSkill("Three.js", "threejs", "code"),
+] as const;
 
-  // This is the filename of the icon under the `assets/icons` directory.
-  // Loaded via `astro-icon` See: https://www.astroicon.dev/
-  icon: string;
-}
-
-export const skills: Skill[] = [
-  {
-    name: "C++",
-    categories: [Category.Code],
-    icon: "c++",
-  },
-
-  {
-    name: "C#",
-    categories: [Category.Code],
-    icon: "csharp",
-  },
-
-  {
-    name: "JavaScript",
-    categories: [Category.Code],
-    icon: "javascript",
-  },
-
-  {
-    name: "TypeScript",
-    categories: [Category.Code],
-    icon: "typescript",
-  },
-
-  {
-    name: "Python",
-    categories: [Category.Code, Category.Scripting],
-    icon: "python",
-  },
-
-  {
-    name: "Bash",
-    categories: [Category.Code, Category.Scripting],
-    icon: "bash",
-  },
-
-  {
-    name: "Unity",
-    categories: [Category.Game],
-    icon: "unity",
-  },
-
-  {
-    name: "Unreal Engine",
-    categories: [Category.Game],
-    icon: "unreal",
-  },
-
-  /* {
-    name: "Godot",
-    categories: [Category.Game],
-    icon: "godot",
-  },
-
-  {
-    name: "Git",
-    categories: [Category.Code],
-    icon: "git",
-  },
-
-  {
-    name: "Docker",
-    categories: [Category.Code],
-    icon: "docker",
-  },
-
-  {
-    name: "React",
-    categories: [Category.Frontend],
-    icon: "react",
-  },
-
-  {
-    name: "Deno",
-    categories: [Category.Backend],
-    icon: "deno",
-  },
-
-  {
-    name: "Node",
-    categories: [Category.Backend],
-    icon: "node",
-  },
-
-  {
-    name: "TailwindCSS",
-    categories: [Category.Frontend],
-    icon: "tailwindcss",
-  },
-
-  {
-    name: "Blender",
-    categories: [Category.Creative],
-    icon: "blender",
-  },
-
-  {
-    name: "Photoshop",
-    categories: [Category.Creative],
-    icon: "photoshop",
-  },
-
-  {
-    name: "Svelte",
-    categories: [],
-    icon: "svelte",
-  },
-
-  {
-    name: "Three.js",
-    categories: [],
-    icon: "threejs",
-  }, */
-];
+export type Skill = (typeof skills)[number]["name"];
+export type SkillIcon = (typeof skills)[number]["icon"];
