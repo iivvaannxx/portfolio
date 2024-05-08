@@ -5,7 +5,7 @@ import Link from "@app/components/base/link.astro";
 import { sections } from "@app/modules/navigation/lib/sections";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 import { Icon } from "astro-icon/components";
-import { socials } from "@app/assets/data/socials";
+import { socials } from "@app/lib/data/socials";
 
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections;
