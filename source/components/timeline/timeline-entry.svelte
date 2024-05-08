@@ -12,6 +12,7 @@
 
 <svelte:element
   this={as}
+  {...$$restProps}
   style:--index={index}
   style:--track-progress={0}
   class={cn(
@@ -19,7 +20,6 @@
     $$props.class,
   )}
   data-timeline-index={index}
-  {...$$restProps}
 >
   <div class="entry-track mt-4 flex size-full flex-col items-center">
     <div class="flex aspect-square items-center justify-center p-3">

@@ -1,3 +1,5 @@
+<!-- Inspired by https://www.framer.community/c/tutorials/how-to-create-animated-timeline-in-framer -->
+
 <script
   lang="ts"
   context="module"
@@ -111,6 +113,7 @@
 
 <svelte:element
   this={as}
+  {...$$restProps}
   style:--timeline-progress="0"
   class={cn(
     "timeline flex h-fit flex-col items-center justify-center",
@@ -118,7 +121,6 @@
   )}
   bind:this={element}
   data-timeline-items={itemCount}
-  {...$$restProps}
 >
   <slot />
 </svelte:element>
