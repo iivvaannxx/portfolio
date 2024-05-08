@@ -41,6 +41,20 @@ const config = {
       },
 
       colors: {
+        azure: {
+          "50": "#edfbff",
+          "100": "#d6f3ff",
+          "200": "#b5edff",
+          "300": "#83e3ff",
+          "400": "#48d1ff",
+          "500": "#1eb4ff",
+          "600": "#0697ff",
+          "700": "#0081fb",
+          "800": "#0864c5",
+          "900": "#0d569b",
+          "950": "#0e345d",
+        },
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

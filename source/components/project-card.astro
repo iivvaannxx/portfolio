@@ -5,8 +5,8 @@ import type { HTMLAttributes } from "astro/types";
 import { Image } from "astro:assets";
 import Card from "./base/card.astro";
 import Link from "./base/link.astro";
-import SkillBadge from "./skill-badge.astro";
-
+/* import SkillBadge from "./skill-badge.astro";
+ */
 export type Props = Omit<HTMLAttributes<"article">, "slot"> & {
   title: string;
   relatedSkills: string[];
@@ -80,6 +80,7 @@ const {
     <span>{description}</span>
   </p>
   <footer class="mt-4 flex gap-2">
-    {relatedSkills.map((skill) => <SkillBadge skill={skill} />)}
+    <!--     {relatedSkills.map((skill) => <SkillBadge skill={skill} />)}
+ -->
   </footer>
 </Card>

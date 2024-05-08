@@ -16,7 +16,7 @@
   style:--index={index}
   style:--track-progress={0}
   class={cn(
-    "timeline-entry out grid w-full grid-cols-[100px,1fr] grid-rows-[auto,1fr] items-start justify-start gap-12",
+    "timeline-entry out grid w-full grid-cols-[20px,1fr] grid-rows-[auto,1fr] items-start justify-start gap-6 sm:gap-10 lg:gap-12",
     $$props.class,
   )}
   data-timeline-index={index}
@@ -27,7 +27,7 @@
     </div>
     <div class="relative mt-8 h-full w-[6px] rounded-full bg-muted">
       <div
-        class="entry-fill absolute inset-0 w-full origin-top rounded-full bg-accent content-empty"
+        class="entry-fill absolute inset-0 w-full origin-top rounded-full bg-azure-600 content-empty"
       ></div>
     </div>
   </div>

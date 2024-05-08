@@ -147,6 +147,6 @@
 
     animation: grow linear both;
     animation-timeline: view();
-    animation-range: entry 50% exit 40%;
+    animation-range: entry 50% exit 20%;
   }
 </style>

@@ -1,6 +1,6 @@
 ---
-import { skills } from "@app/lib/data/skills";
-import SkillCard from "@app/components/skill-card.astro";
+/* import { skills } from "@app/lib/data/skills";
+import SkillCard from "@app/components/skill-card.astro"; */
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 
 const translations = getTranslations(Astro.locals.locale);
@@ -13,7 +13,7 @@ const t = translations.sections.skills;
 >
   <h2 class="mb-16 text-6xl font-bold">{t.title}</h2>
 
-  <div class="flex flex-col-reverse items-center justify-center gap-8">
+  <!-- <div class="flex flex-col-reverse items-center justify-center gap-8">
     <div class="grid grid-cols-4 gap-4">
       {
         skills.map((skill) => (
@@ -24,7 +24,7 @@ const t = translations.sections.skills;
         ))
       }
     </div>
-  </div>
+  </div> -->
 
   <h3 class="text-3xl font-medium">Games</h3>
 
