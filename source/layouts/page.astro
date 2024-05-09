@@ -14,18 +14,18 @@ import SocialsSidelist from "@app/components/social-sidelist.astro";
     <Header />
 
     <aside
-      class="fixed inset-y-0 left-0 z-50 hidden w-[64px] flex-col items-center justify-end gap-4 lg:flex"
+      class="fixed inset-y-0 left-0 z-[1] hidden w-[64px] flex-col items-center justify-end gap-4 lg:flex"
     >
       <SocialsSidelist />
     </aside>
 
-    <main class="relative size-full">
+    <main class="size-full">
       <slot name="main" />
     </main>
 
-    <!--     <Hero client:load />
- -->
-    <ScrollToTop class="fixed bottom-0 right-0 m-12" />
+    <div class="pointer-events-none fixed inset-0 isolate h-full w-full">
+      <ScrollToTop class="absolute bottom-0 right-0 m-12" />
+    </div>
 
     <Footer />
   </Fragment>

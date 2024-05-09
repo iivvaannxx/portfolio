@@ -4,9 +4,12 @@ import { Icon } from "astro-icon/components";
 
 <footer class="w-full px-2 py-6">
   <p class="text-balance text-center text-base font-semibold md:text-lg">
-    Designed and implemented with <Icon
-      class="relative bottom-px mx-px inline animate-beat"
+    <span> Designed and implemented with </span>
+    <Icon
+      class="mx-px mb-px inline animate-beat"
       name="heart"
-    /> by Ivan Porto
+      aria-label="love"
+    />
+    <span> by Ivan Porto </span>
   </p>
 </footer>

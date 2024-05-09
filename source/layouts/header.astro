@@ -13,13 +13,13 @@ const t = translations.sections;
 
 <header
   class:list={[
-    "sticky inset-x-0 top-0 z-50 h-header w-full bg-background",
+    "sticky inset-x-0 top-0 isolate z-[1] h-header w-full bg-background",
     "lg:h-header",
   ]}
 >
   <nav
     class:list={[
-      "pointer-events-none absolute inset-x-0 flex min-h-header w-full flex-col items-center justify-start overflow-hidden border-b border-border bg-background/85 backdrop-blur-2xl",
+      "pointer-events-none inset-x-0 flex min-h-header w-full flex-col items-center justify-start overflow-hidden border-b border-border bg-background/85",
       "lg:container lg:pointer-events-auto lg:static lg:mx-auto lg:h-header lg:flex-row lg:justify-between lg:px-8",
     ]}
   >
@@ -153,9 +153,7 @@ const t = translations.sections;
       height: theme("height.header");
     }
   }
-</style>
 
-<style>
   hr#header-separator {
     animation: fade-in linear both;
     animation-timeline: scroll(root);

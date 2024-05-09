@@ -12,14 +12,8 @@ const t = translations.sections.about;
 <ObservedSection
   id={t.id}
   order={0}
-  class="relative flex size-full flex-col"
+  class="-z-1 relative flex size-full flex-col"
 >
-  <div
-    id="hero-bg"
-    class="absolute inset-0 -z-10 size-full"
-  >
-  </div>
-
   <div
     class={cn(
       "container mx-auto font-header size-full",
@@ -69,7 +63,7 @@ const t = translations.sections.about;
 
         <button
           id="cta"
-          class="inline-flex h-11 items-center justify-center gap-4 rounded-lg border border-border bg-primary px-4 text-[0.95rem] font-medium text-primary-foreground transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12 xs:px-6 xs:text-base"
+          class="inline-flex h-11 items-center justify-center gap-4 rounded-lg border border-border bg-primary px-4 text-[0.95rem] font-medium text-primary-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12 xs:px-6 xs:text-base"
         >
           <span>
             <Icon
@@ -99,26 +93,5 @@ const t = translations.sections.about;
 <style>
   section {
     height: var(--main-height);
-  }
-
-  div#hero-bg {
-    background: radial-gradient(
-      125% 125% at 50% 10%,
-      theme("colors.background") 50%,
-      theme("colors.background") 100%
-    );
-  }
-
-  button#cta {
-    will-change: transform, color;
-    /* background-size: 200% 100%;
-    background-image: linear-gradient(
-      110deg,
-      theme("colors.background"),
-      45%,
-      theme("colors.accent.DEFAULT"),
-      55%,
-      theme("colors.background")
-    ) */
   }
 </style>
