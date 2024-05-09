@@ -23,7 +23,7 @@
   );
 
   --scrollbar-width: thin;
-  --scrollbar-width-legacy: 8px;
+  --scrollbar-width-legacy: 6px;
   --scrollbar-thumb-radius: theme("borderRadius.full");
 }
 

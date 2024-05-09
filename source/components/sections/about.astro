@@ -2,7 +2,6 @@
 import UserLocation from "@app/components/user-location.astro";
 import ObservedSection from "@app/layouts/observed-section.astro";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
-import { Hero } from "@app/modules/three-fiber/components/hero";
 import { cn } from "@app/lib/helpers/style";
 import { Icon } from "astro-icon/components";
 
@@ -23,13 +22,11 @@ const t = translations.sections.about;
 
   <div
     class={cn(
-      "container mx-auto grid grid-areas-hero-v grid-cols-hero-v grid-rows-hero-v font-header size-full",
-      "xl:grid-areas-hero-h xl:grid-cols-hero-h xl:grid-rows-hero-h xl:items-center xl:p-12",
+      "container mx-auto font-header size-full",
+      "xl:items-center xl:p-12",
     )}
   >
-    <div
-      class="my-auto w-full space-y-4 px-2 pt-2 text-center grid-in-content xs:px-4 xs:pt-4"
-    >
+    <div class="my-auto w-full space-y-4 px-2 pt-2 text-center xs:px-4 xs:pt-4">
       <h1 class="block p-4">
         <span
           class="text-bae block font-semibold text-foreground/50 xs:text-xl lg:text-3xl"
@@ -62,19 +59,14 @@ const t = translations.sections.about;
         </span>
       </h1>
 
-      <p
-        class="text-balance px-2 font-sans text-base font-medium text-foreground/75 xs:px-4 xs:text-lg lg:text-2xl"
-      >
-        {t.description.p1}
-      </p>
+      <div class="mx-auto flex max-w-screen-md flex-col gap-4 pt-4">
+        <p
+          class="w-full text-balance px-2 font-sans text-base font-medium text-foreground/75 xs:px-4 xs:text-lg lg:text-2xl"
+        >
+          {t.description.p1}
+          {t.description.p2}
+        </p>
 
-      <p
-        class="hidden text-balance font-sans text-lg font-medium text-foreground/75 lg:text-2xl"
-      >
-        {t.description.p2}
-      </p>
-
-      <div class="mx-auto flex max-w-[60%] flex-col gap-4 pt-4 xs:max-w-[70%]">
         <button
           id="cta"
           class="inline-flex h-11 items-center justify-center gap-4 rounded-lg border border-border bg-primary px-4 text-[0.95rem] font-medium text-primary-foreground transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12 xs:px-6 xs:text-base"
@@ -95,10 +87,6 @@ const t = translations.sections.about;
         </a>
       </div>
     </div>
-
-    <div class="w-full grid-in-canvas">
-      <Hero client:load />
-    </div>
   </div>
 
   <div
@@ -110,8 +98,7 @@ const t = translations.sections.about;
 
 <style>
   section {
-    height: calc(100vh - theme("height.header"));
-    height: calc(100dvh - theme("height.header"));
+    height: var(--main-height);
   }
 
   div#hero-bg {

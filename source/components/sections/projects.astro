@@ -1,13 +1,14 @@
 ---
 import MyRoomImage from "@app/assets/images/my-room-project.webp";
 import ProjectCard from "@app/components/project-card.astro";
+import ObservedSection from "@app/layouts/observed-section.astro";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.projects;
 ---
 
-<section
+<ObservedSection
   id={t.id}
   class="container mx-auto flex w-full flex-col items-center p-12"
 >
@@ -18,7 +19,7 @@ const t = translations.sections.projects;
   <ProjectCard
     title="My Room In 3D"
     description="A (quite a bit more) fancy replica of my room. This was my entry to the 9th edition of the Three.js Journey monthly challenge. It scored 3rd place! 🥉"
-    relatedSkills={["blender", "typescript", "threejs", "git"]}
+    relatedSkills={["Blender", "TypeScript", "ThreeJS", "Git"]}
     image={MyRoomImage}
     liveLink="https://my-room.pages.dev/"
     githubLink="https://github.com/iivvaannxx/my-room"
@@ -46,4 +47,4 @@ const t = translations.sections.projects;
     <li>Sense Quiz</li>
     <li>VR Fruit Ninja</li>
   </ul> -->
-</section>
+</ObservedSection>

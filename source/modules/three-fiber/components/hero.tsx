@@ -15,8 +15,14 @@ function Helper() {
 export function Hero() {
   return (
     <Canvas
-      className="aspect-square"
-      camera={{ fov: 45, near: 0.1, far: 1000, position: [0.1, 2, 5.5] }}
+      style={{
+        position: "fixed",
+        inset: 0,
+        height: "var(--screen-safe-height)",
+        width: "100vw",
+        zIndex: -5,
+      }}
+      camera={{ fov: 25, near: 0.1, far: 1000, position: [0, 2, 10] }}
     >
       <ambientLight />
       <hemisphereLight intensity={0.35} />
@@ -26,7 +32,7 @@ export function Hero() {
       />
       <Suspense>
         <Home
-          position={[0, -0.5, 3]}
+          position={[-3, -3, 0]}
           rotation-y={degToRad(270)}
         />
       </Suspense>

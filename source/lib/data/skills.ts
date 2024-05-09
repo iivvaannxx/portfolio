@@ -52,7 +52,7 @@ export const skills = [
   defineSkill("Blender", "creative"),
   defineSkill("Photoshop", "creative"),
   defineSkill("Svelte", "code"),
-  defineSkill("Three.js", "code"),
+  defineSkill("ThreeJS", "code"),
   defineSkill("Virtual Reality", "code"),
 
   defineSkill("Communication", "soft"),

@@ -21,7 +21,7 @@ const formatter = new Intl.DateTimeFormat(locale, {
 <ObservedSection
   id={t.id}
   order={1}
-  class="flex w-full flex-col items-center px-8 py-6 sm:container sm:mx-auto sm:py-6"
+  class="z-10 flex w-full flex-col items-center px-8 py-6 sm:container sm:mx-auto sm:py-6"
 >
   <h2 class="relative mb-16 text-left">
     <span class="font-mono text-xl font-semibold tabular-nums lg:text-3xl"
@@ -48,7 +48,7 @@ const formatter = new Intl.DateTimeFormat(locale, {
         return (
           <TimelineEntry
             index={index + 1}
-            class="ease transition-opacity duration-300"
+            class="ease z-2 transition-opacity duration-300"
           >
             <article class="group relative flex max-w-screen-lg flex-col p-4 lg:max-w-screen-lg">
               <div
