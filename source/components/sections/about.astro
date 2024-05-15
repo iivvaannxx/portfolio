@@ -1,9 +1,12 @@
 ---
+import { Icon } from "astro-icon/components";
+
 import UserLocation from "@app/components/user-location.astro";
 import ObservedSection from "@app/layouts/observed-section.astro";
+import { AboutIsland } from "@app/components/three/islands/about";
+
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 import { cn } from "@app/lib/helpers/style";
-import { Icon } from "astro-icon/components";
 
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.about;
@@ -12,15 +15,12 @@ const t = translations.sections.about;
 <ObservedSection
   id={t.id}
   order={0}
-  class="-z-1 relative flex size-full flex-col"
+  class="-z-1 relative block size-full content-center"
 >
   <div
-    class={cn(
-      "container mx-auto font-header size-full",
-      "xl:items-center xl:p-12",
-    )}
+    class={cn("container m-auto font-header w-full flex flex-col lg:flex-row")}
   >
-    <div class="my-auto w-full space-y-4 px-2 pt-2 text-center xs:px-4 xs:pt-4">
+    <div class="w-full max-w-[50%] space-y-4 p-2 text-left xs:px-4 xs:pt-4">
       <h1 class="block p-4">
         <span
           class="text-bae block font-semibold text-foreground/50 xs:text-xl lg:text-3xl"
@@ -53,7 +53,7 @@ const t = translations.sections.about;
         </span>
       </h1>
 
-      <div class="mx-auto flex max-w-screen-md flex-col gap-4 pt-4">
+      <div class="flex flex-col gap-4">
         <p
           class="w-full text-balance px-2 font-sans text-base font-medium text-foreground/75 xs:px-4 xs:text-lg lg:text-2xl"
         >
@@ -61,25 +61,33 @@ const t = translations.sections.about;
           {t.description.p2}
         </p>
 
-        <button
-          id="cta"
-          class="inline-flex h-11 items-center justify-center gap-4 rounded-lg border border-border bg-primary px-4 text-[0.95rem] font-medium text-primary-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12 xs:px-6 xs:text-base"
-        >
-          <span>
-            <Icon
-              name="lucide:mail"
-              class="size-[18px] xs:size-[22px]"
-            />
-          </span>
-          <span> Get In Touch </span>
-        </button>
-        <a
-          href={`#${translations.sections.experience.id}`}
-          class="inline-flex h-11 items-center justify-center gap-4 rounded-lg border border-border px-6 font-medium text-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12"
-        >
-          Know Me
-        </a>
+        <div class="flex w-max gap-2 p-4">
+          <button
+            id="cta"
+            class="inline-flex h-11 w-full items-center justify-center gap-4 whitespace-nowrap rounded-lg border border-border bg-primary px-4 text-[0.95rem] font-medium text-primary-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12 xs:px-6 xs:text-base"
+          >
+            <span>
+              <Icon
+                name="lucide:mail"
+                class="size-[18px] xs:size-[22px]"
+              />
+            </span>
+            <span> Get In Touch </span>
+          </button>
+          <a
+            href={`#${translations.sections.experience.id}`}
+            class="inline-flex h-11 w-full items-center justify-center gap-4 rounded-lg border border-border px-6 font-medium text-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12"
+          >
+            Know Me
+          </a>
+        </div>
       </div>
+    </div>
+    <div class="aspect-video w-1/2">
+      <AboutIsland
+        slot="island"
+        client:load
+      />
     </div>
   </div>
 

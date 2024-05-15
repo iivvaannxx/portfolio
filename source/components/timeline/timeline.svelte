@@ -94,11 +94,13 @@
         if (prevProgress === 0 && trackProgress > 0) {
           child.classList.remove("out");
           child.classList.add("in");
+          child.ariaHidden = "false";
         }
 
         if (prevProgress > 0 && trackProgress === 0) {
           child.classList.remove("in");
           child.classList.add("out");
+          child.ariaHidden = "true";
         }
       }
 
@@ -147,6 +149,6 @@
 
     animation: grow linear both;
     animation-timeline: view();
-    animation-range: entry 50% exit 20%;
+    animation-range: entry 50% contain 50%;
   }
 </style>

@@ -1,8 +1,7 @@
 ---
-import MyRoomImage from "@app/assets/images/my-room-project.webp";
-import ProjectCard from "@app/components/project-card.astro";
 import ObservedSection from "@app/layouts/observed-section.astro";
 import { getTranslations } from "@app/modules/i18n/lib/translations";
+import { Image } from "astro:assets";
 
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.projects;
@@ -10,20 +9,46 @@ const t = translations.sections.projects;
 
 <ObservedSection
   id={t.id}
-  class="container mx-auto flex w-full flex-col items-center p-12"
+  class="flex w-full flex-row-reverse flex-wrap justify-center gap-24 p-12"
 >
-  <h2 class="mb-16 text-6xl font-bold">{t.title}</h2>
+  <h2 class="mb-16 basis-full text-center text-6xl font-bold">{t.title}</h2>
 
-  <h3 class="text-3xl font-medium">Featured</h3>
-
-  <ProjectCard
-    title="My Room In 3D"
-    description="A (quite a bit more) fancy replica of my room. This was my entry to the 9th edition of the Three.js Journey monthly challenge. It scored 3rd place! 🥉"
-    relatedSkills={["Blender", "TypeScript", "ThreeJS", "Git"]}
-    image={MyRoomImage}
-    liveLink="https://my-room.pages.dev/"
-    githubLink="https://github.com/iivvaannxx/my-room"
+  <div
+    id="cards"
     class="w-1/2"
+  >
+    <div
+      style="--index: 1"
+      class="card box-border rounded-xl border-2 border-border"
+    >
+      <div class="card__content">Card 1</div>
+    </div>
+    <div
+      style="--index: 2"
+      class="card rounded-xl border-2 border-border"
+    >
+      <div class="card__content">Card 2</div>
+    </div>
+    <div
+      style="--index: 3"
+      class="card rounded-xl border-2 border-border"
+    >
+      <div class="card__content">Card 3</div>
+    </div>
+    <div
+      style="--index: 4"
+      class="card rounded-xl border-2 border-border"
+    >
+      <div class="card__content">Card 4</div>
+    </div>
+  </div>
+
+  <Image
+    src="https://dummyimage.com/800"
+    alt="A random image from Unsplash"
+    class="max-w-[800px] self-start"
+    width={800}
+    height={800}
   />
 
   <!--   <ul>
@@ -48,3 +73,54 @@ const t = translations.sections.projects;
     <li>VR Fruit Ninja</li>
   </ul> -->
 </ObservedSection>
+
+<style is:global>
+  :root {
+    --card-top-offset: 1em;
+    --card-margin: 200px;
+    --card-height: 800px;
+  }
+
+  .card {
+    --index0: calc(var(--index) - 1); /* 0-based index */
+    --reverse-index: calc(var(--numcards) - var(--index0)); /* reverse index */
+    --reverse-index0: calc(
+      var(--reverse-index) - 1
+    ); /* 0-based reverse index */
+
+    position: sticky;
+    top: 100px;
+
+    padding-top: calc(var(--index) * var(--card-top-offset));
+  }
+
+  @keyframes scale {
+    to {
+      transform: scale(calc(1.1 - calc(0.1 * var(--reverse-index))));
+    }
+  }
+
+  #cards {
+    --numcards: 4;
+    view-timeline-name: --cards-element-scrolls-in-body;
+
+    display: grid;
+    grid-template-rows: repeat(var(--numcards), var(--card-height));
+    grid-template-columns: 1fr;
+
+    gap: var(--card-margin);
+
+    padding-bottom: calc(var(--numcards) * var(--card-top-offset));
+    margin-bottom: var(--card-margin);
+  }
+
+  .card__content {
+    --start-range: calc(var(--index0) / var(--numcards) * 100%);
+    --end-range: calc((var(--index)) / var(--numcards) * 100%);
+
+    animation: linear scale forwards;
+    animation-timeline: --cards-element-scrolls-in-body;
+    animation-range: exit-crossing var(--start-range) exit-crossing
+      var(--end-range);
+  }
+</style>

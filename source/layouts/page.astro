@@ -5,8 +5,8 @@ import Footer from "@app/layouts/footer.astro";
 
 import ScrollToTop from "@app/components/scroll-to-top.astro";
 import SocialsSidelist from "@app/components/social-sidelist.astro";
-/* import { Hero } from "@app/modules/three-fiber/components/hero";
- */
+
+import { Experience } from "@root/source/components/three/experience";
 ---
 
 <Base>
@@ -19,14 +19,16 @@ import SocialsSidelist from "@app/components/social-sidelist.astro";
       <SocialsSidelist />
     </aside>
 
-    <main class="size-full">
-      <slot name="main" />
-    </main>
-
-    <div class="pointer-events-none fixed inset-0 isolate h-full w-full">
-      <ScrollToTop class="absolute bottom-0 right-0 m-12" />
-    </div>
+    <Experience client:load>
+      <main
+        slot="content"
+        class="relative w-full"
+      >
+        <slot name="main" />
+      </main>
+    </Experience>
 
     <Footer />
+    <ScrollToTop class="absolute bottom-0 right-0 m-12" />
   </Fragment>
 </Base>
