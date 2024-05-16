@@ -1,0 +1,51 @@
+---
+import { getTranslations } from "@app/modules/i18n/lib/translations";
+import { SkillsIsland } from "@app/components/experience/islands/skills";
+import ObservedSection from "@app/layouts/observed-section.astro";
+
+import SkillTabs from "./skill-tabs.svelte";
+import SkillGroup from "./skill-group.astro";
+
+const translations = getTranslations(Astro.locals.locale);
+const t = translations.sections.skills;
+---
+
+<ObservedSection
+  id={t.id}
+  order={2}
+  class="flex w-full flex-col items-center p-12"
+>
+  <h2 class="mb-16 text-6xl font-bold">{t.title}</h2>
+
+  <div class="flex w-full justify-center gap-8">
+    <SkillTabs
+      class="mt-8 flex w-max flex-col gap-y-12 text-lg font-medium"
+      client:visible
+    >
+      <SkillGroup
+        slot="languages"
+        group="languages"
+      />
+      <SkillGroup
+        slot="gamedev"
+        group="games"
+      />
+      <SkillGroup
+        slot="webdev"
+        group="web"
+      />
+      <SkillGroup
+        slot="creative"
+        group="creative"
+      />
+      <SkillGroup
+        slot="others"
+        group="others"
+      />
+    </SkillTabs>
+
+    <div class="ml-12 size-96">
+      <SkillsIsland client:idle />
+    </div>
+  </div>
+</ObservedSection>

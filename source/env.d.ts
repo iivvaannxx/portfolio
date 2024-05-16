@@ -1,19 +1,15 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
+/// <reference types="unplugin-icons/types/svelte" />
 /// <reference types="typed-query-selector" />
 
 import type { Locale } from "@app/modules/i18n/lib/locales";
 import type { Turnstile } from "@app/lib/types/turnstile";
+import type { Skill } from "@app/lib/data/skills";
 
 interface CustomEventMap {
-  "timeline-progress": CustomEvent<{
-    progress: number;
-    timeline: {
-      name: string;
-      itemCount: number;
-      animation: CSSAnimation;
-      element: HTMLElement;
-    };
+  "skill:show": CustomEvent<{
+    skillName: Skill;
   }>;
 }
 
@@ -27,14 +23,7 @@ declare global {
 
   interface Window {
     turnstile: Turnstile;
-
-    addEventListener: <K extends keyof CustomEventMap>(
-      type: K,
-      listener: (this: Document, ev: CustomEventMap[K]) => void,
-    ) => void;
-
-    dispatchEvent: <K extends keyof CustomEventMap>(
-      ev: CustomEventMap[K],
-    ) => void;
   }
+
+  interface DocumentEventMap extends CustomEventMap {}
 }

@@ -1,6 +1,16 @@
 import type { KebabCase } from "type-fest";
 
-export type SkillCategory = "code" | "creative" | "soft";
+export type SkillCategory =
+  | "code"
+  | "frontend"
+  | "backend"
+  | "devops"
+  | "platform"
+  | "game-dev"
+  | "tools"
+  | "scripting"
+  | "creative"
+  | "soft";
 
 /**
  * Returns the icon name for a given skill.
@@ -33,32 +43,55 @@ function defineSkill<
   return { name, categories } as const;
 }
 
-export const skills = [
+export const languages = [
   defineSkill("C++", "code"),
   defineSkill("C#", "code"),
+  defineSkill("Python", "code", "scripting"),
   defineSkill("JavaScript", "code"),
   defineSkill("TypeScript", "code"),
-  defineSkill("Python", "code"),
-  defineSkill("Bash", "code"),
-  defineSkill("Unity", "code"),
-  defineSkill("Unreal Engine", "code"),
-  defineSkill("Godot", "code"),
-  defineSkill("Git", "code"),
-  defineSkill("Docker", "code"),
-  defineSkill("React", "code"),
-  defineSkill("Deno", "code"),
-  defineSkill("Node", "code"),
-  defineSkill("TailwindCSS", "code"),
+  defineSkill("Bash", "code", "scripting"),
+] as const;
+
+export const games = [
+  defineSkill("Unity", "game-dev"),
+  defineSkill("Unreal Engine", "game-dev"),
+  defineSkill("Godot", "game-dev"),
+] as const;
+
+export const web = [
+  defineSkill("React", "frontend"),
+  defineSkill("Svelte", "frontend"),
+  defineSkill("Node", "backend"),
+  defineSkill("Deno", "backend"),
+  defineSkill("TailwindCSS", "frontend"),
+  defineSkill("ThreeJS", "frontend"),
+] as const;
+
+export const creative = [
   defineSkill("Blender", "creative"),
   defineSkill("Photoshop", "creative"),
-  defineSkill("Svelte", "code"),
-  defineSkill("ThreeJS", "code"),
-  defineSkill("Virtual Reality", "code"),
+] as const;
 
+export const others = [
+  defineSkill("Git", "tools"),
+  defineSkill("Docker", "devops", "tools"),
+] as const;
+
+export const soft = [
   defineSkill("Communication", "soft"),
   defineSkill("Analytical Thinking", "soft"),
   defineSkill("Teamwork", "soft"),
   defineSkill("Emotional Intelligence", "soft"),
 ] as const;
 
-export type Skill = (typeof skills)[number]["name"];
+export const skills = {
+  languages,
+  games,
+  web,
+  creative,
+  others,
+  soft,
+} as const;
+
+export type SkillGroup = keyof typeof skills;
+export type Skill = (typeof skills)[keyof typeof skills][number]["name"];

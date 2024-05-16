@@ -2,8 +2,8 @@
 import Page from "@app/layouts/page.astro";
 import About from "@app/components/sections/about.astro";
 
-import Experience from "@app/components/sections/experience.astro";
-import Skills from "@app/components/sections/skills.astro";
+import Jobs from "@root/source/components/sections/jobs.astro";
+import Skills from "@app/components/sections/skills/content.astro";
 /* import Projects from "@app/components/sections/projects.astro";
 import Contact from "@app/components/sections/contact.astro";
 
@@ -18,7 +18,7 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 <Page>
   <Fragment slot="main">
     <About />
-    <Experience />
+    <Jobs />
     <Skills />
     <!--<Projects />
     <Contact /> -->

@@ -7,6 +7,8 @@ import tailwind from "@astrojs/tailwind";
 import robotsTxt from "astro-robots-txt";
 import icon from "astro-icon";
 
+import Icons from "unplugin-icons/vite";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://ivanporto.io",
@@ -30,4 +32,8 @@ export default defineConfig({
     sitemap(),
     robotsTxt(),
   ],
+
+  vite: {
+    plugins: [Icons({ compiler: "svelte" })],
+  },
 });

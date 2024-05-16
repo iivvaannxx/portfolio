@@ -6,7 +6,7 @@ import Footer from "@app/layouts/footer.astro";
 import ScrollToTop from "@app/components/scroll-to-top.astro";
 import SocialsSidelist from "@app/components/social-sidelist.astro";
 
-import { Experience } from "@root/source/components/three/experience";
+import { Canvas } from "@app/components/experience/canvas";
 ---
 
 <Base>
@@ -19,14 +19,11 @@ import { Experience } from "@root/source/components/three/experience";
       <SocialsSidelist />
     </aside>
 
-    <Experience client:load>
-      <main
-        slot="content"
-        class="relative w-full"
-      >
-        <slot name="main" />
-      </main>
-    </Experience>
+    <Canvas client:load />
+
+    <main class="relative w-full">
+      <slot name="main" />
+    </main>
 
     <Footer />
     <ScrollToTop class="absolute bottom-0 right-0 m-12" />
