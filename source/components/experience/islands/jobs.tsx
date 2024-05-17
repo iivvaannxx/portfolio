@@ -1,27 +1,25 @@
-import { useRef } from "react";
-import type { Mesh } from "three";
-import { useFrame } from "@react-three/fiber";
 import type { ScrollSceneChildProps } from "@14islands/r3f-scroll-rig";
+import { Preload } from "@react-three/drei";
 import { Island } from "../island";
+import { Portal } from "../props/portal";
 
 function SpinningTorus({ scale }: ScrollSceneChildProps) {
-  const mesh = useRef<Mesh>(null!);
-  useFrame((_state, delta) => {
-    mesh.current.rotation.y += Math.PI * delta;
-  });
   return (
-    <group
+    <Portal
       scale={scale.xy.min() * 0.3}
-      position-y={70}
-    >
-      <mesh ref={mesh}>
-        <torusGeometry />
-        <meshNormalMaterial />
-      </mesh>
-    </group>
+      radius={3}
+    />
   );
 }
 
 export function ExperienceIsland() {
-  return <Island>{({ ...props }) => <SpinningTorus {...props} />}</Island>;
+  return (
+    <Island>
+      {({ ...props }) => (
+        <SpinningTorus {...props}>
+          <Preload all />
+        </SpinningTorus>
+      )}
+    </Island>
+  );
 }

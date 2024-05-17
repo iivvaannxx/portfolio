@@ -1,6 +1,8 @@
 /** @type {import("prettier").Config} */
 export default {
   plugins: [
+    "prettier-plugin-glsl",
+
     "prettier-plugin-astro",
     "prettier-plugin-svelte",
     "prettier-plugin-tailwindcss",
@@ -16,6 +18,12 @@ export default {
       files: "*.svelte",
       options: {
         parser: "svelte",
+      },
+    },
+    {
+      files: "*.glsl",
+      options: {
+        parser: "glsl-parser",
       },
     },
   ],

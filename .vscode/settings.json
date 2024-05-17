@@ -40,7 +40,8 @@
     "**/.ts",
     "**/.tsx",
     "**/.json",
-    "**/.css"
+    "**/.css",
+    "**/.glsl"
   ],
 
   "eslint.validate": [

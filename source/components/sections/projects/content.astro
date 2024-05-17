@@ -1,0 +1,36 @@
+---
+import ObservedSection from "@app/layouts/observed-section.astro";
+import { getTranslations } from "@app/modules/i18n/lib/translations";
+
+const translations = getTranslations(Astro.locals.locale);
+const t = translations.sections.projects;
+---
+
+<ObservedSection
+  id={t.id}
+  class="flex w-full flex-row-reverse flex-wrap justify-center gap-24 p-12"
+>
+  <h2 class="mb-16 basis-full text-center text-6xl font-bold">{t.title}</h2>
+
+  <!--   <ul>
+    <li>Room</li>
+    <li>Home Manager</li>
+    <li>Link Shortener</li>
+  </ul>
+
+  <h3 class="mt-12 text-3xl font-medium">Other</h3>
+  <ul>
+    <li>Tetris</li>
+    <li>Isolated</li>
+    <li>Covid</li>
+    <li>The Izland</li>
+    <li>Pirateland</li>
+    <li>Sense Quiz</li>
+    <li>Agar.io</li>
+    <li>Channel Packer</li>
+    <li>Advent JS</li>
+    <li>Plataformes (Web)</li>
+    <li>Sense Quiz</li>
+    <li>VR Fruit Ninja</li>
+  </ul> -->
+</ObservedSection>
