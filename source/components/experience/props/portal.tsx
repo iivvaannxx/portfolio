@@ -40,8 +40,8 @@ interface PortalProps {
  * Custom hook for setting up the portal logic.
  *
  * @param options The options for the portal.
- * @param  options.innerColor The inner color of the portal. Defaults to DEFAULT_INNER_COLOR.
- * @param options.outerColor The outer color of the portal. Defaults to DEFAULT_OUTER_COLOR.
+ * @param options.innerColor The inner color of the portal. Defaults to {@link DEFAULT_INNER_COLOR}.
+ * @param options.outerColor The outer color of the portal. Defaults to {@link DEFAULT_OUTER_COLOR}.
  * @returns An object containing the portal material, outer color instance, and inner color instance.
  */
 const usePortal = ({

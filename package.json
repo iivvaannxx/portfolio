@@ -14,12 +14,13 @@
   },
   "dependencies": {
     "@14islands/r3f-scroll-rig": "^8.13.1",
-    "@astrojs/react": "3.3.4",
+    "@astrojs/react": "3.4.0",
     "@astrojs/svelte": "^5.4.0",
-    "@react-three/drei": "^9.105.5",
+    "@pmndrs/assets": "^1.6.0",
+    "@react-three/drei": "^9.106",
     "@react-three/fiber": "^8.16.2",
     "@uidotdev/usehooks": "^2.4.1",
-    "astro": "4.8.3",
+    "astro": "4.9.2",
     "astro-icon": "^1.1.0",
     "balance-text": "^3.3.1",
     "clsx": "^2.1.1",
@@ -33,13 +34,14 @@
     "tailwindcss": "^3.4.3",
     "tailwindcss-animated": "^1.0.1",
     "three": "^0.164.1",
+    "three-stdlib": "^2.30.2",
     "tippy.js": "^6.3.7",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.15.0",
-    "@astrojs/check": "0.6.0",
-    "@astrojs/sitemap": "^3.1.4",
+    "@astrojs/check": "0.7.0",
+    "@astrojs/sitemap": "3.1.5",
     "@astrojs/tailwind": "^5.1.0",
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
@@ -48,7 +50,7 @@
     "@iconify-json/tabler": "^1.1.110",
     "@savvywombat/tailwindcss-grid-areas": "^4.0.0",
     "@types/object-path": "^0.11.4",
-    "@types/react": "^18.3.1",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/three": "^0.164.0",
     "astro-robots-txt": "^1.0.0",
@@ -63,6 +65,7 @@
     "prettier-plugin-glsl": "^0.2.0",
     "prettier-plugin-svelte": "^3.2.3",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "r3f-perf": "^7.2.1",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-debug-screens": "^2.2.1",
     "type-fest": "^4.17.0",
@@ -75,5 +78,10 @@
     "esbuild",
     "lefthook",
     "sharp"
-  ]
+  ],
+  "pnpm": {
+    "patchedDependencies": {
+      "@14islands/r3f-scroll-rig@8.13.1": "patches/@14islands__r3f-scroll-rig@8.13.1.patch"
+    }
+  }
 }

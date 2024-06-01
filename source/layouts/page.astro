@@ -1,31 +1,32 @@
 ---
 import Base from "@app/layouts/base.astro";
-import Header from "@app/layouts/header.astro";
+/* import Header from "@app/layouts/header.astro";
 import Footer from "@app/layouts/footer.astro";
 
 import ScrollToTop from "@app/components/scroll-to-top.astro";
-import SocialsSidelist from "@app/components/social-sidelist.astro";
+import SocialsSidelist from "@app/components/social-sidelist.astro"; */
 
 import { Canvas } from "@app/components/experience/canvas";
 ---
 
 <Base>
   <Fragment slot="body">
-    <Header />
+    <!-- <Header />
 
     <aside
       class="fixed inset-y-0 left-0 z-[1] hidden w-[64px] flex-col items-center justify-end gap-4 lg:flex"
     >
       <SocialsSidelist />
-    </aside>
+    </aside> -->
 
-    <Canvas client:load />
+    <Canvas client:only="react" />
 
     <main class="relative w-full">
       <slot name="main" />
     </main>
 
-    <Footer />
-    <ScrollToTop class="absolute bottom-0 right-0 m-12" />
+    <!-- <Footer />
+
+    <ScrollToTop class="absolute bottom-0 right-0 m-12" /> -->
   </Fragment>
 </Base>

@@ -3,7 +3,6 @@ import { Icon } from "astro-icon/components";
 
 import UserLocation from "@app/components/user-location.astro";
 import ObservedSection from "@app/layouts/observed-section.astro";
-import { AboutIsland } from "@root/source/components/experience/islands/about";
 
 import { getTranslations } from "@app/modules/i18n/lib/translations";
 import { cn } from "@app/lib/helpers/style";
@@ -17,19 +16,17 @@ const t = translations.sections.about;
   order={0}
   class="-z-1 relative block size-full content-center"
 >
-  <div
-    class={cn("container m-auto font-header w-full flex flex-col lg:flex-row")}
-  >
-    <div class="w-full max-w-[50%] space-y-4 p-2 text-left xs:px-4 xs:pt-4">
+  <div class={cn("max-w-[80%] m-auto font-header w-full")}>
+    <div class="w-full space-y-4 p-2 xs:px-4 xs:pt-4">
       <h1 class="block p-4">
         <span
-          class="text-bae block font-semibold text-foreground/50 xs:text-xl lg:text-3xl"
+          class="block text-balance font-semibold text-foreground/50 xs:text-xl lg:text-3xl"
         >
           {t.greeting}
         </span>
 
         <span
-          class="block bg-gradient-to-tr from-azure-700 to-azure-400 bg-clip-text text-[2.5rem] font-extrabold tracking-wide text-transparent xs:text-[3.5rem] lg:text-[7rem]"
+          class="block text-[2.5rem] font-black tracking-wide text-primary xs:text-[3.5rem] lg:text-[7rem]"
         >
           Ivan Porto
         </span>
@@ -40,7 +37,7 @@ const t = translations.sections.about;
               // Because of the split, the placeholder is an empty string
               const isRotatingWords = text === "%s";
               const style = isRotatingWords
-                ? "text-foreground"
+                ? "text-primary/80"
                 : "text-foreground/50";
 
               return (
@@ -53,42 +50,41 @@ const t = translations.sections.about;
         </span>
       </h1>
 
-      <div class="flex flex-col gap-4">
-        <p
-          class="w-full text-balance px-2 font-sans text-base font-medium text-foreground/75 xs:px-4 xs:text-lg lg:text-2xl"
-        >
-          {t.description.p1}
-          {t.description.p2}
-        </p>
+      <p
+        class="w-2/5 text-pretty px-2 font-sans text-base font-medium text-foreground/75 xs:px-4 xs:text-lg lg:text-2xl"
+      >
+        {t.description.p1}
+        {t.description.p2}
+      </p>
 
-        <div class="flex w-max gap-2 p-4">
-          <button
-            id="cta"
-            class="inline-flex h-11 w-full items-center justify-center gap-4 whitespace-nowrap rounded-lg border border-border bg-primary px-4 text-[0.95rem] font-medium text-primary-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12 xs:px-6 xs:text-base"
-          >
-            <span>
-              <Icon
-                name="lucide:mail"
-                class="size-[18px] xs:size-[22px]"
-              />
-            </span>
-            <span> Get In Touch </span>
-          </button>
-          <a
-            href={`#${translations.sections.experience.id}`}
-            class="inline-flex h-11 w-full items-center justify-center gap-4 rounded-lg border border-border px-6 font-medium text-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12"
-          >
-            Know Me
-          </a>
-        </div>
+      <div class="flex flex-wrap gap-8 p-4 *:min-w-fit *:max-w-[30%] *:flex-1">
+        <button
+          id="cta"
+          class="inline-flex h-11 w-full items-center justify-center gap-4 whitespace-nowrap rounded-lg border border-border bg-primary px-4 text-[0.95rem] font-medium text-primary-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12 xs:px-6 xs:text-base"
+        >
+          <span>
+            <Icon
+              name="lucide:mail"
+              class="size-[18px] xs:size-[22px]"
+            />
+          </span>
+          <span> Get In Touch </span>
+        </button>
+        <a
+          href={`#${translations.sections.experience.id}`}
+          class="inline-flex h-14 w-full items-center justify-center gap-4 rounded-lg border border-border px-6 font-medium text-foreground transition focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12"
+        >
+          Know Me
+        </a>
       </div>
     </div>
-    <div class="aspect-video w-1/2">
-      <AboutIsland
-        slot="island"
-        client:load
-      />
-    </div>
+  </div>
+
+  <div class="absolute inset-x-0 bottom-0 h-3/4 w-full">
+    <!-- <AboutIsland
+      client:load
+      proxyClass="w-full h-full"
+    /> -->
   </div>
 
   <div
