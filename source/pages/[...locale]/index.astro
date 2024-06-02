@@ -1,27 +1,104 @@
 ---
-import Page from "@app/layouts/page.astro";
-
-/* 
-import About from "@app/components/sections/about.astro";
-import Jobs from "@root/source/components/sections/jobs.astro";
-import Skills from "@app/components/sections/skills/content.astro";
-import Projects from "@app/components/sections/projects/content.astro"; 
-*/
-
-import { getLocalizedStaticPaths } from "@app/modules/i18n/lib/locales";
 import type { GetStaticPaths } from "astro";
 
+import Page from "@app/layouts/page.astro";
+import { getLocalizedStaticPaths } from "@app/modules/i18n/lib/locales";
+import { getTranslations } from "@modules/i18n/lib/translations";
+import Badge from "@root/source/components/base/badge.astro";
+import { socials } from "@root/source/lib/data/socials";
+import Link from "@root/source/components/base/link.astro";
+import { Icon } from "astro-icon/components";
+
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
+
+const translations = getTranslations(Astro.locals.locale);
+const t = translations.sections.about;
 ---
 
-<Page>
-  <Fragment slot="main">
-    <!-- <About />
-    <div class="h-[300dvh]"></div> -->
-    <!--     
-      <Jobs />
-      <Projects />
-      <Skills />
-    -->
-  </Fragment>
+<Fragment slot="head">
+  <script src="@app/lib/client.ts"></script>
+</Fragment>
+
+<Page bodyClass="fluid">
+  <header></header>
+
+  <main
+    class="container my-16 flex min-h-dvh flex-col justify-center p-10 lg:p-16"
+  >
+    <h1 class="leading-tight">
+      <span
+        style="--fluid-scale: 0.25"
+        class="fluid-scale block font-semibold text-foreground/50"
+        >Hello! My name is</span
+      >
+      <span class="block font-extrabold tracking-wider">Ivan Porto</span>
+      <span
+        style="--fluid-scale: 0.4"
+        class="fluid-scale mt-4 block font-bold text-foreground/50"
+        >I'm a <span class="text-primary">software</span> developer.</span
+      >
+    </h1>
+
+    <p class="mt-12 text-balance font-medium text-foreground/75">
+      {t.description.p1}{" "}{t.description.p2}
+    </p>
+
+    <ul class="mt-4 flex w-full items-center gap-x-3">
+      {
+        socials.map(({ href, i18nKey, iconKey }) => {
+          const translatedLabel = t[i18nKey] as string;
+          return (
+            <li class="rounded-lg bg-background text-accent-foreground/80 transition duration-200 hover:bg-accent hover:text-primary hover:brightness-110">
+              <Link
+                {href}
+                label={translatedLabel}
+                withTooltip
+                targetBlank
+              >
+                <Icon
+                  name={iconKey}
+                  class="box-content size-7 p-2 text-current"
+                />
+              </Link>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <Badge
+      hoverGlow
+      class="w-fit select-none gap-3 px-4 py-2 text-base"
+    >
+      <span class="relative flex h-3 w-3">
+        <span
+          class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"
+        ></span>
+        <span class="relative inline-flex h-3 w-3 rounded-full bg-primary"
+        ></span>
+      </span>
+      <span>Available to work</span>
+    </Badge>
+
+    <section class="mt-16 grid grow grid-cols-8 grid-rows-8 gap-4">
+      <div class="col-span-4 row-span-3 rounded-xl border bg-card px-8 py-4">
+        <h2
+          style="--fluid-scale: 0.5"
+          class="fluid-scale"
+        >
+          Location
+        </h2>
+        <p>Based in Barcelona</p>
+      </div>
+      <div
+        class="test relative col-span-2 row-span-3 aspect-square overflow-hidden rounded-xl border bg-card"
+      >
+      </div>
+      <div class="col-span-2 row-span-6 rounded-xl border bg-card"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>🤫 Psst! Want to know a secret?</p>
+  </footer>
 </Page>

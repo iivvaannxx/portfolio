@@ -8,7 +8,6 @@ import robotsTxt from "astro-robots-txt";
 import icon from "astro-icon";
 
 import Icons from "unplugin-icons/vite";
-import glsl from "vite-plugin-glsl";
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,6 +34,6 @@ export default defineConfig({
   ],
 
   vite: {
-    plugins: [Icons({ compiler: "svelte" }), glsl()],
+    plugins: [Icons({ compiler: "svelte" })],
   },
 });

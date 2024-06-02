@@ -1,32 +1,63 @@
 ---
-import Base from "@app/layouts/base.astro";
-/* import Header from "@app/layouts/header.astro";
-import Footer from "@app/layouts/footer.astro";
+import "@app/styles/index.css";
+import "tippy.js/animations/scale.css";
+import "tippy.js/dist/tippy.css";
 
-import ScrollToTop from "@app/components/scroll-to-top.astro";
-import SocialsSidelist from "@app/components/social-sidelist.astro"; */
+import { cn } from "@app/utils";
 
-import { Canvas } from "@app/components/experience/canvas";
+type Props = {
+  title?: string;
+  description?: string;
+  bodyClass?: string;
+};
+
+const { title, description, bodyClass } = Astro.props;
 ---
 
-<Base>
-  <Fragment slot="body">
-    <!-- <Header />
+<html
+  lang={Astro.locals.locale}
+  class="dark"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
 
-    <aside
-      class="fixed inset-y-0 left-0 z-[1] hidden w-[64px] flex-col items-center justify-end gap-4 lg:flex"
-    >
-      <SocialsSidelist />
-    </aside> -->
+    <meta
+      name="description"
+      content={description}
+    />
 
-    <Canvas client:only="react" />
+    <link
+      rel="sitemap"
+      href="/sitemap-index.xml"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
 
-    <main class="relative w-full">
-      <slot name="main" />
-    </main>
+    <script
+      is:inline
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
 
-    <!-- <Footer />
+    <slot name="head" />
 
-    <ScrollToTop class="absolute bottom-0 right-0 m-12" /> -->
-  </Fragment>
-</Base>
+    <title>{title}</title>
+  </head>
+
+  <body
+    class={cn(
+      "overflow-x-clip bg-background font-sans text-foreground antialiased",
+      bodyClass,
+    )}
+  >
+    <slot />
+  </body>
+</html>

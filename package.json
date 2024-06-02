@@ -13,30 +13,26 @@
     "postinstall": "lefthook install"
   },
   "dependencies": {
-    "@14islands/r3f-scroll-rig": "^8.13.1",
     "@astrojs/react": "3.4.0",
     "@astrojs/svelte": "^5.4.0",
-    "@pmndrs/assets": "^1.6.0",
     "@react-three/drei": "^9.106",
     "@react-three/fiber": "^8.16.2",
-    "@uidotdev/usehooks": "^2.4.1",
     "astro": "4.9.2",
     "astro-icon": "^1.1.0",
     "balance-text": "^3.3.1",
     "clsx": "^2.1.1",
+    "lenis": "^1.1.1",
     "nanostores": "^0.10.3",
     "object-path": "^0.11.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "suspend-react": "^0.1.3",
     "svelte": "^4.2.16",
     "tailwind-merge": "^2.3.0",
     "tailwindcss": "^3.4.3",
     "tailwindcss-animated": "^1.0.1",
     "three": "^0.164.1",
     "three-stdlib": "^2.30.2",
-    "tippy.js": "^6.3.7",
-    "typescript": "^5.4.5"
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.15.0",
@@ -70,6 +66,7 @@
     "tailwindcss-debug-screens": "^2.2.1",
     "type-fest": "^4.17.0",
     "typed-query-selector": "^2.11.2",
+    "typescript": "^5.4.5",
     "unplugin-icons": "^0.19.0",
     "vite-plugin-glsl": "^1.3.0",
     "vite-tsconfig-paths": "^4.3.2"
@@ -78,10 +75,5 @@
     "esbuild",
     "lefthook",
     "sharp"
-  ],
-  "pnpm": {
-    "patchedDependencies": {
-      "@14islands/r3f-scroll-rig@8.13.1": "patches/@14islands__r3f-scroll-rig@8.13.1.patch"
-    }
-  }
+  ]
 }

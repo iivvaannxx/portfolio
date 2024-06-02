@@ -2,7 +2,7 @@
   lang="ts"
   context="module"
 >
-  import { cn } from "@app/lib/helpers/style";
+  import { cn } from "@app/utils";
 </script>
 
 <script lang="ts">
@@ -27,7 +27,7 @@
     </div>
     <div class="relative mt-8 h-full w-[6px] rounded-full bg-muted">
       <div
-        class="entry-fill absolute inset-0 w-full origin-top rounded-full bg-azure-600 content-empty"
+        class="entry-fill bg-azure-600 absolute inset-0 w-full origin-top rounded-full content-empty"
       ></div>
     </div>
   </div>

@@ -4,33 +4,19 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  "@14islands/r3f-scroll-rig@8.13.1":
-    hash: zjk7gibdmbw7qkd3tx2aaylwhm
-    path: patches/@14islands__r3f-scroll-rig@8.13.1.patch
-
 dependencies:
-  "@14islands/r3f-scroll-rig":
-    specifier: ^8.13.1
-    version: 8.13.1(patch_hash=zjk7gibdmbw7qkd3tx2aaylwhm)(@react-three/drei@9.106.0)(@react-three/fiber@8.16.6)(react-dom@18.3.1)(react@18.3.1)(three@0.164.1)
   "@astrojs/react":
     specifier: 3.4.0
     version: 3.4.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)(vite@5.2.12)
   "@astrojs/svelte":
     specifier: ^5.4.0
     version: 5.4.0(astro@4.9.2)(svelte@4.2.17)(typescript@5.4.5)(vite@5.2.12)
-  "@pmndrs/assets":
-    specifier: ^1.6.0
-    version: 1.6.0
   "@react-three/drei":
     specifier: ^9.106
     version: 9.106.0(@react-three/fiber@8.16.6)(@types/react@18.3.3)(@types/three@0.164.1)(react-dom@18.3.1)(react@18.3.1)(three@0.164.1)
   "@react-three/fiber":
     specifier: ^8.16.2
     version: 8.16.6(react-dom@18.3.1)(react@18.3.1)(three@0.164.1)
-  "@uidotdev/usehooks":
-    specifier: ^2.4.1
-    version: 2.4.1(react-dom@18.3.1)(react@18.3.1)
   astro:
     specifier: 4.9.2
     version: 4.9.2(@types/node@20.12.13)(typescript@5.4.5)
@@ -43,6 +29,9 @@ dependencies:
   clsx:
     specifier: ^2.1.1
     version: 2.1.1
+  lenis:
+    specifier: ^1.1.1
+    version: 1.1.1(react-dom@18.3.1)(react@18.3.1)
   nanostores:
     specifier: ^0.10.3
     version: 0.10.3
@@ -55,9 +44,6 @@ dependencies:
   react-dom:
     specifier: ^18.3.1
     version: 18.3.1(react@18.3.1)
-  suspend-react:
-    specifier: ^0.1.3
-    version: 0.1.3(react@18.3.1)
   svelte:
     specifier: ^4.2.16
     version: 4.2.17
@@ -79,9 +65,6 @@ dependencies:
   tippy.js:
     specifier: ^6.3.7
     version: 6.3.7
-  typescript:
-    specifier: ^5.4.5
-    version: 5.4.5
 
 devDependencies:
   "@antfu/eslint-config":
@@ -177,6 +160,9 @@ devDependencies:
   typed-query-selector:
     specifier: ^2.11.2
     version: 2.11.2
+  typescript:
+    specifier: ^5.4.5
+    version: 5.4.5
   unplugin-icons:
     specifier: ^0.19.0
     version: 0.19.0(@vue/compiler-sfc@3.4.27)
@@ -188,52 +174,6 @@ devDependencies:
     version: 4.3.2(typescript@5.4.5)(vite@5.2.12)
 
 packages:
-  /@14islands/lerp@1.0.3:
-    resolution:
-      {
-        integrity: sha512-PiUuf2vrgMc+mk/VN0CaGdnm1E+UvWkstpPFQJ2Sxs9CEa05edWoBhmhjmSCSuEK072rCgXOUkyAYVKviTEqgg==,
-      }
-    dependencies:
-      lerp: 1.0.3
-    dev: false
-
-  /@14islands/r3f-scroll-rig@8.13.1(patch_hash=zjk7gibdmbw7qkd3tx2aaylwhm)(@react-three/drei@9.106.0)(@react-three/fiber@8.16.6)(react-dom@18.3.1)(react@18.3.1)(three@0.164.1):
-    resolution:
-      {
-        integrity: sha512-/9CanySKlzHQoxb9xXdWOBK4Ix/tcgRenuNiFvIH72wvUaEBd2Kd57ViBZQwNp0haVPA/1dbCaowsFCMXYOOqw==,
-      }
-    peerDependencies:
-      "@react-three/drei": ">=9.0.0"
-      "@react-three/fiber": ">=8.0.0"
-      react: ">=18.0"
-      react-dom: ">=18.0"
-      three: ">=0.139.0"
-    peerDependenciesMeta:
-      "@react-three/drei":
-        optional: true
-      "@react-three/fiber":
-        optional: true
-    dependencies:
-      "@14islands/lerp": 1.0.3
-      "@juggle/resize-observer": 3.4.0
-      "@react-three/drei": 9.106.0(@react-three/fiber@8.16.6)(@types/react@18.3.3)(@types/three@0.164.1)(react-dom@18.3.1)(react@18.3.1)(three@0.164.1)
-      "@react-three/fiber": 8.16.6(react-dom@18.3.1)(react@18.3.1)(three@0.164.1)
-      "@studio-freight/lenis": 1.0.42
-      "@types/query-string": 6.3.0
-      debounce: 1.2.1
-      fast-deep-equal: 3.1.3
-      query-string: 6.14.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      react-intersection-observer: 9.10.2(react-dom@18.3.1)(react@18.3.1)
-      supports-webp: 3.0.0
-      suspend-react: 0.0.8(react@18.3.1)
-      three: 0.164.1
-      vecn: 1.3.1
-      zustand: 3.7.2(react@18.3.1)
-    dev: false
-    patched: true
-
   /@alloc/quick-lru@5.2.0:
     resolution:
       {
@@ -1155,6 +1095,13 @@ packages:
       "@types/conventional-commits-parser": 5.0.0
       chalk: 5.3.0
     dev: true
+
+  /@darkroom.engineering/tempus@0.0.46:
+    resolution:
+      {
+        integrity: sha512-s5vav3KMHYezvUCl4ee5epg0oimF6M8C9gAaKxFnFaTvX2q3ywFDryIv6XLd0mRFUt3S1uHDJqKaiEcs2ZVSvw==,
+      }
+    dev: false
 
   /@dprint/formatter@0.2.1:
     resolution:
@@ -2338,13 +2285,6 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@juggle/resize-observer@3.4.0:
-    resolution:
-      {
-        integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==,
-      }
-    dev: false
-
   /@mediapipe/tasks-vision@0.10.8:
     resolution:
       {
@@ -2416,13 +2356,6 @@ packages:
       }
     engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
     dev: true
-
-  /@pmndrs/assets@1.6.0:
-    resolution:
-      {
-        integrity: sha512-fOFrjV6FNYIr29iEhF3JrdTAAo3v98TatmYF3efC1MNiMeN0Sx2BGvGnwgu55s6E9gBxR6yXcm/mkk7gRDT9Bg==,
-      }
-    dev: false
 
   /@popperjs/core@2.11.8:
     resolution:
@@ -3216,14 +3149,6 @@ packages:
       react: 18.3.1
     dev: true
 
-  /@studio-freight/lenis@1.0.42:
-    resolution:
-      {
-        integrity: sha512-HJAGf2DeM+BTvKzHv752z6Z7zy6bA643nZM7W88Ft9tnw2GsJSp6iJ+3cekjyMIWH+cloL2U9X82dKXgdU8kPg==,
-      }
-    deprecated: "'@studio-freight/lenis' has been renamed to just 'lenis', run 'npx @darkroom.engineering/codemods' to update your dependecies accordingly."
-    dev: false
-
   /@stylistic/eslint-plugin-js@2.1.0(eslint@9.3.0):
     resolution:
       {
@@ -3544,16 +3469,6 @@ packages:
         integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==,
       }
 
-  /@types/query-string@6.3.0:
-    resolution:
-      {
-        integrity: sha512-yuIv/WRffRzL7cBW+sla4HwBZrEXRNf1MKQ5SklPEadth+BKbDxiVG8A3iISN5B3yC4EeSCzMZP8llHTcUhOzQ==,
-      }
-    deprecated: This is a stub types definition. query-string provides its own type definitions, so you do not need this installed.
-    dependencies:
-      query-string: 6.14.1
-    dev: false
-
   /@types/react-dom@18.3.0:
     resolution:
       {
@@ -3869,20 +3784,6 @@ packages:
       "@typescript-eslint/types": 7.11.0
       eslint-visitor-keys: 3.4.3
     dev: true
-
-  /@uidotdev/usehooks@2.4.1(react-dom@18.3.1)(react@18.3.1):
-    resolution:
-      {
-        integrity: sha512-1I+RwWyS+kdv3Mv0Vmc+p0dPYH0DTRAo04HLyXReYBL9AeseDWUJyi4THuksBJcu9F0Pih69Ak150VDnqbVnXg==,
-      }
-    engines: { node: ">=16" }
-    peerDependencies:
-      react: ">=18.0.0"
-      react-dom: ">=18.0.0"
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-    dev: false
 
   /@ungap/structured-clone@1.2.0:
     resolution:
@@ -5217,14 +5118,6 @@ packages:
     dependencies:
       character-entities: 2.0.2
 
-  /decode-uri-component@0.2.2:
-    resolution:
-      {
-        integrity: sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==,
-      }
-    engines: { node: ">=0.10" }
-    dev: false
-
   /dedent-js@1.0.1:
     resolution:
       {
@@ -6363,6 +6256,7 @@ packages:
       {
         integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==,
       }
+    dev: true
 
   /fast-diff@1.3.0:
     resolution:
@@ -6463,14 +6357,6 @@ packages:
     engines: { node: ">=8" }
     dependencies:
       to-regex-range: 5.0.1
-
-  /filter-obj@1.1.0:
-    resolution:
-      {
-        integrity: sha512-8rXg1ZnX7xzy2NGDVkBVaAy+lSlPNwad13BtgSlLuxfIslyt5Vg64U7tFcCt4WS1R0hvtnQybT/IyCkGZ3DpXQ==,
-      }
-    engines: { node: ">=0.10.0" }
-    dev: false
 
   /find-up@4.1.0:
     resolution:
@@ -7636,11 +7522,23 @@ packages:
       lefthook-windows-x64: 1.6.14
     dev: true
 
-  /lerp@1.0.3:
+  /lenis@1.1.1(react-dom@18.3.1)(react@18.3.1):
     resolution:
       {
-        integrity: sha512-70Rh4rCkJDvwWiTsyZ1HmJGvnyfFah4m6iTux29XmasRiZPDBpT9Cfa4ai73+uLZxnlKruUS62jj2lb11wURiA==,
+        integrity: sha512-rRwkB+sYKiISc7Ttom4YX+lH+YD92y6ZsIdOjwQNDxWm/kMwp/e9cMprVeWSvsgeXyJ+zjjvhqQPcTvn9cBo5w==,
       }
+    peerDependencies:
+      react: ">=17.0.0"
+      react-dom: ">=17.0.0"
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      "@darkroom.engineering/tempus": 0.0.46
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /leva@0.9.35(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1):
@@ -9508,19 +9406,6 @@ packages:
     engines: { node: ">=6" }
     dev: true
 
-  /query-string@6.14.1:
-    resolution:
-      {
-        integrity: sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==,
-      }
-    engines: { node: ">=6" }
-    dependencies:
-      decode-uri-component: 0.2.2
-      filter-obj: 1.1.0
-      split-on-first: 1.1.0
-      strict-uri-encode: 2.0.0
-    dev: false
-
   /queue-microtask@1.2.3:
     resolution:
       {
@@ -9611,22 +9496,6 @@ packages:
       prop-types: 15.8.1
       react: 18.3.1
     dev: true
-
-  /react-intersection-observer@9.10.2(react-dom@18.3.1)(react@18.3.1):
-    resolution:
-      {
-        integrity: sha512-j2hGADK2hCbAlfaq6L3tVLb4iqngoN7B1fT16MwJ4J16YW/vWLcmAIinLsw0lgpZeMi4UDUWtHC9QDde0/P1yQ==,
-      }
-    peerDependencies:
-      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-    dev: false
 
   /react-is@16.13.1:
     resolution:
@@ -10287,14 +10156,6 @@ packages:
       }
     dev: true
 
-  /split-on-first@1.1.0:
-    resolution:
-      {
-        integrity: sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==,
-      }
-    engines: { node: ">=6" }
-    dev: false
-
   /split-string@3.1.0:
     resolution:
       {
@@ -10346,14 +10207,6 @@ packages:
         integrity: sha512-TlnjJ1C0QrmxRNrON00JvaFFlNh5TTG00APw23j74ET7gkQpTASi6/L2fuiav8pzK715HXtUeClpBTw2NPSn6w==,
       }
     dev: true
-
-  /strict-uri-encode@2.0.0:
-    resolution:
-      {
-        integrity: sha512-QwiXZgpRcKkhTj2Scnn++4PKtWsH0kpzZ62L2R6c/LUVYv7hVnZqcg2+sMuT6R7Jusu1vviK/MFsu6kNJfWlEQ==,
-      }
-    engines: { node: ">=4" }
-    dev: false
 
   /string-argv@0.3.2:
     resolution:
@@ -10519,24 +10372,6 @@ packages:
         integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==,
       }
     engines: { node: ">= 0.4" }
-
-  /supports-webp@3.0.0:
-    resolution:
-      {
-        integrity: sha512-5yfrbixhxDhyVma1Pz73MXHDyKtJaBaHCrJaoEKePF6gzm/7xI8Fd/vZu3oBx2a+jN/ZUpTrNKEzN9QgvdzIoQ==,
-      }
-    dev: false
-
-  /suspend-react@0.0.8(react@18.3.1):
-    resolution:
-      {
-        integrity: sha512-ZC3r8Hu1y0dIThzsGw0RLZplnX9yXwfItcvaIzJc2VQVi8TGyGDlu92syMB5ulybfvGLHAI5Ghzlk23UBPF8xg==,
-      }
-    peerDependencies:
-      react: ">=17.0"
-    dependencies:
-      react: 18.3.1
-    dev: false
 
   /suspend-react@0.1.3(react@18.3.1):
     resolution:
@@ -11368,14 +11203,6 @@ packages:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
     dev: true
-
-  /vecn@1.3.1:
-    resolution:
-      {
-        integrity: sha512-SFlpdqZCjbNiV5RSel2Dvg0L49kSfeapn6SAJwMV/WCGvuYtqlSPWylTU35igGK5bAT1/Pu8QByKaAtALODJDw==,
-      }
-    engines: { node: ">=6.4.0" }
-    dev: false
 
   /vfile-location@5.0.2:
     resolution:

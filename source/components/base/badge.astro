@@ -1,5 +1,5 @@
 ---
-import { cn } from "@app/lib/helpers/style";
+import { cn } from "@app/utils";
 import type { HTMLAttributes } from "astro/types";
 
 export type BadgeProps = { hoverGlow?: boolean };
@@ -20,7 +20,7 @@ const { class: clazz, hoverGlow = false, ...props } = Astro.props;
   {
     hoverGlow && (
       <div class="absolute inset-0 flex size-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover/badge:duration-1000 group-hover/badge:[transform:skew(-12deg)_translateX(100%)]">
-        <div class="relative h-full w-8 bg-foreground/20" />
+        <div class="relative h-full w-8 bg-foreground/15" />
       </div>
     )
   }
