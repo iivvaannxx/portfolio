@@ -8,6 +8,8 @@ import Badge from "@root/source/components/base/badge.astro";
 import { socials } from "@root/source/lib/data/socials";
 import Link from "@root/source/components/base/link.astro";
 import { Icon } from "astro-icon/components";
+import { Canvas } from "@root/source/components/experience/canvas";
+import { CharacterView } from "@app/components/experience/views/character";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
@@ -21,6 +23,8 @@ const t = translations.sections.about;
 
 <Page bodyClass="fluid">
   <header></header>
+
+  <Canvas client:load />
 
   <main
     class="container my-16 flex min-h-dvh flex-col justify-center p-10 lg:p-16"
@@ -81,7 +85,9 @@ const t = translations.sections.about;
     </Badge>
 
     <section class="mt-16 grid grow grid-cols-8 grid-rows-8 gap-4">
-      <div class="col-span-4 row-span-3 rounded-xl border bg-card px-8 py-4">
+      <div
+        class="relative col-span-4 row-span-3 overflow-clip rounded-xl border bg-card px-8 py-4"
+      >
         <h2
           style="--fluid-scale: 0.5"
           class="fluid-scale"
@@ -89,9 +95,13 @@ const t = translations.sections.about;
           Location
         </h2>
         <p>Based in Barcelona</p>
+        <CharacterView
+          className="gradient absolute right-0 top-0 aspect-square h-full"
+          client:idle
+        />
       </div>
       <div
-        class="test relative col-span-2 row-span-3 aspect-square overflow-hidden rounded-xl border bg-card"
+        class="col-span-2 row-span-3 aspect-square overflow-hidden rounded-xl border bg-card"
       >
       </div>
       <div class="col-span-2 row-span-6 rounded-xl border bg-card"></div>

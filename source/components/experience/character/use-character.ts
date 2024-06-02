@@ -19,7 +19,7 @@ import {
 import type { GLTF } from "three-stdlib";
 
 // Preload the character model.
-const MODEL_PATH = "/models/character2.glb";
+const MODEL_PATH = "/models/character.glb";
 useGLTF.preload(MODEL_PATH);
 
 /** The loaded result shape of the GLTF character model. */

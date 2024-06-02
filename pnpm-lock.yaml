@@ -47,6 +47,9 @@ dependencies:
   svelte:
     specifier: ^4.2.16
     version: 4.2.17
+  tailwind-gradient-mask-image:
+    specifier: ^1.2.0
+    version: 1.2.0
   tailwind-merge:
     specifier: ^2.3.0
     version: 2.3.0
@@ -10488,6 +10491,13 @@ packages:
       "@pkgr/core": 0.1.1
       tslib: 2.6.2
     dev: true
+
+  /tailwind-gradient-mask-image@1.2.0:
+    resolution:
+      {
+        integrity: sha512-tUJaGhvqbJFiVKJu6EU5n//KvGdVvY3L3VOFNqjztk13+ifAk00pcSNHBTgHfUiBGOEzDn0gFRbSmsftUV1lXA==,
+      }
+    dev: false
 
   /tailwind-merge@2.3.0:
     resolution:

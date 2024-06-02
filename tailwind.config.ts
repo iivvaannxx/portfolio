@@ -1,11 +1,14 @@
 import { fontFamily, screens } from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss";
 
+import pluginMaskImage from "tailwind-gradient-mask-image";
+
 const config: Config = {
+  content: ["./source/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: ["class"],
   safelist: ["dark"],
 
-  content: ["./source/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  plugins: [pluginMaskImage],
   theme: {
     container: {
       center: true,
