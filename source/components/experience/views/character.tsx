@@ -31,7 +31,7 @@ export function CharacterView(props: HTMLAttributes<HTMLDivElement>) {
         clip
         observe
       >
-        <Character />
+        <Character initialAnimation="idle" />
       </Bounds>
     </View>
   );

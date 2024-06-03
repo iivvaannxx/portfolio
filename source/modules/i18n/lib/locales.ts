@@ -1,11 +1,11 @@
-/** The default locale of the website. */
-export const defaultLocale: Locale = "en";
-
 /** The locales available in the website. */
 export const supportedLocales = ["en", "es", "ca"] as const;
 
 /** Defines a locale code of the website. */
 export type Locale = (typeof supportedLocales)[number];
+
+/** The default locale of the website. */
+export const defaultLocale: Locale = "en";
 
 /**
  * Checks if a given locale is valid.

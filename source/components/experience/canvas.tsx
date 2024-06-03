@@ -16,7 +16,7 @@ export function Canvas() {
           pointerEvents: "none",
 
           inset: 0,
-          zIndex: 100,
+          zIndex: 10,
         }}
       >
         <Perf position="top-left" />

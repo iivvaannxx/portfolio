@@ -10,6 +10,8 @@ import Link from "@root/source/components/base/link.astro";
 import { Icon } from "astro-icon/components";
 import { Canvas } from "@root/source/components/experience/canvas";
 import { CharacterView } from "@app/components/experience/views/character";
+import TimeDiff from "@root/source/modules/i18n/components/time-diff.svelte";
+import RealTime from "@root/source/modules/i18n/components/real-time.svelte";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
@@ -84,31 +86,76 @@ const t = translations.sections.about;
       <span>Available to work</span>
     </Badge>
 
-    <section class="mt-16 grid grow grid-cols-8 grid-rows-8 gap-4">
-      <div
-        class="relative col-span-4 row-span-3 overflow-clip rounded-xl border bg-card px-8 py-4"
+    <section class="mt-16 grid grow grid-cols-9 grid-rows-9 gap-4">
+      <article
+        class="col-span-9 row-span-3 flex flex-col justify-between rounded-xl border bg-card px-8 pb-8 pt-6"
       >
-        <h2
-          style="--fluid-scale: 0.5"
-          class="fluid-scale"
-        >
-          Location
-        </h2>
-        <p>Based in Barcelona</p>
+      </article>
+
+      <article class="col-span-3 row-span-6 rounded-xl border bg-card">
+      </article>
+      <article
+        class="relative col-span-3 row-span-3 flex aspect-square items-end justify-center overflow-clip rounded-xl border bg-card px-8 py-10"
+      >
         <CharacterView
-          className="gradient absolute right-0 top-0 aspect-square h-full"
+          className="pointer-events-none absolute inset-0 -top-4 size-full"
           client:idle
         />
-      </div>
-      <div
-        class="col-span-2 row-span-3 aspect-square overflow-hidden rounded-xl border bg-card"
-      >
-      </div>
-      <div class="col-span-2 row-span-6 rounded-xl border bg-card"></div>
-    </section>
-  </main>
+        <div
+          class="absolute inset-0 top-1/2 z-20 h-1/2 w-full bg-card gradient-mask-t-60"
+        >
+        </div>
 
-  <footer>
-    <p>🤫 Psst! Want to know a secret?</p>
-  </footer>
+        <div class="z-30 w-4/5">
+          <button
+            class="relative inline-flex h-12 w-full items-center justify-center gap-4 rounded-md bg-primary px-6 text-xl font-bold text-primary-foreground transition will-change-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
+          >
+            <div
+              class="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-primary/70 to-primary opacity-75 blur"
+            >
+            </div>
+
+            <Icon
+              name="lucide:mail"
+              class="size-[1.2em]"
+            />
+            <span> Get In Touch </span>
+          </button>
+        </div>
+      </article>
+      <article
+        class="col-span-3 row-span-3 flex flex-col justify-between rounded-xl border bg-card p-6"
+      >
+        <header>
+          <h2
+            style="--fluid-scale: 0.5"
+            class="fluid-scale font-bold"
+          >
+            Location
+          </h2>
+          <p>Based in Barcelona</p>
+        </header>
+
+        <p class="z-30">
+          <RealTime
+            class="block font-semibold tabular-nums"
+            locale={Astro.locals.locale}
+            client:load
+          />
+          <TimeDiff
+            class="block"
+            timezoneA="Europe/Madrid"
+            timezoneB="user"
+            client:load
+          />
+        </p>
+      </article>
+      <article class="col-span-6 row-span-3 rounded-xl border bg-card">
+      </article>
+    </section>
+
+    <footer>
+      <p>🤫 Psst! Want to know a secret?</p>
+    </footer>
+  </main>
 </Page>
