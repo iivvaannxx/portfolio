@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import type { HTMLAttributes } from "astro/types";
+
+import { cn } from "../utils";
+
+export type Props = HTMLAttributes<"div"> & {
+  caption: string;
+};
+
+const { caption, class: clazz, ...props } = Astro.props;
+---
+
+<div
+  {...props}
+  class={cn(
+    "inline-block grayscale transition-transform will-change-transform scale-90 rotate-6 duration-300",
+    "hover:grayscale-0 hover:scale-100 hover:rotate-0",
+    clazz,
+  )}
+>
+  <div data-polaroid>
+    <slot name="image">
+      <Image
+        src="https://placehold.co/350"
+        alt="Placeholder"
+        inferSize
+      />
+    </slot>
+    <p class="mb-px mt-4 text-center text-lg leading-loose text-black/90">
+      {caption}
+    </p>
+  </div>
+</div>
+
+<style>
+  [data-polaroid] {
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
+  }
+
+  [data-polaroid]::before {
+    content: " ";
+    position: absolute;
+
+    transform: rotate(6deg);
+    z-index: -1;
+  }
+
+  div:has(> [data-polaroid]):hover [data-polaroid]::before {
+    content: " ";
+    position: absolute;
+
+    transform: rotate(0deg);
+    z-index: -1;
+  }
+</style>

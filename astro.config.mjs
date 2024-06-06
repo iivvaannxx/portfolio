@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, squooshImageService } from "astro/config";
 
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
@@ -18,6 +18,10 @@ export default defineConfig({
   output: "static",
 
   compressHTML: true,
+  image: {
+    service: squooshImageService(),
+  },
+
   integrations: [
     react(),
     svelte(),
@@ -27,6 +31,20 @@ export default defineConfig({
 
     icon({
       iconDir: "source/assets/icons",
+
+      // See: https://github.com/natemoo-re/astro-icon/issues/195
+      svgoOptions: {
+        plugins: [
+          {
+            name: "preset-default",
+            params: {
+              overrides: {
+                cleanupIds: false,
+              },
+            },
+          },
+        ],
+      },
     }),
 
     sitemap(),

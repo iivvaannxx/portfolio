@@ -16,10 +16,10 @@ export const catalan = {
       },
 
       greeting: "Hola! Em dic",
-      description: {
-        p1: "Especialitzat en desenvolupament de jocs, però apassionat per desenvolupar qualsevol tipus de software.",
-        p2: "Amb més de 6 anys d'experiència programant i més de 4 anys d'experiència professional.",
-      },
+      description: `
+        Especialitzat en desenvolupament de jocs, però apassionat per desenvolupar qualsevol tipus de software.
+        Amb més de 6 anys d'experiència programant i més de 4 anys d'experiència professional.
+      `,
     },
 
     experience: {

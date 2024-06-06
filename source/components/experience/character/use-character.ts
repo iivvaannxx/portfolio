@@ -8,15 +8,14 @@ import {
   useState,
 } from "react";
 
-import {
-  type AnimationAction,
-  type Bone,
-  type Group,
-  type MeshStandardMaterial,
-  type SkinnedMesh,
-  Vector3,
-} from "three";
 import type { GLTF } from "three-stdlib";
+import type {
+  AnimationAction,
+  Bone,
+  Group,
+  MeshStandardMaterial,
+  SkinnedMesh,
+} from "three";
 
 // Preload the character model.
 const MODEL_PATH = "/models/character.glb";
@@ -29,8 +28,6 @@ type GLTFResult = GLTF & {
     armRight: SkinnedMesh;
     body: SkinnedMesh;
     head_1: SkinnedMesh;
-    legLeft: SkinnedMesh;
-    legRight: SkinnedMesh;
     root: Bone;
   };
   materials: {
@@ -39,26 +36,7 @@ type GLTFResult = GLTF & {
 };
 
 /** The animations baked into the character. */
-type ActionName =
-  | "cheer"
-  | "idle"
-  | "jumpShort"
-  | "jumpIdle"
-  | "jumpLand"
-  | "jumpStart"
-  | "lieDown"
-  | "lieIdle"
-  | "lieStandUp"
-  | "running"
-  | "sitChairDown"
-  | "sitChairIdle"
-  | "sitChairStandUp"
-  | "sitFloorDown"
-  | "sitFloorIdle"
-  | "standUp"
-  | "fist"
-  | "walkingBackwards"
-  | "walking";
+type ActionName = "cheer" | "idle";
 
 /** A record which maps all the animations to usable animation actions. */
 type GLTFActions = Record<ActionName, AnimationAction>;
@@ -73,14 +51,6 @@ export interface CharacterHandle {
 
   /** The current action playing on the character. */
   currentAction: AnimationAction;
-
-  /**
-   * Moves the character in the given direction at the given speed.
-   *
-   * @param speed - The speed at which to move the character.
-   * @param direction - The direction in which to move the character. Defaults to the forward direction.
-   */
-  move: (speed: number, direction?: Vector3) => void;
 
   /**
    * Switches the character's animation to the given one.
@@ -108,9 +78,6 @@ export interface CharacterProps {
   /** The initial animation to play on load. */
   initialAnimation?: ActionName;
 }
-
-// Create here reusable instances of the character state.
-const WORLD_DIRECTION = new Vector3();
 
 export function useCharacter(
   forwardedRef: ForwardedRef<CharacterHandle>,
@@ -143,16 +110,6 @@ export function useCharacter(
         model: group,
         actions: typedActions,
         currentAction: typedActions[currentActionName],
-
-        move(speed, direction) {
-          if (this.model.current) {
-            const character = this.model.current;
-            const dirVector =
-              direction ?? character.getWorldDirection(WORLD_DIRECTION);
-
-            character.position.add(dirVector.multiplyScalar(speed));
-          }
-        },
 
         setAnimation(
           newAnimation,

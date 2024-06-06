@@ -60,20 +60,6 @@ export const Character = forwardRef<CharacterHandle, Props>(
           skeleton={nodes.head_1.skeleton}
           castShadow={castShadow}
         />
-        <skinnedMesh
-          name="legLeft"
-          geometry={nodes.legLeft.geometry}
-          material={materials.colormap}
-          skeleton={nodes.legLeft.skeleton}
-          castShadow={castShadow}
-        />
-        <skinnedMesh
-          name="legRight"
-          geometry={nodes.legRight.geometry}
-          material={materials.colormap}
-          skeleton={nodes.legRight.skeleton}
-          castShadow={castShadow}
-        />
         <primitive object={nodes.root} />
       </group>
     );

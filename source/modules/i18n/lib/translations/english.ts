@@ -15,10 +15,10 @@ export const english = {
       },
 
       greeting: "Hello! My name is",
-      description: {
-        p1: "Specialized in game development, yet passionate about developing any kind of software.",
-        p2: "With 6+ years of coding experience and 4+ years of professional experience.",
-      },
+      description: `
+        Specialized in <strong>game development</strong>, yet passionate about developing any kind of software.
+        With 6+ years of coding experience and <strong>4+ years of professional experience</strong>.
+      `,
     },
 
     experience: {

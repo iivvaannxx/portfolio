@@ -2,13 +2,14 @@ import { fontFamily, screens } from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss";
 
 import pluginMaskImage from "tailwind-gradient-mask-image";
+import pluginFluidType from "tailwindcss-fluid-type";
 
 const config: Config = {
   content: ["./source/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: ["class"],
   safelist: ["dark"],
 
-  plugins: [pluginMaskImage],
+  plugins: [pluginMaskImage, pluginFluidType],
   theme: {
     container: {
       center: true,
@@ -19,9 +20,10 @@ const config: Config = {
     },
 
     screens: {
-      fold: "280px",
-      xs: "375px",
+      "fold": "280px",
+      "xs": "375px",
       ...screens,
+      "3xl": "1600px",
     },
 
     extend: {
@@ -83,6 +85,18 @@ const config: Config = {
         sans: ["Satoshi", ...fontFamily.sans],
         header: ["Onest", "Arial", "Liberation Sans", "sans-serif"],
         mono: ["Monaspace Neon", "Monaspace Neon Fallback", ...fontFamily.mono],
+      },
+
+      keyframes: {
+        beat: {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.1)" },
+          "100%": { transform: "scale(1)" },
+        },
+      },
+
+      animation: {
+        beat: "beat 1s infinite",
       },
     },
   },

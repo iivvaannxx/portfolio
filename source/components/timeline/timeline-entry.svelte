@@ -16,23 +16,23 @@
   style:--index={index}
   style:--track-progress={0}
   class={cn(
-    "timeline-entry out grid w-full grid-cols-[20px,1fr] grid-rows-[auto,1fr] items-start justify-start gap-6 sm:gap-10 lg:gap-12",
+    "timeline-entry grid w-full grid-cols-[20px,1fr] grid-rows-[auto,1fr] items-start justify-start gap-14",
     $$props.class,
   )}
   data-timeline-index={index}
 >
-  <div class="entry-track mt-4 flex size-full flex-col items-center">
+  <div class="entry-track mt-4 flex size-full flex-col items-center opacity-20">
     <div class="flex aspect-square items-center justify-center p-3">
       <span class="inline-block size-3 rounded-full bg-foreground"></span>
     </div>
     <div class="relative mt-8 h-full w-[6px] rounded-full bg-muted">
       <div
-        class="entry-fill bg-azure-600 absolute inset-0 w-full origin-top rounded-full content-empty"
+        class="entry-fill absolute inset-0 w-full origin-top rounded-full bg-primary content-empty"
       ></div>
     </div>
   </div>
 
-  <div class="entry-content">
+  <div class="entry-content opacity-0">
     <slot />
   </div>
 </svelte:element>

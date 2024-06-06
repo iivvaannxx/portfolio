@@ -10,105 +10,363 @@ import Link from "@root/source/components/base/link.astro";
 import { Icon } from "astro-icon/components";
 import { Canvas } from "@root/source/components/experience/canvas";
 import { CharacterView } from "@app/components/experience/views/character";
-import TimeDiff from "@root/source/modules/i18n/components/time-diff.svelte";
-import RealTime from "@root/source/modules/i18n/components/real-time.svelte";
+import { SkillView } from "@app/components/experience/views/skill";
+import MyTime from "@root/source/modules/i18n/components/my-time.svelte";
+import SkillBadge from "@root/source/components/skill-badge.astro";
+
+import Footer from "@root/source/layouts/footer.astro";
+import Timeline from "@root/source/components/timeline/timeline.svelte";
+import { experience } from "@root/source/lib/data/experience";
+import TimelineEntry from "@root/source/components/timeline/timeline-entry.svelte";
+import ProjectCard from "@root/source/components/project-card.astro";
+
+import myRoom from "@app/assets/images/my-room-project.webp";
+import theGamelab from "@app/assets/images/gamelab-project.webp";
+import tetris from "@app/assets/images/tetris-project.webp";
+import MysteryButton from "@root/source/components/mystery-button.astro";
+import PolaroidPhoto from "@root/source/components/polaroid-photo.astro";
+
+import { getIconForSkill, skills } from "@root/source/lib/data/skills";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
-
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections.about;
+
+const { locale } = Astro.locals;
+const formatter = new Intl.DateTimeFormat(locale, {
+  month: "long",
+  year: "numeric",
+});
 ---
 
 <Fragment slot="head">
   <script src="@app/lib/client.ts"></script>
 </Fragment>
 
-<Page bodyClass="fluid">
+<Page>
   <header></header>
 
   <Canvas client:load />
 
   <main
-    class="container my-16 flex min-h-dvh flex-col justify-center p-10 lg:p-16"
+    class="container my-16 p-12 lg:max-w-screen-xl lg:px-24 lg:py-16 xl:max-w-screen-2xl 2xl:max-w-screen-3xl"
   >
-    <h1 class="leading-tight">
-      <span
-        style="--fluid-scale: 0.25"
-        class="fluid-scale block font-semibold text-foreground/50"
-        >Hello! My name is</span
-      >
-      <span class="block font-extrabold tracking-wider">Ivan Porto</span>
-      <span
-        style="--fluid-scale: 0.4"
-        class="fluid-scale mt-4 block font-bold text-foreground/50"
-        >I'm a <span class="text-primary">software</span> developer.</span
-      >
-    </h1>
-
-    <p class="mt-12 text-balance font-medium text-foreground/75">
-      {t.description.p1}{" "}{t.description.p2}
-    </p>
-
-    <ul class="mt-4 flex w-full items-center gap-x-3">
-      {
-        socials.map(({ href, i18nKey, iconKey }) => {
-          const translatedLabel = t[i18nKey] as string;
-          return (
-            <li class="rounded-lg bg-background text-accent-foreground/80 transition duration-200 hover:bg-accent hover:text-primary hover:brightness-110">
-              <Link
-                {href}
-                label={translatedLabel}
-                withTooltip
-                targetBlank
-              >
-                <Icon
-                  name={iconKey}
-                  class="box-content size-7 p-2 text-current"
-                />
-              </Link>
-            </li>
-          );
-        })
-      }
-    </ul>
-
-    <Badge
-      hoverGlow
-      class="w-fit select-none gap-3 px-4 py-2 text-base"
+    <section
+      class="flex"
+      data-scroll-away
     >
-      <span class="relative flex h-3 w-3">
-        <span
-          class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"
-        ></span>
-        <span class="relative inline-flex h-3 w-3 rounded-full bg-primary"
-        ></span>
-      </span>
-      <span>Available to work</span>
-    </Badge>
+      <div class="w-3/5">
+        <h1 class="font-header">
+          <span class="block text-xl font-semibold text-foreground/50"
+            >Hello! My name is</span
+          >
+          <span class="block text-8xl/tight font-extrabold tracking-wider"
+            >Ivan Porto</span
+          >
+          <span class="mt-4 block text-4xl/10 font-bold text-foreground/50"
+            >I'm a <span class="text-primary">software</span> developer.</span
+          >
+        </h1>
+
+        <p
+          class="mt-12 text-balance text-lg text-foreground/65"
+          set:html={t.description}
+          data-headline
+        />
+
+        <ul class="mt-4 flex w-full items-center gap-x-3">
+          {
+            socials.map(({ href, i18nKey, iconKey }) => {
+              const translatedLabel = translations.socials[i18nKey] as string;
+              return (
+                <li class="rounded-lg bg-background text-accent-foreground/80 transition duration-200 hover:bg-accent hover:text-primary hover:brightness-110">
+                  <Link
+                    {href}
+                    label={`Link to ${translatedLabel} (opens in a new tab).`}
+                    withTooltip
+                    targetBlank
+                  >
+                    <Icon
+                      name={iconKey}
+                      class="box-content size-7 p-2 text-current"
+                    />
+                  </Link>
+                </li>
+              );
+            })
+          }
+        </ul>
+
+        <Badge
+          hoverGlow
+          class="mt-8 w-fit select-none gap-3 px-4 py-2 text-base"
+        >
+          <span class="relative flex h-3 w-3">
+            <span
+              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"
+            ></span>
+            <span class="relative inline-flex h-3 w-3 rounded-full bg-primary"
+            ></span>
+          </span>
+          <span>Available to work</span>
+        </Badge>
+      </div>
+
+      <aside class="flex w-2/5 items-center justify-end xl:justify-center">
+        <PolaroidPhoto caption="Photo I haven't decided yet" />
+      </aside>
+    </section>
+
+    <section
+      class="mt-48"
+      data-scroll-reveal
+      data-scroll-away
+    >
+      <h2 class="my-12 text-3xl font-bold opacity-85">Where I've Worked</h2>
+
+      <div class="ml-6 flex w-full">
+        <Timeline
+          itemCount={2}
+          client:idle
+          as="ul"
+        >
+          {
+            experience.map((job, index) => {
+              const { startDate, endDate } = job;
+              const start = formatter.format(startDate);
+              const end = formatter.format(endDate);
+
+              return (
+                <TimelineEntry
+                  index={index + 1}
+                  as="li"
+                  class="ease transition-opacity duration-300"
+                >
+                  <article class="group relative flex max-w-screen-lg flex-col p-4">
+                    <div
+                      class:list={[
+                        "absolute -inset-4 -z-[1] block rounded-lg transition",
+                        "-inset-x-6 block group-hover:bg-accent/50 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg",
+                      ]}
+                    />
+
+                    <header class="mb-8 space-y-3">
+                      <h3 class="font-header text-xl font-bold transition duration-200 group-hover:text-primary">
+                        <Link
+                          href={job.url}
+                          label={`${job.title} at ${job.at} (opens in a new tab)`}
+                          targetBlank
+                          withExternalLinkArrow
+                        >
+                          <span class="absolute -inset-4 block rounded-lg" />
+                          <span>
+                            {job.title}
+                            {" · "}
+                            {job.at}
+                          </span>
+                        </Link>
+                      </h3>
+
+                      <div class="text-lg font-semibold text-muted-foreground/70 transition-colors duration-200">
+                        <span>{job.location}</span>
+                        <span class="opacity-50">{" | "}</span>
+                        <span aria-label="">
+                          <time
+                            datetime={`${startDate.getFullYear()}-${startDate.getMonth() + 1}`}
+                          >
+                            {start}
+                          </time>
+                          {" - "}
+                          <time
+                            datetime={`${endDate.getFullYear()}-${endDate.getMonth() + 1}`}
+                          >
+                            {end}
+                          </time>
+                        </span>
+                      </div>
+                    </header>
+
+                    <p
+                      class="job-description max-w-[800px] whitespace-pre-line text-pretty text-base text-foreground/80 group-hover:text-accent-foreground/80"
+                      set:html={job.description}
+                    />
+
+                    <footer class="mt-10 flex gap-2">
+                      {job.skills.map((skill) => (
+                        <SkillBadge skill={skill} />
+                      ))}
+                    </footer>
+                  </article>
+                </TimelineEntry>
+              );
+            })
+          }
+        </Timeline>
+      </div>
+    </section>
+
+    <section
+      class="mt-48"
+      data-scroll-reveal
+      data-scroll-away
+    >
+      <h2 class="my-12 text-3xl font-bold opacity-85">
+        Some of my favourite projects
+      </h2>
+
+      <ul
+        class="space-y-36"
+        data-projects-list
+      >
+        <li data-scroll-reveal>
+          <ProjectCard
+            name="My Room In 3D"
+            headline="A (quite a bit more) fancy replica of my room."
+            url="https://my-room.pages.dev"
+            description="This was my entry to the 9th edition of the challenges organised by <b>Bruno Simon</b> for the students of his <b>Three.js Journey</b> course. The theme was <i>Isometric Room</i> and even though I had just purchased the course when the challenge was announced, I decided to participate.\n\n Turned out pretty well! It scored the <b>3rd place.</b>."
+            relatedSkills={["Blender", "TypeScript", "ThreeJS", "Git"]}
+            previewImage={myRoom}
+            previewVideo="/videos/my-room/preview.mp4"
+          />
+        </li>
+        <li data-scroll-reveal>
+          <ProjectCard
+            name="The Gamelab"
+            headline="A growing collection of games built with web technologies."
+            url="https://thegamelab.dev"
+            description="This is a project I started very recently (right now there's only 1 game), but it is something I will be working on from time to time. The idea is to recreate popular games but using only web technologies."
+            relatedSkills={["PixiJS", "TypeScript", "Git"]}
+            previewImage={theGamelab}
+            previewVideo="/videos/gamelab/preview-h264.mp4"
+          />
+        </li>
+
+        <li data-scroll-reveal>
+          <ProjectCard
+            name="Tetris"
+            headline="A clone of the classic Tetris game."
+            url="https://thegamelab.dev"
+            description="I made this game while I was in college, as a task for a subject. It was very fun both to make and to play. Although I don't have the source code anymore, I am planning to remake it on Gamelab."
+            relatedSkills={["JavaScript", "Phaser"]}
+            previewImage={tetris}
+            previewVideo="/videos/tetris/preview.mp4"
+          />
+        </li>
+      </ul>
+
+      <p class="my-32 text-base font-semibold text-primary">
+        TODO: Add more projects (The Izland, Link Shortener, Home Manager
+        Search...) <br />
+        <br /> Modal window on click?
+      </p>
+    </section>
+
+    <section
+      class="mt-48"
+      data-scroll-reveal
+      data-scroll-away
+    >
+      <h2 class="my-12 text-3xl font-bold opacity-85">
+        Which technologies I know?
+      </h2>
+
+      <div class="flex w-full gap-32">
+        <div class="grid w-1/2 grid-cols-4 items-center gap-8">
+          {
+            skills.map((skill) => {
+              if (
+                [
+                  "Unity",
+                  "Unreal Engine",
+                  "Bash",
+                  "JavaScript",
+                  "C#",
+                  "Node",
+                  "Deno",
+                  "PixiJS",
+                  "Phaser",
+                  "Blender",
+                  "Photoshop",
+                  "TailwindCSS",
+                ].includes(skill.name) ||
+                skill.categories.includes("soft")
+              ) {
+                // This skills still don't have a 3D icon.
+                return null;
+              }
+
+              return (
+                <div class="aspect-square w-32">
+                  <button
+                    data-skill-button={skill.name}
+                    data-active={`${skill.name === "Astro"}`}
+                    class="flex size-full flex-col justify-center rounded-xl border bg-card p-3 text-center transition-colors duration-300 hover:bg-accent data-[active=true]:bg-accent/50"
+                  >
+                    <Icon
+                      name={getIconForSkill(skill.name)}
+                      class="size-full p-2 text-center"
+                    />
+                    <span class="mt-2 block w-full text-sm font-medium">
+                      {skill.name}
+                    </span>
+                  </button>
+                </div>
+              );
+            })
+          }
+        </div>
+        <div class="relative aspect-square w-1/2">
+          <SkillView
+            className="pointer-events-none absolute inset-0 m-auto size-[80%]"
+            client:load
+          />
+        </div>
+      </div>
+      <footer>
+        <p class="my-16 text-base font-semibold text-primary">
+          TODO: Add missing skills and create 3D icons for them.
+        </p>
+      </footer>
+    </section>
+
+    <section
+      class="mt-48"
+      data-scroll-reveal
+      data-scroll-away
+    >
+      <h2 class="my-12 text-3xl font-bold opacity-85">
+        A little more about me
+      </h2>
+    </section>
 
     <section class="mt-16 grid grow grid-cols-9 grid-rows-9 gap-4">
       <article
-        class="col-span-9 row-span-3 flex flex-col justify-between rounded-xl border bg-card px-8 pb-8 pt-6"
+        class="col-span-9 row-span-3 flex flex-col justify-between rounded-xl border bg-card px-8 py-6"
       >
+        Random Fact About Me?
       </article>
 
-      <article class="col-span-3 row-span-6 rounded-xl border bg-card">
+      <article
+        class="col-span-3 row-span-6 rounded-xl border bg-card px-8 py-6"
+      >
+        Out of Ideas :(
       </article>
       <article
         class="relative col-span-3 row-span-3 flex aspect-square items-end justify-center overflow-clip rounded-xl border bg-card px-8 py-10"
       >
         <CharacterView
-          className="pointer-events-none absolute inset-0 -top-4 size-full"
-          client:idle
+          className="pointer-events-none absolute inset-0 -top-8 size-full"
+          client:load
         />
         <div
-          class="absolute inset-0 top-1/2 z-20 h-1/2 w-full bg-card gradient-mask-t-60"
+          class="absolute inset-0 top-1/2 z-20 h-1/2 w-full bg-card gradient-mask-t-50"
         >
         </div>
 
-        <div class="z-30 w-4/5">
+        <footer class="z-30 w-4/5">
           <button
-            class="relative inline-flex h-12 w-full items-center justify-center gap-4 rounded-md bg-primary px-6 text-xl font-bold text-primary-foreground transition will-change-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
+            onclick={'alert("Show Contact Form")'}
+            class="relative inline-flex h-12 w-full items-center justify-center gap-4 whitespace-nowrap rounded-md bg-primary px-6 text-base font-bold text-primary-foreground transition will-change-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
           >
             <div
               class="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-primary/70 to-primary opacity-75 blur"
@@ -121,41 +379,86 @@ const t = translations.sections.about;
             />
             <span> Get In Touch </span>
           </button>
-        </div>
+        </footer>
       </article>
-      <article
-        class="col-span-3 row-span-3 flex flex-col justify-between rounded-xl border bg-card p-6"
-      >
-        <header>
-          <h2
-            style="--fluid-scale: 0.5"
-            class="fluid-scale font-bold"
-          >
-            Location
-          </h2>
-          <p>Based in Barcelona</p>
-        </header>
+      <section class="col-span-3 row-span-3 grid grid-cols-3 grid-rows-3 gap-4">
+        <article
+          class="col-span-3 row-span-1 flex items-center justify-center rounded-xl border bg-card px-6"
+        >
+          <MysteryButton class="h-12 w-4/5 text-lg" />
+        </article>
 
-        <p class="z-30">
-          <RealTime
-            class="block font-semibold tabular-nums"
+        <article
+          class="col-span-3 row-span-2 place-content-center rounded-xl border bg-card"
+        >
+          <MyTime
+            class="h-2/3 w-full"
             locale={Astro.locals.locale}
-            client:load
+            client:idle
           />
-          <TimeDiff
-            class="block"
-            timezoneA="Europe/Madrid"
-            timezoneB="user"
-            client:load
-          />
-        </p>
-      </article>
-      <article class="col-span-6 row-span-3 rounded-xl border bg-card">
+        </article>
+      </section>
+      <article
+        class="relative col-span-6 row-span-3 rounded-xl border bg-card px-8 py-4"
+      >
+        Hobbies? Games? Food?
       </article>
     </section>
-
-    <footer>
-      <p>🤫 Psst! Want to know a secret?</p>
-    </footer>
   </main>
+
+  <Footer />
 </Page>
+
+<style>
+  main {
+    counter-reset: section;
+  }
+
+  h2 {
+    position: relative;
+  }
+
+  h2::before {
+    @apply tabular-nums;
+
+    counter-increment: section;
+    content: "0" counter(section) ". ";
+    opacity: 0.9;
+
+    font-size: 0.8em;
+    margin-right: 0.5em;
+  }
+
+  h2::after {
+    content: "";
+    width: 300px;
+    height: 2px;
+
+    position: absolute;
+    top: calc(50% + 2px);
+
+    display: inline-block;
+    margin-left: 0.6em;
+    background-color: theme("colors.muted.DEFAULT");
+  }
+
+  /** 
+    Although data-headline is defined in this file, we need :global 
+    because it's "strong" contents are injected dynamically. 
+  */
+
+  [data-headline] {
+    /** If pretty is supported it will override "balance". */
+    text-wrap: balance;
+    text-wrap: pretty;
+  }
+
+  :global([data-headline] > strong) {
+    color: theme("colors.primary.DEFAULT");
+    opacity: 0.9;
+  }
+
+  :global(.job-description b) {
+    color: theme("colors.primary.DEFAULT");
+  }
+</style>

@@ -36,10 +36,10 @@ export function getIconForSkill<const T extends Skill>(skill: T) {
  * @param name  The name of the skill.
  * @param categories  The categories associated with the skill.
  */
-function defineSkill<
-  const Name extends string,
-  const Category extends SkillCategory,
->(name: Name, ...categories: Category[]) {
+function defineSkill<const Name extends string>(
+  name: Name,
+  ...categories: SkillCategory[]
+) {
   return { name, categories } as const;
 }
 
@@ -63,8 +63,11 @@ export const web = [
   defineSkill("Svelte", "frontend"),
   defineSkill("Node", "backend"),
   defineSkill("Deno", "backend"),
+  defineSkill("Astro", "frontend"),
   defineSkill("TailwindCSS", "frontend"),
   defineSkill("ThreeJS", "frontend"),
+  defineSkill("PixiJS", "frontend"),
+  defineSkill("Phaser", "game-dev"),
 ] as const;
 
 export const creative = [
@@ -84,7 +87,16 @@ export const soft = [
   defineSkill("Emotional Intelligence", "soft"),
 ] as const;
 
-export const skills = {
+export const skills = [
+  ...languages,
+  ...games,
+  ...web,
+  ...creative,
+  ...others,
+  ...soft,
+] as const;
+
+export const skillMap = {
   languages,
   games,
   web,
@@ -93,5 +105,5 @@ export const skills = {
   soft,
 } as const;
 
-export type SkillGroup = keyof typeof skills;
-export type Skill = (typeof skills)[keyof typeof skills][number]["name"];
+export type SkillGroup = keyof typeof skillMap;
+export type Skill = (typeof skillMap)[keyof typeof skillMap][number]["name"];

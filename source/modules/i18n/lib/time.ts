@@ -92,10 +92,10 @@ export function formatTimeDifference(diff: TimeDifference) {
       return "We are on the same timezone.";
     }
     case "ahead": {
-      return `${formatHours} ${formatMinutes} ahead of you.`;
+      return `I am ${formatHours} ${formatMinutes} ahead of you.`;
     }
     case "behind": {
-      return `${formatHours} ${formatMinutes} behind you.`;
+      return `I am ${formatHours} ${formatMinutes} behind you.`;
     }
   }
 }

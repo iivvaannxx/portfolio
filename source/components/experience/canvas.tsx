@@ -1,8 +1,8 @@
 import { Canvas as FiberCanvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
 
-import { Perf } from "r3f-perf";
-
+/* import { Perf } from "r3f-perf";
+ */
 /**
  * Basic setup for the Three.js experience.
  */
@@ -19,8 +19,8 @@ export function Canvas() {
           zIndex: 10,
         }}
       >
-        <Perf position="top-left" />
-
+        {/*         <Perf position="top-left" />
+         */}
         <View.Port />
       </FiberCanvas>
     </>
