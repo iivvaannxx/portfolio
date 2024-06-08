@@ -28,7 +28,6 @@ const t = translations.sections.experience;
       client:idle
       itemCount={2}
       class="pr-2"
-      data-job
       as="ul"
     >
       {
@@ -46,21 +45,21 @@ const t = translations.sections.experience;
               <article class="group relative flex max-w-4xl flex-col p-4">
                 <div
                   class:list={[
-                    "absolute -inset-2 -z-[1] block rounded-lg transition lg:-inset-6",
+                    "absolute -inset-2 -z-[1] hidden rounded-lg transition lg:-inset-6 lg:block",
                     "group-hover:bg-accent/50 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg",
                     "group-focus-within:bg-accent/50 group-focus-within:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-focus-within:drop-shadow-lg",
                   ]}
                 />
 
                 <header class="mb-8 space-y-3">
-                  <h3 class="font-header text-lg font-bold transition duration-200 group-focus-within:text-primary group-hover:text-primary">
+                  <h3 class="font-header text-lg font-bold transition duration-200 group-focus-within:text-primary lg:group-hover:text-primary">
                     <Link
                       href={job.url}
                       label={`${job.title} at ${job.at}`}
                       targetBlank
                       withExternalLinkArrow
                     >
-                      <span class="absolute -inset-4 block rounded-lg" />
+                      <span class="absolute -inset-4 hidden rounded-lg lg:block" />
                       <span>
                         {job.title}
                         {" · "}
