@@ -1,13 +1,14 @@
 ---
-import { NavLinks } from "@modules/navigation";
+import { Hamburguer, NavLinks } from "@modules/navigation";
 ---
 
 <header
   class="min-h-header sticky inset-x-0 top-0 z-10 content-center bg-background"
 >
   <div
-    class="container mx-auto flex justify-between px-12 py-4 font-header xl:max-w-screen-xl"
+    class="mx-auto flex max-w-screen-2xl justify-between px-6 py-4 font-header"
   >
-    <NavLinks class="flex w-full animate-fade-down justify-between" />
+    <NavLinks class="hidden w-full animate-fade-down justify-between lg:flex" />
+    <Hamburguer class="ml-auto lg:hidden" />
   </div>
 </header>

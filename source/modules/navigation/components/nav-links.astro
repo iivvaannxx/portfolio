@@ -73,3 +73,13 @@ const t = translations.sections;
     }
   </ul>
 </nav>
+
+<style>
+  :global([data-nav-link]) {
+    color: theme("colors.muted.foreground / 0.8");
+  }
+
+  :global([data-nav-link]).active {
+    color: theme("colors.foreground");
+  }
+</style>

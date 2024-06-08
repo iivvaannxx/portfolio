@@ -7,6 +7,14 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function debug(text: string) {
+  const debug = document.querySelector("[data-debug]");
+
+  if (debug) {
+    debug.textContent = text;
+  }
+}
+
 interface FlyAndScaleParams {
   y?: number;
   x?: number;

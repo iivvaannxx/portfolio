@@ -54,14 +54,23 @@
    * @returns The CSSAnimation object representing the "grow" animation, or null if not found.
    */
   function getGrowAnimation(element: HTMLElement) {
-    return element.getAnimations().find((anim) => {
-      if (anim instanceof CSSAnimation) {
-        // We use includes because svelte attaches a random hash to the animation name.
-        return anim.animationName.includes("grow");
-      }
+    // Workaround for the below code that doesn't work on Safari
+    // due to the polyfill for "CSS Scroll Driven animations".
+    // The polyfill makes "anim instanceof CSSAnimation" return false.
+    // Ideally, we would use the commented code below, but it won't work on Safari.
+    // This code is a workaround that assumes the first animation is our "grow" animation.
+    return element.getAnimations()[0] as CSSAnimation;
 
-      return false;
-    }) as CSSAnimation;
+    /* 
+      return element.getAnimations().find((anim) => {
+        if (anim instanceof CSSAnimation) {
+          // We use includes because svelte attaches a random hash to the animation name.
+          return anim.animationName.includes("grow");
+        }
+
+        return false;
+      }) as CSSAnimation; 
+    */
   }
 </script>
 
@@ -80,9 +89,15 @@
     ] as HTMLElement[];
 
     let frame = requestAnimationFrame(updateTimeline);
+    let lastProgress = 0;
 
     function updateTimeline() {
       const progress = getTimelineProgress(growAnimation);
+
+      if (progress === lastProgress) {
+        frame = requestAnimationFrame(updateTimeline);
+        return;
+      }
 
       for (const child of childs) {
         const index = Number(child.dataset.timelineIndex);
@@ -94,17 +109,16 @@
         if (prevProgress === 0 && trackProgress > 0) {
           child.classList.remove("out");
           child.classList.add("in");
-          child.ariaHidden = "false";
         }
 
         if (prevProgress > 0 && trackProgress === 0) {
           child.classList.remove("in");
           child.classList.add("out");
-          child.ariaHidden = "true";
         }
       }
 
       frame = requestAnimationFrame(updateTimeline);
+      lastProgress = progress;
     }
 
     return () => {
@@ -118,7 +132,7 @@
   {...$$restProps}
   style:--timeline-progress="0"
   class={cn(
-    "timeline flex h-fit flex-col items-center justify-center",
+    "timeline flex h-fit flex-col items-center justify-center gap-8",
     $$props.class,
   )}
   bind:this={element}
@@ -149,6 +163,6 @@
 
     animation: grow linear both;
     animation-timeline: view();
-    animation-range: entry 40% exit 10%;
+    animation-range: entry 30% exit 50%;
   }
 </style>

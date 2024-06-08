@@ -28,7 +28,7 @@ const {
   ...props
 } = Astro.props;
 
-const ariaLabel = `Link to ${label}${targetBlank ? ` (opens in a new tab).` : "."}`;
+const ariaLabel = `Link to "${label}"${targetBlank ? ` (opens in a new tab).` : "."}`;
 const optionalAttrs = {
   ...(withTooltip && { "data-tippy-content": tooltipContent }),
   ...(targetBlank && { target: "_blank" }),

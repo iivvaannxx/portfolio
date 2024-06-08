@@ -16,16 +16,17 @@
   style:--index={index}
   style:--track-progress={0}
   class={cn(
-    "timeline-entry grid w-full grid-cols-[20px,1fr] grid-rows-[auto,1fr] items-start justify-start gap-14",
+    "timeline-entry grid w-full grid-cols-[20px,1fr] grid-rows-[auto,1fr] items-start justify-start gap-7 lg:gap-14",
     $$props.class,
   )}
   data-timeline-index={index}
 >
   <div class="entry-track mt-4 flex size-full flex-col items-center opacity-20">
     <div class="flex aspect-square items-center justify-center p-3">
-      <span class="inline-block size-3 rounded-full bg-foreground"></span>
+      <span class="inline-block size-2 rounded-full bg-foreground lg:size-3"
+      ></span>
     </div>
-    <div class="relative mt-8 h-full w-[6px] rounded-full bg-muted">
+    <div class="relative mt-8 h-full w-[4px] rounded-full bg-muted lg:w-[6px]">
       <div
         class="entry-fill content-empty absolute inset-0 w-full origin-top rounded-full bg-primary"
       ></div>
@@ -61,6 +62,7 @@
 
   .timeline-entry.out .entry-track {
     --to-opacity: 0.2;
+    --to-visibility: visible;
     animation: fade-out 300ms ease-out forwards;
   }
 
@@ -76,6 +78,7 @@
     }
     to {
       opacity: var(--to-opacity, 0);
+      visibility: var(--to-visibility, hidden);
     }
   }
 
@@ -85,6 +88,7 @@
     }
     to {
       opacity: var(--to-opacity, 1);
+      visibility: var(--to-visibility, visible);
     }
   }
 

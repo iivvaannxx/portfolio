@@ -6,7 +6,6 @@ import { getLocalizedStaticPaths } from "@app/modules/i18n/lib/locales";
 
 import { Canvas } from "@app/components/experience/canvas";
 
-import Hero from "@app/sections/hero.astro";
 import Header from "@app/layouts/header.astro";
 import Work from "@app/sections/work.astro";
 
@@ -28,9 +27,16 @@ const formatter = new Intl.DateTimeFormat(locale, {
 
   <Canvas client:load />
 
-  <main class="container mx-auto max-w-screen-xl space-y-52 p-20">
-    <Hero />
+  <!-- <p
+    data-debug
+    class="fixed top-52 w-full text-center text-xl"
+  >
+    Debug
+  </p> -->
 
+  <main>
+    <!--     <Hero />
+ -->
     <Work />
 
     <!-- <section
@@ -236,37 +242,3 @@ const formatter = new Intl.DateTimeFormat(locale, {
 
   <!--   <Footer /> -->
 </Page>
-
-<style>
-  main {
-    counter-reset: section;
-  }
-
-  h2 {
-    position: relative;
-  }
-
-  h2::before {
-    @apply tabular-nums;
-
-    counter-increment: section;
-    content: "0" counter(section) ". ";
-    opacity: 0.9;
-
-    font-size: 0.8em;
-    margin-right: 0.5em;
-  }
-
-  h2::after {
-    content: "";
-    width: 300px;
-    height: 2px;
-
-    position: absolute;
-    top: calc(50% + 2px);
-
-    display: inline-block;
-    margin-left: 0.6em;
-    background-color: theme("colors.muted.DEFAULT");
-  }
-</style>

@@ -4,28 +4,35 @@ import SkillBadge from "@app/components/skill-badge.astro";
 import TimelineEntry from "@app/components/timeline/timeline-entry.svelte";
 import Timeline from "@app/components/timeline/timeline.svelte";
 import ObservedSection from "@app/layouts/observed-section.astro";
-import { experience } from "@app/lib/data/experience";
+import { getTranslations } from "@app/modules/i18n";
 
 const { locale } = Astro.locals;
 const formatter = new Intl.DateTimeFormat(locale, {
   month: "long",
   year: "numeric",
 });
+
+const translations = getTranslations(locale);
+const t = translations.sections.experience;
 ---
 
 <ObservedSection
   title="Where I've Worked"
   order={1}
   id="experience"
+  class="mx-auto max-w-screen-xl px-8 lg:px-16"
+  aria-label="Experience"
 >
-  <div class="ml-6 flex w-full">
+  <div class="ml-2 flex w-full lg:ml-8">
     <Timeline
-      itemCount={2}
       client:idle
+      itemCount={2}
+      class="pr-2"
+      data-job
       as="ul"
     >
       {
-        experience.map((job, index) => {
+        t.jobs.map((job, index) => {
           const { startDate, endDate } = job;
           const start = formatter.format(startDate);
           const end = formatter.format(endDate);
@@ -39,16 +46,17 @@ const formatter = new Intl.DateTimeFormat(locale, {
               <article class="group relative flex max-w-4xl flex-col p-4">
                 <div
                   class:list={[
-                    "absolute -inset-4 -z-[1] block rounded-lg transition",
-                    "-inset-x-6 block group-hover:bg-accent/50 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg",
+                    "absolute -inset-2 -z-[1] block rounded-lg transition lg:-inset-6",
+                    "group-hover:bg-accent/50 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg",
+                    "group-focus-within:bg-accent/50 group-focus-within:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-focus-within:drop-shadow-lg",
                   ]}
                 />
 
                 <header class="mb-8 space-y-3">
-                  <h3 class="font-header text-lg font-bold transition duration-200 group-hover:text-primary">
+                  <h3 class="font-header text-lg font-bold transition duration-200 group-focus-within:text-primary group-hover:text-primary">
                     <Link
                       href={job.url}
-                      label={`${job.title} at ${job.at} (opens in a new tab)`}
+                      label={`${job.title} at ${job.at}`}
                       targetBlank
                       withExternalLinkArrow
                     >
@@ -81,11 +89,11 @@ const formatter = new Intl.DateTimeFormat(locale, {
                 </header>
 
                 <p
-                  class="job-description max-w-[800px] whitespace-pre-line text-pretty text-base text-foreground/80 group-hover:text-accent-foreground/80"
+                  class="max-w-[800px] whitespace-pre-line text-pretty text-base text-foreground/80 group-hover:text-accent-foreground/80"
                   set:html={job.description}
                 />
 
-                <footer class="mt-10 flex gap-2">
+                <footer class="mt-10 flex flex-wrap gap-2">
                   {job.skills.map((skill) => (
                     <SkillBadge skill={skill} />
                   ))}

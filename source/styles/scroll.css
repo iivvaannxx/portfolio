@@ -13,6 +13,10 @@
   --scrollbar-thumb-radius: theme("borderRadius.full");
 }
 
+html {
+  overflow-x: clip;
+}
+
 html.lenis body {
   height: auto;
 }

@@ -41,6 +41,10 @@ b {
   font-weight: bold;
 }
 
+strong {
+  color: theme("colors.primary.DEFAULT");
+}
+
 q,
 blockquote {
   font-style: italic;

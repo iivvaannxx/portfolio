@@ -5,12 +5,10 @@ export type Props = HTMLAttributes<"section"> & {
   // Enforce an id for the section.
   id: string;
   order?: number;
-
   title: string;
-  alignTitle: "left" | "right";
 };
 
-const { order = 1, title, alignTitle, ...props } = Astro.props;
+const { order = 1, title, ...props } = Astro.props;
 ---
 
 <script>
@@ -100,7 +98,7 @@ const { order = 1, title, alignTitle, ...props } = Astro.props;
   data-scroll-reveal
   data-scroll-away
 >
-  <h2 class="my-12 text-3xl font-bold opacity-85">
+  <h2 class="my-12 text-2xl font-bold opacity-85 xs:text-3xl">
     {title}
   </h2>
 
@@ -114,6 +112,7 @@ const { order = 1, title, alignTitle, ...props } = Astro.props;
 
   h2 {
     position: relative;
+    white-space: nowrap;
   }
 
   h2::before {
