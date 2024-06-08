@@ -8,6 +8,7 @@ import { Canvas } from "@app/components/experience/canvas";
 
 import Header from "@app/layouts/header.astro";
 import Work from "@app/sections/work.astro";
+import Projects from "@app/sections/projects.astro";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
@@ -27,75 +28,14 @@ const formatter = new Intl.DateTimeFormat(locale, {
 
   <Canvas client:load />
 
-  <!-- <p
-    data-debug
-    class="fixed top-52 w-full text-center text-xl"
-  >
-    Debug
-  </p> -->
-
   <main>
     <!--     <Hero />
  -->
     <Work />
 
+    <Projects />
+
     <!-- <section
-      class="mt-48"
-      data-scroll-reveal
-      data-scroll-away
-    >
-      <h2 class="my-12 text-3xl font-bold opacity-85">
-        Some of my favourite projects
-      </h2>
-
-      <ul
-        class="space-y-36"
-        data-projects-list
-      >
-        <li data-scroll-reveal>
-          <ProjectCard
-            name="My Room In 3D"
-            headline="A (quite a bit more) fancy replica of my room."
-            url="https://my-room.pages.dev"
-            description="This was my entry to the 9th edition of the challenges organised by <b>Bruno Simon</b> for the students of his <b>Three.js Journey</b> course. The theme was <i>Isometric Room</i> and even though I had just purchased the course when the challenge was announced, I decided to participate.\n\n Turned out pretty well! It scored the <b>3rd place.</b>."
-            relatedSkills={["Blender", "TypeScript", "ThreeJS", "Git"]}
-            previewImage={myRoom}
-            previewVideo="/videos/my-room/preview.mp4"
-          />
-        </li>
-        <li data-scroll-reveal>
-          <ProjectCard
-            name="The Gamelab"
-            headline="A growing collection of games built with web technologies."
-            url="https://thegamelab.dev"
-            description="This is a project I started very recently (right now there's only 1 game), but it is something I will be working on from time to time. The idea is to recreate popular games but using only web technologies."
-            relatedSkills={["PixiJS", "TypeScript", "Git"]}
-            previewImage={theGamelab}
-            previewVideo="/videos/gamelab/preview-h264.mp4"
-          />
-        </li>
-
-        <li data-scroll-reveal>
-          <ProjectCard
-            name="Tetris"
-            headline="A clone of the classic Tetris game."
-            url="https://thegamelab.dev"
-            description="I made this game while I was in college, as a task for a subject. It was very fun both to make and to play. Although I don't have the source code anymore, I am planning to remake it on Gamelab."
-            relatedSkills={["JavaScript", "Phaser"]}
-            previewImage={tetris}
-            previewVideo="/videos/tetris/preview.mp4"
-          />
-        </li>
-      </ul>
-
-      <p class="my-32 text-base font-semibold text-primary">
-        TODO: Add more projects (The Izland, Link Shortener, Home Manager
-        Search...) <br />
-        <br /> Modal window on click?
-      </p>
-    </section>
-
-    <section
       class="mt-48"
       data-scroll-reveal
       data-scroll-away
@@ -161,9 +101,9 @@ const formatter = new Intl.DateTimeFormat(locale, {
           TODO: Add missing skills and create 3D icons for them.
         </p>
       </footer>
-    </section>
+    </section> -->
 
-    <section
+    <!-- <section
       class="mt-48"
       data-scroll-reveal
       data-scroll-away

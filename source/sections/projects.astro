@@ -1,0 +1,64 @@
+---
+import ProjectCard from "@app/components/project-card.astro";
+
+import myRoom from "@app/assets/images/my-room-project.webp";
+import theGamelab from "@app/assets/images/gamelab-project.webp";
+import tetris from "@app/assets/images/tetris-project.webp";
+import ObservedSection from "@app/layouts/observed-section.astro";
+---
+
+<ObservedSection
+  class="mt-48"
+  title="Some of my favourite projects"
+  data-scroll-reveal
+  data-scroll-away
+  class="mx-auto max-w-screen-xl px-8 lg:px-16"
+  id="projects"
+  order={2}
+>
+  <ul
+    class="space-y-36"
+    data-projects-list
+  >
+    <li data-scroll-reveal>
+      <ProjectCard
+        name="My Room In 3D"
+        headline="A (quite a bit more) fancy replica of my room."
+        url="https://my-room.pages.dev"
+        description="This was my entry to the 9th edition of the challenges organised by <b>Bruno Simon</b> for the students of his <b>Three.js Journey</b> course. The theme was <i>Isometric Room</i> and even though I had just purchased the course when the challenge was announced, I decided to participate.\n\n Turned out pretty well! It scored the <b>3rd place.</b>."
+        relatedSkills={["Blender", "TypeScript", "ThreeJS", "Git"]}
+        previewImage={myRoom}
+        previewVideo="/videos/my-room/preview.mp4"
+      />
+    </li>
+    <li data-scroll-reveal>
+      <ProjectCard
+        name="The Gamelab"
+        headline="A growing collection of games built with web technologies."
+        url="https://thegamelab.dev"
+        description="This is a project I started very recently (right now there's only 1 game), but it is something I will be working on from time to time. The idea is to recreate popular games but using only web technologies."
+        relatedSkills={["PixiJS", "TypeScript", "Git"]}
+        previewImage={theGamelab}
+        previewVideo="/videos/gamelab/preview-h264.mp4"
+      />
+    </li>
+
+    <li data-scroll-reveal>
+      <ProjectCard
+        name="Tetris"
+        headline="A clone of the classic Tetris game."
+        url="https://thegamelab.dev"
+        description="I made this game while I was in college, as a task for a subject. It was very fun both to make and to play. Although I don't have the source code anymore, I am planning to remake it on Gamelab."
+        relatedSkills={["JavaScript", "Phaser"]}
+        previewImage={tetris}
+        previewVideo="/videos/tetris/preview.mp4"
+      />
+    </li>
+  </ul>
+
+  <p class="my-32 text-base font-semibold text-primary">
+    TODO: Add more projects (The Izland, Link Shortener, Home Manager Search...) <br
+    />
+    <br /> Modal window on click?
+  </p>
+</ObservedSection>
