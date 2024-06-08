@@ -6,7 +6,7 @@ export const english = {
   },
 
   sections: {
-    about: {
+    hero: {
       name: "About",
       id: "about",
       headline: {
@@ -15,34 +15,31 @@ export const english = {
       },
 
       greeting: "Hello! My name is",
-      description: `
-        Specialized in <strong>game development</strong>, yet passionate about developing any kind of software.
-        With 6+ years of coding experience and <strong>4+ years of professional experience</strong>.
+      introduction: `
+        Specialized in game development, yet passionate about developing for the web. With <b>6+ years 
+        of coding expertise</b>, and <strong>4+ years of professional experience</strong>, I am <b>open to 
+        opportunities</b> in the game industry, but actively <strong>seeking a role as a web developer</strong>.
       `,
     },
 
     experience: {
       name: "Experience",
       id: "experience",
-      title: "Professional Experience",
     },
 
     projects: {
       name: "Projects",
       id: "projects",
-      title: "Projects",
     },
 
     skills: {
       name: "Skills",
       id: "skills",
-      title: "Skills",
     },
 
-    contact: {
-      name: "Contact",
-      id: "contact",
-      title: "Contact",
+    about: {
+      name: "About",
+      id: "about",
     },
   },
 
@@ -51,6 +48,8 @@ export const english = {
     linkedIn: "LinkedIn",
     xTwitter: "X (Formerly Twitter)",
     resume: "Resume",
+    email: "Email",
+    bento: "Bento",
   },
 
   userLocation: {

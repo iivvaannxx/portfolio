@@ -1,0 +1,110 @@
+---
+import { getTranslations } from "@modules/i18n";
+/* import { Badge } from "@components/base";
+ */ import { Icon } from "astro-icon/components";
+
+// Retrieve the localized strings for the hero section.
+const { locale } = Astro.locals;
+const translations = getTranslations(locale);
+const t = translations.sections.hero;
+---
+
+<script>
+  import tippy from "tippy.js";
+  tippy("ul[data-socials] a[data-tippy-content]", {
+    placement: "bottom",
+    theme: "link",
+    offset: [0, 16],
+
+    animation: "scale",
+    inertia: true,
+  });
+</script>
+
+<section
+  class="content-center"
+  data-scroll-away
+>
+  <h1 class="animate-fade-up font-header">
+    <span class="block text-lg font-semibold text-foreground/50"
+      >{t.greeting}</span
+    >
+    <span class="block text-5xl/tight font-extrabold tracking-wider opacity-85"
+      >Ivan Porto</span
+    >
+    <span class="mt-4 block text-xl/5 font-bold text-foreground/50"
+      >I'm a <span class="text-primary/80">software</span> developer.</span
+    >
+  </h1>
+
+  <p
+    class="mt-16 max-w-3xl animate-fade-up text-balance text-base text-foreground/65 animate-delay-300"
+    set:html={t.introduction}
+    data-hero-p
+  />
+
+  <!-- <Badge
+    hoverGlow
+    class="animate-fade-up animate-delay-700 mt-8 w-fit select-none gap-3 px-4 py-2 text-xs"
+  >
+    <span class="relative flex h-[10px] w-[10px]">
+      <span
+        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"
+      ></span>
+      <span
+        class="relative inline-flex h-[10px] w-[10px] rounded-full bg-green-500"
+      ></span>
+    </span>
+    <span>Available to work</span>
+  </Badge> -->
+
+  <button
+    onclick={'alert("Show Contact Form")'}
+    class="relative mt-10 inline-flex h-12 animate-fade-up items-center justify-center gap-4 whitespace-nowrap rounded-md bg-primary px-6 text-sm font-bold text-primary-foreground transition will-change-transform animate-delay-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
+  >
+    <div
+      class="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-primary/70 to-primary opacity-75 blur"
+    >
+    </div>
+
+    <Icon
+      name="lucide:mail"
+      class="size-[1.2em]"
+    />
+    <span> Get In Touch </span>
+  </button>
+</section>
+
+<style>
+  [data-hero-p] {
+    /** If pretty is supported it will override "balance". */
+    text-wrap: balance;
+    text-wrap: pretty;
+  }
+
+  :global([data-hero-p] > strong) {
+    color: theme("colors.primary.DEFAULT");
+    opacity: 0.9;
+  }
+
+  :global([data-hero-p] > b) {
+    color: theme("colors.foreground / 0.70");
+  }
+
+  :global(.tippy-box[data-theme~="link"]) {
+    background-color: theme("colors.accent.DEFAULT");
+    font-family: theme("fontFamily.header");
+    padding: 0.2em;
+
+    .tippy-arrow::before {
+      border-bottom-color: inherit;
+    }
+
+    .tippy-content {
+      font-weight: 450;
+      margin-top: 0.15em;
+
+      color: theme("colors.accent.foreground");
+    }
+  }
+</style>

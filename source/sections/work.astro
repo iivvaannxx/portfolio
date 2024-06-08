@@ -1,0 +1,100 @@
+---
+import { Link } from "@app/components/base";
+import SkillBadge from "@app/components/skill-badge.astro";
+import TimelineEntry from "@app/components/timeline/timeline-entry.svelte";
+import Timeline from "@app/components/timeline/timeline.svelte";
+import ObservedSection from "@app/layouts/observed-section.astro";
+import { experience } from "@app/lib/data/experience";
+
+const { locale } = Astro.locals;
+const formatter = new Intl.DateTimeFormat(locale, {
+  month: "long",
+  year: "numeric",
+});
+---
+
+<ObservedSection
+  title="Where I've Worked"
+  order={1}
+  id="experience"
+>
+  <div class="ml-6 flex w-full">
+    <Timeline
+      itemCount={2}
+      client:idle
+      as="ul"
+    >
+      {
+        experience.map((job, index) => {
+          const { startDate, endDate } = job;
+          const start = formatter.format(startDate);
+          const end = formatter.format(endDate);
+
+          return (
+            <TimelineEntry
+              index={index + 1}
+              as="li"
+              class="ease transition-opacity duration-300"
+            >
+              <article class="group relative flex max-w-4xl flex-col p-4">
+                <div
+                  class:list={[
+                    "absolute -inset-4 -z-[1] block rounded-lg transition",
+                    "-inset-x-6 block group-hover:bg-accent/50 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg",
+                  ]}
+                />
+
+                <header class="mb-8 space-y-3">
+                  <h3 class="font-header text-lg font-bold transition duration-200 group-hover:text-primary">
+                    <Link
+                      href={job.url}
+                      label={`${job.title} at ${job.at} (opens in a new tab)`}
+                      targetBlank
+                      withExternalLinkArrow
+                    >
+                      <span class="absolute -inset-4 block rounded-lg" />
+                      <span>
+                        {job.title}
+                        {" · "}
+                        {job.at}
+                      </span>
+                    </Link>
+                  </h3>
+
+                  <div class="text-base font-semibold text-muted-foreground/70 transition-colors duration-200">
+                    <span>{job.location}</span>
+                    <span class="opacity-50">{" | "}</span>
+                    <span aria-label="">
+                      <time
+                        datetime={`${startDate.getFullYear()}-${startDate.getMonth() + 1}`}
+                      >
+                        {start}
+                      </time>
+                      {" - "}
+                      <time
+                        datetime={`${endDate.getFullYear()}-${endDate.getMonth() + 1}`}
+                      >
+                        {end}
+                      </time>
+                    </span>
+                  </div>
+                </header>
+
+                <p
+                  class="job-description max-w-[800px] whitespace-pre-line text-pretty text-base text-foreground/80 group-hover:text-accent-foreground/80"
+                  set:html={job.description}
+                />
+
+                <footer class="mt-10 flex gap-2">
+                  {job.skills.map((skill) => (
+                    <SkillBadge skill={skill} />
+                  ))}
+                </footer>
+              </article>
+            </TimelineEntry>
+          );
+        })
+      }
+    </Timeline>
+  </div>
+</ObservedSection>

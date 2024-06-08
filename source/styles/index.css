@@ -12,7 +12,7 @@
   --screen-safe-height: 100dvh;
 
   --header-height: 64px;
-  --main-height: calc(var(--screen-safe-height) - var(--header-height));
+  --content-height: calc(var(--screen-safe-height) - var(--header-height));
 }
 
 *,

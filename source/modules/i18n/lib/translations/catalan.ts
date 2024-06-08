@@ -6,7 +6,7 @@ export const catalan = {
   },
 
   sections: {
-    about: {
+    hero: {
       name: "Sobre Mi",
       id: "sobre-mi",
 
@@ -16,7 +16,7 @@ export const catalan = {
       },
 
       greeting: "Hola! Em dic",
-      description: `
+      introduction: `
         Especialitzat en desenvolupament de jocs, però apassionat per desenvolupar qualsevol tipus de software.
         Amb més de 6 anys d'experiència programant i més de 4 anys d'experiència professional.
       `,
@@ -25,25 +25,21 @@ export const catalan = {
     experience: {
       name: "Experiència",
       id: "experiencia",
-      title: "Experiència Laboral",
     },
 
     projects: {
       name: "Projectes",
       id: "projectes",
-      title: "Projectes",
     },
 
     skills: {
       name: "Competències",
       id: "competencies",
-      title: "Competències",
     },
 
-    contact: {
-      name: "Contacte",
-      id: "contacte",
-      title: "Contacte",
+    about: {
+      name: "Sobre Mi",
+      id: "sobre-mi",
     },
   },
 
@@ -52,6 +48,8 @@ export const catalan = {
     linkedIn: "LinkedIn",
     xTwitter: "X (Anteriorment Twitter)",
     resume: "Currículum",
+    email: "Correu Electrònic",
+    bento: "Bento",
   },
 
   userLocation: {

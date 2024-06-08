@@ -1,12 +1,13 @@
 ---
-import { cn } from "@app/utils";
 import type { HTMLAttributes } from "astro/types";
+import { cn } from "@app/utils";
 
 export type Props = HTMLAttributes<"button">;
 const { class: clazz, ...props } = Astro.props;
 ---
 
 <script>
+  // Sync the state using the aria-pressed attribute
   const buttons = document.querySelectorAll("button[data-hamburger-button]")!;
   buttons.forEach((button) => {
     button.addEventListener("click", () => {

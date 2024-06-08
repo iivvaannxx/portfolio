@@ -6,7 +6,7 @@ export const spanish = {
   },
 
   sections: {
-    about: {
+    hero: {
       name: "Sobre Mí",
       id: "sobre-mi",
 
@@ -16,7 +16,7 @@ export const spanish = {
       },
 
       greeting: "¡Hola! Me llamo",
-      description: `
+      introduction: `
         Especializado en desarrollo de videojuegos, pero apasionado por desarrollar cualquier tipo de software.
         Con más de 6 años de experiencia programando y más de 4 años de experiencia profesional.
       `,
@@ -25,25 +25,21 @@ export const spanish = {
     experience: {
       name: "Experiencia",
       id: "experiencia",
-      title: "Experiencia Laboral",
     },
 
     projects: {
       name: "Proyectos",
       id: "proyectos",
-      title: "Proyectos",
     },
 
     skills: {
       name: "Competencias",
       id: "competencias",
-      title: "Competencias",
     },
 
-    contact: {
-      name: "Contacto",
-      id: "contacto",
-      title: "Contacto",
+    about: {
+      name: "Sobre Mí",
+      id: "sobre-mi",
     },
   },
 
@@ -52,6 +48,8 @@ export const spanish = {
     linkedIn: "LinkedIn",
     xTwitter: "X (Anteriormente Twitter)",
     resume: "Currículum",
+    email: "Correo Electrónico",
+    bento: "Bento",
   },
 
   userLocation: {

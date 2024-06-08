@@ -10,7 +10,7 @@ import {
 
 import type { GLTF } from "three-stdlib";
 import type { Mesh, MeshStandardMaterial } from "three";
-import type { Skill } from "@root/source/lib/data/skills";
+import type { Skill } from "@app/lib/data/skills";
 
 const MODEL_PATH = "/models/logos.glb";
 useGLTF.preload(MODEL_PATH);

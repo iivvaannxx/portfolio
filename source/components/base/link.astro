@@ -1,16 +1,17 @@
 ---
-import { cn } from "@app/utils";
 import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
+
+import { cn } from "@app/utils";
 
 // Extend the default attributes for extra functionality.
 export type Props = HTMLAttributes<"a"> & {
   label: string;
-  targetBlank?: boolean;
 
   withTooltip?: boolean;
   tooltipContent?: string;
 
+  targetBlank?: boolean;
   withExternalLinkArrow?: boolean;
 };
 
@@ -27,6 +28,7 @@ const {
   ...props
 } = Astro.props;
 
+const ariaLabel = `Link to ${label}${targetBlank ? ` (opens in a new tab).` : "."}`;
 const optionalAttrs = {
   ...(withTooltip && { "data-tippy-content": tooltipContent }),
   ...(targetBlank && { target: "_blank" }),
@@ -37,7 +39,7 @@ const optionalAttrs = {
   {...props}
   {...optionalAttrs}
   {href}
-  aria-label={label}
+  aria-label={ariaLabel}
   rel="noopener noreferrer"
   class={cn("group", clazz)}
 >

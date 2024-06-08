@@ -1,32 +1,75 @@
 ---
-import { getTranslations } from "@app/modules/i18n/lib/translations";
 import type { HTMLAttributes } from "astro/types";
 
-import Link from "@app/components/base/link.astro";
-import { cn } from "@app/utils";
+import { getTranslations } from "@modules/i18n";
+import { Link } from "@components/base";
+
+import { socials } from "@app/lib/data/socials";
+import { Icon } from "astro-icon/components";
 import { sections } from "../lib/sections";
 
-export type Props = HTMLAttributes<"ul">;
-const { class: clazz, ...props } = Astro.props;
-
+export type Props = HTMLAttributes<"nav">;
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections;
 ---
 
-<ul
-  {...props}
-  class={cn("flex items-center gap-4 font-medium uppercase", clazz)}
->
-  {
-    sections.map((section) => (
-      <li>
-        <Link
-          href={`#${t[section].id}`}
-          label={section}
-        >
-          {t[section].name}
-        </Link>
-      </li>
-    ))
-  }
-</ul>
+<script>
+  import { lenis } from "@app/lib/client";
+
+  document.querySelectorAll("a[data-nav-link]").forEach(
+    (link) => {
+      // Make lenis scroll to the target of the link.
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const target = link.href;
+        lenis.scrollTo(target);
+      });
+    },
+    { passive: false },
+  );
+</script>
+
+<nav {...Astro.props}>
+  <ul class="flex items-center gap-6 text-sm font-medium">
+    {
+      sections.map(({ name }) => (
+        <li>
+          <Link
+            data-nav-link
+            href={`#${t[name].id}`}
+            label={name}
+          >
+            {t[name].name}
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+
+  <ul
+    data-socials
+    class="flex items-center gap-x-3"
+  >
+    {
+      socials.map(({ href, i18nKey, iconKey }) => {
+        const translatedLabel = translations.socials[i18nKey];
+        return (
+          <li class="rounded-lg bg-background text-foreground/80 transition duration-200 hover:bg-accent hover:text-accent-foreground hover:brightness-110">
+            <Link
+              {href}
+              label={`${translatedLabel}`}
+              withTooltip
+              targetBlank
+            >
+              <Icon
+                name={iconKey}
+                class="box-content size-7 p-2 text-current"
+              />
+            </Link>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>

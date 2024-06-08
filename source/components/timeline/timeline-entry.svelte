@@ -27,7 +27,7 @@
     </div>
     <div class="relative mt-8 h-full w-[6px] rounded-full bg-muted">
       <div
-        class="entry-fill absolute inset-0 w-full origin-top rounded-full bg-primary content-empty"
+        class="entry-fill content-empty absolute inset-0 w-full origin-top rounded-full bg-primary"
       ></div>
     </div>
   </div>

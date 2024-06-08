@@ -9,35 +9,56 @@ export interface SocialData {
 }
 
 /** My LinkedIn profile. */
-export const linkedIn: SocialData = {
+export const linkedIn = {
   href: "https://linkedin.com/in/ivan-porto-wigner",
   i18nKey: "linkedIn",
   iconKey: "lucide:linkedin",
-} as const;
+} as const satisfies SocialData;
 
 /** My GitHub profile. */
-export const github: SocialData = {
+export const github = {
   href: "https://github.com/iivvaannxx",
   i18nKey: "github",
   iconKey: "lucide:github",
-};
+} as const satisfies SocialData;
 
 /** My X (Twitter) profile. */
-export const xTwitter: SocialData = {
+export const xTwitter = {
   href: "https://x.com/iivanportoo",
   i18nKey: "xTwitter",
   size: 32,
 
   // Unfortunately, the icon is not available in the lucide set.
   iconKey: "tabler:brand-x",
-};
+} as const satisfies SocialData;
 
 /** My online resume. */
-export const resume: SocialData = {
+export const resume = {
   href: "https://read.cv/ivanporto",
   i18nKey: "resume",
-  iconKey: "lucide:file-badge",
-};
+  iconKey: "lucide:scroll",
+} as const satisfies SocialData;
+
+/** My email address. */
+export const email = {
+  href: "mailto:dev.ivanporto@gmail.com",
+  i18nKey: "email",
+  iconKey: "lucide:mail",
+} as const satisfies SocialData;
+
+/** My Bento profile. */
+export const bento = {
+  href: "https://bento.me/ivanporto",
+  i18nKey: "bento",
+  iconKey: "lucide:layout-dashboard",
+} as const satisfies SocialData;
 
 /** All the socials I provide a link to. */
-export const socials = [linkedIn, github, xTwitter, resume] as const;
+export const socials = [
+  linkedIn,
+  github,
+  xTwitter,
+  email,
+  resume,
+  bento,
+] as const satisfies SocialData[];

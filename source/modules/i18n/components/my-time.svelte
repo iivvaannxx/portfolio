@@ -2,7 +2,7 @@
   lang="ts"
   context="module"
 >
-  import { cn } from "@root/source/utils";
+  import { cn } from "@app/utils";
   import { defaultLocale } from "../lib/locales";
 
   import RealTime from "./real-time.svelte";

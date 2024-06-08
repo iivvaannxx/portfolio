@@ -3,32 +3,37 @@ import type { Config } from "tailwindcss";
 
 import pluginMaskImage from "tailwind-gradient-mask-image";
 import pluginFluidType from "tailwindcss-fluid-type";
+import pluginDebugScreens from "tailwindcss-debug-screens";
+import pluginAnimated from "tailwindcss-animated";
 
 const config: Config = {
   content: ["./source/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: ["class"],
   safelist: ["dark"],
 
-  plugins: [pluginMaskImage, pluginFluidType],
+  plugins: [
+    pluginMaskImage,
+    pluginFluidType,
+    pluginDebugScreens,
+    pluginAnimated,
+  ],
+
   theme: {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
     },
 
     screens: {
-      "fold": "280px",
-      "xs": "375px",
+      fold: "280px",
+      xs: "375px",
       ...screens,
-      "3xl": "1600px",
     },
 
     extend: {
-      content: {
-        empty: "''",
+      height: {
+        header: "var(--header-height)",
+        content: "var(--content-height)",
       },
 
       colors: {

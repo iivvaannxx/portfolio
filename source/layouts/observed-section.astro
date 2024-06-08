@@ -5,9 +5,12 @@ export type Props = HTMLAttributes<"section"> & {
   // Enforce an id for the section.
   id: string;
   order?: number;
+
+  title: string;
+  alignTitle: "left" | "right";
 };
 
-const { order = 1, ...props } = Astro.props;
+const { order = 1, title, alignTitle, ...props } = Astro.props;
 ---
 
 <script>
@@ -94,6 +97,46 @@ const { order = 1, ...props } = Astro.props;
 <section
   {...props}
   data-observed-section={order}
+  data-scroll-reveal
+  data-scroll-away
 >
+  <h2 class="my-12 text-3xl font-bold opacity-85">
+    {title}
+  </h2>
+
   <slot />
 </section>
+
+<style>
+  :global(main) {
+    counter-reset: section;
+  }
+
+  h2 {
+    position: relative;
+  }
+
+  h2::before {
+    @apply tabular-nums;
+
+    counter-increment: section;
+    content: "0" counter(section) ". ";
+    opacity: 0.9;
+
+    font-size: 0.8em;
+    margin-right: 0.5em;
+  }
+
+  h2::after {
+    content: "";
+    width: 50%;
+    height: 2px;
+
+    position: absolute;
+    top: calc(50% + 2px);
+
+    display: inline-block;
+    margin-left: 0.6em;
+    background-color: theme("colors.muted.DEFAULT");
+  }
+</style>

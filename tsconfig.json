@@ -6,10 +6,9 @@
     "baseUrl": ".",
 
     "paths": {
-      "@root/*": ["./*"],
-
       "@app/*": ["./source/*"],
-      "$lib/*": ["./source/*"],
+      "@components/*": ["./source/components/*"],
+      "@lib/*": ["./source/lib/*"],
       "@modules/*": ["./source/modules/*"]
     },
 
