@@ -22,8 +22,12 @@ const t = translations.sections;
       link.addEventListener("click", (event) => {
         event.preventDefault();
 
-        const target = link.href;
-        lenis.scrollTo(target);
+        const target = link.href.substring(link.href.indexOf("#"));
+        lenis.scrollTo(target, {
+          duration: 1.5,
+          offset: -100,
+          lock: true,
+        });
       });
     },
     { passive: false },
