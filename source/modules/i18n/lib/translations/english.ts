@@ -37,7 +37,7 @@ export const english = {
           location: "Barcelona, Spain",
 
           description:
-            "<q>There's no better way to learn than to teach</q>\n\nWeekly guided <strong>20+ students</strong> through a broad range of computer science topics ranging from basic programming to advanced subjects such as <strong>Python</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>C++</strong>, and many more. My role was <b>to help them navigate the different courses</b> available in an internal e-learning platform, assisting them when they encountered challenges and ensuring they made the most of the interactive learning tools available.\n\n<b>Participated in extracurricular teaching at local schools</b> and <strong>received positive parental feedback</strong>, noting improvements in students' academic performance.",
+            "<q>There's no better way to learn than to teach</q>\n\nWeekly guided <strong>20+ students</strong> through a broad range of computer science topics ranging from basic programming to advanced subjects such as <strong>Python</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>C++</strong>, and many more. My role was <b>to help them navigate the different courses</b> available in an internal e-learning platform, assisting them when they encountered challenges and ensuring they made the most of the interactive learning tools available.\n\n<b>Participated in extracurricular teaching at local schools</b> and <strong>received positive parental feedback</strong>, as a result of an improvement in their children's academic performance.",
 
           skills: ["Communication", "Python", "JavaScript"],
         },
