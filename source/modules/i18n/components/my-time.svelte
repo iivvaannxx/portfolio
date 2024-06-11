@@ -3,14 +3,14 @@
   context="module"
 >
   import { cn } from "@app/utils";
-  import { defaultLocale } from "../lib/locales";
+  import { DEFAULT_LOCALE } from "../lib/constants";
 
   import RealTime from "./real-time.svelte";
   import TimeDiff from "./time-diff.svelte";
 </script>
 
 <script lang="ts">
-  export let locale = defaultLocale;
+  export let locale = DEFAULT_LOCALE;
   const { class: clazz, ...rest } = $$restProps;
 </script>
 

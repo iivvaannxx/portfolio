@@ -7,8 +7,11 @@
 
     "paths": {
       "@app/*": ["./source/*"],
-      "@components/*": ["./source/components/*"],
       "@lib/*": ["./source/lib/*"],
+
+      "@assets/*": ["./source/assets/*"],
+      "@components/*": ["./source/components/*"],
+      "@layouts/*": ["./source/layouts/*"],
       "@modules/*": ["./source/modules/*"]
     },
 

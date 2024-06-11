@@ -2,13 +2,13 @@
 import type { GetStaticPaths } from "astro";
 
 import Page from "@app/layouts/page.astro";
-import { getLocalizedStaticPaths } from "@app/modules/i18n/lib/locales";
+import { getLocalizedStaticPaths } from "@app/modules/i18n/lib/utils/locales";
 
 import { Canvas } from "@app/components/experience/canvas";
 
 import Header from "@app/layouts/header.astro";
 import Work from "@app/sections/work.astro";
-import Projects from "@app/sections/projects.astro";
+import Projects from "@app/sections/projects/content.astro";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
@@ -28,7 +28,7 @@ const formatter = new Intl.DateTimeFormat(locale, {
 
   <Canvas client:load />
 
-  <main>
+  <main class="space-y-48">
     <!--     <Hero />
  -->
     <Work />

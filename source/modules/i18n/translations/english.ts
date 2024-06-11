@@ -1,3 +1,5 @@
+import { bold, italic, link, strong } from "../lib/helpers/html";
+
 /** The english strings for the website. */
 export const english = {
   meta: {
@@ -61,6 +63,64 @@ export const english = {
     projects: {
       name: "Projects",
       id: "projects",
+
+      archive: {
+        "my-room": {
+          name: "My Room In 3D",
+          headline: "A (quite a bit more) fancy replica of my room.",
+
+          description: `
+            This was my entry to the 9th edition of the challenges organised by ${bold("Bruno Simon")}
+            for the students of his ${link("https://threejs-journey.com/", strong("Three.js Journey"), true)} 
+            course. The theme was ${italic("Isometric Room")} and even though I had just purchased the course 
+            when the challenge was announced, I decided to participate.
+            
+            {newline}
+            
+            Turned out pretty well! It scored the ${link(
+              "https://threejs-journey.com/challenges/009-isometric-room",
+              strong("3rd place"),
+              true,
+            )}.
+          `,
+        },
+
+        "the-gamelab": {
+          name: "The Gamelab",
+          headline:
+            "A growing collection of games built with web technologies.",
+
+          description: `
+            I started this project very recently, after quite some time without
+            working on any game projects, I wanted to get back into it. I thought it 
+            would be fun to combine my passion for both the web and game development,
+            and so this idea came up.
+
+            {newline}
+
+            Right now there's only 1 game, but I plan to add more in the future. I'll be using
+            many different technologies, including ${strong("Three.js")}, ${strong("Phaser")}, 
+            ${strong("Pixi.js")}, ${strong("Canvas")}, among all the other cool stuff out there.
+          `,
+        },
+
+        "channel-packer": {
+          name: "Channel Packer",
+          headline: "A simple tool to pack or extract RGB image channels.",
+          description: "",
+        },
+
+        "the-izland": {
+          name: "The Izland",
+          headline: "A survival game we made in college",
+
+          description: "",
+        },
+      },
+
+      current: {
+        name: "Selflink",
+      },
     },
 
     skills: {

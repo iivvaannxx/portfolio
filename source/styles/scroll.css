@@ -39,32 +39,31 @@ html.lenis body {
 
 [data-scroll-reveal] {
   animation: scroll-reveal linear both;
-  animation-timeline: view();
-  animation-range: entry 20% entry 60%;
+  animation-timeline: view(block);
 }
 
 [data-scroll-away] {
   animation: scroll-away linear both;
-  animation-timeline: view();
-  animation-range: exit 50% exit 95%;
+  animation-timeline: view(block var(--header-height));
 }
 
 @keyframes scroll-reveal {
-  0% {
+  entry 0%,
+  entry 20% {
     opacity: 0;
   }
 
-  100% {
+  entry 50% {
     opacity: 1;
   }
 }
 
 @keyframes scroll-away {
-  0% {
+  exit 50% {
     opacity: 1;
   }
 
-  100% {
+  exit 95% {
     opacity: 0;
   }
 }

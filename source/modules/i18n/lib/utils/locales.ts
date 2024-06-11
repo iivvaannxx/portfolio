@@ -1,11 +1,4 @@
-/** The locales available in the website. */
-export const supportedLocales = ["en", "es", "ca"] as const;
-
-/** Defines a locale code of the website. */
-export type Locale = (typeof supportedLocales)[number];
-
-/** The default locale of the website. */
-export const defaultLocale: Locale = "en";
+import { DEFAULT_LOCALE, type Locale, SUPPORTED_LOCALES } from "../constants";
 
 /**
  * Checks if a given locale is valid.
@@ -14,7 +7,7 @@ export const defaultLocale: Locale = "en";
  * @returns A boolean indicating whether the locale is valid.
  */
 export function isValidLocale(locale: string): locale is Locale {
-  return supportedLocales.includes(locale as Locale);
+  return SUPPORTED_LOCALES.includes(locale as Locale);
 }
 
 /**
@@ -24,7 +17,7 @@ export function isValidLocale(locale: string): locale is Locale {
  * @param defaultLoc The default locale to use if no locale is found.
  * @returns The current locale or the default locale.
  */
-export function getCurrentLocale(defaultLoc = defaultLocale) {
+export function getCurrentLocale(defaultLoc = DEFAULT_LOCALE) {
   // We discard the initial slash.
   const [, slug] = window.location.pathname.split("/");
   const locale = slug.substring(0, 2);
@@ -43,10 +36,10 @@ export function getCurrentLocale(defaultLoc = defaultLocale) {
  */
 export function getLocalizedStaticPaths() {
   // See: https://docs.astro.build/en/reference/api-reference/#getstaticpaths
-  return supportedLocales.map((locale) => {
+  return SUPPORTED_LOCALES.map((locale) => {
     // By setting the `locale` param to `undefined` (if it's the default locale)
     // We ensure that it will be available at `/` instead of `/{locale}`.
-    const pathname = locale === defaultLocale ? undefined : locale;
+    const pathname = locale === DEFAULT_LOCALE ? undefined : locale;
     return {
       params: { locale: pathname },
       props: { locale },

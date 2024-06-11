@@ -2,7 +2,7 @@
   lang="ts"
   context="module"
 >
-  import { formatTimeDifference, getTimeDifference } from "../lib/time";
+  import { formatTimeDifference, getTimeDifference } from "../lib/utils/time";
   import type { UserTimezone } from "../types";
 </script>
 

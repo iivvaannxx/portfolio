@@ -95,10 +95,8 @@ const { order = 1, title, ...props } = Astro.props;
 <section
   {...props}
   data-observed-section={order}
-  data-scroll-reveal
-  data-scroll-away
 >
-  <h2 class="my-12 text-2xl font-bold opacity-85 xs:text-3xl">
+  <h2 class="my-12 text-3xl font-bold opacity-85">
     {title}
   </h2>
 
@@ -112,7 +110,6 @@ const { order = 1, title, ...props } = Astro.props;
 
   h2 {
     position: relative;
-    white-space: nowrap;
   }
 
   h2::before {
@@ -134,8 +131,15 @@ const { order = 1, title, ...props } = Astro.props;
     position: absolute;
     top: calc(50% + 2px);
 
-    display: inline-block;
+    display: none;
     margin-left: 0.6em;
     background-color: theme("colors.muted.DEFAULT");
+  }
+
+  @media screen(sm) {
+    h2::after {
+      display: inline-block;
+      text-align: left;
+    }
   }
 </style>

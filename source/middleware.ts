@@ -1,5 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
-import { defaultLocale, isValidLocale } from "./modules/i18n/lib/locales";
+import { DEFAULT_LOCALE, isValidLocale } from "@modules/i18n";
 
 /**
  * Middleware that handles the localization of a page.
@@ -16,7 +16,7 @@ import { defaultLocale, isValidLocale } from "./modules/i18n/lib/locales";
 const localize = defineMiddleware(
   async ({ params, locals, redirect }, next) => {
     // Assign the locale or the default if it's not defined (or wrong).
-    const { locale = defaultLocale } = params;
+    const { locale = DEFAULT_LOCALE } = params;
 
     // If the locale is not valid, redirect to the 404 page.
     if (!isValidLocale(locale)) {

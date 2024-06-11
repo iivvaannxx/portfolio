@@ -30,6 +30,12 @@ export const catalan = {
     projects: {
       name: "Projectes",
       id: "projectes",
+
+      archive: {
+        "my-room": {
+          name: "La Meva Habitació en 3D",
+        },
+      },
     },
 
     skills: {

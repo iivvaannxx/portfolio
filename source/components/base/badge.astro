@@ -2,8 +2,9 @@
 import { cn } from "@app/utils";
 import type { HTMLAttributes } from "astro/types";
 
-export type BadgeProps = { hoverGlow?: boolean };
-export type Props = HTMLAttributes<"span"> & BadgeProps;
+export type Props = HTMLAttributes<"span"> & {
+  hoverGlow?: boolean;
+};
 const { class: clazz, hoverGlow = false, ...props } = Astro.props;
 ---
 
