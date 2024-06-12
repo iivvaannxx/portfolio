@@ -112,9 +112,21 @@ export const english = {
 
         "the-izland": {
           name: "The Izland",
-          headline: "A survival game we made in college",
+          headline: "A zombie survival game we made back in college.",
 
-          description: "",
+          description: `
+            This is one of my favorite games I've worked on. It was a project for a
+            college subject, where we had to develop a game in ${strong("Unity")}.
+            Although we were very limited in time and couldn't make it as polished
+            as we wanted, we were very happy with the result.
+
+            {newline}
+
+            I was in charge of programming the game's main mechanics, such as
+            the ${strong("zombies' AI")}, the ${strong("user interface")}, the
+            ${strong("player interactions")}, and the overall ${strong("game's progression")}, 
+            among other elements.
+          `,
         },
       },
 

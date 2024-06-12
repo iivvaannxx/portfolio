@@ -77,44 +77,22 @@ export const projects = [
     },
   }),
 
-  defineProject("channel-packer", {
-    url: "https://my-room.pages.dev",
-    repository: "https://github.com/iivvaannxx/my-room",
-
-    featured: true,
-    relatedSkills: ["React", "TypeScript"],
-
-    preview: (await import("../assets/my-room/cover.png")).default,
-    video: {
-      webm: {
-        av1: (await import("../assets/my-room/preview-av1.webm")).default,
-        vp9: (await import("../assets/my-room/preview-vp9.webm")).default,
-      },
-      mp4: {
-        av1: (await import("../assets/my-room/preview-av1.mp4")).default,
-        h264: (await import("../assets/my-room/preview-h264.mp4")).default,
-        h265: (await import("../assets/my-room/preview-h265.mp4")).default,
-      },
-    },
-  }),
-
   defineProject("the-izland", {
-    url: "https://thegamelab.dev",
-    repository: "https://github.com/iivvaannxx/the-gamelab",
+    url: "https://fivemost.itch.io/the-izland",
 
     featured: true,
-    relatedSkills: ["Unity", "C#", "Blender"],
+    relatedSkills: ["Teamwork", "Unity", "C#", "Blender"],
 
-    preview: (await import("../assets/gamelab/cover.png")).default,
+    preview: (await import("../assets/the-izland/cover.png")).default,
     video: {
       webm: {
-        av1: (await import("../assets/gamelab/preview-av1.webm")).default,
-        vp9: (await import("../assets/gamelab/preview-vp9.webm")).default,
+        av1: (await import("../assets/the-izland/preview-av1.webm")).default,
+        vp9: (await import("../assets/the-izland/preview-vp9.webm")).default,
       },
       mp4: {
-        av1: (await import("../assets/gamelab/preview-av1.mp4")).default,
-        h264: (await import("../assets/gamelab/preview-h264.mp4")).default,
-        h265: (await import("../assets/gamelab/preview-h265.mp4")).default,
+        av1: (await import("../assets/the-izland/preview-av1.mp4")).default,
+        h264: (await import("../assets/the-izland/preview-h264.mp4")).default,
+        h265: (await import("../assets/the-izland/preview-h265.mp4")).default,
       },
     },
   }),

@@ -15,6 +15,18 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
   Astro.props;
 ---
 
+<script>
+  import tippy from "tippy.js";
+  tippy("article[data-project] a[data-tippy-content]", {
+    placement: "bottom",
+    theme: "link",
+    offset: [0, 16],
+
+    animation: "scale",
+    inertia: true,
+  });
+</script>
+
 <article
   data-project={name}
   class="relative mx-2 flex flex-col-reverse items-center xl:grid xl:grid-cols-12 xl:grid-rows-1"
@@ -22,7 +34,7 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
   <div
     class="flex flex-col rounded-xl border px-7 py-6 md:px-10 md:py-8 xl:col-start-1 xl:col-end-11 xl:row-start-1 xl:min-h-[450px] *:xl:max-w-xl *:2xl:max-w-2xl"
   >
-    <header class="py-2">
+    <header class="mt-2 py-2 xl:mt-0">
       <div class="inline-flex items-center">
         <h3
           class="inline whitespace-nowrap font-header text-2xl font-semibold text-primary"
@@ -38,6 +50,8 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
                 label={`GitHub repository for project "${name}"`}
                 targetBlank
                 class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
+                withTooltip
+                tooltipContent="Source Code"
               >
                 <Icon
                   class="size-6"
@@ -53,10 +67,12 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
                 label={`Live link to project "${name}"`}
                 targetBlank
                 class="aspect-square content-center rounded-md p-2 text-lg font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
+                withTooltip
+                tooltipContent="Try it out!"
               >
                 <Icon
                   class="size-6"
-                  name="lucide:external-link"
+                  name={"lucide:external-link"}
                 />
               </Link>
             )
@@ -137,6 +153,56 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
 </article>
 
 <style>
+  h3::after {
+    content: " | ";
+    color: theme("colors.muted.DEFAULT");
+  }
+
+  [data-project-image],
+  [data-project-preview]::after {
+    animation: preview linear both;
+    animation-timeline: view(calc(10% + var(--header-height)));
+  }
+
+  :global([data-github-link] path) {
+    transition: fill 0.15s ease-out;
+    fill: theme("colors.primary.DEFAULT");
+  }
+
+  :global([data-github-link]:hover path) {
+    fill: theme("colors.primary.foreground");
+  }
+
+  [data-project-video] {
+    opacity: 0;
+    z-index: 10;
+
+    animation: preview-video linear both;
+    animation-timeline: view(calc(10% + var(--header-height)));
+  }
+
+  [data-project-preview]::after {
+    --from-opacity: 0;
+
+    content: "";
+    inset: 0;
+    position: absolute;
+    display: block;
+
+    width: calc(100% + 10px);
+    height: 100%;
+    bottom: 0;
+
+    background-image: linear-gradient(
+      to bottom,
+      transparent 10%,
+      theme("colors.background / 50%") 25%,
+      theme("colors.background") 95%
+    );
+
+    opacity: 0;
+  }
+
   @keyframes preview {
     entry 50% {
       opacity: var(--from-opacity, 1);
@@ -177,54 +243,5 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
       opacity: 0;
       transform: none;
     }
-  }
-
-  [data-project-image],
-  [data-project-preview]::after {
-    animation: preview linear both;
-    animation-timeline: view(calc(10% + var(--header-height)));
-  }
-
-  :global([data-github-link] path) {
-    transition: fill 0.15s ease-out;
-    fill: theme("colors.primary.DEFAULT");
-  }
-
-  :global([data-github-link]:hover path) {
-    fill: theme("colors.primary.foreground");
-  }
-
-  h3::after {
-    content: " | ";
-  }
-
-  [data-project-video] {
-    opacity: 0;
-    z-index: 10;
-
-    animation: preview-video linear both;
-    animation-timeline: view(calc(10% + var(--header-height)));
-  }
-
-  [data-project-preview]::after {
-    --from-opacity: 0;
-
-    content: "";
-    inset: 0;
-    position: absolute;
-    display: block;
-
-    width: calc(100% + 10px);
-    height: 100%;
-    bottom: 0;
-
-    background-image: linear-gradient(
-      to bottom,
-      transparent 10%,
-      theme("colors.background / 50%") 25%,
-      theme("colors.background") 95%
-    );
-
-    opacity: 0;
   }
 </style>
