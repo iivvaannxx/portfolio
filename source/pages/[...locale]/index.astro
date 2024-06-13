@@ -9,6 +9,7 @@ import { Canvas } from "@app/components/experience/canvas";
 import Header from "@app/layouts/header.astro";
 import Work from "@app/sections/work.astro";
 import Projects from "@app/sections/projects/content.astro";
+import Skills from "@app/sections/skills/content.astro";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
@@ -34,74 +35,7 @@ const formatter = new Intl.DateTimeFormat(locale, {
     <Work />
 
     <Projects />
-
-    <!-- <section
-      class="mt-48"
-      data-scroll-reveal
-      data-scroll-away
-    >
-      <h2 class="my-12 text-3xl font-bold opacity-85">
-        Which technologies I know?
-      </h2>
-
-      <div class="flex w-full gap-32">
-        <div class="grid w-1/2 grid-cols-4 items-center gap-8">
-          {
-            skills.map((skill) => {
-              if (
-                [
-                  "Unity",
-                  "Unreal Engine",
-                  "Bash",
-                  "JavaScript",
-                  "C#",
-                  "Node",
-                  "Deno",
-                  "PixiJS",
-                  "Phaser",
-                  "Blender",
-                  "Photoshop",
-                  "TailwindCSS",
-                ].includes(skill.name) ||
-                skill.categories.includes("soft")
-              ) {
-                // This skills still don't have a 3D icon.
-                return null;
-              }
-
-              return (
-                <div class="aspect-square w-32">
-                  <button
-                    data-skill-button={skill.name}
-                    data-active={`${skill.name === "Astro"}`}
-                    class="flex size-full flex-col justify-center rounded-xl border bg-card p-3 text-center transition-colors duration-300 hover:bg-accent data-[active=true]:bg-accent/50"
-                  >
-                    <Icon
-                      name={getIconForSkill(skill.name)}
-                      class="size-full p-2 text-center"
-                    />
-                    <span class="mt-2 block w-full text-sm font-medium">
-                      {skill.name}
-                    </span>
-                  </button>
-                </div>
-              );
-            })
-          }
-        </div>
-        <div class="relative aspect-square w-1/2">
-          <SkillView
-            className="pointer-events-none absolute inset-0 m-auto size-[80%]"
-            client:load
-          />
-        </div>
-      </div>
-      <footer>
-        <p class="my-16 text-base font-semibold text-primary">
-          TODO: Add missing skills and create 3D icons for them.
-        </p>
-      </footer>
-    </section> -->
+    <Skills />
 
     <!-- <section
       class="mt-48"

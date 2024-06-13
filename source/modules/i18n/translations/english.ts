@@ -138,6 +138,10 @@ export const english = {
     skills: {
       name: "Skills",
       id: "skills",
+
+      known: {
+        astro: [],
+      },
     },
 
     about: {

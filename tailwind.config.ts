@@ -93,15 +93,27 @@ const config: Config = {
       },
 
       keyframes: {
-        beat: {
+        "beat": {
           "0%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.1)" },
           "100%": { transform: "scale(1)" },
         },
+
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+
+        "fade-out": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
       },
 
       animation: {
-        beat: "beat 1s infinite",
+        "beat": "beat 1s infinite",
+        "fade-in": "fade-in 1s forwards",
+        "fade-out": "fade-out 1s forwards",
       },
     },
   },

@@ -1,6 +1,6 @@
 import { getTranslationHandler } from "@app/modules/i18n";
 import type {
-  Project,
+  ProjectData,
   ProjectStaticData,
   TranslatedProjectDataKey,
   TranslatedProjectKey,
@@ -29,6 +29,7 @@ function defineProject(
     headline: createTranslationHandler("headline"),
     description: createTranslationHandler("description"),
 
+    projectKey,
     ...data,
   };
 }
@@ -96,4 +97,7 @@ export const projects = [
       },
     },
   }),
-] satisfies Project[];
+] as const satisfies ProjectData[];
+
+/** A union of all the projects we have defined. */
+export type ProjectKey = (typeof projects)[number]["projectKey"];

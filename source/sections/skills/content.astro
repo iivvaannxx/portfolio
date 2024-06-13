@@ -1,0 +1,89 @@
+---
+import ObservedSection from "@app/layouts/observed-section.astro";
+import { skills } from "./lib/data";
+import SkillButton from "./components/skill-button.astro";
+import { SkillView } from "./components/skill-view";
+
+const hardSkills = skills
+  .filter((skill) => !skill.categories.includes("soft"))
+  .toSorted((a, b) => a.name.localeCompare(b.name));
+
+const selectedSkill = hardSkills[0].name;
+---
+
+<script>
+  const skillButtons = document.querySelectorAll("button[data-skill-button]");
+  const skillOverlay = document.querySelector("div[data-skill-overlay]")!;
+  let lastSelectedSkill = document.querySelector("button[data-selected=true]")!;
+
+  skillButtons.forEach((button) => {
+    const skillName = button.dataset.skillButton;
+    button.addEventListener("click", () => {
+      // Set the new selected skill.
+      lastSelectedSkill.dataset.selected = "false";
+      lastSelectedSkill = button;
+      button.dataset.selected = "true";
+
+      // Notify skill clicks via custom events
+      const event = new CustomEvent("skill:show", {
+        detail: {
+          skillName,
+        },
+      });
+
+      skillOverlay.classList.replace("animate-fade-out", "animate-fade-in");
+      skillOverlay.addEventListener("animationend", () => {
+        document.dispatchEvent(event);
+        setTimeout(() => {
+          skillOverlay.classList.replace("animate-fade-in", "animate-fade-out");
+        }, 300);
+      });
+    });
+  });
+</script>
+
+<ObservedSection
+  class="mt-48"
+  title="Which technologies I know?"
+  class="mx-auto max-w-screen-2xl px-8 md:px-12 lg:px-16"
+  id="skills"
+  order={3}
+>
+  <div class="grid grid-cols-2">
+    <div class="grid w-fit grid-cols-4 items-center justify-center gap-4">
+      {
+        hardSkills.map((skill) => {
+          if (skill.categories.includes("soft")) {
+            // This skills still don't have a 3D icon.
+            return null;
+          }
+
+          return (
+            <SkillButton
+              data-skill-button={skill.name}
+              data-selected={`${skill.name === selectedSkill}`}
+              class="transition-colors duration-300 hover:bg-accent hover:text-accent-foreground data-[selected=true]:bg-accent/75"
+              {...skill}
+            />
+          );
+        })
+      }
+    </div>
+    <div class="relative">
+      <SkillView
+        className="pointer-events-none absolute inset-0 m-auto size-[80%]"
+        client:load
+      />
+
+      <div
+        data-skill-overlay
+        class="absolute inset-0 z-20 h-full w-full animate-fade-out bg-background animate-duration-200"
+      >
+      </div>
+    </div>
+  </div>
+</ObservedSection>
+
+<style></style>
+
+<!-- C++, Unreal Engine, Unity, PHP, HTML5, Figma, C# -->

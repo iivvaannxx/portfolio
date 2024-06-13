@@ -10,7 +10,7 @@ import { DEFAULT_LOCALE, type Locale, TRANSLATIONS } from "../constants";
  * @param locale - The locale to use to retrieve the translation.
  * @returns The translation string.
  */
-export type TranslationHandler<T extends string = string> = (
+export type TranslationHandler<T extends string | string[] = string> = (
   locale: Locale,
 ) => T;
 

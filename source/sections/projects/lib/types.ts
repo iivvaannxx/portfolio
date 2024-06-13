@@ -39,7 +39,7 @@ export interface ProjectStaticData {
 }
 
 /** Defines the shape of a project. */
-export type Project = ProjectStaticData & {
+export type ProjectData = ProjectStaticData & {
   name: TranslationHandler;
   headline: TranslationHandler;
   description: TranslationHandler;
