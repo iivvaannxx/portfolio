@@ -48,7 +48,9 @@
   }
 </script>
 
-<div class="grid grid-cols-1 grid-rows-2 gap-12 xl:grid-cols-2 xl:grid-rows-1">
+<div
+  class="mt-24 grid grid-cols-1 grid-rows-2 gap-12 xl:grid-cols-2 xl:grid-rows-1"
+>
   <div class="row-start-2 flex w-full flex-col xl:row-start-1">
     <Tabs.Root
       value={categories[0]}

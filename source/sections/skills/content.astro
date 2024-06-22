@@ -4,37 +4,6 @@ import SkillGallerySvelte from "./components/skill-gallery.svelte";
 import { SkillView } from "./components/skill-view";
 ---
 
-<script>
-  /*   const skillButtons = document.querySelectorAll("button[data-skill-button]");
-  const skillOverlay = document.querySelector("div[data-skill-overlay]")!;
-  let lastSelectedSkill = document.querySelector("button[data-selected=true]")!;
-
-  skillButtons.forEach((button) => {
-    const skillName = button.dataset.skillButton;
-    button.addEventListener("click", () => {
-      // Set the new selected skill.
-      lastSelectedSkill.dataset.selected = "false";
-      lastSelectedSkill = button;
-      button.dataset.selected = "true";
-
-      // Notify skill clicks via custom events
-      const event = new CustomEvent("skill:show", {
-        detail: {
-          skillName,
-        },
-      });
-
-      skillOverlay.classList.replace("animate-fade-out", "animate-fade-in");
-      skillOverlay.addEventListener("animationend", () => {
-        document.dispatchEvent(event);
-        setTimeout(() => {
-          skillOverlay.classList.replace("animate-fade-in", "animate-fade-out");
-        }, 300);
-      });
-    });
-  }); */
-</script>
-
 <ObservedSection
   class="mt-48"
   title="Which technologies can I use?"
@@ -49,59 +18,4 @@ import { SkillView } from "./components/skill-view";
       client:load
     />
   </SkillGallerySvelte>
-  <!-- <div class="mt-32 grid grid-cols-1 grid-rows-2 xl:grid-cols-2 xl:grid-rows-1">
-    <div class="row-start-2 flex w-full flex-col xl:row-start-1">
-      <FilterSkills client:load>
-        <SkillGallery
-          cols={2}
-          rows={1}
-          categories={["languages"]}
-          slot="languages"
-        />
-
-        <SkillGallery
-          cols={2}
-          rows={1}
-          categories={["web"]}
-          slot="web"
-        />
-
-        <SkillGallery
-          cols={2}
-          rows={1}
-          categories={["infrastructure"]}
-          slot="infrastructure"
-        />
-
-        <SkillGallery
-          cols={2}
-          rows={1}
-          categories={["creative"]}
-          slot="creative"
-        />
-
-        <SkillGallery
-          cols={2}
-          rows={1}
-          categories={["tools"]}
-          slot="tools"
-        />
-      </FilterSkills>
-    </div>
-
-    <div class="relative row-start-1">
-      <SkillView
-        className="pointer-events-none absolute inset-0 m-auto aspect-square h-[80%]"
-        client:load
-      />
-
-      <div
-        data-skill-overlay
-        class="absolute inset-0 z-20 h-full w-full animate-fade-out bg-background animate-duration-200"
-      >
-      </div>
-    </div>
-  </div> -->
 </ObservedSection>
-
-<div class="h-[50vh]"></div>

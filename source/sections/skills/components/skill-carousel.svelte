@@ -74,14 +74,14 @@
           {#each skillPage as skill}
             <ToggleGroup.Item
               value={skill.name}
-              class="flex h-auto select-none flex-col items-center justify-center border border-border p-4"
+              class="flex aspect-square h-auto select-none flex-col items-center justify-center border border-border p-0 text-foreground/80 transition-colors hover:text-accent-foreground/90"
             >
               <SkillIcon
-                class="mb-4 mt-2 size-[3em]"
+                class="mb-6 mt-2 size-[4em]"
                 name={skill.icon}
               />
               <p
-                class="block truncate text-balance text-center text-sm font-medium"
+                class="block truncate text-balance text-center text-base font-medium"
               >
                 {skill.name}
               </p>
