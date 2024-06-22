@@ -62,7 +62,7 @@ export const projects = [
     repository: "https://github.com/iivvaannxx/the-gamelab",
 
     featured: true,
-    relatedSkills: ["PixiJS", "ThreeJS", "TypeScript", "Phaser"],
+    relatedSkills: ["PixiJS", "ThreeJS", "TypeScript"],
 
     preview: (await import("../assets/gamelab/cover.png")).default,
     video: {

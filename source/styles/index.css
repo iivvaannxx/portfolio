@@ -58,3 +58,7 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
 }
+
+code {
+  @apply !font-mono;
+}

@@ -1,7 +1,7 @@
 import type { ImageMetadata } from "astro";
 import type { Translation, TranslationHandler } from "@modules/i18n";
 
-import type { Skill } from "@lib/data/skills";
+import type { SkillName } from "@app/sections/skills";
 
 /** A union of all the keys of the projects we have localized. */
 export type TranslatedProjectKey =
@@ -33,7 +33,7 @@ export interface ProjectStaticData {
   repository?: string;
   featured: boolean;
 
-  relatedSkills: Skill[];
+  relatedSkills: SkillName[];
   preview: ImageMetadata;
   video: VideoMetadata;
 }

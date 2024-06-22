@@ -53,7 +53,7 @@ export const english = {
           location: "Girona, Spain",
 
           description:
-            "Transitioned from an internship to a primary role within a research lab at my university, and in collaboration with a local hospital. My role was to develop a <strong>virtual-reality rehabilitation game</strong> for stroke patients. Utilizing the (now Meta) Oculus Quest VR headset and its hand tracking capabilities, our project aimed to create <b>immersive therapeutic experiences</b>, by developing a variety of exercises <strong>tailored to address specific mobility issues</strong>.\n\nThe project also served as the <strong>thesis for my degree</strong> and was recognized with the <b>“Scholarship for Transfer, Innovation and Entrepreneurship”</b> (BTI) during 2021-2022, as a result of a partnership between the university and “Santander Universidades",
+            "Transitioned from an internship to a primary role within a research lab at my university, and in collaboration with a local hospital. My role was to develop a <strong>virtual-reality rehabilitation game</strong> for stroke patients. Utilizing the (now Meta) Oculus Quest VR headset and its hand tracking capabilities, our project aimed to create <b>immersive therapeutic experiences</b>, by developing a variety of exercises <strong>tailored to address specific mobility issues</strong>.\n\nThe project also served as the <strong>thesis for my degree</strong> and was recognized with the <b>“Scholarship for Transfer, Innovation and Entrepreneurship”</b> (BTI) during 2021-2022, as a result of a partnership between the university and <q>Santander Universidades</q>.",
 
           skills: ["Analytical Thinking", "C#", "Unity"],
         },
@@ -140,7 +140,8 @@ export const english = {
       id: "skills",
 
       known: {
-        astro: [],
+        "astro": [],
+        "c++": ["This is a test note"],
       },
     },
 

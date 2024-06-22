@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { Link } from "@components/base";
 
-import SkillBadge from "@components/skill-badge.astro";
+import { SkillBadge } from "@app/sections/skills";
 import type { ProjectStaticData } from "../lib/types";
 
 type Props = Omit<ProjectStaticData, "featured"> & {

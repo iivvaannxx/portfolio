@@ -11,6 +11,13 @@ import Work from "@app/sections/work.astro";
 import Projects from "@app/sections/projects/content.astro";
 import Skills from "@app/sections/skills/content.astro";
 
+import { SkillSprites } from "@app/sections/skills";
+import { Icon } from "astro-icon/components";
+import { CharacterView } from "@app/components/experience/views/character";
+import MysteryButton from "@app/components/mystery-button.astro";
+import { MyTime } from "@app/modules/i18n";
+import ObservedSection from "@app/layouts/observed-section.astro";
+
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
 /* const { locale } = Astro.locals;
@@ -37,17 +44,18 @@ const formatter = new Intl.DateTimeFormat(locale, {
     <Projects />
     <Skills />
 
-    <!-- <section
-      class="mt-48"
+    <ObservedSection
+      order={4}
+      class="mx-auto mt-48 max-w-screen-2xl"
       data-scroll-reveal
       data-scroll-away
-    >
-      <h2 class="my-12 text-3xl font-bold opacity-85">
-        A little more about me
-      </h2>
-    </section>
+      title="A little more about me"
+      id="about"
+    />
 
-    <section class="mt-16 grid grow grid-cols-9 grid-rows-9 gap-4">
+    <section
+      class="mx-auto mt-16 grid max-w-screen-2xl grow grid-cols-9 grid-rows-9 justify-center gap-4"
+    >
       <article
         class="col-span-9 row-span-3 flex flex-col justify-between rounded-xl border bg-card px-8 py-6"
       >
@@ -111,8 +119,9 @@ const formatter = new Intl.DateTimeFormat(locale, {
       >
         Hobbies? Games? Food?
       </article>
-    </section> -->
+    </section>
   </main>
 
+  <SkillSprites />
   <!--   <Footer /> -->
 </Page>

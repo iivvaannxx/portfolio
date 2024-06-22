@@ -4,10 +4,9 @@ import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+
 import robotsTxt from "astro-robots-txt";
 import icon from "astro-icon";
-
-import Icons from "unplugin-icons/vite";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,15 +21,30 @@ export default defineConfig({
     service: squooshImageService(),
   },
 
+  markdown: {
+    shikiConfig: {
+      theme: "ayu-dark",
+      wrap: true,
+    },
+  },
+
   integrations: [
     react(),
     svelte(),
+
     tailwind({
       applyBaseStyles: false,
     }),
 
     icon({
-      iconDir: "source/assets/icons",
+      // The original `astro-icon` integration only supports one icon source.
+      // This project contains a custom patch that allows multiple sources.
+      iconSource: [
+        {
+          path: "source/assets/icons",
+          keyword: (file) => `${file.subdir}${file.file}`,
+        },
+      ],
 
       // See: https://github.com/natemoo-re/astro-icon/issues/195
       svgoOptions: {
@@ -50,8 +64,4 @@ export default defineConfig({
     sitemap(),
     robotsTxt(),
   ],
-
-  vite: {
-    plugins: [Icons({ compiler: "svelte" })],
-  },
 });

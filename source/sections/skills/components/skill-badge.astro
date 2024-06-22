@@ -1,0 +1,29 @@
+---
+import { cn } from "@app/utils";
+import Badge, { type Props as BadgeProps } from "@components/base/badge.astro";
+
+import { type SkillName } from "../lib/types";
+import { skills } from "../lib/data";
+import SkillIcon from "./skill-icon.svelte";
+
+export type Props = BadgeProps & {
+  skill: SkillName;
+};
+
+const { skill, class: clazz, ...props } = Astro.props;
+const data = skills.find((s) => s.name === skill)!;
+---
+
+<Badge
+  {...props}
+  class={cn(
+    "select-none space-x-2 whitespace-nowrap px-4 py-2 font-semibold",
+    clazz,
+  )}
+>
+  <SkillIcon
+    name={data.icon}
+    class="size-4"
+  />
+  <span>{skill}</span>
+</Badge>

@@ -1,90 +1,289 @@
-import type { KebabCase } from "type-fest";
+import type { SetOptional } from "type-fest";
+import type { SkillData, SkillKey, SkillName, SkillStaticData } from "./types";
 
-export type SkillCategory =
-  | "code"
-  | "frontend"
-  | "backend"
-  | "devops"
-  | "platform"
-  | "game-dev"
-  | "tools"
-  | "scripting"
-  | "creative"
-  | "soft";
+/** The categories used to classify skills. */
+export const categories = [
+  "languages",
+  "web",
+  "creative",
+  "infrastructure",
+  "tools",
+] as const;
 
-/** Defines the data we hold for a specific skill. */
-export interface SkillData {
-  name: string;
-  icon: string;
-
-  categories: SkillCategory[];
-}
+export const tags = [
+  "frontend",
+  "backend",
+  "devops",
+  "design",
+  "software",
+  "database",
+  "platform",
+  "framework",
+  "library",
+  "language",
+  "scripting",
+  "3D",
+  "soft",
+];
 
 /**
- * Creates a skill object with the specified name, icon, and categories.
+ * Defines a skill with the given name and data.
  *
- * @param name  The name of the skill.
- * @param categories  The categories associated with the skill.
+ * @param data - The data for the skill.
+ * @returns An object representing the defined skill.
  */
-function defineSkill<const Name extends string>(
-  name: Name,
-  ...categories: SkillCategory[]
+async function defineSkill(
+  data: SetOptional<SkillStaticData, "icon"> & { safeName?: string },
 ) {
-  const skillSubdir = "skills";
-  const iconFile = name.toLowerCase().replaceAll(" ", "-") as KebabCase<
-    Lowercase<Name>
-  >;
-
-  const icon = `${skillSubdir}/${iconFile}`;
-  return { name, categories, icon } as const;
+  // Some skills like "C#" contain special characters that make imports fail.
+  const useName = data.safeName ?? data.name;
+  return {
+    ...data,
+    icon: useName.toLowerCase().replaceAll(" ", "-"),
+  };
 }
 
-export const skills = [
-  defineSkill("C++", "code"),
-  defineSkill("C#", "code"),
-  defineSkill("Python", "code", "scripting"),
-  defineSkill("JavaScript", "code"),
-  defineSkill("TypeScript", "code"),
-  defineSkill("Bash", "code", "scripting"),
-  defineSkill("Nix", "code"),
-  defineSkill("Rust", "code"),
-  defineSkill("HTML5", "code"),
-  defineSkill("CSS", "code"),
-  defineSkill("PHP", "code"),
+/** The list with all the skills we want to showcase. */
+export const skills = (await Promise.all([
+  defineSkill({
+    name: "C++",
+    safeName: "cpp",
 
-  defineSkill("Unity", "game-dev"),
-  defineSkill("Unreal Engine", "game-dev"),
-  defineSkill("Godot", "game-dev"),
+    categories: ["languages"],
+    tags: ["language"],
+  }),
+  defineSkill({
+    name: "C#",
+    safeName: "csharp",
+    categories: ["languages"],
+    tags: ["language"],
+  }),
 
-  defineSkill("React", "frontend"),
-  defineSkill("Svelte", "frontend"),
-  defineSkill("NodeJS", "backend"),
-  defineSkill("Deno", "backend"),
-  defineSkill("Astro", "frontend"),
-  defineSkill("TailwindCSS", "frontend"),
-  defineSkill("ThreeJS", "frontend"),
-  defineSkill("PixiJS", "frontend"),
-  defineSkill("Supabase", "backend"),
-  defineSkill("MongoDB", "backend"),
-  defineSkill("MySQL", "backend"),
-  defineSkill("NGINX", "backend"),
-  defineSkill("Kubernetes", "devops"),
-  defineSkill("Terraform", "devops"),
-  defineSkill("Github", "tools"),
+  defineSkill({
+    name: "Python",
+    categories: ["languages"],
+    tags: ["language", "scripting"],
+  }),
 
-  defineSkill("Blender", "creative"),
-  defineSkill("Photoshop", "creative"),
-  defineSkill("Illustrator", "creative"),
-  defineSkill("Figma", "creative"),
-  defineSkill("Framer", "creative"),
+  defineSkill({
+    name: "JavaScript",
+    categories: ["languages"],
+    tags: ["language"],
+  }),
 
-  defineSkill("Git", "tools"),
-  defineSkill("Docker", "devops", "tools"),
+  defineSkill({
+    name: "TypeScript",
+    categories: ["languages"],
+    tags: ["language"],
+  }),
 
-  defineSkill("Communication", "soft"),
-  defineSkill("Analytical Thinking", "soft"),
-  defineSkill("Teamwork", "soft"),
-  defineSkill("Emotional Intelligence", "soft"),
-] as const satisfies SkillData[];
+  defineSkill({
+    name: "Bash",
+    categories: ["languages"],
+    tags: ["language"],
+  }),
 
-export type Skill = (typeof skills)[number]["name"];
+  defineSkill({
+    name: "Nix",
+    categories: ["languages"],
+    tags: ["language"],
+  }),
+
+  defineSkill({
+    name: "Rust",
+    categories: ["languages"],
+    tags: ["language"],
+  }),
+
+  defineSkill({
+    name: "HTML5",
+    categories: ["languages"],
+    tags: ["language"],
+  }),
+
+  defineSkill({
+    name: "CSS",
+    categories: ["languages"],
+    tags: ["language"],
+  }),
+
+  defineSkill({
+    name: "PHP",
+    categories: ["languages"],
+    tags: ["language"],
+  }),
+
+  defineSkill({
+    name: "Unity",
+    categories: ["creative"],
+    tags: ["platform", "software"],
+  }),
+
+  defineSkill({
+    name: "Unreal Engine",
+    categories: ["creative"],
+    tags: ["software"],
+  }),
+
+  defineSkill({
+    name: "Godot",
+    categories: ["creative"],
+    tags: ["software"],
+  }),
+
+  defineSkill({
+    name: "React",
+    categories: ["web"],
+    tags: ["frontend", "library"],
+  }),
+
+  defineSkill({
+    name: "Svelte",
+    categories: ["web"],
+    tags: ["frontend", "library"],
+  }),
+
+  defineSkill({
+    name: "NodeJS",
+    categories: ["web"],
+    tags: ["backend"],
+  }),
+
+  defineSkill({
+    name: "Deno",
+    categories: ["web"],
+    tags: ["backend"],
+  }),
+
+  defineSkill({
+    name: "Astro",
+    categories: ["web"],
+    tags: ["frontend", "framework"],
+  }),
+
+  defineSkill({
+    name: "TailwindCSS",
+    categories: ["web"],
+    tags: ["frontend", "library"],
+  }),
+
+  defineSkill({
+    name: "ThreeJS",
+    categories: ["web"],
+    tags: ["frontend", "library"],
+  }),
+
+  defineSkill({
+    name: "PixiJS",
+    categories: ["web"],
+    tags: ["frontend", "library"],
+  }),
+
+  defineSkill({
+    name: "Supabase",
+    categories: ["infrastructure"],
+    tags: ["database"],
+  }),
+
+  defineSkill({
+    name: "MongoDB",
+    categories: ["infrastructure"],
+    tags: ["database"],
+  }),
+
+  defineSkill({
+    name: "MySQL",
+    categories: ["infrastructure"],
+    tags: ["database"],
+  }),
+
+  defineSkill({
+    name: "NGINX",
+    categories: ["infrastructure"],
+    tags: ["devops", "software"],
+  }),
+
+  defineSkill({
+    name: "Kubernetes",
+    categories: ["infrastructure"],
+    tags: ["devops", "software"],
+  }),
+
+  defineSkill({
+    name: "Terraform",
+    categories: ["infrastructure"],
+    tags: ["devops", "software"],
+  }),
+
+  defineSkill({
+    name: "Github",
+    categories: ["infrastructure"],
+    tags: ["devops", "platform"],
+  }),
+
+  defineSkill({
+    name: "Blender",
+    categories: ["creative"],
+    tags: ["software", "3D"],
+  }),
+
+  defineSkill({
+    name: "Photoshop",
+    categories: ["creative"],
+    tags: ["software", "design"],
+  }),
+
+  defineSkill({
+    name: "Illustrator",
+    categories: ["creative"],
+    tags: ["software", "design"],
+  }),
+
+  defineSkill({
+    name: "Figma",
+    categories: ["creative"],
+    tags: ["software", "design"],
+  }),
+
+  defineSkill({
+    name: "Framer",
+    categories: ["creative"],
+    tags: ["software", "design"],
+  }),
+
+  defineSkill({
+    name: "Git",
+    categories: ["tools"],
+    tags: ["software"],
+  }),
+
+  defineSkill({
+    name: "Docker",
+    categories: ["infrastructure"],
+    tags: ["devops", "software"],
+  }),
+
+  defineSkill({
+    name: "Communication",
+    categories: [],
+    tags: ["soft"],
+  }),
+
+  defineSkill({
+    name: "Analytical Thinking",
+    categories: [],
+    tags: ["soft"],
+  }),
+
+  defineSkill({
+    name: "Teamwork",
+    categories: [],
+    tags: ["soft"],
+  }),
+
+  defineSkill({
+    name: "Emotional Intelligence",
+    categories: [],
+    tags: ["soft"],
+  }),
+])) satisfies SkillData[];

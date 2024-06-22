@@ -10,57 +10,23 @@ import {
 
 import type { GLTF } from "three-stdlib";
 import type { Mesh, MeshStandardMaterial } from "three";
-import type { Skill } from "@app/lib/data/skills";
+
+import { useStore } from "@nanostores/react";
+import { currentSkill } from "../lib/store";
+import type { SkillName } from "../lib/types";
 
 const MODEL_PATH = "/models/technologies.glb";
 useGLTF.preload(MODEL_PATH);
 
 type GLTFResult = GLTF & {
-  nodes: {
-    "Astro": Mesh;
-    "Bash": Mesh;
-    "Blender": Mesh;
-    "C#": Mesh;
-    "C++": Mesh;
-    "CSS": Mesh;
-    "Deno": Mesh;
-    "Docker": Mesh;
-    "Figma": Mesh;
-    "Framer": Mesh;
-    "Git": Mesh;
-    "Github": Mesh;
-    "Godot": Mesh;
-    "HTML5": Mesh;
-    "Illustrator": Mesh;
-    "JavaScript": Mesh;
-    "Kubernetes": Mesh;
-    "MongoDB": Mesh;
-    "MySQL": Mesh;
-    "NGINX": Mesh;
-    "Nix": Mesh;
-    "NodeJS": Mesh;
-    "Photoshop": Mesh;
-    "PHP": Mesh;
-    "PixiJS": Mesh;
-    "Python": Mesh;
-    "React": Mesh;
-    "Rust": Mesh;
-    "Supabase": Mesh;
-    "Svelte": Mesh;
-    "TailwindCSS": Mesh;
-    "Terraform": Mesh;
-    "ThreeJS": Mesh;
-    "TypeScript": Mesh;
-    "Unity": Mesh;
-    "Unreal-Engine": Mesh;
-  };
+  nodes: Record<SkillName, Mesh>;
   materials: {
     Colormap: MeshStandardMaterial;
   };
 };
 
 type Props = JSX.IntrinsicElements["mesh"] & {
-  skill: Skill;
+  skill: SkillName;
 };
 
 function SkillModel({ skill, ...props }: Props) {
@@ -84,14 +50,7 @@ function SkillModel({ skill, ...props }: Props) {
 }
 
 export function SkillView(props: HTMLAttributes<HTMLDivElement>) {
-  const [skill, setSkill] = useState<Skill>("Astro");
-
-  useEffect(() => {
-    document.addEventListener("skill:show", (event) => {
-      setSkill(event.detail.skillName);
-    });
-  }, []);
-
+  const skill = useStore(currentSkill);
   return (
     <View
       index={1}
@@ -122,7 +81,7 @@ export function SkillView(props: HTMLAttributes<HTMLDivElement>) {
       <Bounds
         fit
         observe
-        margin={1.25}
+        margin={1.3}
       >
         <Float
           speed={5}

@@ -15,6 +15,7 @@
       "@modules/*": ["./source/modules/*"]
     },
 
+    "plugins": [{ "name": "@astrojs/ts-plugin" }],
     "verbatimModuleSyntax": true
   }
 }

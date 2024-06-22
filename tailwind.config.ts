@@ -12,8 +12,14 @@ const config: Config = {
   safelist: ["dark"],
 
   plugins: [
+    pluginFluidType({
+      values: {
+        "3xs": [-4, 1.6],
+        "2xs": [-3, 1.6],
+      },
+    }),
+
     pluginMaskImage,
-    pluginFluidType,
     pluginDebugScreens,
     pluginAnimated,
   ],
