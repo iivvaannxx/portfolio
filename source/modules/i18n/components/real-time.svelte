@@ -34,6 +34,7 @@
   <slot
     {formattedTime}
     {parts}
+    {currentTime}
   >
     <span {...$$restProps}>
       {formattedTime}

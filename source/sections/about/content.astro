@@ -29,20 +29,34 @@ const t = translations.sections.about;
 ---
 
 <ObservedSection
-  id={t.id}
-  class="mx-auto max-w-screen-xl px-4 sm:px-8 2xl:px-0 [&>h2]:pl-3 sm:[&>h2]:pl-6"
   order={4}
+  id={t.id}
   title={t.title}
+  class:list={[
+    "mx-auto max-w-screen-xl px-4",
+    "sm:px-8",
+    "2xl:px-0",
+    "[&>h2]:pl-3 sm:[&>h2]:pl-6",
+  ]}
 >
   <div
     data-bento-about
-    class="mb-24 grid grid-cols-10 justify-center gap-4"
+    class:list={[
+      "mb-24 grid grid-cols-10 justify-center gap-4",
+      "*:overflow-clip *:rounded-xl *:border *:bg-card",
+    ]}
   >
     <article
-      class="col-span-10 col-start-1 row-start-1 flex flex-col overflow-clip rounded-xl border bg-card p-6 pb-8 md:px-10 md:py-8 lg:flex-row"
+      class:list={[
+        "col-span-10 col-start-1 flex flex-col p-6 pb-8",
+        "md:px-10 md:py-8",
+        "lg:flex-row",
+      ]}
     >
       <div class="w-full lg:max-w-[60ch]">
-        <header class="flex items-center gap-4 font-header text-xl font-bold">
+        <header
+          class="flex items-center gap-4 text-balance font-header text-xl font-bold"
+        >
           <Image
             src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand%20Medium-Light%20Skin%20Tone.png"
             alt="Waving Hand Medium-Light Skin Tone"
@@ -64,11 +78,24 @@ const t = translations.sections.about;
       </div>
 
       <div
-        class="relative hidden h-44 xs:h-52 lg:h-full lg:grow [@media(width>=350px)]:block"
+        class:list={[
+          "relative hidden h-44",
+          "xs:h-52",
+          "lg:h-full lg:grow",
+          "[@media(width>=350px)]:block",
+        ]}
       >
-        <div class="absolute inset-0 size-full">
+        <div
+          class="absolute inset-0 size-full text-center font-header font-medium text-accent-foreground/80 text-2xs"
+        >
           <div
-            class="absolute left-[12.5%] top-[40%] aspect-square w-1/4 min-w-[80px] max-w-[4.5em] -translate-x-1/2 -translate-y-1/2 rotate-[75deg] animate-float xs:min-w-[5.5em] xs:max-w-[7.5em] lg:left-[25%] lg:top-[20%] xl:left-[18%] xl:top-[25%] xl:max-w-[8.5em]"
+            class:list={[
+              "absolute aspect-square w-1/4 -translate-x-1/2 -translate-y-1/2 animate-float",
+              "left-[12.5%] top-[40%] min-w-[80px] max-w-[4.5em] rotate-[75deg]",
+              "xs:min-w-[5.5em] xs:max-w-[7.5em]",
+              "lg:left-[25%] lg:top-[20%]",
+              "xl:left-[18%] xl:top-[25%] xl:max-w-[8em]",
+            ]}
           >
             <Image
               src="/images/misc/pizza.png"
@@ -78,15 +105,30 @@ const t = translations.sections.about;
             />
 
             <p
-              class="absolute bottom-1/4 left-0 -z-10 w-full min-w-max translate-x-1/2 -rotate-90 rounded-full border bg-[#1d1b1b] px-[1em] py-[0.5em] text-center font-header font-medium text-accent-foreground/80 text-2xs xs:bottom-1/3 xs:text-xs"
+              class:list={[
+                "absolute bottom-1/4 left-0 -z-10 w-full min-w-max translate-x-1/2 -rotate-90 rounded-full border",
+                "bg-[#1d1b1b] px-[1em] py-[0.5em]",
+                "xs:bottom-1/3 xs:text-xs",
+              ]}
             >
-              <span> ❤️ </span>
+              <span>
+                <Icon
+                  class="mx-px mb-px inline size-[1.15em]"
+                  name="heart"
+                  aria-label="love"
+                />
+              </span>
               <span class="ml-0.5"> Pizza </span>
             </p>
           </div>
 
           <div
-            class="absolute left-1/2 top-[60%] aspect-square w-1/4 min-w-[80px] max-w-[4.5em] -translate-x-1/2 -translate-y-1/2 xs:min-w-[5.5em] xs:max-w-[7.5em] lg:top-[70%] xl:max-w-[8.5em]"
+            class:list={[
+              "absolute left-1/2 top-[60%] aspect-square w-1/4 min-w-[80px] max-w-[4.5em] -translate-x-1/2 -translate-y-1/2",
+              "xs:min-w-[5.5em] xs:max-w-[7.5em]",
+              "lg:top-[70%]",
+              "xl:max-w-[8em]",
+            ]}
           >
             <Image
               src="/images/misc/dog.png"
@@ -96,15 +138,31 @@ const t = translations.sections.about;
             />
 
             <p
-              class="absolute -bottom-6 left-[55%] z-10 w-full min-w-max -translate-x-1/2 rounded-full border bg-[#1d1b1b] px-[1em] py-[0.5em] text-center font-header font-medium text-accent-foreground/80 text-2xs xs:text-xs"
+              class:list={[
+                "absolute -bottom-6 z-10 w-full min-w-max -translate-x-1/2 rounded-full border",
+                "left-[55%] bg-[#1d1b1b] px-[1em] py-[0.5em]",
+                "xs:text-xs",
+              ]}
             >
-              <span> ❤️ </span>
+              <span>
+                <Icon
+                  class="mx-px mb-px inline size-[1.15em]"
+                  name="heart"
+                  aria-label="love"
+                />
+              </span>
               <span class="ml-0.5"> Dogs </span>
             </p>
           </div>
 
           <div
-            class="lg-top-[30%] absolute left-[90%] top-[35%] aspect-square w-1/4 min-w-[80px] max-w-[4.5em] -translate-x-1/2 -translate-y-1/2 rotate-12 animate-float animate-delay-1000 xs:min-w-[5.5em] xs:max-w-[7.5em] xl:left-[85%] xl:max-w-[8.5em]"
+            class:list={[
+              "absolute aspect-square w-1/4 -translate-x-1/2 -translate-y-1/2 rotate-12 animate-float animate-delay-1000",
+              "left-[90%] top-[35%] min-w-[80px] max-w-[4.5em]",
+              "xs:min-w-[5.5em] xs:max-w-[7.5em]",
+              "lg:top-[30%]",
+              "xl:left-[85%] xl:max-w-[8em]",
+            ]}
           >
             <Image
               src="/images/misc/gamepad.png"
@@ -115,9 +173,19 @@ const t = translations.sections.about;
             />
 
             <p
-              class="absolute -bottom-6 left-1/2 -z-10 w-full min-w-max -translate-x-1/2 rounded-full border bg-[#1d1b1b] px-[1em] py-[0.5em] text-center font-header font-medium text-accent-foreground/80 text-2xs xs:text-xs"
+              class:list={[
+                "absolute -bottom-6 left-1/2 -z-10 w-full min-w-max -translate-x-1/2 rounded-full border",
+                "bg-[#1d1b1b] px-[1em] py-[0.5em]",
+                "xs:text-xs",
+              ]}
             >
-              <span> ❤️ </span>
+              <span>
+                <Icon
+                  class="mx-px mb-px inline size-[1.15em]"
+                  name="heart"
+                  aria-label="love"
+                />
+              </span>
               <span class="ml-0.5"> Games </span>
             </p>
           </div>
@@ -126,7 +194,12 @@ const t = translations.sections.about;
     </article>
 
     <article
-      class="col-span-10 col-start-1 row-start-2 flex flex-col rounded-xl border bg-card p-6 md:col-span-5 md:col-start-6 md:row-start-4 md:px-8 md:py-6 lg:col-span-6 lg:-col-start-7 lg:row-span-2 lg:row-start-2 xl:!col-span-4 xl:col-start-1 xl:row-span-2 xl:row-start-2 xl:row-end-5"
+      class:list={[
+        "col-span-10 col-start-1 row-start-2 flex flex-col rounded-xl border bg-card p-6",
+        "md:col-span-5 md:col-start-6 md:row-start-4 md:px-8 md:py-6",
+        "lg:col-span-6 lg:-col-start-7 lg:row-span-2 lg:row-start-2",
+        "xl:!col-span-4 xl:col-start-1 xl:row-span-2 xl:row-start-2 xl:row-end-5",
+      ]}
     >
       <header
         class="flex w-full items-center gap-4 font-header text-xl font-bold"
@@ -144,22 +217,37 @@ const t = translations.sections.about;
     </article>
 
     <article
-      class="relative col-span-10 col-start-1 row-start-6 flex aspect-square w-full items-end justify-center overflow-clip rounded-xl border bg-card p-5 sm:max-h-[420px] md:col-span-5 md:col-start-1 md:!row-start-4 md:aspect-auto md:max-h-none md:px-8 md:py-10 lg:col-span-4 lg:col-start-1 lg:!row-start-4 xl:col-span-3 xl:col-start-5 xl:row-span-2 xl:!row-start-2 xl:aspect-square [@media(width>=600px)]:row-start-5"
+      class:list={[
+        "relative col-span-10 col-start-1 row-start-6 flex aspect-square min-h-[413px] w-full items-end justify-center p-5",
+        "sm:max-h-[420px]",
+        "md:col-span-5 md:col-start-1 md:!row-start-4 md:aspect-auto md:max-h-none md:px-8 md:py-10",
+        "lg:col-span-4 lg:col-start-1 lg:!row-start-4",
+        "xl:col-span-3 xl:col-start-5 xl:row-span-2 xl:!row-start-2 xl:aspect-square xl:py-6",
+        "[@media(width>=600px)]:row-start-5",
+      ]}
     >
       <CharacterView
-        className="pointer-events-none absolute inset-0 -top-4 size-full scale-100 xs:-top-8"
+        className="pointer-events-none absolute inset-0 -top-4 size-full xs:-top-8"
         client:load
       />
 
       <div
-        class="absolute inset-0 top-1/2 z-20 h-1/2 w-full bg-card gradient-mask-t-50 lg:gradient-mask-t-60"
+        class:list={[
+          "absolute inset-0 top-1/2 z-20 h-1/2 w-full bg-card gradient-mask-t-50",
+          "lg:gradient-mask-t-60",
+        ]}
       >
       </div>
 
       <footer class="z-30 w-full">
         <button
           onclick={'alert("Show Contact Form")'}
-          class="relative inline-flex h-10 w-full items-center justify-center gap-4 whitespace-nowrap rounded-md bg-primary px-6 text-base font-bold text-primary-foreground transition will-change-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring xs:h-12"
+          class:list={[
+            "relative inline-flex h-10 w-full items-center justify-center gap-4 whitespace-nowrap rounded-md bg-primary px-6 text-base font-bold text-primary-foreground transition will-change-transform",
+            "xs:h-12",
+            "hover:scale-105",
+            "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring",
+          ]}
         >
           <div
             class="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-primary/70 to-primary opacity-75 blur"
@@ -176,7 +264,13 @@ const t = translations.sections.about;
     </article>
 
     <article
-      class="col-span-10 col-start-1 row-start-5 rounded-xl border bg-card p-6 md:col-span-5 md:!col-start-1 md:!row-start-3 md:row-end-4 md:px-10 md:py-6 lg:!col-span-4 lg:col-start-4 lg:!row-start-3 lg:row-end-4 xl:!col-span-3 xl:col-start-8 xl:!row-start-2 [@media(width>=600px)]:col-span-5 [@media(width>=600px)]:col-start-6 [@media(width>=600px)]:row-start-4"
+      class:list={[
+        "col-span-10 col-start-1 row-start-5 p-6",
+        "md:col-span-5 md:!col-start-1 md:!row-start-3 md:row-end-4 md:px-10 md:py-6",
+        "lg:!col-span-4 lg:col-start-4 lg:!row-start-3 lg:row-end-4",
+        "xl:!col-span-3 xl:col-start-8 xl:!row-start-2",
+        "[@media(width>=600px)]:col-span-5 [@media(width>=600px)]:col-start-6 [@media(width>=600px)]:row-start-4",
+      ]}
     >
       <header class="flex items-center gap-4 font-header text-xl font-bold">
         <DynamicClock
@@ -194,21 +288,32 @@ const t = translations.sections.about;
     </article>
 
     <article
-      class="col-span-10 col-start-1 row-start-4 flex flex-col rounded-xl border bg-card p-6 md:col-span-4 md:col-start-6 md:row-start-2 md:row-end-3 md:px-8 md:py-6 lg:!col-span-4 lg:col-start-1 lg:row-start-2 lg:row-end-3 xl:!col-span-4 xl:col-start-1 xl:!row-start-5 xl:!row-end-6 [@media(width>=600px)]:col-span-5"
+      class:list={[
+        "col-span-10 col-start-1 row-start-4 flex flex-col rounded-xl border bg-card p-6",
+        "md:col-span-4 md:col-start-6 md:row-start-2 md:row-end-3 md:px-8 md:py-6",
+        "lg:!col-span-4 lg:col-start-1 lg:row-start-2 lg:row-end-3",
+        "xl:!col-span-4 xl:col-start-1 xl:!row-start-5 xl:!row-end-6",
+        "[@media(width>=600px)]:col-span-5",
+      ]}
     >
       <header class="flex items-center gap-4 font-header text-xl font-bold">
         <Image
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bookmark.png"
-          alt="Bookmark"
+          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Globe%20with%20Meridians.png"
+          alt="Globe With Meridians"
           inferSize
-          class="size-[1.3em]"
+          class="size-[1.2em]"
         />
         <h3 class="mt-1.5">Links</h3>
       </header>
 
       <ul
         data-socials
-        class="mt-6 grid grow grid-cols-4 grid-rows-2 gap-y-3 md:grid-cols-3 md:grid-rows-3 md:gap-y-0 lg:grid-cols-4 lg:grid-rows-2 xl:gap-y-2"
+        class:list={[
+          "mt-6 grid grow grid-cols-4 grid-rows-2 gap-y-3",
+          "md:grid-cols-3 md:grid-rows-3 md:gap-y-0",
+          "lg:grid-cols-4 lg:grid-rows-2",
+          "xl:gap-y-2",
+        ]}
       >
         {
           socials.map(({ href, i18nKey, iconKey }, index) => {
@@ -216,7 +321,12 @@ const t = translations.sections.about;
             const position = index > 3 ? "bottom" : "top";
 
             return (
-              <li class="size-fit self-center justify-self-center rounded-lg bg-background text-foreground transition duration-200 hover:bg-accent hover:text-accent-foreground hover:brightness-110">
+              <li
+                class:list={[
+                  "size-fit self-center justify-self-center rounded-lg bg-background text-foreground transition duration-200",
+                  "hover:bg-accent hover:text-accent-foreground hover:brightness-110",
+                ]}
+              >
                 <Link
                   {href}
                   label={`${translatedLabel}`}
@@ -239,7 +349,12 @@ const t = translations.sections.about;
     </article>
 
     <article
-      class="relative col-span-10 col-start-1 row-start-3 rounded-xl border bg-card p-6 pb-8 md:col-span-5 md:col-start-6 md:row-span-2 md:row-start-2 md:px-10 md:py-8 lg:col-span-6 lg:col-start-5 lg:row-span-1 lg:row-start-4 xl:!col-span-6 xl:!col-start-5 xl:row-span-2"
+      class:list={[
+        "relative col-span-10 col-start-1 row-start-3 p-6 pb-8",
+        "md:col-span-5 md:col-start-6 md:row-span-2 md:row-start-2 md:px-10 md:py-8",
+        "lg:col-span-6 lg:col-start-5 lg:row-span-1 lg:row-start-4",
+        "xl:!col-span-6 xl:!col-start-5 xl:row-span-2",
+      ]}
     >
       <header class="flex items-center gap-4 font-header text-xl font-bold">
         <Image
