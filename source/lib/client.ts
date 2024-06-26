@@ -1,7 +1,9 @@
 import "./polyfills";
 
 import Lenis from "lenis";
-export const lenis = new Lenis();
+export const lenis = new Lenis({
+  syncTouch: true,
+});
 
 /**
  * The loop used by Lenis to smooth the scrollbar.

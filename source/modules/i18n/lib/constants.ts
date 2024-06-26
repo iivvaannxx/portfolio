@@ -4,6 +4,11 @@ import { catalan } from "../translations/catalan";
 import { english } from "../translations/english";
 import { spanish } from "../translations/spanish";
 
+import type { Timezone } from "./types";
+
+/** My own timezone. */
+export const MY_TIMEZONE = "Europe/Madrid" satisfies Timezone;
+
 /** The locales available in the website. */
 export const SUPPORTED_LOCALES = ["en", "es", "ca"] as const;
 

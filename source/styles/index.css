@@ -62,3 +62,16 @@ dialog::backdrop {
 code {
   @apply !font-mono;
 }
+
+.tippy-box {
+  background-color: theme("colors.accent.DEFAULT");
+  font-family: theme("fontFamily.header");
+  padding: 0.2em;
+
+  .tippy-content {
+    font-weight: 450;
+    margin-top: 0.15em;
+
+    color: theme("colors.accent.foreground");
+  }
+}

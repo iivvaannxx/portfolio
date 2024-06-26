@@ -10,21 +10,12 @@ import Header from "@app/layouts/header.astro";
 import Work from "@app/sections/work.astro";
 import Projects from "@app/sections/projects/content.astro";
 import Skills from "@app/sections/skills/content.astro";
+import About from "@app/sections/about/content.astro";
 
 import { SkillSprites } from "@app/sections/skills";
-import { Icon } from "astro-icon/components";
-import { CharacterView } from "@app/components/experience/views/character";
-import MysteryButton from "@app/components/mystery-button.astro";
-import { MyTime } from "@app/modules/i18n";
-import ObservedSection from "@app/layouts/observed-section.astro";
+import Footer from "@app/layouts/footer.astro";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
-
-/* const { locale } = Astro.locals;
-const formatter = new Intl.DateTimeFormat(locale, {
-  month: "long",
-  year: "numeric",
-}); */
 ---
 
 <Fragment slot="head">
@@ -40,88 +31,12 @@ const formatter = new Intl.DateTimeFormat(locale, {
     <!--     <Hero />
  -->
     <Work />
-
     <Projects />
     <Skills />
-
-    <ObservedSection
-      order={4}
-      class="mx-auto mt-48 max-w-screen-2xl"
-      data-scroll-reveal
-      data-scroll-away
-      title="A little more about me"
-      id="about"
-    />
-
-    <section
-      class="mx-auto mt-16 grid max-w-screen-2xl grow grid-cols-9 grid-rows-9 justify-center gap-4"
-    >
-      <article
-        class="col-span-9 row-span-3 flex flex-col justify-between rounded-xl border bg-card px-8 py-6"
-      >
-        Random Fact About Me?
-      </article>
-
-      <article
-        class="col-span-3 row-span-6 rounded-xl border bg-card px-8 py-6"
-      >
-        Out of Ideas :(
-      </article>
-      <article
-        class="relative col-span-3 row-span-3 flex aspect-square items-end justify-center overflow-clip rounded-xl border bg-card px-8 py-10"
-      >
-        <CharacterView
-          className="pointer-events-none absolute inset-0 -top-8 size-full"
-          client:load
-        />
-        <div
-          class="absolute inset-0 top-1/2 z-20 h-1/2 w-full bg-card gradient-mask-t-50"
-        >
-        </div>
-
-        <footer class="z-30 w-4/5">
-          <button
-            onclick={'alert("Show Contact Form")'}
-            class="relative inline-flex h-12 w-full items-center justify-center gap-4 whitespace-nowrap rounded-md bg-primary px-6 text-base font-bold text-primary-foreground transition will-change-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring"
-          >
-            <div
-              class="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-primary/70 to-primary opacity-75 blur"
-            >
-            </div>
-
-            <Icon
-              name="lucide:mail"
-              class="size-[1.2em]"
-            />
-            <span> Get In Touch </span>
-          </button>
-        </footer>
-      </article>
-      <section class="col-span-3 row-span-3 grid grid-cols-3 grid-rows-3 gap-4">
-        <article
-          class="col-span-3 row-span-1 flex items-center justify-center rounded-xl border bg-card px-6"
-        >
-          <MysteryButton class="h-12 w-4/5 text-lg" />
-        </article>
-
-        <article
-          class="col-span-3 row-span-2 place-content-center rounded-xl border bg-card"
-        >
-          <MyTime
-            class="h-2/3 w-full"
-            locale={Astro.locals.locale}
-            client:idle
-          />
-        </article>
-      </section>
-      <article
-        class="relative col-span-6 row-span-3 rounded-xl border bg-card px-8 py-4"
-      >
-        Hobbies? Games? Food?
-      </article>
-    </section>
+    <About />
   </main>
 
   <SkillSprites />
-  <!--   <Footer /> -->
+
+  <Footer />
 </Page>

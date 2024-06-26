@@ -99,7 +99,7 @@
     <slot name="skill-view" />
     <div
       bind:this={overlayRef}
-      class="absolute inset-0 z-20 h-full w-full animate-fade-out bg-background animate-duration-200"
+      class="absolute inset-0 z-20 size-full animate-fade-out bg-background animate-duration-200"
     ></div>
   </div>
 </div>

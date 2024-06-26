@@ -17,6 +17,10 @@ const config: Config = {
         "3xs": [-4, 1.6],
         "2xs": [-3, 1.6],
       },
+
+      settings: {
+        fontSizeMin: 1,
+      },
     }),
 
     pluginMaskImage,
@@ -114,12 +118,19 @@ const config: Config = {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
+
+        "float": {
+          "0%": { translate: "0px 0px" },
+          "50%": { translate: "0px -15px" },
+          "100%": { translate: "0px 0px" },
+        },
       },
 
       animation: {
         "beat": "beat 1s infinite",
         "fade-in": "fade-in 1s forwards",
         "fade-out": "fade-out 1s forwards",
+        "float": "float 3s infinite alternate ease-in-out",
       },
     },
   },

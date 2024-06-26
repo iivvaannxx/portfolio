@@ -15,18 +15,6 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
   Astro.props;
 ---
 
-<script>
-  import tippy from "tippy.js";
-  tippy("article[data-project] a[data-tippy-content]", {
-    placement: "bottom",
-    theme: "link",
-    offset: [0, 16],
-
-    animation: "scale",
-    inertia: true,
-  });
-</script>
-
 <article
   data-project={name}
   class="relative mx-2 flex flex-col-reverse items-center xl:grid xl:grid-cols-12 xl:grid-rows-1"
@@ -50,8 +38,7 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
                 label={`GitHub repository for project "${name}"`}
                 targetBlank
                 class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
-                withTooltip
-                tooltipContent="Source Code"
+                withTooltip={{ content: "Source Code", placement: "bottom" }}
               >
                 <Icon
                   class="size-6"
@@ -67,8 +54,7 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
                 label={`Live link to project "${name}"`}
                 targetBlank
                 class="aspect-square content-center rounded-md p-2 text-lg font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
-                withTooltip
-                tooltipContent="Try it out!"
+                withTooltip={{ content: "Try it out!", placement: "bottom" }}
               >
                 <Icon
                   class="size-6"
@@ -120,7 +106,6 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
       autoplay
       muted
       loop
-      poster={video?.poster?.src ?? preview.src}
       disablepictureinpicture
       playsinline
     >

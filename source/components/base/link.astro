@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
+import type { Props as TippyProps } from "tippy.js";
 
 import { cn } from "@app/utils";
 
@@ -8,9 +9,7 @@ import { cn } from "@app/utils";
 export type Props = HTMLAttributes<"a"> & {
   label: string;
 
-  withTooltip?: boolean;
-  tooltipContent?: string;
-
+  withTooltip?: Partial<TippyProps>;
   targetBlank?: boolean;
   withExternalLinkArrow?: boolean;
 };
@@ -20,20 +19,38 @@ const {
   href,
   class: clazz,
 
-  withTooltip = false,
+  withTooltip = {},
   withExternalLinkArrow = false,
   targetBlank = false,
-  tooltipContent = label,
 
   ...props
 } = Astro.props;
 
 const ariaLabel = `Link to "${label}"${targetBlank ? ` (opens in a new tab).` : "."}`;
+const tippyProps = Object.entries(withTooltip).reduce(
+  (props, [key, value]) => {
+    props[`data-tippy-${key}`] = `${value}`;
+    return props;
+  },
+  {} as Record<string, string>,
+);
+
 const optionalAttrs = {
-  ...(withTooltip && { "data-tippy-content": tooltipContent }),
   ...(targetBlank && { target: "_blank" }),
+  ...tippyProps,
 };
 ---
+
+<script>
+  import tippy from "tippy.js";
+  tippy("a[data-tippy-content]", {
+    placement: "right",
+    offset: [0, 16],
+
+    animation: "scale",
+    inertia: true,
+  });
+</script>
 
 <a
   {...props}
@@ -51,7 +68,7 @@ const optionalAttrs = {
           name="lucide:arrow-up-right"
           class:list={[
             "relative bottom-[2px] right-px inline-block size-[0.8em] transition-transform duration-300",
-            "lg:group-hover:-translate-y-1 lg:group-hover:translate-x-1 ",
+            "lg:group-hover:-translate-y-1 lg:group-hover:translate-x-1",
             "group-focus-visible:-translate-y-1 group-focus-visible:translate-x-1",
           ]}
         />

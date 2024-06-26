@@ -28,80 +28,81 @@ const t = translations.sections.experience;
       client:idle
       itemCount={2}
       class="py-12 pr-2"
-      as="ul"
     >
-      {
-        t.jobs.map((job, index) => {
-          const { startDate, endDate } = job;
-          const start = formatter.format(startDate);
-          const end = formatter.format(endDate);
+      <ul>
+        {
+          t.jobs.map((job, index) => {
+            const { startDate, endDate } = job;
+            const start = formatter.format(startDate);
+            const end = formatter.format(endDate);
 
-          return (
-            <TimelineEntry
-              index={index + 1}
-              as="li"
-              class="ease transition-opacity duration-300"
-            >
-              <article class="group relative flex max-w-4xl flex-col p-4">
-                <div
-                  class:list={[
-                    "absolute -inset-2 -z-[1] hidden rounded-lg transition lg:-inset-6 lg:block",
-                    "group-hover:bg-accent/50 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg",
-                    "group-focus-within:bg-accent/50 group-focus-within:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-focus-within:drop-shadow-lg",
-                  ]}
-                />
+            return (
+              <TimelineEntry
+                index={index + 1}
+                as="li"
+                class="ease transition-opacity duration-300"
+              >
+                <article class="group relative flex max-w-4xl flex-col p-4">
+                  <div
+                    class:list={[
+                      "absolute -inset-2 -z-[1] hidden rounded-lg transition lg:-inset-6 lg:block",
+                      "group-hover:bg-accent/50 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg",
+                      "group-focus-within:bg-accent/50 group-focus-within:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-focus-within:drop-shadow-lg",
+                    ]}
+                  />
 
-                <header class="mb-8 space-y-3">
-                  <h3 class="font-header text-lg font-bold transition duration-200 group-focus-within:text-primary lg:group-hover:text-primary">
-                    <Link
-                      href={job.url}
-                      label={`${job.title} at ${job.at}`}
-                      targetBlank
-                      withExternalLinkArrow
-                    >
-                      <span class="absolute -inset-4 hidden rounded-lg lg:block" />
-                      <span>
-                        {job.title}
-                        {" · "}
-                        {job.at}
+                  <header class="mb-8 space-y-3">
+                    <h3 class="font-header text-lg font-bold transition duration-200 group-focus-within:text-primary lg:group-hover:text-primary">
+                      <Link
+                        href={job.url}
+                        label={`${job.title} at ${job.at}`}
+                        targetBlank
+                        withExternalLinkArrow
+                      >
+                        <span class="absolute -inset-4 hidden rounded-lg lg:block" />
+                        <span>
+                          {job.title}
+                          {" · "}
+                          {job.at}
+                        </span>
+                      </Link>
+                    </h3>
+
+                    <div class="text-base font-semibold text-muted-foreground/70 transition-colors duration-200">
+                      <span>{job.location}</span>
+                      <span class="opacity-50">{" | "}</span>
+                      <span aria-label="">
+                        <time
+                          datetime={`${startDate.getFullYear()}-${startDate.getMonth() + 1}`}
+                        >
+                          {start}
+                        </time>
+                        {" - "}
+                        <time
+                          datetime={`${endDate.getFullYear()}-${endDate.getMonth() + 1}`}
+                        >
+                          {end}
+                        </time>
                       </span>
-                    </Link>
-                  </h3>
+                    </div>
+                  </header>
 
-                  <div class="text-base font-semibold text-muted-foreground/70 transition-colors duration-200">
-                    <span>{job.location}</span>
-                    <span class="opacity-50">{" | "}</span>
-                    <span aria-label="">
-                      <time
-                        datetime={`${startDate.getFullYear()}-${startDate.getMonth() + 1}`}
-                      >
-                        {start}
-                      </time>
-                      {" - "}
-                      <time
-                        datetime={`${endDate.getFullYear()}-${endDate.getMonth() + 1}`}
-                      >
-                        {end}
-                      </time>
-                    </span>
-                  </div>
-                </header>
+                  <p
+                    class="max-w-[800px] whitespace-pre-line text-pretty text-base text-foreground/80 group-hover:text-accent-foreground/80"
+                    set:html={job.description}
+                  />
 
-                <p
-                  class="max-w-[800px] whitespace-pre-line text-pretty text-base text-foreground/80 group-hover:text-accent-foreground/80"
-                  set:html={job.description}
-                />
-
-                <footer class="mt-10 flex flex-wrap gap-2">
-                  {job.skills.map((skill) => (
-                    <SkillBadge skill={skill} />
-                  ))}
-                </footer>
-              </article>
-            </TimelineEntry>
-          );
-        })
-      }
+                  <footer class="mt-10 flex flex-wrap gap-2">
+                    {job.skills.map((skill) => (
+                      <SkillBadge skill={skill} />
+                    ))}
+                  </footer>
+                </article>
+              </TimelineEntry>
+            );
+          })
+        }
+      </ul>
     </Timeline>
   </div>
 </ObservedSection>

@@ -147,17 +147,54 @@ export const english = {
 
     about: {
       name: "About",
+      title: "A little more about me",
       id: "about",
+
+      introduction: [
+        `I'm a software developer ${strong("based in Barcelona")} with a passion 
+        for creating interactive experiences, whether it's a website, a game, 
+        or a mobile app. With nearly 7 years of coding experience, I approach 
+        my work with a careful ${strong("attention to detail")} and a ${strong("diligent")} 
+        attitude.`,
+
+        `On a personal note, I've always been ${strong("naturally curious")} 🧐, looking 
+        not only to learn new things but also to understand them.`,
+      ],
+
+      education: {
+        title: "Education",
+        gddv: {
+          title: "Bachelor's Degree in Game Design and Development",
+          location: "Girona, Spain",
+          description: `
+            Graduated by the ${link("https://www.udg.edu/en/", strong("University of Girona"), true)},
+            where I gained a comprehensive understanding of the theoretical and practical
+            aspects of my field. This included not only game development, but also  
+            ${strong("3D modeling")}, ${strong("algorithms and data structures")}, 
+            ${strong("systems architecture")}, ${strong("web development")}, and more.
+          `,
+        },
+      },
     },
+  },
+
+  footer: {
+    note: `
+      Built with {heart} by ${strong("Ivan Porto")} using ${link("https://astro.build", "Astro", true)},
+      ${link("https://svelte.dev", "Svelte", true)}, and ${link("https://react.dev", "React", true)}. 
+      Deployed on ${link("https://cloudflare.com", "Cloudflare", true)}.
+    `,
   },
 
   socials: {
     github: "GitHub",
     linkedIn: "LinkedIn",
-    xTwitter: "X (Formerly Twitter)",
+    xTwitter: "X (Twitter)",
     resume: "Resume",
     email: "Email",
     bento: "Bento",
+    discord: "Discord",
+    threads: "Threads",
   },
 
   userLocation: {

@@ -53,11 +53,31 @@ export const bento = {
   iconKey: "lucide:layout-dashboard",
 } as const satisfies SocialData;
 
+/** My Discord handle. */
+export const discord = {
+  href: "https://discord.com/users/500601612666929152",
+  i18nKey: "discord",
+
+  // Unfortunately, the icon is not available in the lucide set.
+  iconKey: "tabler:brand-discord",
+} as const satisfies SocialData;
+
+/** My Threads profile. */
+export const threads = {
+  href: "https://threads.net/@iivanportoo",
+  i18nKey: "threads",
+
+  // Unfortunately, the icon is not available in the lucide set.
+  iconKey: "tabler:brand-threads",
+};
+
 /** All the socials I provide a link to. */
 export const socials = [
   linkedIn,
   github,
   xTwitter,
+  threads,
+  discord,
   email,
   resume,
   bento,

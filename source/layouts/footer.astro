@@ -1,15 +1,42 @@
 ---
+import { Link } from "@app/components/base";
+import { getTranslations } from "@app/modules/i18n";
 import { Icon } from "astro-icon/components";
+
+const translations = getTranslations(Astro.locals.locale);
+const t = translations.footer;
+
+const [beforeHeart, afterHeart] = t.note.split("{heart}");
 ---
 
-<footer class="w-full px-2 py-8">
-  <p class="text-balance text-center text-base font-semibold md:text-lg">
-    <span> Designed and implemented with </span>
+<footer class="mx-auto max-w-screen-2xl border-t border-border py-6">
+  <p
+    class="w-full text-balance px-4 text-center text-sm"
+    data-footer-note
+  >
+    <span set:html={beforeHeart} />
     <Icon
       class="mx-px mb-px inline animate-beat"
       name="heart"
       aria-label="love"
+      is:inline
     />
-    <span> by Ivan Porto </span>
+    <span set:html={afterHeart} />
   </p>
 </footer>
+
+<style>
+  :global([data-footer-note] a) {
+    color: theme("colors.primary.DEFAULT");
+
+    text-decoration: underline;
+    text-decoration-color: theme("colors.primary.DEFAULT");
+    text-underline-offset: 0.15em;
+
+    font-weight: 500;
+  }
+
+  :global([data-footer-note] strong) {
+    font-weight: 900;
+  }
+</style>
