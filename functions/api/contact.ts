@@ -1,10 +1,12 @@
-import turnstilePlugin from "@cloudflare/pages-plugin-turnstile";
+import turnstilePlugin, {
+  type TurnstileSuccess,
+} from "@cloudflare/pages-plugin-turnstile";
+
 import { Resend } from "resend";
 import { safeParse } from "valibot";
 
-import { corsHeaders } from "utils/constants";
-import { ContactFormSchema } from "@app/modules/contact/lib/schema";
-import { handleResendError } from "utils/errors";
+import { corsHeaders, contactErrors } from "utils/constants";
+import { ContactFormSchema, type ContactForm } from "@app/modules/contact";
 
 /**
  * Sets the CORS headers for the preflight request.
@@ -32,6 +34,7 @@ const turnstileValidator: PagesFunction<Env> = async (context) => {
       return new Response(
         JSON.stringify({
           message: "Error while validating the Turnstile Token",
+          code: contactErrors.turnstileError,
           data: { errorCodes },
         }),
         { status: 400 },
@@ -41,35 +44,62 @@ const turnstileValidator: PagesFunction<Env> = async (context) => {
 };
 
 /**
- * Sends an email with the contact form data.
+ * Validates the form data against the ContactFormSchema and stores the validated data in the `data` object.
+ * If the form data is invalid, it returns a response with an error message.
+ *
  * @param context - The context object given to the function.
+ * @param context.request - The incoming request object.
+ * @param context.data - The data object that will be passed to the next function in the chain.
+ * @param context.next - The next function in the chain.
  */
-const sendEmail: PagesFunction<Env> = async (context) => {
-  const resend = new Resend(context.env.RESEND_API_KEY);
-  const formData = await context.request.formData();
-
+const schemaValidator: PagesFunction<Env> = async ({ next, request, data }) => {
+  const formData = await request.formData();
   const contactData = {
     name: formData.get("name"),
     email: formData.get("email"),
     subject: formData.get("subject"),
     message: formData.get("message"),
   };
+
   const validation = safeParse(ContactFormSchema, contactData);
 
   if (!validation.success) {
     return new Response(
       JSON.stringify({
-        message: "Invalid form data.",
-        data: {
-          issues: validation.issues,
-          output: validation.output,
-        },
+        message: "Invalid form data. Check the schema for the correct fields.",
+        code: contactErrors.schemaError,
       }),
       { status: 400 },
     );
   }
 
-  const { data, error } = await resend.emails.send({
+  data.contactData = contactData;
+  return await next();
+};
+
+/**
+ * Sends an email with the contact form data.
+ * @param context - The context object given to the function.
+ */
+const sendEmail: PagesFunction<Env> = async ({ data, env }) => {
+  const resend = new Resend(env.RESEND_API_KEY);
+
+  // Validations from the previous middleware.
+  const contactData = data.contactData as ContactForm;
+  const turnstile = data.turnstile as TurnstileSuccess;
+
+  if (!turnstile.success) {
+    return new Response(
+      JSON.stringify({
+        message:
+          "The Turnstile token is invalid. Please try resetting the form and submitting again.",
+        code: contactErrors.turnstileError,
+      }),
+      { status: 400 },
+    );
+  }
+
+  const { error } = await resend.emails.send({
     from: `${contactData.name} <contact@ivanporto.io>`,
     to: "dev.ivanporto@gmail.com",
 
@@ -80,27 +110,37 @@ const sendEmail: PagesFunction<Env> = async (context) => {
     `,
   });
 
-  if (error) {
-    const response = handleResendError(error);
-
-    if (response) {
-      return response;
-    }
+  if (
+    error?.name === "application_error" ||
+    error?.name === "internal_server_error"
+  ) {
+    return new Response(
+      JSON.stringify({
+        message: "An internal error occurred. Please try again later.",
+        code: contactErrors.internalError,
+      }),
+      {
+        status: 500,
+      },
+    );
   }
 
-  return new Response(
-    `Successfully verified! ${JSON.stringify({
-      data,
-      error,
-      test: safeParse(ContactFormSchema, {}),
-    })}`,
-  );
+  if (error?.name === "rate_limit_exceeded") {
+    return new Response(
+      JSON.stringify({
+        message: "Rate limit exceeded. Only 10 mails per second are allowed.",
+        code: contactErrors.rateLimitExceeded,
+      }),
+      { status: 429 },
+    );
+  }
+
+  return new Response("Successfully sent the email!");
 };
 
 /** The handler chain for the POST request. */
 export const onRequestPost: PagesFunction<Env>[] = [
-  // Disable the turnstile validator until final deploy.
-  // It does not work in the local environment.
-  // turnstileValidator,
+  turnstileValidator,
+  schemaValidator,
   sendEmail,
 ];

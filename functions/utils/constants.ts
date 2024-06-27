@@ -6,3 +6,11 @@ export const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type",
   "Access-Control-Max-Age": "86400",
 };
+
+/** Codes to identify the errors. */
+export const contactErrors = {
+  rateLimitExceeded: "rate_limit_exceeded",
+  internalError: "internal_error",
+  turnstileError: "turnstile_error",
+  schemaError: "schema_error",
+};
