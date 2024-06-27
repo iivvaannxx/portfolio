@@ -33,9 +33,10 @@ const turnstileValidator: PagesFunction<Env> = async (context) => {
       const errorCodes = error.data.turnstile["error-codes"];
       return new Response(
         JSON.stringify({
-          message: "Error while validating the Turnstile Token",
           code: contactErrors.turnstileError,
           data: { errorCodes },
+
+          message: "Error while validating the Turnstile Token",
         }),
         { status: 400 },
       );
@@ -61,13 +62,16 @@ const schemaValidator: PagesFunction<Env> = async ({ next, request, data }) => {
     message: formData.get("message"),
   };
 
+  // Shouldn't happen because the captcha is validated before.
+  // This means the requests must come from my website, which should send everything correctly.
+  // But just in case, we validate the schema.
   const validation = safeParse(ContactFormSchema, contactData);
 
   if (!validation.success) {
     return new Response(
       JSON.stringify({
-        message: "Invalid form data. Check the schema for the correct fields.",
         code: contactErrors.schemaError,
+        message: "Invalid form data. Check the schema for the correct fields.",
       }),
       { status: 400 },
     );
@@ -91,9 +95,9 @@ const sendEmail: PagesFunction<Env> = async ({ data, env }) => {
   if (!turnstile.success) {
     return new Response(
       JSON.stringify({
+        code: contactErrors.turnstileError,
         message:
           "The Turnstile token is invalid. Please try resetting the form and submitting again.",
-        code: contactErrors.turnstileError,
       }),
       { status: 400 },
     );
@@ -102,36 +106,29 @@ const sendEmail: PagesFunction<Env> = async ({ data, env }) => {
   const { error } = await resend.emails.send({
     from: `${contactData.name} <contact@ivanporto.io>`,
     to: "dev.ivanporto@gmail.com",
-
     subject: `[Contact Form]: ${contactData.subject.trim()}`,
-    text: `
-      The sender email is: ${contactData.email}\n
-      ${contactData.message}
-    `,
+    text: `The sender email is: ${contactData.email.trim()}\n${contactData.message.trim()}`,
   });
 
-  if (
-    error?.name === "application_error" ||
-    error?.name === "internal_server_error"
-  ) {
-    return new Response(
-      JSON.stringify({
-        message: "An internal error occurred. Please try again later.",
-        code: contactErrors.internalError,
-      }),
-      {
-        status: 500,
-      },
-    );
-  }
+  if (error) {
+    // According to the Resend API: https://resend.com/docs/api-reference/errors
+    // Most errors shouldn't happen because everything is set up correctly.
+    // We only handle internal errors and rate limits. Assume it's internal first.
+    let status = 500;
+    let message = "An internal error occurred. Please try again later.";
 
-  if (error?.name === "rate_limit_exceeded") {
+    // Unlikely to happen, but just in case.
+    if (error.name === "rate_limit_exceeded") {
+      status = 429;
+      message = "Rate limit exceeded. Only 10 mails per second are allowed.";
+    }
+
     return new Response(
       JSON.stringify({
-        message: "Rate limit exceeded. Only 10 mails per second are allowed.",
-        code: contactErrors.rateLimitExceeded,
+        code: contactErrors.internalError,
+        message,
       }),
-      { status: 429 },
+      { status },
     );
   }
 
