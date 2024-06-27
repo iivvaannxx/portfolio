@@ -50,7 +50,7 @@ const sendEmail: PagesFunction<Env> = async (context) => {
     to: "dev.ivanporto@gmail.com",
 
     subject: "[Contact Form]: New contact form submission",
-    text: "This is a test!",
+    text: "This is a test email!",
   });
 
   /*   const formData = await context.request.formData();
