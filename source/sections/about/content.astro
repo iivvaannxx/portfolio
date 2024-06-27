@@ -3,7 +3,10 @@ import { CharacterView } from "@app/components/experience/views/character";
 import MysteryButton from "@app/components/mystery-button.astro";
 import ObservedSection from "@app/layouts/observed-section.astro";
 
-import * as Carousel from "@app/components/ui/carousel";
+import * as Carousel from "@app/components/ui/svelte/carousel";
+import { ContactFormC } from "@modules/contact/components/contact";
+import { ContactDialog } from "./components/contact-dialog";
+
 import { Icon } from "astro-icon/components";
 import MyTime from "./components/my-time.svelte";
 import { Link } from "@app/components/base";
@@ -419,6 +422,8 @@ const t = translations.sections.about;
       </ul>
     </article>
   </div>
+
+  <ContactDialog client:idle />
 </ObservedSection>
 
 <style>

@@ -2,17 +2,10 @@
   lang="ts"
   context="module"
 >
-  import Autoplay from "embla-carousel-autoplay";
-  import * as Carousel from "@components/ui/carousel";
-
-  const autoplay = Autoplay({ delay: 3000, stopOnInteraction: true });
+  import * as Carousel from "@app/components/ui/svelte/carousel";
 </script>
 
-<Carousel.Root
-  plugins={[autoplay]}
-  on:mouseenter={autoplay.stop}
-  on:mouseleave={autoplay.reset}
->
+<Carousel.Root>
   <Carousel.Content>
     <Carousel.Item
       class="mt-8 grid w-full grow grid-cols-1 grid-rows-[1fr,auto] place-content-center"

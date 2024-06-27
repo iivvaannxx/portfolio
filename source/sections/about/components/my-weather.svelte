@@ -6,7 +6,7 @@
   import { fade } from "svelte/transition";
   import tippy from "tippy.js";
 
-  import { Button } from "@components/ui/button";
+  import { Button } from "@app/components/ui/svelte/button";
   import { DEFAULT_LOCALE, type Locale } from "@app/modules/i18n";
 
   type TempUnit = "celsius" | "fahrenheit";

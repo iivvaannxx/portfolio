@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["../source/*"]
+    },
+
+    "types": ["@cloudflare/workers-types", "./types.d.ts"]
+  },
+
+  "include": ["./**/*.ts"],
+  "exclude": []
+}

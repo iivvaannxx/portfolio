@@ -11,9 +11,12 @@
     mkFlake = system: let
 
       # The set of packages to be used.
-      pkgs = import nixpkgs { inherit system; };
-      env-name = "portfolio";
+      pkgs = import nixpkgs { 
+        inherit system; 
+        config.allowUnfree = true; 
+      };
 
+      env-name = "portfolio";
       fhsEnv = pkgs.buildFHSUserEnv {
         
         name = "${env-name}";
@@ -23,6 +26,8 @@
           pkgs.nodePackages_latest.pnpm
           
           pkgs.bun
+          pkgs.ngrok
+          pkgs.wrangler
         ];
       };
 

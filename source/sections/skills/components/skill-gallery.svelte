@@ -3,7 +3,7 @@
   context="module"
 >
   import MediaQuery from "svelte-media-queries";
-  import * as Tabs from "@components/ui/tabs";
+  import * as Tabs from "@app/components/ui/svelte/tabs";
 
   import { categories, skills } from "../lib/data";
   import { currentFilter, currentSkill } from "../lib/store";
