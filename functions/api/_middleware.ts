@@ -1,4 +1,4 @@
-import { corsHeaders } from "constants";
+import { corsHeaders } from "utils/constants";
 
 /**
  * Handles uncaught errors in the middleware chain.

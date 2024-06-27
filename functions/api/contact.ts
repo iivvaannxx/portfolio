@@ -2,8 +2,9 @@ import turnstilePlugin from "@cloudflare/pages-plugin-turnstile";
 import { Resend } from "resend";
 import { safeParse } from "valibot";
 
-import { corsHeaders } from "constants";
+import { corsHeaders } from "utils/constants";
 import { ContactFormSchema } from "@app/modules/contact/lib/schema";
+import { handleResendError } from "utils/errors";
 
 /**
  * Sets the CORS headers for the preflight request.
@@ -45,18 +46,48 @@ const turnstileValidator: PagesFunction<Env> = async (context) => {
  */
 const sendEmail: PagesFunction<Env> = async (context) => {
   const resend = new Resend(context.env.RESEND_API_KEY);
+  const formData = await context.request.formData();
+
+  const contactData = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    subject: formData.get("subject"),
+    message: formData.get("message"),
+  };
+  const validation = safeParse(ContactFormSchema, contactData);
+
+  if (!validation.success) {
+    return new Response(
+      JSON.stringify({
+        message: "Invalid form data.",
+        data: {
+          issues: validation.issues,
+          output: validation.output,
+        },
+      }),
+      { status: 400 },
+    );
+  }
 
   const { data, error } = await resend.emails.send({
-    from: `${"John Doe"} <contact@ivanporto.io>`,
+    from: `${contactData.name} <contact@ivanporto.io>`,
     to: "dev.ivanporto@gmail.com",
 
-    subject: "[Contact Form]: New contact form submission",
-    text: "This is a test email!",
+    subject: `[Contact Form]: ${contactData.subject.trim()}`,
+    text: `
+      The sender email is: ${contactData.email}\n
+      ${contactData.message}
+    `,
   });
 
-  /*   const formData = await context.request.formData();
-  console.log("sendEmail");
- */
+  if (error) {
+    const response = handleResendError(error);
+
+    if (response) {
+      return response;
+    }
+  }
+
   return new Response(
     `Successfully verified! ${JSON.stringify({
       data,
