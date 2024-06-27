@@ -9,11 +9,9 @@ import { corsHeaders } from "utils/constants";
 const handleUncaughtErrors: PagesFunction = async ({ next }) => {
   try {
     // Invoke the next middleware function in the chain.
-    console.log("handleErrors");
     return await next();
   } catch (error) {
     // Return a 500 error if something goes wrong.
-    console.error(error);
     return new Response(
       "An unexpected error happened. Is the request well-formed?",
       { status: 500 },
@@ -29,7 +27,6 @@ const handleUncaughtErrors: PagesFunction = async ({ next }) => {
  */
 const addCors: PagesFunction = async ({ next }) => {
   const response = await next();
-  console.log("addCors");
 
   for (const [header, value] of Object.entries(corsHeaders)) {
     response.headers.set(header, value);

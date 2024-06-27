@@ -1,5 +1,0 @@
-name = "portfolio-worker"
-compatibility_date = "2024-06-28"
-
-[dev]
-port = 3000
