@@ -46,7 +46,7 @@ const turnstileValidator: PagesFunction<Env> = async (context) => {
 const sendEmail: PagesFunction<Env> = async (context) => {
   const resend = new Resend(context.env.RESEND_API_KEY);
   const { data, error } = await resend.emails.send({
-    from: "contact@ivanporto.io",
+    from: `${"John Doe"} <contact@ivanporto.io>`,
     to: "dev.ivanporto@gmail.com",
 
     subject: "[Contact Form]: New contact form submission",
