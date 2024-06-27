@@ -61,7 +61,15 @@ export default defineConfig({
       },
     }),
 
-    sitemap(),
-    robotsTxt(),
+    // sitemap(),
+    robotsTxt({
+      policy: [
+        {
+          userAgent: "*",
+          disallow: "/",
+          sitemap: false,
+        },
+      ],
+    }),
   ],
 });

@@ -30,6 +30,11 @@ const { title, description, bodyClass } = Astro.props;
       content={description}
     />
 
+    <meta
+      name="robots"
+      content="noindex,follow"
+    />
+
     <link
       rel="sitemap"
       href="/sitemap-index.xml"
