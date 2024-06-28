@@ -4,6 +4,7 @@ import { valibotResolver } from "@hookform/resolvers/valibot";
 import type { TurnstileInstance } from "@marsidev/react-turnstile";
 
 import { ContactFormSchema, type ContactFormData } from "../schema";
+import { getCurrentLocale } from "@app/modules/i18n";
 
 /** Defines the different states of the turnstile captcha. */
 export type TurnstileStatus = "unknown" | "solved" | "error";
@@ -39,12 +40,22 @@ async function sendForm(values: ContactFormData, turnstileToken: string) {
   return await handleContactAPIResponse(response);
 }
 
+/**
+ * Handles the API response for the contact form submission.
+ *
+ * @param response The response object from the API.
+ * @returns An object indicating the success status and the corresponding message.
+ */
 async function handleContactAPIResponse(response: Response) {
   if (!response.ok) {
     const { code, data } = (await response.json()) as {
       code: string;
-      data: Record<string, unknown>;
+      data: Record<string, any>;
     };
+
+    const formatter = new Intl.RelativeTimeFormat(getCurrentLocale(), {
+      style: "long",
+    });
 
     const errorMessages: Record<string, string> = {
       "resend-rate-limit-exceeded":
@@ -56,7 +67,15 @@ async function handleContactAPIResponse(response: Response) {
         "The Turnstile token is invalid. Please try resetting the form and submitting again.",
       "schema-error":
         "The form data is invalid. Please check the fields and try again.",
-      "rate-limit-exceeded": "Rate limit exceeded. Please try again later.",
+
+      // Only 1 email every 3 hours.
+      "rate-limit-exceeded": `Rate limit exceeded. Please try again ${formatter.format(
+        data.retryAfter < 3600
+          ? data.retryAfter / 60 / 60
+          : data.retryAfter / 60,
+        data.retryAfter < 3600 ? "minutes" : "hours",
+      )}`,
+
       "failed-to-determine-ip": "Failed to determine the IP of the request.",
     };
 
