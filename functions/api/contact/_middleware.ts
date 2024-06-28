@@ -11,7 +11,12 @@ const CONTACT_FORM_RATE_LIMIT = 60 * 60 * 3;
 export const onRequestPost: PagesFunction<Env>[] = [
   handleUncaughtErrors,
   addCorsHeaders,
-  rateLimiter(CONTACT_FORM_RATE_LIMIT),
+
+  // We validate the Turnstile before rate limitng.
+  // This way we force the rate limit to be applied to valid requests only.
+  // This means the ones that come from my website.
+  // It also saves us from wasting KV reads (free plan) on invalid requests.
   turnstileValidator,
+  rateLimiter(CONTACT_FORM_RATE_LIMIT),
   schemaValidator,
 ];
