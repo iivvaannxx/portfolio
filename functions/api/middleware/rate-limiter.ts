@@ -1,5 +1,12 @@
 import { ERRORS } from "../utils/constants";
 
+/**
+ * Creates a rate limiter middleware handler that limits the number
+ * of requests for a connecting IP using the given amount of seconds.
+ *
+ * @param rateLimitInSeconds The rate limit in seconds.
+ * @returns The middleware function.
+ */
 export const rateLimiter = (rateLimitInSeconds: number) => {
   const handler: PagesFunction<Env> = async ({ request, env, next }) => {
     const clientIP =
