@@ -9,6 +9,7 @@ import { getCurrentLocale } from "@app/modules/i18n";
 /** Defines the different states of the turnstile captcha. */
 export type TurnstileStatus = "unknown" | "solved" | "error";
 
+/** Defines the status of the contact form request. */
 export type ContactRequestStatus = {
   success: boolean;
   message: string;
@@ -71,10 +72,10 @@ async function handleContactAPIResponse(response: Response) {
       // Only 1 email every 3 hours.
       "rate-limit-exceeded": `Rate limit exceeded. Please try again ${formatter.format(
         data.retryAfter < 3600
-          ? data.retryAfter / 60 / 60
-          : data.retryAfter / 60,
+          ? Math.ceil(data.retryAfter / 60)
+          : Math.ceil(data.retryAfter / 3600),
         data.retryAfter < 3600 ? "minutes" : "hours",
-      )}`,
+      )}.`,
 
       "failed-to-determine-ip": "Failed to determine the IP of the request.",
     };
