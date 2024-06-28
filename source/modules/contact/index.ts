@@ -1,3 +1,2 @@
-/* export { ContactForm } from "./components/contact-form";
- */
-export { ContactFormSchema, type ContactForm } from "./lib/schema";
+export { ContactForm } from "./components/contact";
+export { ContactFormSchema, type ContactFormData } from "./lib/schema";

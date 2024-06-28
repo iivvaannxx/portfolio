@@ -1,4 +1,4 @@
-import { ContactFormC } from "@app/modules/contact/components/contact";
+import { ContactForm } from "@app/modules/contact/components/contact";
 import {
   Dialog,
   DialogContent,
@@ -32,7 +32,7 @@ export function ContactDialog() {
           </DialogDescription>
         </DialogHeader>
 
-        <ContactFormC />
+        <ContactForm />
       </DialogContent>
     </Dialog>
   );

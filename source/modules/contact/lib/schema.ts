@@ -35,7 +35,7 @@ export const ContactFormSchema = v.object({
 });
 
 /** Defines the fields of a contact form. */
-export type ContactForm = v.InferInput<typeof ContactFormSchema>;
+export type ContactFormData = v.InferInput<typeof ContactFormSchema>;
 
 /** Defines the keys for each field of the contact form. */
-export type ContactFormFieldName = keyof ContactForm;
+export type ContactFormFieldName = keyof ContactFormData;

@@ -2,7 +2,7 @@ import { Resend } from "resend";
 import { type TurnstileSuccess } from "@cloudflare/pages-plugin-turnstile";
 
 import { corsHeaders } from "@api/middleware/cors";
-import type { ContactForm } from "@app/modules/contact";
+import type { ContactFormData } from "@app/modules/contact";
 
 import { ERRORS } from "@api/utils/constants";
 
@@ -25,7 +25,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ data, env }) => {
   const resend = new Resend(env.RESEND_API_KEY);
 
   // Validations from the previous middleware.
-  const contactData = data.contactData as ContactForm;
+  const contactData = data.contactData as ContactFormData;
   const turnstile = data.turnstile as TurnstileSuccess;
 
   if (!turnstile.success) {
