@@ -1,4 +1,4 @@
-import { ERRORS } from "../utils/constants";
+import { ERRORS } from "@api/utils/constants";
 
 /**
  * Creates a rate limiter middleware handler that limits the number
