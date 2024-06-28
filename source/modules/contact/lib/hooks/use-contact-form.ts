@@ -47,7 +47,7 @@ async function handleContactAPIResponse(response: Response) {
     };
 
     const errorMessages: Record<string, string> = {
-      "resend-rate_limit_exceeded":
+      "resend-rate-limit-exceeded":
         "Rate limit exceeded. Please try again later.",
       "internal-error": "An internal error occurred. Please try again later.",
       "turnstile-error":
