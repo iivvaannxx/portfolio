@@ -120,6 +120,7 @@ export function useContactForm() {
 
     setTurnstileToken("");
     setTurnstileStatus("unknown");
+    setRequestStatus(null);
   };
 
   /* Submit the form data. */

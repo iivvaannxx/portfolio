@@ -1,4 +1,7 @@
+import type { PropsWithChildren, ReactNode } from "react";
 import type { Control } from "react-hook-form";
+import { TriangleAlert, CircleCheckBig } from "lucide-react";
+
 import {
   Button,
   Alert,
@@ -13,11 +16,12 @@ import {
 } from "@components/ui/react";
 
 import { TurnstileWidget } from "./turnstile-widget";
-import { CONTACT_FORM_FIELDS } from "../lib/constants";
 
+import { CONTACT_FORM_FIELDS } from "../lib/constants";
 import type { ContactFormData, ContactFormFieldName } from "../lib/schema";
 import { useContactForm } from "../lib/hooks/use-contact-form";
-import type { PropsWithChildren } from "react";
+
+import { email } from "@app/lib/data/socials";
 
 // The props received by <ContactFormFields> component.
 type ContactFormFieldsProps = {
@@ -27,6 +31,7 @@ type ContactFormFieldsProps = {
 // The props received by <ContactFormActions> component.
 type ContactFormActionsProps = {
   disableSubmit: boolean;
+  disableReset: boolean;
   resetForm: () => void;
 };
 
@@ -71,6 +76,7 @@ function ContactFormFields({ formControl }: ContactFormFieldsProps) {
 function ContactFormActions({
   resetForm,
   disableSubmit,
+  disableReset,
 }: ContactFormActionsProps) {
   return (
     <div className="ml-auto mt-8 flex w-full flex-col justify-end gap-4 fold:flex-row">
@@ -79,6 +85,7 @@ function ContactFormActions({
         variant="outline"
         className="xs:w-20 sm:h-12 sm:w-32"
         onClick={resetForm}
+        disabled={disableReset}
       >
         Reset
       </Button>
@@ -95,19 +102,22 @@ function ContactFormActions({
 
 // Renders an alert to display some feedback to the user.
 function ContactFormAlert({ title, variant, children }: ContactFormAlertProps) {
+  const Icon = variant === "destructive" ? TriangleAlert : CircleCheckBig;
   return (
     <Alert
-      variant="destructive"
-      className="mt-6"
+      variant={variant}
+      className="mx-auto mt-6 w-[95%]"
     >
-      <AlertTitle>{title}</AlertTitle>
-      <AlertDescription className="mt-4 text-pretty text-xs">
+      <div className="flex items-center gap-2 text-sm">
+        <Icon className="mb-1 size-[1.2em]" />
+        <AlertTitle className="mb-0">{title}</AlertTitle>
+      </div>
+      <AlertDescription className="mt-4 text-pretty text-xs sm:text-sm">
         {children}
       </AlertDescription>
     </Alert>
   );
 }
-
 /** Defines the form used to contact me. */
 export function ContactForm() {
   const {
@@ -138,19 +148,25 @@ export function ContactForm() {
           >
             <p>
               Are you having trouble with the captcha? Try reloading or clearing
-              the cache.
-            </p>
-            <p className="mt-4 [@media(width>=575px)]:mt-0">
-              If it persists, contact me directly at{" "}
-              {/* props.fallbackEmailLink */}
+              the cache. If it persists, you can contact me directly at my
+              email:{" "}
+              <a
+                className="font-medium underline underline-offset-2"
+                href={email.href}
+              >
+                {email.href.slice(7)}
+              </a>
+              {"."}
             </p>
           </ContactFormAlert>
         )}
 
         {requestStatus !== null && (
           <ContactFormAlert
-            title={requestStatus.success ? "Success!" : "Error!"}
             variant={requestStatus.success ? "success" : "destructive"}
+            title={
+              requestStatus.success ? "Email Sent" : "Something went wrong"
+            }
           >
             <p>{requestStatus.message}</p>
           </ContactFormAlert>
@@ -158,6 +174,7 @@ export function ContactForm() {
 
         <ContactFormActions
           resetForm={resetForm}
+          disableReset={form.formState.isSubmitting}
           disableSubmit={
             form.formState.isSubmitting ||
             !form.formState.isValid ||
