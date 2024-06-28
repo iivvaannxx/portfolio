@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@app/*": ["../source/*"]
+      "@app/*": ["../source/*"],
+      "@api/*": ["./api/*"]
     },
 
     "types": ["@cloudflare/workers-types", "./types.d.ts"]
