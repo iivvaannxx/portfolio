@@ -21,7 +21,10 @@ import { TurnstileWidget } from "./turnstile-widget";
 
 import { CONTACT_FORM_FIELDS } from "../lib/constants";
 import type { ContactFormData, ContactFormFieldName } from "../lib/schema";
-import { useContactForm } from "../lib/hooks/use-contact-form";
+import {
+  useContactForm,
+  type UseContactFormParams,
+} from "../lib/hooks/use-contact-form";
 
 import { email } from "@app/lib/data/socials";
 import { useClientTranslation } from "@app/modules/i18n";
@@ -149,8 +152,11 @@ function PersistingErrorFallback({ message }: PersistingErrorFallbackProps) {
   );
 }
 
+// The props received by the <ContactForm> component.
+type Props = Pick<UseContactFormParams, "onAfterSubmit"> & {};
+
 /** Defines the form used to contact me. */
-export function ContactForm() {
+export function ContactForm({ onAfterSubmit }: Props) {
   const locale = useStore(currentLang);
   const {
     form,
@@ -161,7 +167,7 @@ export function ContactForm() {
     onTurnstileSuccess,
     submitForm,
     resetForm,
-  } = useContactForm({ locale });
+  } = useContactForm({ locale, onAfterSubmit });
 
   const t = useClientTranslation("contact", locale);
   return (

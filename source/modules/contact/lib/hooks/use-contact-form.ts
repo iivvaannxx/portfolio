@@ -19,6 +19,7 @@ export type ContactRequestStatus = {
 /** The parameters for the useContactForm hook. */
 export type UseContactFormParams = {
   locale: Locale;
+  onAfterSubmit?: (status: ContactRequestStatus) => void;
 };
 
 /** The endpoint for the contact form. */
@@ -94,7 +95,18 @@ async function handleContactAPIResponse(response: Response, locale: Locale) {
   };
 }
 
-export function useContactForm({ locale }: UseContactFormParams) {
+/**
+ * Custom hook for coordinating the contact form.
+ *
+ * @param options The options for the contact form.
+ * @param options.locale The locale used in the contact form.
+ *
+ * @returns All the handlers and state for the contact form.
+ */
+export function useContactForm({
+  locale,
+  onAfterSubmit,
+}: UseContactFormParams) {
   const form = useForm<ContactFormData>({
     resolver: valibotResolver(ContactFormSchema),
     mode: "onTouched",
@@ -129,13 +141,13 @@ export function useContactForm({ locale }: UseContactFormParams) {
   const submitForm = form.handleSubmit(async (values) => {
     setTurnstileToken("");
     setTurnstileStatus("unknown");
-    setRequestStatus(null);
     turnstileRef.current?.reset();
 
     const response = await sendForm(values, turnstileToken);
     const result = await handleContactAPIResponse(response, locale);
 
     setRequestStatus(result);
+    onAfterSubmit?.(result);
   });
 
   /* Error callback if the Turnstile Captcha fails. */

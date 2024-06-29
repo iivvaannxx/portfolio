@@ -7,10 +7,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@components/ui/react/dialog";
+import { useState } from "react";
 
 export function ContactDialog() {
+  const [open, setOpen] = useState(false);
   return (
-    <Dialog>
+    <Dialog
+      open={open}
+      onOpenChange={setOpen}
+    >
       <DialogTrigger>Open</DialogTrigger>
       <DialogContent className="w-[90%] max-w-xl xl:w-full">
         <DialogHeader>
@@ -32,7 +37,13 @@ export function ContactDialog() {
           </DialogDescription>
         </DialogHeader>
 
-        <ContactForm />
+        <ContactForm
+          onAfterSubmit={(success) => {
+            if (success) {
+              setTimeout(() => setOpen(false), 2000);
+            }
+          }}
+        />
       </DialogContent>
     </Dialog>
   );
