@@ -1,7 +1,7 @@
-import { useClientTranslation } from "@app/modules/i18n";
 import * as v from "valibot";
 
 import { currentLang } from "./store";
+import { useClientTranslation } from "@app/modules/i18n/lib/utils/translations";
 
 const MIN_SUBJECT_LENGTH = 5;
 const MIN_MESSAGE_LENGTH = 10;
