@@ -127,10 +127,14 @@ export function useContactForm({ locale }: UseContactFormParams) {
 
   /* Submit the form data. */
   const submitForm = form.handleSubmit(async (values) => {
+    setTurnstileToken("");
+    setTurnstileStatus("unknown");
+    setRequestStatus(null);
+    turnstileRef.current?.reset();
+
     const response = await sendForm(values, turnstileToken);
     const result = await handleContactAPIResponse(response, locale);
 
-    turnstileRef.current?.reset();
     setRequestStatus(result);
   });
 
