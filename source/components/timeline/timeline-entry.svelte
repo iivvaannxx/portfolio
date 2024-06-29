@@ -16,7 +16,7 @@
   style:--index={index}
   style:--track-progress={0}
   class={cn(
-    "timeline-entry grid w-full grid-cols-[20px,1fr] grid-rows-[auto,1fr] items-start justify-start gap-7 lg:gap-14",
+    "timeline-entry grid w-full grid-cols-[20px,1fr] grid-rows-[auto,1fr] items-start justify-start gap-x-2 gap-y-7 sm:gap-x-7 lg:gap-14",
     $$props.class,
   )}
   data-timeline-index={index}

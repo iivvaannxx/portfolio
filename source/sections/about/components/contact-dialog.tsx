@@ -10,10 +10,10 @@ import {
   DialogTrigger,
 } from "@components/ui/react/dialog";
 import { useStore } from "@nanostores/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { cn } from "@app/utils";
 import { ScrollArea } from "@app/components/ui/react";
-import { destroyLenis, getLenisInstance, initLenis } from "@app/lib/scroll";
+import { destroyLenis, initLenis } from "@app/lib/scroll";
 import { useMediaQuery } from "@app/lib/hooks/use-media-query";
 import { fireworks } from "@app/lib/confetti";
 
@@ -21,6 +21,7 @@ type Props = {};
 
 export function ContactDialog({ ...props }: Props) {
   const [isOpen, setOpen] = useState(false);
+  const confettiShown = useRef(false);
 
   const locale = useStore(currentLang);
   const isMobile = useMediaQuery("(max-width: 640px)");
@@ -30,7 +31,6 @@ export function ContactDialog({ ...props }: Props) {
       open={isOpen}
       onOpenChange={(open) => {
         setOpen(open);
-        const lenis = getLenisInstance();
 
         if (open) {
           // Ideally I would just lock scroll using "lenis.stop()"
@@ -39,8 +39,13 @@ export function ContactDialog({ ...props }: Props) {
           // With `syncTouch` enabled, the model form doesn't scroll
           // properly on mobile, even after calling `lenis.stop()`.
           destroyLenis();
-          fireworks(3);
+
+          if (!confettiShown.current) {
+            fireworks(isMobile ? 1.75 : 3);
+            confettiShown.current = true;
+          }
         } else {
+          // Reinitialize Lenis after closing the dialog.
           initLenis();
         }
       }}
@@ -67,7 +72,7 @@ export function ContactDialog({ ...props }: Props) {
             event.preventDefault();
           }
         }}
-        className="dvh:!max-h-[90dvh] max-h-[90vh] w-[90%] max-w-xl xl:w-full"
+        className="max-h-[90vh] w-[90%] max-w-xl overflow-y-clip dvh:!max-h-[90dvh] xl:w-full"
       >
         <DialogHeader>
           <DialogTitle className="inline-flex items-center justify-center gap-x-4 text-xl sm:justify-start">
@@ -88,7 +93,7 @@ export function ContactDialog({ ...props }: Props) {
           </DialogDescription>
         </DialogHeader>
 
-        <ScrollArea className="dvh:!max-h-[72dvh] max-h-[72vh] overflow-y-scroll">
+        <ScrollArea className="max-h-[72vh] overflow-y-scroll dvh:!max-h-[72dvh]">
           <ContactForm
             onAfterSubmit={(success) => {
               if (success) {
