@@ -13,7 +13,7 @@ import { useStore } from "@nanostores/react";
 import { useState, type HTMLAttributes } from "react";
 import { cn } from "@app/utils";
 import { ScrollArea } from "@app/components/ui/react";
-import { toggleScroll } from "@app/lib/scroll";
+import { getLenisInstance, toggleScroll } from "@app/lib/scroll";
 import { useMediaQuery } from "@app/lib/hooks/use-media-query";
 
 type Props = {};
@@ -29,8 +29,9 @@ export function ContactDialog({ ...props }: Props) {
       open={isOpen}
       onOpenChange={(open) => {
         // Disable scrolling when the dialog is open
-        toggleScroll(!open);
+
         setOpen(open);
+        toggleScroll(!open);
       }}
     >
       <DialogTrigger
@@ -76,7 +77,7 @@ export function ContactDialog({ ...props }: Props) {
           </DialogDescription>
         </DialogHeader>
 
-        <ScrollArea className="dvh:!max-h-[72dvh] max-h-[72vh]">
+        <ScrollArea className="dvh:!max-h-[72dvh] max-h-[72vh] overflow-y-scroll">
           <ContactForm
             onAfterSubmit={(success) => {
               if (success) {

@@ -11,7 +11,7 @@ export function getLenisInstance() {
 
 export function initLenis() {
   lenis = new Lenis({
-    syncTouch: true,
+    // syncTouch: true,
   });
 
   /**
