@@ -1,8 +1,3 @@
-export { default as TimeDiff } from "./components/time-diff.svelte";
-export { default as RealTime } from "./components/real-time.svelte";
-
-export { default as Paragraph } from "./components/paragraph.astro";
-
 export { DEFAULT_LOCALE, MY_TIMEZONE } from "./lib/constants";
 export {
   getTranslations,

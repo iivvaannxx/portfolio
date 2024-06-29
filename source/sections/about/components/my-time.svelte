@@ -3,12 +3,9 @@
   context="module"
 >
   import { cn } from "@app/utils";
-  import {
-    RealTime,
-    TimeDiff,
-    DEFAULT_LOCALE,
-    type Locale,
-  } from "@app/modules/i18n";
+
+  import { DEFAULT_LOCALE, type Locale } from "@app/modules/i18n";
+  import { RealTime, TimeDiff } from "@app/modules/i18n/components";
 </script>
 
 <script lang="ts">

@@ -1,8 +1,9 @@
 import { atom, onMount } from "nanostores";
-
-import { DEFAULT_LOCALE } from "@app/modules/i18n/lib/constants";
-import { getCurrentLocale } from "@app/modules/i18n/lib/utils/locales";
-import type { Locale } from "@app/modules/i18n/lib/types";
+import {
+  DEFAULT_LOCALE,
+  getCurrentLocale,
+  type Locale,
+} from "@app/modules/i18n";
 
 /** The currently selected language. */
 export const currentLang = atom<Locale>(DEFAULT_LOCALE);
