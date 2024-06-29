@@ -14,12 +14,15 @@ import { useState, type HTMLAttributes } from "react";
 import { cn } from "@app/utils";
 import { ScrollArea } from "@app/components/ui/react";
 import { toggleScroll } from "@app/lib/scroll";
+import { useMediaQuery } from "@app/lib/hooks/use-media-query";
 
 type Props = {};
 
 export function ContactDialog({ ...props }: Props) {
   const [isOpen, setOpen] = useState(false);
+
   const locale = useStore(currentLang);
+  const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
     <Dialog
@@ -45,6 +48,13 @@ export function ContactDialog({ ...props }: Props) {
       </DialogTrigger>
       <DialogContent
         data-contact-dialog
+        onOpenAutoFocus={(event) => {
+          if (isMobile) {
+            // The keyboard popping immediately
+            // feels annoying and intrusive.
+            event.preventDefault();
+          }
+        }}
         className="dvh:!max-h-[90dvh] max-h-[90vh] w-[90%] max-w-xl xl:w-full"
       >
         <DialogHeader>
