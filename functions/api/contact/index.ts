@@ -1,9 +1,8 @@
 import { Resend } from "resend";
 import { type TurnstileSuccess } from "@cloudflare/pages-plugin-turnstile";
 
+import type { ContactFormData } from "./utils/schema";
 import { corsHeaders } from "@api/middleware/cors";
-import type { ContactFormData } from "@app/modules/contact";
-
 import { ERRORS } from "@api/utils/constants";
 
 /**

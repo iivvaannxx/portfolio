@@ -2,7 +2,7 @@ import turnstilePlugin from "@cloudflare/pages-plugin-turnstile";
 import { safeParse } from "valibot";
 
 import { ERRORS } from "@api/utils/constants";
-import { ContactFormSchema } from "@app/modules/contact";
+import { ContactFormSchema } from "../utils/schema";
 
 /**
  * Validates the turnstile captcha.
