@@ -15,6 +15,7 @@ import { cn } from "@app/utils";
 import { ScrollArea } from "@app/components/ui/react";
 import { destroyLenis, getLenisInstance, initLenis } from "@app/lib/scroll";
 import { useMediaQuery } from "@app/lib/hooks/use-media-query";
+import { fireworks } from "@app/lib/confetti";
 
 type Props = {};
 
@@ -38,6 +39,7 @@ export function ContactDialog({ ...props }: Props) {
           // With `syncTouch` enabled, the model form doesn't scroll
           // properly on mobile, even after calling `lenis.stop()`.
           destroyLenis();
+          fireworks(3);
         } else {
           initLenis();
         }
