@@ -93,7 +93,10 @@ export function ContactDialog({ ...props }: Props) {
           </DialogDescription>
         </DialogHeader>
 
-        <ScrollArea className="max-h-[72vh] overflow-y-scroll dvh:!max-h-[72dvh]">
+        <ScrollArea
+          data-scroll-thin
+          className="max-h-[72vh] overflow-y-scroll dvh:!max-h-[72dvh]"
+        >
           <ContactForm
             onAfterSubmit={(success) => {
               if (success) {

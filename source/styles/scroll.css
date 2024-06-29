@@ -69,19 +69,23 @@ html.lenis body {
 }
 
 @supports selector(::-webkit-scrollbar) {
-  html::-webkit-scrollbar {
+  html::-webkit-scrollbar,
+  [data-scroll-thin]::-webkit-scrollbar {
     width: var(--scrollbar-width-legacy, 0);
   }
 
-  html::-webkit-scrollbar-button {
+  html::-webkit-scrollbar-button,
+  [data-scroll-thin]::-webkit-scrollbar-button {
     display: none;
   }
 
-  html::-webkit-scrollbar-track {
+  html::-webkit-scrollbar-track,
+  [data-scroll-thin]::-webkit-scrollbar-track {
     background-color: var(--scrollbar-color-track);
   }
 
-  html::-webkit-scrollbar-thumb {
+  html::-webkit-scrollbar-thumb,
+  [data-scroll-thin]::-webkit-scrollbar-thumb {
     background-color: var(--scrollbar-color-thumb);
 
     border-block: 2px solid transparent;
@@ -89,7 +93,8 @@ html.lenis body {
     background-clip: content-box;
   }
 
-  html::-webkit-scrollbar-thumb:hover {
+  html::-webkit-scrollbar-thumb:hover,
+  [data-scroll-thin]::-webkit-scrollbar-thumb:hover {
     background-color: var(--scrollbar-color-thumb-hover);
 
     border-block: 2px solid transparent;
@@ -97,7 +102,8 @@ html.lenis body {
     background-clip: content-box;
   }
 
-  html::-webkit-scrollbar-thumb:active {
+  html::-webkit-scrollbar-thumb:active,
+  [data-scroll-thin]::-webkit-scrollbar-thumb:active {
     background-color: var(--scrollbar-color-thumb-active);
 
     border-block: 2px solid transparent;
@@ -107,7 +113,8 @@ html.lenis body {
 }
 
 @supports not selector(::-webkit-scrollbar) {
-  html {
+  html,
+  [data-scroll-thin] {
     scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
     scrollbar-width: var(--scrollbar-width);
   }
