@@ -31,7 +31,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ data, env }) => {
   if (!turnstile.success) {
     return new Response(
       JSON.stringify({
-        code: ERRORS.invalidTurnstileToken,
+        code: ERRORS.turnstileError,
       }),
       { status: 400 },
     );

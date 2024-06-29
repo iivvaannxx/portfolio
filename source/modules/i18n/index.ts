@@ -8,7 +8,7 @@ export {
   getTranslations,
   getTranslation,
   getTranslationHandler,
-  getClientTranslation,
+  useClientTranslation,
 } from "./lib/utils/translations";
 
 export {

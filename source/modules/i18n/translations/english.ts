@@ -217,5 +217,43 @@ export const clientEnglish = {
   // To not include all the other translations in there (which are only used in the server),
   // we need to create a separate object with only the client-side translations.
 
-  test: "hello world!",
+  contact: {
+    form: {
+      success: `Thanks for reaching out! I'll get back to you as soon as possible.`,
+      errors: {
+        "resend-rate-limit-exceeded": `Rate limit exceeded. Please try again later.`,
+        "rate-limit-exceeded": `It seems you sent an email recently. Give me some time to answer or try again %s.`,
+        "internal-error": `An internal error occurred. Please try again later.`,
+        "failed-to-determine-ip": `Failed to determine the IP of the request.`,
+        "turnstile-error": `An error occurred validating the Turnstile captcha. Please try resetting the form and submitting again.`,
+        "schema-error": `The form data is invalid. Please check the fields and try again.`,
+
+        "unknown": `An unknown error occurred. Please try again later.`,
+      },
+
+      validation: {
+        "email-invalid": `This email address is invalid.`,
+        "email-required": `Please provide an email address.`,
+        "name-required": `Please provide a name.`,
+
+        "clearer-subject": (minChars: number) =>
+          `Please provide a clearer subject (more than ${minChars} characters).`,
+        "clearer-message": (minChars: number) =>
+          `Please provide a clearer message (more than ${minChars} characters).`,
+      },
+    },
+
+    persistingError:
+      "If the problem persists, please contact me directly at my email:",
+    captchaTrouble:
+      "Are you having trouble with the captcha? Try reloading or clearing the cache.",
+    turnstileFailed: "Human Verification Failed",
+    contactSuccess: "Email sent",
+    contactError: "Something went wrong",
+
+    formButtons: {
+      submit: "Send",
+      reset: "Reset",
+    },
+  },
 };

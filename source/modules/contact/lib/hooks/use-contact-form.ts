@@ -4,15 +4,22 @@ import { valibotResolver } from "@hookform/resolvers/valibot";
 import type { TurnstileInstance } from "@marsidev/react-turnstile";
 
 import { ContactFormSchema, type ContactFormData } from "../schema";
-import { getCurrentLocale } from "@app/modules/i18n";
+import { useClientTranslation, type Locale } from "@app/modules/i18n";
+import { T } from "build/_astro/View.0CElkgCF";
 
 /** Defines the different states of the turnstile captcha. */
 export type TurnstileStatus = "unknown" | "solved" | "error";
 
 /** Defines the status of the contact form request. */
 export type ContactRequestStatus = {
+  code: string;
   success: boolean;
   message: string;
+};
+
+/** The parameters for the useContactForm hook. */
+export type UseContactFormParams = {
+  locale: Locale;
 };
 
 /** The endpoint for the contact form. */
@@ -38,7 +45,7 @@ async function sendForm(values: ContactFormData, turnstileToken: string) {
     body: formData,
   });
 
-  return await handleContactAPIResponse(response);
+  return response;
 }
 
 /**
@@ -47,61 +54,56 @@ async function sendForm(values: ContactFormData, turnstileToken: string) {
  * @param response The response object from the API.
  * @returns An object indicating the success status and the corresponding message.
  */
-async function handleContactAPIResponse(response: Response) {
+async function handleContactAPIResponse(response: Response, locale: Locale) {
+  const t = useClientTranslation("contact.form", locale);
+
   if (!response.ok) {
     const { code, data } = (await response.json()) as {
-      code: string;
+      code: keyof typeof t.errors;
       data: Record<string, any>;
     };
 
-    const formatter = new Intl.RelativeTimeFormat(getCurrentLocale(), {
-      style: "long",
-    });
+    if (code === "rate-limit-exceeded" && data.retryAfter) {
+      const formatter = new Intl.RelativeTimeFormat(locale, {
+        style: "long",
+      });
 
-    const errorMessages: Record<string, string> = {
-      "resend-rate-limit-exceeded":
-        "Rate limit exceeded. Please try again later.",
-      "internal-error": "An internal error occurred. Please try again later.",
-      "turnstile-error":
-        "An error occurred validating the Turnstile captcha. Please try again.",
-      "invalid-turnstile-token":
-        "The Turnstile token is invalid. Please try resetting the form and submitting again.",
-      "schema-error":
-        "The form data is invalid. Please check the fields and try again.",
-
-      // Only 1 email every 3 hours.
-      "rate-limit-exceeded": `Rate limit exceeded. Please try again ${formatter.format(
-        data.retryAfter < 3600
-          ? Math.ceil(data.retryAfter / 60)
-          : Math.ceil(data.retryAfter / 3600),
-        data.retryAfter < 3600 ? "minutes" : "hours",
-      )}.`,
-
-      "failed-to-determine-ip": "Failed to determine the IP of the request.",
-    };
+      t.errors["rate-limit-exceeded"].replace(
+        "%s",
+        formatter.format(
+          data.retryAfter < 3600
+            ? Math.ceil(data.retryAfter / 60)
+            : Math.ceil(data.retryAfter / 3600),
+          data.retryAfter < 3600 ? "minutes" : "hours",
+        ),
+      );
+    }
 
     return {
+      code,
       success: false,
-      message: errorMessages[code] ?? "An unknown error occurred.",
+
+      message: t.errors[code] ?? t.errors.unknown,
     };
   }
 
   return {
+    code: "success",
     success: true,
-    message: "The email was sent successfully!",
+    message: t.success,
   };
 }
 
-export function useContactForm() {
+export function useContactForm({ locale }: UseContactFormParams) {
   const form = useForm<ContactFormData>({
     resolver: valibotResolver(ContactFormSchema),
     mode: "onTouched",
 
     defaultValues: {
-      email: "dev.ivanporto@gmail.com",
-      name: "Ivan Porto",
-      subject: "Hey there!",
-      message: "How is everything? Does this work?",
+      email: "",
+      name: "",
+      subject: "",
+      message: "",
     },
   });
 
@@ -125,7 +127,9 @@ export function useContactForm() {
 
   /* Submit the form data. */
   const submitForm = form.handleSubmit(async (values) => {
-    const result = await sendForm(values, turnstileToken);
+    const response = await sendForm(values, turnstileToken);
+    const result = await handleContactAPIResponse(response, locale);
+
     setRequestStatus(result);
   });
 

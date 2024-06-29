@@ -9,9 +9,6 @@ export const ERRORS = {
   /** Error returned when the Turnstile token validation fails. */
   turnstileError: "turnstile-error",
 
-  /** Error returned when the Turnstile token is invalid. */
-  invalidTurnstileToken: "invalid-turnstile-token",
-
   /** Error returned when we the schema of some received data doesn't match the expected shape. */
   schemaError: "schema-error",
 

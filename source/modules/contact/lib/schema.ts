@@ -1,4 +1,10 @@
+import { useClientTranslation } from "@app/modules/i18n";
 import * as v from "valibot";
+
+import { currentLang } from "./store";
+
+const MIN_SUBJECT_LENGTH = 5;
+const MIN_MESSAGE_LENGTH = 10;
 
 /** Defines the schema for the contact form. */
 export const ContactFormSchema = v.object({
@@ -6,20 +12,41 @@ export const ContactFormSchema = v.object({
   email: v.pipe(
     v.string(),
     v.trim(),
-    v.nonEmpty("Please provide an email address."),
-    v.email("This email address is invalid."),
+    v.nonEmpty(() =>
+      useClientTranslation(
+        "contact.form.validation.email-required",
+        currentLang.get(),
+      ),
+    ),
+    v.email(() =>
+      useClientTranslation(
+        "contact.form.validation.email-invalid",
+        currentLang.get(),
+      ),
+    ),
   ),
 
   /** The name of the submitter. */
-  name: v.pipe(v.string(), v.trim(), v.nonEmpty("Please provide a name.")),
+  name: v.pipe(
+    v.string(),
+    v.trim(),
+    v.nonEmpty(() =>
+      useClientTranslation(
+        "contact.form.validation.name-required",
+        currentLang.get(),
+      ),
+    ),
+  ),
 
   /** The subject of the message. */
   subject: v.pipe(
     v.string(),
     v.trim(),
-    v.minLength(
-      5,
-      "Please provide a clearer subject (more than 5 characters).",
+    v.minLength(MIN_SUBJECT_LENGTH, () =>
+      useClientTranslation(
+        "contact.form.validation.clearer-subject",
+        currentLang.get(),
+      )(MIN_SUBJECT_LENGTH),
     ),
   ),
 
@@ -27,9 +54,11 @@ export const ContactFormSchema = v.object({
   message: v.pipe(
     v.string(),
     v.trim(),
-    v.minLength(
-      10,
-      "Please provide a longer message (more than 10 characters).",
+    v.minLength(MIN_MESSAGE_LENGTH, () =>
+      useClientTranslation(
+        "contact.form.validation.clearer-message",
+        currentLang.get(),
+      )(MIN_MESSAGE_LENGTH),
     ),
   ),
 });
