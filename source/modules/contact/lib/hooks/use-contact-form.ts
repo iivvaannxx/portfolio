@@ -5,7 +5,6 @@ import type { TurnstileInstance } from "@marsidev/react-turnstile";
 
 import { ContactFormSchema, type ContactFormData } from "../schema";
 import { useClientTranslation, type Locale } from "@app/modules/i18n";
-import { T } from "build/_astro/View.0CElkgCF";
 
 /** Defines the different states of the turnstile captcha. */
 export type TurnstileStatus = "unknown" | "solved" | "error";
