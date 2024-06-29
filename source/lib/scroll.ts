@@ -1,6 +1,7 @@
 import Lenis from "lenis";
 
 let lenis: Lenis;
+let animationFrame: number;
 
 /**
  * Retrieves the Lenis instance.
@@ -27,8 +28,13 @@ export function initLenis() {
    */
   function lenisRaf(time: number) {
     lenis.raf(time);
-    requestAnimationFrame(lenisRaf);
+    animationFrame = requestAnimationFrame(lenisRaf);
   }
 
-  requestAnimationFrame(lenisRaf);
+  animationFrame = requestAnimationFrame(lenisRaf);
+}
+
+export function destroyLenis() {
+  lenis.destroy();
+  cancelAnimationFrame(animationFrame);
 }

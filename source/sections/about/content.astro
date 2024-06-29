@@ -237,7 +237,7 @@ const t = translations.sections.about;
     >
       <CharacterView
         className="pointer-events-none absolute inset-0 -top-4 size-full xs:-top-8"
-        client:load
+        client:visible={{ rootMargin: "50vh" }}
       />
 
       <div
@@ -249,7 +249,7 @@ const t = translations.sections.about;
       </div>
 
       <footer class="z-30 w-full">
-        <ContactDialog client:idle />
+        <ContactDialog client:visible={{ rootMargin: "20vh" }} />
       </footer>
     </article>
 
@@ -273,7 +273,7 @@ const t = translations.sections.about;
       <MyTime
         class="size-full"
         locale={Astro.locals.locale}
-        client:idle
+        client:load
       />
     </article>
 

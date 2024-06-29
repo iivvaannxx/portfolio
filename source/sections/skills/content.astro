@@ -11,11 +11,11 @@ import { SkillView } from "./components/skill-view";
   id="skills"
   order={3}
 >
-  <SkillGallerySvelte client:idle>
+  <SkillGallerySvelte client:load>
     <SkillView
       className="pointer-events-none absolute inset-0 m-auto aspect-square h-[80%]"
       slot="skill-view"
-      client:load
+      client:visible={{ rootMargin: "50vh" }}
     />
   </SkillGallerySvelte>
 </ObservedSection>

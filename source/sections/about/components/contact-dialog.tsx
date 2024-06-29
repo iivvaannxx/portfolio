@@ -13,7 +13,7 @@ import { useStore } from "@nanostores/react";
 import { useState } from "react";
 import { cn } from "@app/utils";
 import { ScrollArea } from "@app/components/ui/react";
-import { getLenisInstance, initLenis } from "@app/lib/scroll";
+import { destroyLenis, getLenisInstance, initLenis } from "@app/lib/scroll";
 import { useMediaQuery } from "@app/lib/hooks/use-media-query";
 
 type Props = {};
@@ -37,7 +37,7 @@ export function ContactDialog({ ...props }: Props) {
           // on scroll we need to destroy and reinitialize Lenis.
           // With `syncTouch` enabled, the model form doesn't scroll
           // properly on mobile, even after calling `lenis.stop()`.
-          lenis.destroy();
+          destroyLenis();
         } else {
           initLenis();
         }
