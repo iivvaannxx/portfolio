@@ -137,7 +137,7 @@ function ContactFormAlert({ title, variant, children }: ContactFormAlertProps) {
 function PersistingErrorFallback({ message }: PersistingErrorFallbackProps) {
   return (
     <span>
-      {message}{" "}
+      {message}
       <a
         className="font-medium underline underline-offset-2"
         href={email.href}

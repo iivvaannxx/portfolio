@@ -57,18 +57,18 @@ async function handleContactAPIResponse(response: Response, locale: Locale) {
   const t = useClientTranslation("contact.form", locale);
 
   if (!response.ok) {
+    let message: string;
     const { code, data } = (await response.json()) as {
       code: keyof typeof t.errors;
       data: Record<string, any>;
     };
 
-    if (code === "rate-limit-exceeded" && data.retryAfter) {
+    if (code === "rate-limit-exceeded") {
       const formatter = new Intl.RelativeTimeFormat(locale, {
         style: "long",
       });
 
-      t.errors["rate-limit-exceeded"].replace(
-        "%s",
+      message = t.errors["rate-limit-exceeded"](
         formatter.format(
           data.retryAfter < 3600
             ? Math.ceil(data.retryAfter / 60)
@@ -76,20 +76,21 @@ async function handleContactAPIResponse(response: Response, locale: Locale) {
           data.retryAfter < 3600 ? "minutes" : "hours",
         ),
       );
+    } else {
+      message = t.errors[code] ?? t.errors.unknown;
     }
 
     return {
       code,
+      message,
       success: false,
-
-      message: t.errors[code] ?? t.errors.unknown,
     };
   }
 
   return {
     code: "success",
-    success: true,
     message: t.success,
+    success: true,
   };
 }
 
@@ -129,6 +130,7 @@ export function useContactForm({ locale }: UseContactFormParams) {
     const response = await sendForm(values, turnstileToken);
     const result = await handleContactAPIResponse(response, locale);
 
+    turnstileRef.current?.reset();
     setRequestStatus(result);
   });
 

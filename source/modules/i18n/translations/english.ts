@@ -222,7 +222,8 @@ export const clientEnglish = {
       success: `Thanks for reaching out! I'll get back to you as soon as possible.`,
       errors: {
         "resend-rate-limit-exceeded": `Rate limit exceeded. Please try again later.`,
-        "rate-limit-exceeded": `It seems you sent an email recently. Give me some time to answer or try again %s.`,
+        "rate-limit-exceeded": (retryAfter: string) =>
+          `It seems you sent an email recently. Give me some time to answer or try again ${retryAfter}.`,
         "internal-error": `An internal error occurred. Please try again later.`,
         "failed-to-determine-ip": `Failed to determine the IP of the request.`,
         "turnstile-error": `An error occurred validating the Turnstile captcha. Please try resetting the form and submitting again.`,
@@ -244,7 +245,7 @@ export const clientEnglish = {
     },
 
     persistingError:
-      "If the problem persists, please contact me directly at my email:",
+      "If the problem persists, please contact me directly at my email: ",
     captchaTrouble:
       "Are you having trouble with the captcha? Try reloading or clearing the cache.",
     turnstileFailed: "Human Verification Failed",
