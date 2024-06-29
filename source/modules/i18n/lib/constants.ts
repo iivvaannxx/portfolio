@@ -1,19 +1,14 @@
-import { deepmerge } from "deepmerge-ts";
+import { clientEnglish, english } from "../translations/english";
+// import { catalan } from "../translations/catalan";
+// import { spanish } from "../translations/spanish";
 
-import { catalan } from "../translations/catalan";
-import { english } from "../translations/english";
-import { spanish } from "../translations/spanish";
-
-import type { Timezone } from "./types";
+import type { Locale, Timezone } from "./types";
 
 /** My own timezone. */
 export const MY_TIMEZONE = "Europe/Madrid" satisfies Timezone;
 
 /** The locales available in the website. */
 export const SUPPORTED_LOCALES = ["en", "es", "ca"] as const;
-
-/** Defines a locale code of the website. */
-export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
 /** The default locale of the website. */
 export const DEFAULT_LOCALE = "en" as const satisfies Locale;
@@ -26,9 +21,19 @@ export const DEFAULT_TRANSLATION = english satisfies {
 /** The map with all our translated strings. */
 export const TRANSLATIONS = {
   en: english,
-  ca: deepmerge(DEFAULT_TRANSLATION, catalan),
-  es: deepmerge(DEFAULT_TRANSLATION, spanish),
+
+  // TODO: Finish translations.
+  ca: english,
+  es: english,
 } as const;
+
+export const CLIENT_TRANSLATIONS = {
+  en: clientEnglish,
+
+  // TODO: Finish translations.
+  ca: clientEnglish,
+  es: clientEnglish,
+};
 
 /** The formatting options passed to the Intl API. */
 export const DEFAULT_INTL_OPTIONS: Intl.DateTimeFormatOptions = {

@@ -1,4 +1,5 @@
-import { DEFAULT_LOCALE, type Locale, SUPPORTED_LOCALES } from "../constants";
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "../constants";
+import type { Locale } from "../types";
 
 /**
  * Checks if a given locale is valid.

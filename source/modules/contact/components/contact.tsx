@@ -22,6 +22,7 @@ import type { ContactFormData, ContactFormFieldName } from "../lib/schema";
 import { useContactForm } from "../lib/hooks/use-contact-form";
 
 import { email } from "@app/lib/data/socials";
+import { getClientTranslation, getTranslation } from "@app/modules/i18n";
 
 // The props received by <ContactFormFields> component.
 type ContactFormFieldsProps = {
@@ -131,6 +132,8 @@ export function ContactForm() {
     resetForm,
   } = useContactForm();
 
+  console.log(getClientTranslation("test"));
+
   return (
     <Form {...form}>
       <form onSubmit={submitForm}>
@@ -165,7 +168,7 @@ export function ContactForm() {
           <ContactFormAlert
             variant={requestStatus.success ? "success" : "destructive"}
             title={
-              requestStatus.success ? "Email Sent" : "Something went wrong"
+              requestStatus.success ? "Email sent" : "Something went wrong"
             }
           >
             <p>{requestStatus.message}</p>

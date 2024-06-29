@@ -1,8 +1,10 @@
+import type { Icon } from "virtual:astro-icon";
+
 /** Defines the data associated to a social media profile. */
 export interface SocialData {
   href: string;
   size?: number;
-  iconKey: string;
+  iconKey: Icon;
 
   // This is the translation key.
   i18nKey: string;
@@ -69,7 +71,7 @@ export const threads = {
 
   // Unfortunately, the icon is not available in the lucide set.
   iconKey: "tabler:brand-threads",
-};
+} as const satisfies SocialData;
 
 /** All the socials I provide a link to. */
 export const socials = [

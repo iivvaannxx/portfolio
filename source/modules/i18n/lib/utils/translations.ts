@@ -1,48 +1,30 @@
-import type { Get, Paths } from "type-fest";
+import type { Get } from "type-fest";
 import objectPath from "object-path";
 
-import { DEFAULT_LOCALE, type Locale, TRANSLATIONS } from "../constants";
+import {
+  CLIENT_TRANSLATIONS,
+  DEFAULT_LOCALE,
+  TRANSLATIONS,
+} from "../constants";
+
+import type {
+  ClientTranslation,
+  ClientTranslationKey,
+  Locale,
+  Translation,
+  TranslationKey,
+} from "../types";
 
 /**
- * Defines the signature of a function which, given a locale, returns the localized string of a pre-given key.
- * @template T The type of the translation string.
- *
- * @param locale - The locale to use to retrieve the translation.
- * @returns The translation string.
- */
-export type TranslationHandler<
-  T extends string | string[] | readonly string[] = string,
-> = (locale: Locale) => T;
-
-/**
- * Represents a translation key for a specific locale.
- * @template L The type of the locale.
- */
-export type TranslationKey<L extends Locale = Locale> = Paths<
-  (typeof TRANSLATIONS)[L]
->;
-
-/**
- * Represents the type of a translation value.
- *
- * @template K - The translation key.
- * @template L - The locale.
- */
-export type Translation<
-  K extends TranslationKey<L>,
-  L extends Locale = Locale,
-> = Get<(typeof TRANSLATIONS)[L], K>;
-
-/**
- * Returns a translation function based on the provided locale.
+ * Returns all the translations for a given locale.
  * @template L The type of the locale.
  *
- * @param locale The locale to use for translations.
- * @returns The translation function.
+ * @param locale - The locale for which to retrieve the translations.
+ * @returns The translation strings.
  */
-export function getTranslations<L extends Locale>(locale: L) {
+export function getTranslations<L extends Locale>(locale: Locale) {
   const strings = TRANSLATIONS[locale];
-  return strings;
+  return strings as (typeof TRANSLATIONS)[L];
 }
 
 /**
@@ -76,4 +58,21 @@ export function getTranslationHandler<K extends TranslationKey>(key: K) {
     const strings = TRANSLATIONS[locale];
     return objectPath.get(strings, key) as Get<(typeof TRANSLATIONS)[L], K>;
   };
+}
+
+/**
+ * Retrieves the translation for a given key and locale.
+ * @template K The translation key type.
+ * @template L The locale type.
+ *
+ * @param key - The key of the translation to retrieve.
+ * @param locale - The locale for which to retrieve the translation. Defaults to the defaultLocale.
+ * @returns The translation value for the given key and locale.
+ */
+export function getClientTranslation<
+  K extends ClientTranslationKey<L>,
+  L extends Locale = typeof DEFAULT_LOCALE,
+>(key: K, locale?: L) {
+  const strings = CLIENT_TRANSLATIONS[locale ?? DEFAULT_LOCALE];
+  return objectPath.get(strings, key) as ClientTranslation<K, L>;
 }

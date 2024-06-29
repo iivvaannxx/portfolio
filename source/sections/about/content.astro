@@ -16,8 +16,14 @@ import MyWeather from "./components/my-weather.svelte";
 import FavoriteCarousel from "./components/favorite-carousel.svelte";
 
 import { education } from "./lib/data";
-import { getTranslations } from "@app/modules/i18n";
+import {
+  getTranslations,
+  getTranslation,
+  test,
+  type Locale,
+} from "@app/modules/i18n";
 import { Image } from "astro:assets";
+
 import Status from "./components/status.svelte";
 import { socials } from "@app/lib/data/socials";
 

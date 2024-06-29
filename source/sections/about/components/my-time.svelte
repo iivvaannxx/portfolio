@@ -3,11 +3,16 @@
   context="module"
 >
   import { cn } from "@app/utils";
-  import { RealTime, TimeDiff, DEFAULT_LOCALE } from "@app/modules/i18n";
+  import {
+    RealTime,
+    TimeDiff,
+    DEFAULT_LOCALE,
+    type Locale,
+  } from "@app/modules/i18n";
 </script>
 
 <script lang="ts">
-  export let locale = DEFAULT_LOCALE;
+  export let locale: Locale = DEFAULT_LOCALE;
   const { class: clazz, ...rest } = $$restProps;
 </script>
 

@@ -16,6 +16,7 @@
     },
 
     "plugins": [{ "name": "@astrojs/ts-plugin" }],
+    "skipLibCheck": false,
     "verbatimModuleSyntax": true
   },
 

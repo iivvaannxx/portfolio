@@ -1,5 +1,5 @@
-import { type HTMLAttributes, useEffect, useRef } from "react";
-import { Bounds, Html, PerspectiveCamera, View } from "@react-three/drei";
+import { type HTMLAttributes, useRef } from "react";
+import { Bounds, PerspectiveCamera, View } from "@react-three/drei";
 
 import { Character, type CharacterHandle } from "../character/character";
 

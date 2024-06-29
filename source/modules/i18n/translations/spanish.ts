@@ -63,3 +63,14 @@ export const spanish = {
     },
   },
 } as const;
+
+/** The spanish strings for the client code.  */
+export const clientSpanish = {
+  // These are translation strings fed to dynamic content (client components).
+  // This means that they will end up in final the JavaScript bundle.
+
+  // To not include all the other translations in there (which are only used in the server),
+  // we need to create a separate object with only the client-side translations.
+
+  test: "hello world!",
+};

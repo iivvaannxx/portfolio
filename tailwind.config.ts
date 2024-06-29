@@ -5,6 +5,7 @@ import pluginMaskImage from "tailwind-gradient-mask-image";
 import pluginFluidType from "tailwindcss-fluid-type";
 import pluginDebugScreens from "tailwindcss-debug-screens";
 import pluginAnimated from "tailwindcss-animated";
+import pluginAnimate from "tailwindcss-animate";
 
 const config: Config = {
   content: ["./source/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -26,6 +27,7 @@ const config: Config = {
     pluginMaskImage,
     pluginDebugScreens,
     pluginAnimated,
+    pluginAnimate,
   ],
 
   theme: {
@@ -44,6 +46,10 @@ const config: Config = {
       height: {
         header: "var(--header-height)",
         content: "var(--content-height)",
+      },
+
+      spacing: {
+        header: "var(--header-height)",
       },
 
       colors: {

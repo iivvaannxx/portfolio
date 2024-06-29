@@ -1,3 +1,62 @@
+import type { Get, Paths } from "type-fest";
+import type {
+  CLIENT_TRANSLATIONS,
+  SUPPORTED_LOCALES,
+  TRANSLATIONS,
+} from "./constants";
+
+/** Defines a locale code of the website. */
+export type Locale = (typeof SUPPORTED_LOCALES)[number];
+
+/**
+ * Defines the signature of a function which, given a locale, returns the localized string of a pre-given key.
+ * @template T The type of the translation string.
+ *
+ * @param locale - The locale to use to retrieve the translation.
+ * @returns The translation string.
+ */
+export type TranslationHandler<
+  T extends string | string[] | readonly string[] = string,
+> = (locale: Locale) => T;
+
+/**
+ * Represents a translation key for a specific locale.
+ * @template L The type of the locale.
+ */
+export type TranslationKey<L extends Locale = Locale> = Paths<
+  (typeof TRANSLATIONS)[L]
+>;
+
+/**
+ * Represents a client translation key for a specific locale.
+ * @template L The type of the locale.
+ */
+export type ClientTranslationKey<L extends Locale = Locale> = Paths<
+  (typeof CLIENT_TRANSLATIONS)[L]
+>;
+
+/**
+ * Represents the type of a translation value.
+ *
+ * @template K - The translation key.
+ * @template L - The locale.
+ */
+export type Translation<
+  K extends TranslationKey<L>,
+  L extends Locale = Locale,
+> = Get<(typeof TRANSLATIONS)[L], K>;
+
+/**
+ * Represents the type of a client translation value.
+ *
+ * @template K - The translation key.
+ * @template L - The locale.
+ */
+export type ClientTranslation<
+  K extends ClientTranslationKey<L>,
+  L extends Locale = Locale,
+> = Get<(typeof CLIENT_TRANSLATIONS)[L], K>;
+
 /** Defines the difference in time between two time zones. */
 export interface TimeDifference {
   offset: "ahead" | "behind" | "same";
