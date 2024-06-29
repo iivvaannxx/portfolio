@@ -2,6 +2,12 @@ import Lenis from "lenis";
 
 let lenis: Lenis;
 
+/**
+ * Retrieves the Lenis instance.
+ * If the instance does not exist, it initializes it.
+ *
+ * @returns The Lenis instance.
+ */
 export function getLenisInstance() {
   if (!lenis) {
     initLenis();
@@ -9,9 +15,10 @@ export function getLenisInstance() {
   return lenis;
 }
 
+/** Initializes the Lenis library for smooth scrolling. */
 export function initLenis() {
   lenis = new Lenis({
-    // syncTouch: true,
+    syncTouch: true,
   });
 
   /**
@@ -24,16 +31,4 @@ export function initLenis() {
   }
 
   requestAnimationFrame(lenisRaf);
-}
-
-export function toggleScroll(allowScroll: boolean) {
-  if (!lenis) {
-    initLenis();
-  }
-
-  if (allowScroll) {
-    lenis.start();
-  } else {
-    lenis.stop();
-  }
 }

@@ -10,10 +10,10 @@ import {
   DialogTrigger,
 } from "@components/ui/react/dialog";
 import { useStore } from "@nanostores/react";
-import { useState, type HTMLAttributes } from "react";
+import { useState } from "react";
 import { cn } from "@app/utils";
 import { ScrollArea } from "@app/components/ui/react";
-import { getLenisInstance, toggleScroll } from "@app/lib/scroll";
+import { getLenisInstance, initLenis } from "@app/lib/scroll";
 import { useMediaQuery } from "@app/lib/hooks/use-media-query";
 
 type Props = {};
@@ -28,10 +28,19 @@ export function ContactDialog({ ...props }: Props) {
     <Dialog
       open={isOpen}
       onOpenChange={(open) => {
-        // Disable scrolling when the dialog is open
-
         setOpen(open);
-        toggleScroll(!open);
+        const lenis = getLenisInstance();
+
+        if (open) {
+          // Ideally I would just lock scroll using "lenis.stop()"
+          // But because we need `syncTouch` for the 3D models to not lag
+          // on scroll we need to destroy and reinitialize Lenis.
+          // With `syncTouch` enabled, the model form doesn't scroll
+          // properly on mobile, even after calling `lenis.stop()`.
+          lenis.destroy();
+        } else {
+          initLenis();
+        }
       }}
     >
       <DialogTrigger
