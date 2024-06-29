@@ -20,6 +20,7 @@
     "@nanostores/react": "^0.7.2",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@react-three/drei": "^9.107",
     "@react-three/fiber": "^8.16.8",

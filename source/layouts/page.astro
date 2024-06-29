@@ -45,13 +45,7 @@ const { title, description, bodyClass } = Astro.props;
       href="/favicon.svg"
     />
 
-    <script
-      is:inline
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-      async
-      defer
-    ></script>
-
+    <script src="@app/lib/polyfills"></script>
     <slot name="head" />
 
     <title>{title}</title>

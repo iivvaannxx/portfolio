@@ -249,26 +249,7 @@ const t = translations.sections.about;
       </div>
 
       <footer class="z-30 w-full">
-        <button
-          onclick={'alert("Show Contact Form")'}
-          class:list={[
-            "relative inline-flex h-10 w-full items-center justify-center gap-4 whitespace-nowrap rounded-md bg-primary px-6 text-base font-bold text-primary-foreground transition will-change-transform",
-            "xs:h-12",
-            "hover:scale-105",
-            "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring",
-          ]}
-        >
-          <div
-            class="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-primary/70 to-primary opacity-75 blur"
-          >
-          </div>
-
-          <Icon
-            name="lucide:mail"
-            class="size-[1.2em]"
-          />
-          <span> Get In Touch </span>
-        </button>
+        <ContactDialog client:idle />
       </footer>
     </article>
 
@@ -428,8 +409,6 @@ const t = translations.sections.about;
       </ul>
     </article>
   </div>
-
-  <ContactDialog client:idle />
 </ObservedSection>
 
 <style>

@@ -19,7 +19,13 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 ---
 
 <Fragment slot="head">
-  <script src="@app/lib/client.ts"></script>
+  <script>
+    import { getLenisInstance } from "@app/lib/scroll";
+
+    // Enable smooth-scrolling.
+    const lenis = getLenisInstance();
+    lenis?.start();
+  </script>
 </Fragment>
 
 <Page bodyClass="debug-screens">

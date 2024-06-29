@@ -172,7 +172,10 @@ export function ContactForm({ onAfterSubmit }: Props) {
   const t = useClientTranslation("contact", locale);
   return (
     <Form {...form}>
-      <form onSubmit={submitForm}>
+      <form
+        className="px-1"
+        onSubmit={submitForm}
+      >
         <ContactFormFields formControl={form.control} />
         <TurnstileWidget
           locale={locale}

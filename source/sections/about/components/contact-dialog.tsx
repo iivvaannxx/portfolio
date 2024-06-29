@@ -1,4 +1,6 @@
 import { ContactForm } from "@app/modules/contact/components/contact";
+import { currentLang } from "@app/modules/contact/lib/store";
+import { Mail } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -7,17 +9,44 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@components/ui/react/dialog";
-import { useState } from "react";
+import { useStore } from "@nanostores/react";
+import { useState, type HTMLAttributes } from "react";
+import { cn } from "@app/utils";
+import { ScrollArea } from "@app/components/ui/react";
+import { toggleScroll } from "@app/lib/scroll";
 
-export function ContactDialog() {
-  const [open, setOpen] = useState(false);
+type Props = {};
+
+export function ContactDialog({ ...props }: Props) {
+  const [isOpen, setOpen] = useState(false);
+  const locale = useStore(currentLang);
+
   return (
     <Dialog
-      open={open}
-      onOpenChange={setOpen}
+      open={isOpen}
+      onOpenChange={(open) => {
+        // Disable scrolling when the dialog is open
+        toggleScroll(!open);
+        setOpen(open);
+      }}
     >
-      <DialogTrigger>Open</DialogTrigger>
-      <DialogContent className="w-[90%] max-w-xl xl:w-full">
+      <DialogTrigger
+        className={cn([
+          "relative inline-flex h-10 w-full items-center justify-center gap-4 whitespace-nowrap rounded-md bg-primary px-6 text-base font-bold text-primary-foreground transition will-change-transform",
+          "xs:h-12",
+          "hover:scale-105",
+          "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring",
+        ])}
+      >
+        <div className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-primary/70 to-primary opacity-75 blur"></div>
+
+        <Mail className="size-[1.2em]" />
+        <span> Get In Touch </span>
+      </DialogTrigger>
+      <DialogContent
+        data-contact-dialog
+        className="dvh:!max-h-[90dvh] max-h-[90vh] w-[90%] max-w-xl xl:w-full"
+      >
         <DialogHeader>
           <DialogTitle className="inline-flex items-center justify-center gap-x-4 text-xl sm:justify-start">
             <img
@@ -37,13 +66,15 @@ export function ContactDialog() {
           </DialogDescription>
         </DialogHeader>
 
-        <ContactForm
-          onAfterSubmit={(success) => {
-            if (success) {
-              setTimeout(() => setOpen(false), 2000);
-            }
-          }}
-        />
+        <ScrollArea className="max-h-[610px]">
+          <ContactForm
+            onAfterSubmit={(success) => {
+              if (success) {
+                // setTimeout(() => setOpen(false), 3000);
+              }
+            }}
+          />
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );

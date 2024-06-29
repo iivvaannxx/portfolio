@@ -1,4 +1,5 @@
 import { fontFamily, screens } from "tailwindcss/defaultTheme";
+import plugin from "tailwindcss/plugin";
 import type { Config } from "tailwindcss";
 
 import pluginMaskImage from "tailwind-gradient-mask-image";
@@ -28,6 +29,10 @@ const config: Config = {
     pluginDebugScreens,
     pluginAnimated,
     pluginAnimate,
+
+    plugin(function ({ addVariant }) {
+      addVariant("dvh", "@supports (height: 1dvh)");
+    }),
   ],
 
   theme: {

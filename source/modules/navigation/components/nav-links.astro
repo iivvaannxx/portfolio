@@ -14,8 +14,9 @@ const t = translations.sections;
 ---
 
 <script>
-  import { lenis } from "@app/lib/client";
+  import { getLenisInstance } from "@app/lib/scroll";
 
+  const lenis = getLenisInstance();
   document.querySelectorAll("a[data-nav-link]").forEach(
     (link) => {
       // Make lenis scroll to the target of the link.
@@ -23,7 +24,7 @@ const t = translations.sections;
         event.preventDefault();
 
         const target = link.href.substring(link.href.indexOf("#"));
-        lenis.scrollTo(target, {
+        lenis?.scrollTo(target, {
           duration: 1.5,
           offset: -100,
           lock: true,
