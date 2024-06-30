@@ -41,8 +41,3 @@ export function destroyLenis() {
   lenis.destroy();
   cancelAnimationFrame(animationFrame);
 }
-
-export function reinitLenis(options: LenisOptions = {}) {
-  destroyLenis();
-  return initLenis(options);
-}
