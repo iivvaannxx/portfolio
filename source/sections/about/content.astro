@@ -1,10 +1,7 @@
 ---
 import { CharacterView } from "@app/components/experience/views/character";
-import MysteryButton from "@app/components/mystery-button.astro";
 import ObservedSection from "@app/layouts/observed-section.astro";
 
-import * as Carousel from "@app/components/ui/svelte/carousel";
-import { ContactForm } from "@modules/contact/components/contact";
 import { ContactDialog } from "./components/contact-dialog";
 
 import { Icon } from "astro-icon/components";
@@ -12,19 +9,12 @@ import MyTime from "./components/my-time.svelte";
 import { Link } from "@app/components/base";
 
 import DynamicClock from "./components/dynamic-clock.svelte";
-import MyWeather from "./components/my-weather.svelte";
 import FavoriteCarousel from "./components/favorite-carousel.svelte";
 
 import { education } from "./lib/data";
-import {
-  getTranslations,
-  getTranslation,
-  test,
-  type Locale,
-} from "@app/modules/i18n";
+import { getTranslations } from "@app/modules/i18n";
 import { Image } from "astro:assets";
 
-import Status from "./components/status.svelte";
 import { socials } from "@app/lib/data/socials";
 
 const { locale } = Astro.locals;

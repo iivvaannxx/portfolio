@@ -12,7 +12,6 @@ import {
 import { useStore } from "@nanostores/react";
 import { useRef, useState } from "react";
 import { cn } from "@app/utils";
-import { ScrollArea } from "@app/components/ui/react";
 import { destroyLenis, initLenis } from "@app/lib/scroll";
 import { useMediaQuery } from "@app/lib/hooks/use-media-query";
 import { fireworks } from "@app/lib/confetti";
@@ -65,6 +64,7 @@ export function ContactDialog({ ...props }: Props) {
       </DialogTrigger>
       <DialogContent
         data-contact-dialog
+        data-scroll-thin
         onOpenAutoFocus={(event) => {
           if (isMobile) {
             // The keyboard popping immediately
@@ -72,7 +72,7 @@ export function ContactDialog({ ...props }: Props) {
             event.preventDefault();
           }
         }}
-        className="max-h-[90vh] w-[90%] max-w-xl overflow-y-clip dvh:!max-h-[90dvh] xl:w-full"
+        className="max-h-[90vh] w-[90%] max-w-xl overflow-y-scroll dvh:!max-h-[90dvh] xl:w-full"
       >
         <DialogHeader>
           <DialogTitle className="inline-flex items-center justify-center gap-x-4 text-xl sm:justify-start">
@@ -93,18 +93,13 @@ export function ContactDialog({ ...props }: Props) {
           </DialogDescription>
         </DialogHeader>
 
-        <ScrollArea
-          data-scroll-thin
-          className="max-h-[72vh] overflow-y-scroll dvh:!max-h-[72dvh]"
-        >
-          <ContactForm
-            onAfterSubmit={(success) => {
-              if (success) {
-                // setTimeout(() => setOpen(false), 3000);
-              }
-            }}
-          />
-        </ScrollArea>
+        <ContactForm
+          onAfterSubmit={(success) => {
+            if (success) {
+              // setTimeout(() => setOpen(false), 3000);
+            }
+          }}
+        />
       </DialogContent>
     </Dialog>
   );
