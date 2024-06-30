@@ -72,7 +72,7 @@ export function ContactDialog({ ...props }: Props) {
             event.preventDefault();
           }
         }}
-        className="max-h-[90vh] w-[90%] max-w-xl overflow-y-scroll dvh:!max-h-[90dvh] xl:w-full"
+        className="max-h-[90vh] w-[90%] max-w-xl overflow-y-clip px-0 dvh:!max-h-[90dvh] xl:w-full"
       >
         <DialogHeader>
           <DialogTitle className="inline-flex items-center justify-center gap-x-4 text-xl sm:justify-start">
@@ -93,13 +93,15 @@ export function ContactDialog({ ...props }: Props) {
           </DialogDescription>
         </DialogHeader>
 
-        <ContactForm
-          onAfterSubmit={(success) => {
-            if (success) {
-              // setTimeout(() => setOpen(false), 3000);
-            }
-          }}
-        />
+        <div className="max-h-[72vh] overflow-y-scroll px-6 dvh:!max-h-[72dvh]">
+          <ContactForm
+            onAfterSubmit={(success) => {
+              if (success) {
+                // setTimeout(() => setOpen(false), 3000);
+              }
+            }}
+          />
+        </div>
       </DialogContent>
     </Dialog>
   );
