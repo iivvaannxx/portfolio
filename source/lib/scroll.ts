@@ -1,4 +1,4 @@
-import Lenis from "lenis";
+import Lenis, { type LenisOptions } from "lenis";
 
 let lenis: Lenis;
 let animationFrame: number;
@@ -17,9 +17,10 @@ export function getLenisInstance() {
 }
 
 /** Initializes the Lenis library for smooth scrolling. */
-export function initLenis() {
+export function initLenis(options: LenisOptions = {}) {
   lenis = new Lenis({
     syncTouch: true,
+    ...options,
   });
 
   /**
@@ -32,9 +33,16 @@ export function initLenis() {
   }
 
   animationFrame = requestAnimationFrame(lenisRaf);
+
+  return lenis;
 }
 
 export function destroyLenis() {
   lenis.destroy();
   cancelAnimationFrame(animationFrame);
+}
+
+export function reinitLenis(options: LenisOptions = {}) {
+  destroyLenis();
+  return initLenis(options);
 }

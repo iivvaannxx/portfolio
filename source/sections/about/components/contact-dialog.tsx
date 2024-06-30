@@ -13,7 +13,7 @@ import {
 import { useStore } from "@nanostores/react";
 import { useRef, useState } from "react";
 import { cn } from "@app/utils";
-import { destroyLenis, initLenis } from "@app/lib/scroll";
+import { destroyLenis, initLenis, reinitLenis } from "@app/lib/scroll";
 import { useMediaQuery } from "@app/lib/hooks/use-media-query";
 import { fireworks } from "@app/lib/confetti";
 
@@ -38,7 +38,7 @@ export function ContactDialog({ ...props }: Props) {
           // on scroll we need to destroy and reinitialize Lenis.
           // With `syncTouch` enabled, the model form doesn't scroll
           // properly on mobile, even after calling `lenis.stop()`.
-          destroyLenis();
+          reinitLenis({ syncTouch: false }).stop();
 
           if (!confettiShown.current) {
             fireworks(isMobile ? 1.75 : 3);
@@ -46,7 +46,7 @@ export function ContactDialog({ ...props }: Props) {
           }
         } else {
           // Reinitialize Lenis after closing the dialog.
-          initLenis();
+          reinitLenis({ syncTouch: true }).start();
         }
       }}
     >
