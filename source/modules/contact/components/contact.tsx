@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from "react";
+import type { HTMLAttributes, PropsWithChildren } from "react";
 import type { Control } from "react-hook-form";
 
 import { useStore } from "@nanostores/react";
@@ -59,7 +59,7 @@ type PersistingErrorFallbackProps = {
 // Renders the form fields for the contact form.
 function ContactFormFields({ formControl }: ContactFormFieldsProps) {
   return (
-    <div className="mt-4 grid grid-cols-4 gap-x-4 gap-y-5">
+    <div className="grid grid-cols-4 gap-x-4 gap-y-5">
       {Object.entries(CONTACT_FORM_FIELDS).map(
         ([key, { label, Component, className, ...props }]) => (
           <FormField
@@ -153,10 +153,11 @@ function PersistingErrorFallback({ message }: PersistingErrorFallbackProps) {
 }
 
 // The props received by the <ContactForm> component.
-type Props = Pick<UseContactFormParams, "onAfterSubmit"> & {};
+type Props = Pick<UseContactFormParams, "onAfterSubmit"> &
+  HTMLAttributes<HTMLFormElement> & {};
 
 /** Defines the form used to contact me. */
-export function ContactForm({ onAfterSubmit }: Props) {
+export function ContactForm({ onAfterSubmit, ...props }: Props) {
   const locale = useStore(currentLang);
   const {
     form,
@@ -175,6 +176,7 @@ export function ContactForm({ onAfterSubmit }: Props) {
       <form
         className="px-1"
         onSubmit={submitForm}
+        {...props}
       >
         <ContactFormFields formControl={form.control} />
         <TurnstileWidget

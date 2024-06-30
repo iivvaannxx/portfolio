@@ -1,8 +1,9 @@
 import { ContactForm } from "@app/modules/contact/components/contact";
 import { currentLang } from "@app/modules/contact/lib/store";
-import { Mail } from "lucide-react";
+import { Mail, X } from "lucide-react";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -65,6 +66,7 @@ export function ContactDialog({ ...props }: Props) {
       <DialogContent
         data-contact-dialog
         data-scroll-thin
+        customClose
         onOpenAutoFocus={(event) => {
           if (isMobile) {
             // The keyboard popping immediately
@@ -72,9 +74,9 @@ export function ContactDialog({ ...props }: Props) {
             event.preventDefault();
           }
         }}
-        className="max-h-[90vh] w-[90%] max-w-xl overflow-y-clip px-0 dvh:!max-h-[90dvh] xl:w-full"
+        className="max-h-[90vh] w-[90%] max-w-xl gap-0 overflow-y-scroll pt-0 dvh:!max-h-[90dvh] xl:w-full"
       >
-        <DialogHeader>
+        <DialogHeader className="sticky top-0 bg-background py-8">
           <DialogTitle className="inline-flex items-center justify-center gap-x-4 text-xl sm:justify-start">
             <img
               src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/E-Mail.png"
@@ -91,17 +93,20 @@ export function ContactDialog({ ...props }: Props) {
             Fill out the form below and I will get back to you as soon as
             possible.
           </DialogDescription>
+
+          <DialogClose className="absolute -right-2 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
         </DialogHeader>
 
-        <div className="max-h-[72vh] overflow-y-scroll px-6 dvh:!max-h-[72dvh]">
-          <ContactForm
-            onAfterSubmit={(success) => {
-              if (success) {
-                // setTimeout(() => setOpen(false), 3000);
-              }
-            }}
-          />
-        </div>
+        <ContactForm
+          onAfterSubmit={(success) => {
+            if (success) {
+              // setTimeout(() => setOpen(false), 3000);
+            }
+          }}
+        />
       </DialogContent>
     </Dialog>
   );
