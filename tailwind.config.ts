@@ -32,6 +32,7 @@ const config: Config = {
 
     plugin(function ({ addVariant }) {
       addVariant("dvh", "@supports (height: 1dvh)");
+      addVariant("svh", "@supports (height: 1svh)");
     }),
   ],
 

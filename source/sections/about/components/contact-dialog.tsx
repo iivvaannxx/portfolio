@@ -74,7 +74,7 @@ export function ContactDialog({ ...props }: Props) {
             event.preventDefault();
           }
         }}
-        className="max-h-[90vh] w-[90%] max-w-xl gap-0 overflow-y-scroll pt-0 dvh:!max-h-[90dvh] xl:w-full"
+        className="svh:!max-h-[90svh] max-h-[90vh] w-[90%] max-w-xl gap-0 overflow-y-scroll pt-0 xl:w-full"
       >
         <DialogHeader className="sticky top-0 bg-background py-8">
           <DialogTitle className="inline-flex items-center justify-center gap-x-4 text-xl sm:justify-start">
