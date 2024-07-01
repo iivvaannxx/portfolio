@@ -41,3 +41,13 @@ export function destroyLenis() {
   lenis.destroy();
   cancelAnimationFrame(animationFrame);
 }
+
+export function toggleScroll(enable: boolean) {
+  const lenis = getLenisInstance();
+
+  if (enable) {
+    lenis.start();
+  } else {
+    lenis.stop();
+  }
+}

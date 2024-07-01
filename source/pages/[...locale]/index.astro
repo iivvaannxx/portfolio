@@ -28,11 +28,13 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 </Fragment>
 
 <Page bodyClass="debug-screens">
-  <Header />
+  <Header class="animate-fade-down animate-delay-0 animate-duration-500" />
 
   <Canvas client:idle />
 
-  <main class="mt-32 space-y-48">
+  <main
+    class="mt-32 animate-fade-in space-y-48 opacity-0 animate-delay-300 animate-duration-300"
+  >
     <!--     <Hero />
  -->
     <Work />

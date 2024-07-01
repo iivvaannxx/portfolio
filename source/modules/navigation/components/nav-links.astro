@@ -1,11 +1,8 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-import { getTranslations } from "@modules/i18n";
+import { LanguageSelector, getTranslations } from "@modules/i18n";
 import { Link } from "@components/base";
-
-import { socials } from "@app/lib/data/socials";
-import { Icon } from "astro-icon/components";
 import { sections } from "../lib/sections";
 
 export type Props = HTMLAttributes<"nav">;
@@ -51,30 +48,10 @@ const t = translations.sections;
     }
   </ul>
 
-  <ul
-    data-socials
-    class="flex items-center gap-x-3"
-  >
-    {
-      socials.map(({ href, i18nKey, iconKey }) => {
-        const translatedLabel = translations.socials[i18nKey];
-        return (
-          <li class="rounded-lg bg-background text-foreground/80 transition duration-200 hover:bg-accent hover:text-accent-foreground hover:brightness-110">
-            <Link
-              {href}
-              label={`${translatedLabel}`}
-              targetBlank
-            >
-              <Icon
-                name={iconKey}
-                class="box-content size-7 p-2 text-current"
-              />
-            </Link>
-          </li>
-        );
-      })
-    }
-  </ul>
+  <LanguageSelector
+    currentLocale={Astro.locals.locale}
+    client:load
+  />
 </nav>
 
 <style>

@@ -1,14 +1,23 @@
 ---
+import { cn } from "@app/utils";
 import { Hamburguer, NavLinks } from "@modules/navigation";
+import type { HTMLAttributes } from "astro/types";
+
+export type Props = HTMLAttributes<"header"> & {};
+const { class: clazz, ...props } = Astro.props;
 ---
 
 <header
-  class="min-h-header fixed inset-x-0 top-0 z-50 content-center bg-background"
+  class={cn(
+    "fixed inset-x-0 top-0 z-50 min-h-header content-center bg-background",
+    clazz,
+  )}
+  {...props}
 >
   <div
-    class="mx-auto flex max-w-screen-2xl justify-between px-6 py-4 font-header"
+    class="mx-auto flex max-w-screen-xl justify-around px-10 py-4 font-header xl:px-6"
   >
-    <NavLinks class="hidden w-full animate-fade-down justify-between lg:flex" />
+    <NavLinks class="hidden w-full justify-between lg:flex" />
     <Hamburguer class="ml-auto lg:hidden" />
   </div>
 </header>
