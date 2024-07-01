@@ -14,9 +14,9 @@
   import { currentSkill } from "../lib/store";
   import SkillIcon from "./skill-icon.svelte";
 
-  function getSlideKey(skill: SkillData[]) {
+  function getSlideKey(skill?: SkillData[]) {
     // Generate a unique key for the visible skills in a single slide.
-    return skill.map((s) => s.name).join("-");
+    return skill?.map((s) => s.name).join("-");
   }
 </script>
 

@@ -3,8 +3,10 @@
   context="module"
 >
   import { onMount } from "svelte";
-  import { MY_TIMEZONE } from "@modules/i18n";
   import { fade } from "svelte/transition";
+
+  import { cn } from "@app/utils";
+  import { MY_TIMEZONE } from "@modules/i18n";
 
   // Formatter which writes hours in range 1-12 for my time.
   const formatter = new Intl.DateTimeFormat("en-US", {
@@ -33,10 +35,8 @@
 </script>
 
 <script lang="ts">
-  import { cn } from "@app/utils";
-
   let currentHour = getCurrentHourNormalized();
-  $: currentClock = `/images/clocks/clock-${currentHour}.webp`;
+  $: currentClock = `/images/emojis/clocks/clock-${currentHour}.webp`;
 
   onMount(() => {
     // Update every second.

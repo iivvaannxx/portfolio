@@ -9,13 +9,14 @@ import MyTime from "./components/my-time.svelte";
 import { Link } from "@app/components/base";
 
 import DynamicClock from "./components/dynamic-clock.svelte";
-import FavoriteCarousel from "./components/favorite-carousel.svelte";
 
 import { education } from "./lib/data";
 import { getTranslations } from "@app/modules/i18n";
-import { Image } from "astro:assets";
+
+import kh from "./assets/games/kingdom-hearts.png";
 
 import { socials } from "@app/lib/data/socials";
+import Picture from "astro/components/Picture.astro";
 
 const { locale } = Astro.locals;
 const formatter = new Intl.DateTimeFormat(locale, {
@@ -56,12 +57,29 @@ const t = translations.sections.about;
         <header
           class="flex items-center gap-4 text-balance font-header text-xl font-bold"
         >
-          <Image
-            src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand%20Medium-Light%20Skin%20Tone.png"
-            alt="Waving Hand Medium-Light Skin Tone"
-            inferSize
-            class="size-[1.5em]"
-          />
+          <picture>
+            <source
+              srcset="/images/emojis/hand/hand.webp"
+              type="image/webp"
+            />
+            <source
+              srcset="/images/emojis/hand/hand.png"
+              type="image/png"
+            />
+            <source
+              srcset="/images/emojis/hand/hand.avif"
+              type="image/avif"
+            />
+            <img
+              src="/images/emojis/hand/hand.gif"
+              alt="Waving Hand"
+              width={64}
+              height={64}
+              decoding="async"
+              loading="lazy"
+              class="size-[1.5em]"
+            />
+          </picture>
           <h3 class="mt-3">Hey There!</h3>
         </header>
 
@@ -92,16 +110,29 @@ const t = translations.sections.about;
               "absolute aspect-square w-1/4 -translate-x-1/2 -translate-y-1/2 animate-float",
               "left-[12.5%] top-[40%] min-w-[80px] max-w-[4.5em] rotate-[75deg]",
               "xs:min-w-[5.5em] xs:max-w-[7.5em]",
-              "lg:left-[25%] lg:top-[20%]",
-              "xl:left-[18%] xl:top-[25%] xl:max-w-[8em]",
+              "md:max-w-[10em]",
+              "lg:left-[25%] lg:top-[20%] lg:max-w-[8.5em]",
+              "xl:left-[18%] xl:top-[25%] xl:max-w-[10em]",
             ]}
           >
-            <Image
-              src="/images/misc/pizza.png"
-              alt="Pizza"
-              width={128}
-              height={128}
-            />
+            <picture>
+              <source
+                srcset="/images/emojis/pizza/pizza.avif"
+                type="image/avif"
+              />
+              <source
+                srcset="/images/emojis/pizza/pizza.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/emojis/pizza/pizza.png"
+                alt="Pizza"
+                width={142}
+                height={142}
+                decoding="async"
+                loading="lazy"
+              />
+            </picture>
 
             <p
               class:list={[
@@ -125,16 +156,33 @@ const t = translations.sections.about;
             class:list={[
               "absolute left-1/2 top-[60%] aspect-square w-1/4 min-w-[80px] max-w-[4.5em] -translate-x-1/2 -translate-y-1/2",
               "xs:min-w-[5.5em] xs:max-w-[7.5em]",
-              "lg:top-[70%]",
-              "xl:max-w-[8em]",
+              "md:max-w-[10em]",
+              "lg:top-[70%] lg:max-w-[8.5em]",
+              "xl:max-w-[10em]",
             ]}
           >
-            <Image
-              src="/images/misc/dog.png"
-              alt="Dog"
-              width={128}
-              height={128}
-            />
+            <picture>
+              <source
+                srcset="/images/emojis/dog/dog.avif"
+                type="image/avif"
+              />
+              <source
+                srcset="/images/emojis/dog/dog.webp"
+                type="image/webp"
+              />
+              <source
+                srcset="/images/emojis/dog/dog.png"
+                type="image/png"
+              />
+              <img
+                src="/images/emojis/dog/dog.gif"
+                alt="Dog"
+                width={116}
+                height={116}
+                decoding="async"
+                loading="lazy"
+              />
+            </picture>
 
             <p
               class:list={[
@@ -159,17 +207,29 @@ const t = translations.sections.about;
               "absolute aspect-square w-1/4 -translate-x-1/2 -translate-y-1/2 rotate-12 animate-float animate-delay-1000",
               "left-[90%] top-[35%] min-w-[80px] max-w-[4.5em]",
               "xs:min-w-[5.5em] xs:max-w-[7.5em]",
-              "lg:top-[30%]",
-              "xl:left-[85%] xl:max-w-[8em]",
+              "md:max-w-[10em]",
+              "lg:top-[30%] lg:max-w-[8.5em]",
+              "xl:left-[85%] xl:max-w-[10em]",
             ]}
           >
-            <Image
-              src="/images/misc/gamepad.png"
-              alt="Gamepad"
-              width={128}
-              height={128}
-              class="z-10"
-            />
+            <picture>
+              <source
+                srcset="/images/emojis/gamepad/gamepad.avif"
+                type="image/avif"
+              />
+              <source
+                srcset="/images/emojis/gamepad/gamepad.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/emojis/gamepad/gamepad.png"
+                alt="Gamepad"
+                width={138}
+                height={138}
+                decoding="async"
+                loading="lazy"
+              />
+            </picture>
 
             <p
               class:list={[
@@ -194,25 +254,70 @@ const t = translations.sections.about;
 
     <article
       class:list={[
-        "col-span-10 col-start-1 row-start-2 flex flex-col rounded-xl border bg-card p-6",
-        "md:col-span-5 md:col-start-6 md:row-start-4 md:px-8 md:py-6",
+        "col-span-10 col-start-1 row-start-2 flex flex-col rounded-xl border bg-card py-6",
+        "md:col-span-5 md:col-start-6 md:row-start-4",
         "lg:col-span-6 lg:-col-start-7 lg:row-span-2 lg:row-start-2",
         "xl:!col-span-4 xl:col-start-1 xl:row-span-2 xl:row-start-2 xl:row-end-5",
       ]}
     >
       <header
-        class="flex w-full items-center gap-4 font-header text-xl font-bold"
+        class="flex w-full items-center gap-4 px-6 font-header text-xl font-bold md:px-8"
       >
-        <Image
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing Star.png"
-          alt="Fire"
-          inferSize
-          class="size-[1.3em]"
-        />
+        <picture>
+          <source
+            srcset="/images/emojis/star/star.webp"
+            type="image/webp"
+          />
+          <source
+            srcset="/images/emojis/star/star.avif"
+            type="image/avif"
+          />
+          <source
+            srcset="/images/emojis/star/star.png"
+            type="image/png"
+          />
+          <img
+            src="/images/emojis/star/star.gif"
+            alt="Star"
+            width={64}
+            height={64}
+            decoding="async"
+            loading="lazy"
+            class="size-[1.4em]"
+          />
+        </picture>
         <h3 class="mt-1.5">Favorites</h3>
       </header>
 
-      <FavoriteCarousel client:visible />
+      <div
+        class="flex w-full grow -translate-x-full items-center justify-start"
+        data-carousel
+        style="--items: 2;"
+      >
+        <div class="relative my-auto w-full shrink-0 overflow-clip p-6 md:px-8">
+          <Picture
+            src={kh}
+            alt="Kingdom Hearts"
+            formats={["avif", "webp", "png"]}
+            class="mx-auto aspect-square size-full w-4/5 rounded-lg object-cover"
+          />
+        </div>
+
+        <div class="relative my-auto w-full shrink-0 overflow-clip p-6 md:px-8">
+          <Picture
+            src={kh}
+            alt="Kingdom Hearts"
+            formats={["avif", "webp", "png"]}
+            class="mx-auto aspect-square size-full w-4/5 rounded-lg object-cover"
+          />
+        </div>
+      </div>
+      <div>
+        <p class="text-center text-lg font-semibold text-foreground/80">
+          Kingdom Hearts
+        </p>
+      </div>
+      <!-- <FavoriteCarousel client:visible /> -->
     </article>
 
     <article
@@ -277,12 +382,25 @@ const t = translations.sections.about;
       ]}
     >
       <header class="flex items-center gap-4 font-header text-xl font-bold">
-        <Image
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Globe%20with%20Meridians.png"
-          alt="Globe With Meridians"
-          inferSize
-          class="size-[1.2em]"
-        />
+        <picture>
+          <source
+            srcset="/images/emojis/globe/globe.avif"
+            type="image/avif"
+          />
+          <source
+            srcset="/images/emojis/globe/globe.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/emojis/globe/globe.png"
+            alt="Globe"
+            width={64}
+            height={64}
+            decoding="async"
+            loading="lazy"
+            class="size-[1.2em]"
+          />
+        </picture>
         <h3 class="mt-1.5">Links</h3>
       </header>
 
@@ -337,12 +455,25 @@ const t = translations.sections.about;
       ]}
     >
       <header class="flex items-center gap-4 font-header text-xl font-bold">
-        <Image
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Graduation%20Cap.png"
-          alt="Graduation Cap"
-          inferSize
-          class="size-[1.5em]"
-        />
+        <picture>
+          <source
+            srcset="/images/emojis/graduation-cap/graduation-cap.avif"
+            type="image/avif"
+          />
+          <source
+            srcset="/images/emojis/graduation-cap/graduation-cap.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/emojis/graduation-cap/graduation-cap.png"
+            alt="Graduation Cap"
+            width={64}
+            height={64}
+            decoding="async"
+            loading="lazy"
+            class="size-[1.5em]"
+          />
+        </picture>
 
         <h3 class="mt-3">Education</h3>
       </header>
@@ -406,5 +537,20 @@ const t = translations.sections.about;
     text-decoration: underline;
     text-decoration-color: theme("colors.primary.DEFAULT");
     text-underline-offset: 0.15em;
+  }
+
+  [data-carousel] {
+    animation: carousel-slide calc(var(--items) * 3s) steps(var(--items))
+      infinite;
+  }
+
+  @keyframes carousel-slide {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(calc(var(--items) * -100%));
+    }
   }
 </style>

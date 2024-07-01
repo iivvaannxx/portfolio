@@ -78,15 +78,25 @@ export function ContactDialog({ ...props }: Props) {
       >
         <DialogHeader className="sticky top-0 bg-background py-8">
           <DialogTitle className="inline-flex items-center justify-center gap-x-4 text-xl sm:justify-start">
-            <img
-              src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/E-Mail.png"
-              alt="E-Mail"
-              width={128}
-              height={128}
-              loading="lazy"
-              decoding="async"
-              className="inline-block size-[1.5em]"
-            />
+            <picture>
+              <source
+                srcSet="/images/emojis/email/email.avif"
+                type="image/avif"
+              />
+              <source
+                srcSet="/images/emojis/email/email.webp"
+                type="image/webp"
+              />
+              <img
+                src="/images/emojis/email/email.png"
+                alt="E-Mail"
+                width={64}
+                height={64}
+                decoding="async"
+                loading="lazy"
+                className="inline-block size-[1.5em]"
+              />
+            </picture>
             <span>Contact</span>
           </DialogTitle>
           <DialogDescription className="text-balance pt-2">
