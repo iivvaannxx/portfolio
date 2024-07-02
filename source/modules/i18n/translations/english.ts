@@ -10,8 +10,8 @@ export const english = {
   sections: {
     hero: {
       headline: {
-        content: "I'm a %s developer.",
-        words: ["game", "web", "software"],
+        content: `I'm a ${strong("software")} developer.`,
+        // words: ["game", "web", "software"],
       },
 
       greeting: "Hey! I'm Ivan Porto",

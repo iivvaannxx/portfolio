@@ -11,8 +11,6 @@ import { getTranslations } from "@modules/i18n";
 const { locale } = Astro.locals;
 const translations = getTranslations(locale);
 const t = translations.sections.hero;
-
-const [before, after] = t.headline.content.split("%s");
 ---
 
 <section
@@ -29,18 +27,8 @@ const [before, after] = t.headline.content.split("%s");
 
     <p
       class="mt-4 block min-h-[2lh] animate-fade-up whitespace-nowrap text-lg font-bold text-foreground/50 animate-delay-500 xs:text-2xl"
-    >
-      {before && <span set:html={before} />}
-      <Typewriter
-        client:load
-        as="strong"
-        delays={{ start: 500 }}
-        startWithFirstWord
-        words={[...t.headline.words]}
-        class="text-primary [&>span[data-cursor]]:bg-foreground/80"
-      />
-      {after && <span set:html={after} />}
-    </p>
+      set:html={t.headline.content}
+    />
   </header>
 
   <div>
