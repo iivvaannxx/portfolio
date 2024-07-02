@@ -13,6 +13,8 @@
 
   --header-height: 64px;
   --content-height: calc(var(--screen-safe-height) - var(--header-height));
+
+  color-scheme: dark only;
 }
 
 *,
@@ -52,11 +54,6 @@ blockquote {
 
 textarea {
   resize: none;
-}
-
-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
 }
 
 code {

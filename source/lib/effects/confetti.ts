@@ -1,4 +1,4 @@
-import { randomInRange } from "./math/random";
+import { randomInRange } from "../math/random";
 
 /**
  * Retrieves the confetti module asynchronously.

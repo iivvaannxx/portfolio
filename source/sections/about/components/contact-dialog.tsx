@@ -15,7 +15,7 @@ import { useRef, useState } from "react";
 import { cn } from "@app/utils";
 import { destroyLenis, initLenis } from "@app/lib/scroll";
 import { useMediaQuery } from "@app/lib/hooks/use-media-query";
-import { fireworks } from "@app/lib/confetti";
+import { fireworks } from "@app/lib/effects/confetti";
 
 type Props = {};
 
@@ -74,7 +74,7 @@ export function ContactDialog({ ...props }: Props) {
             event.preventDefault();
           }
         }}
-        className="svh:!max-h-[90svh] max-h-[90vh] w-[90%] max-w-xl gap-0 overflow-y-scroll pt-0 xl:w-full"
+        className="max-h-[90vh] w-[90%] max-w-xl gap-0 overflow-y-scroll pt-0 svh:!max-h-[90svh] xl:w-full"
       >
         <DialogHeader className="sticky top-0 bg-background py-8">
           <DialogTitle className="inline-flex items-center justify-center gap-x-4 text-xl sm:justify-start">

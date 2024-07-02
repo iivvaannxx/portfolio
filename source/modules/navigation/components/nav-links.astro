@@ -54,12 +54,16 @@ const t = translations.sections;
   />
 </nav>
 
-<style>
-  :global([data-nav-link]) {
+<style is:global>
+  [data-nav-link] {
     color: theme("colors.muted.foreground / 0.8");
   }
 
-  :global([data-nav-link]).active {
+  [data-nav-link].active {
+    color: theme("colors.foreground");
+  }
+
+  ul:not(:has([data-nav-link].active)) [data-nav-link] {
     color: theme("colors.foreground");
   }
 </style>

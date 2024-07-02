@@ -1,3 +1,5 @@
+import type { HTMLAttributes } from "astro/types";
+
 /**
  * Creates an HTML link element with the specified href and text.
  *
@@ -42,4 +44,8 @@ export function bold<const T extends string>(content: T) {
  */
 export function italic<const T extends string>(content: T) {
   return `<i>${content}</i>` as const;
+}
+
+export function br(props: HTMLAttributes<"br">) {
+  return `<br ${JSON.stringify(props)} />` as const;
 }

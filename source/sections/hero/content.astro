@@ -1,0 +1,120 @@
+---
+import { Icon } from "astro-icon/components";
+
+import { Badge, Link } from "@app/components/base";
+import Typewriter from "@app/components/typewriter.svelte";
+
+import { email, github, linkedIn } from "@app/lib/data/socials";
+import { getTranslations } from "@modules/i18n";
+
+// Retrieve the localized strings for the hero section.
+const { locale } = Astro.locals;
+const translations = getTranslations(locale);
+const t = translations.sections.hero;
+
+const [before, after] = t.headline.content.split("%s");
+---
+
+<section
+  data-scroll-away
+  class="mx-auto max-w-screen-lg content-center px-4 xs:px-6 xl:px-0"
+>
+  <header>
+    <h1 class="animate-fade-up font-header">
+      <span
+        class="block text-3xl font-extrabold tracking-wide opacity-90 fold:whitespace-nowrap xs:text-4xl"
+        >{t.greeting}</span
+      >
+    </h1>
+
+    <p
+      class="mt-4 block min-h-[2lh] animate-fade-up whitespace-nowrap text-lg font-bold text-foreground/50 animate-delay-500 xs:text-2xl"
+    >
+      {before && <span set:html={before} />}
+      <Typewriter
+        client:load
+        as="strong"
+        delays={{ start: 500 }}
+        startWithFirstWord
+        words={[...t.headline.words]}
+        class="text-primary [&>span[data-cursor]]:bg-foreground/80"
+      />
+      {after && <span set:html={after} />}
+    </p>
+  </header>
+
+  <div>
+    <p
+      class="mt-4 max-w-[58ch] animate-fade-up text-balance text-left text-base text-foreground/65 animate-delay-700 xs:text-lg"
+      set:html={t.introduction}
+      data-hero-p
+    />
+
+    <div
+      class="mt-8 flex animate-fade-up flex-col items-center gap-y-4 animate-delay-700 xs:flex-row"
+    >
+      <Badge
+        hoverGlow
+        class="w-fit select-none gap-3 rounded-md px-2.5 py-1.5 text-xs sm:px-4 sm:text-sm"
+      >
+        <span class="relative flex h-[10px] w-[10px]">
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 animate-duration-[1000ms]"
+          ></span>
+          <span
+            class="relative inline-flex h-[10px] w-[10px] rounded-full bg-green-500"
+          ></span>
+        </span>
+        <span>{t.statusLabel}</span>
+      </Badge>
+
+      <span
+        class="ml-4 mr-2 hidden text-3xl font-bold text-muted-foreground/30 xs:inline-block"
+        >{"|"}</span
+      >
+
+      <ul class="flex gap-x-2">
+        {
+          [linkedIn, github, email].map(({ href, i18nKey, iconKey }) => {
+            const translatedLabel = translations.socials[i18nKey];
+            return (
+              <li
+                class:list={[
+                  "rounded-lg text-foreground/80 transition duration-200",
+                  "hover:bg-accent hover:text-accent-foreground/80",
+                ]}
+              >
+                <Link
+                  {href}
+                  label={`${translatedLabel}`}
+                  targetBlank
+                  withTooltip={{
+                    content: `${translatedLabel}`,
+                    placement: "bottom",
+                  }}
+                >
+                  <Icon
+                    name={iconKey}
+                    class="box-content size-6 p-2 text-current sm:size-7 md:size-8"
+                  />
+                </Link>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  [data-hero-p] {
+    /** If pretty is supported it will override "balance". */
+    text-wrap: balance;
+    text-wrap: pretty;
+  }
+
+  :global([data-hero-p] > b) {
+    color: theme("colors.foreground / 0.75");
+  }
+</style>

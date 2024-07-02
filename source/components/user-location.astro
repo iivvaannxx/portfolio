@@ -1,6 +1,6 @@
-<!-- ---
+---
 import type { HTMLAttributes } from "astro/types";
-import { getTranslations } from "@app/modules/i18n/lib/utils/translationsations";
+import { getTranslations } from "@app/modules/i18n";
 
 import { Icon } from "astro-icon/components";
 
@@ -11,7 +11,7 @@ const t = translations.userLocation;
 ---
 
 <script>
-  import { getCurrentLocale } from "@app/modules/i18n/lib/locales";
+  import { getCurrentLocale } from "@app/modules/i18n";
   import tippy from "tippy.js";
 
   const response = await fetch("https://geolocation.microlink.io");
@@ -52,6 +52,10 @@ const t = translations.userLocation;
   id="user-location"
   class="hidden gap-4"
 >
+  <p {...Astro.props}>
+    <span>{t.lastVisit}</span>
+    <span id="location-placeholder"></span>
+  </p>
   <button
     id="location-privacy-tooltip"
     aria-haspopup="true"
@@ -64,11 +68,6 @@ const t = translations.userLocation;
       height={24}
     />
   </button>
-
-  <p {...Astro.props}>
-    <span>{t.lastVisit}</span>
-    <span id="location-placeholder"></span>
-  </p>
 </div>
 
 <div
@@ -86,17 +85,3 @@ const t = translations.userLocation;
     {t.notice.message}
   </p>
 </div>
-
-<style is:global>
-  .tippy-box[data-theme~="location"] {
-    background-color: theme("colors.popover.DEFAULT");
-    border: 1px solid theme("colors.border");
-    border-radius: theme("borderRadius.lg");
-    color: theme("colors.popover.foreground");
-
-    & .tippy-content {
-      padding: 1rem;
-    }
-  }
-</style>
- -->

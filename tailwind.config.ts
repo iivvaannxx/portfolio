@@ -22,6 +22,7 @@ const config: Config = {
 
       settings: {
         fontSizeMin: 1,
+        fontSizeMax: 1.2,
       },
     }),
 

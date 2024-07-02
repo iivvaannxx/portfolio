@@ -9,19 +9,19 @@ export const english = {
 
   sections: {
     hero: {
-      name: "About",
-      id: "about",
       headline: {
-        content: ["I'm a", "%s", "developer"],
+        content: "I'm a %s developer.",
         words: ["game", "web", "software"],
       },
 
-      greeting: "Hello! My name is",
+      greeting: "Hey! I'm Ivan Porto",
       introduction: `
-        Specialized in game development, yet passionate about developing for the web. With <b>6+ years 
-        of coding expertise</b>, and <strong>4+ years of professional experience</strong>, I am <b>open to 
-        opportunities</b> in the game industry, but actively <strong>seeking a role as a web developer</strong>.
+        Specialized in game development, yet also passionate about developing for the web. With
+        ${bold("6+ years of coding expertise")}, and ${strong("4+ years of professional experience")},
+        I am ${bold("open to opportunities")} in the game industry, but actively ${strong("seeking a role as a web developer")}.
       `,
+
+      statusLabel: "Available for work",
     },
 
     experience: {

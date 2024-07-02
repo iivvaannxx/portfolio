@@ -14,6 +14,7 @@ import About from "@app/sections/about/content.astro";
 
 import { SkillSprites } from "@app/sections/skills";
 import Footer from "@app/layouts/footer.astro";
+import Hero from "@app/sections/hero/content.astro";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 ---
@@ -35,8 +36,8 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
   <main
     class="mt-32 animate-fade-in space-y-48 opacity-0 animate-delay-300 animate-duration-300"
   >
-    <!--     <Hero />
- -->
+    <Hero />
+
     <Work />
     <Projects />
     <Skills />
