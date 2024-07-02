@@ -1,0 +1,43 @@
+---
+import { ObservedSection } from "@app/layouts";
+import { getTranslations } from "@modules/i18n";
+import { Timeline, TimelineEntry } from "@components/timeline";
+
+import { jobs } from "./lib/data";
+import JobEntry from "./components/job-entry.astro";
+
+const { locale } = Astro.locals;
+const translations = getTranslations(locale);
+const t = translations.sections.experience;
+---
+
+<ObservedSection
+  id={t.id}
+  class="mx-auto max-w-screen-lg animate-fade-up px-4 animate-delay-1000 xs:px-6 xl:px-0"
+  aria-label={t.name}
+  title={t.title}
+  order={1}
+>
+  <Timeline
+    client:idle
+    class="ml-4 flex w-full items-start py-6 lg:ml-8"
+    itemCount={jobs.length}
+  >
+    <ul>
+      {
+        jobs.map((job, index) => (
+          <TimelineEntry
+            index={index + 1}
+            as="li"
+            class="ease transition-opacity duration-300"
+          >
+            <JobEntry
+              {...job}
+              {locale}
+            />
+          </TimelineEntry>
+        ))
+      }
+    </ul>
+  </Timeline>
+</ObservedSection>

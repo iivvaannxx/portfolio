@@ -62,7 +62,7 @@ const optionalAttrs = {
 >
   {
     withExternalLinkArrow ? (
-      <>
+      <span>
         <slot />
         <Icon
           name="lucide:arrow-up-right"
@@ -72,7 +72,7 @@ const optionalAttrs = {
             "group-focus-visible:-translate-y-1 group-focus-visible:translate-x-1",
           ]}
         />
-      </>
+      </span>
     ) : (
       <slot />
     )

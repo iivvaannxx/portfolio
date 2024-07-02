@@ -7,6 +7,10 @@ export const english = {
     locale: "en",
   },
 
+  helpers: {
+    dateRange: (start: string, end: string) => `From ${start} until ${end}`,
+  },
+
   sections: {
     hero: {
       headline: {
@@ -27,37 +31,27 @@ export const english = {
     experience: {
       name: "Experience",
       id: "experience",
+      title: "Where I've worked",
 
-      jobs: [
-        {
+      jobs: {
+        codelearn: {
           title: "Computer Science Educator for Kids and Teens",
-          at: "Codelearn",
-          url: "https://www.codelearn.com",
-
-          startDate: new Date("2021-11"),
-          endDate: new Date("2024-05"),
           location: "Barcelona, Spain",
+          at: "Codelearn",
 
           description:
             "<q>There's no better way to learn than to teach</q>\n\nWeekly guided <strong>20+ students</strong> through a broad range of computer science topics ranging from basic programming to advanced subjects such as <strong>Python</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>C++</strong>, and many more. My role was <b>to help them navigate the different courses</b> available in an internal e-learning platform, assisting them when they encountered challenges and ensuring they made the most of the interactive learning tools available.\n\n<b>Participated in extracurricular teaching at local schools</b> and <strong>received positive parental feedback</strong>, as a result of an improvement in their children's academic performance.",
-
-          skills: ["Communication", "Python", "JavaScript"],
         },
-        {
-          title: "Unity Game Developer",
-          at: "GILAB (University of Girona)",
-          url: "https://gilab.udg.edu",
 
-          startDate: new Date("2020-11"),
-          endDate: new Date("2022-9"),
+        gilab: {
+          title: "Unity Game Developer",
           location: "Girona, Spain",
+          at: "GILAB (University of Girona)",
 
           description:
             "Transitioned from an internship to a primary role within a research lab at my university, and in collaboration with a local hospital. My role was to develop a <strong>virtual-reality rehabilitation game</strong> for stroke patients. Utilizing the (now Meta) Oculus Quest VR headset and its hand tracking capabilities, our project aimed to create <b>immersive therapeutic experiences</b>, by developing a variety of exercises <strong>tailored to address specific mobility issues</strong>.\n\nThe project also served as the <strong>thesis for my degree</strong> and was recognized with the <b>“Scholarship for Transfer, Innovation and Entrepreneurship”</b> (BTI) during 2021-2022, as a result of a partnership between the university and <q>Santander Universidades</q>.",
-
-          skills: ["Analytical Thinking", "C#", "Unity"],
         },
-      ],
+      },
     },
 
     projects: {

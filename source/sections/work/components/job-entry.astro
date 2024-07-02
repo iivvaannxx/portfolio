@@ -1,0 +1,99 @@
+---
+import capitalize from "just-capitalize";
+
+import { Link } from "@app/components/base";
+import { SkillBadge } from "@app/sections/skills";
+import type { Locale } from "@app/modules/i18n";
+
+import type { JobData } from "../lib/types";
+import { getTranslation } from "@app/modules/i18n";
+
+export type Props = JobData & { locale: Locale };
+const { locale, ...job } = Astro.props;
+
+const formatter = new Intl.DateTimeFormat(locale, {
+  month: "long",
+  year: "numeric",
+});
+
+const { startDate, endDate } = job;
+const start = capitalize(formatter.format(startDate));
+const end = capitalize(formatter.format(endDate));
+
+const dateRange = getTranslation("helpers.dateRange", locale);
+const dateRangeLabel = dateRange(start, end);
+
+/**
+ * Returns the formatted datetime string for the given date.
+ * The format is "YYYY-MM".
+ *
+ * @param date The date object to format.
+ * @returns The formatted datetime string.
+ */
+function getDatetime(date: Date) {
+  return `${date.getFullYear()}-${date.getMonth() + 1}`;
+}
+---
+
+<article class="group relative flex max-w-4xl flex-col p-4">
+  <div
+    class:list={[
+      "absolute -inset-2 -z-[1] hidden rounded-lg transition lg:-inset-6 lg:block",
+      "group-hover:bg-accent/30 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg",
+      "group-focus-within:bg-accent/30 group-focus-within:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-focus-within:drop-shadow-lg",
+    ]}
+  >
+  </div>
+
+  <header class="mb-8 space-y-3">
+    <h3
+      class="text-pretty font-header text-lg font-bold transition duration-200 group-focus-within:text-primary lg:group-hover:text-primary"
+    >
+      <Link
+        href={job.url}
+        label={`${job.title(locale)} at ${job.at(locale)}`}
+        targetBlank
+        withExternalLinkArrow
+      >
+        <span class="absolute -inset-4 hidden rounded-lg lg:block"></span>
+        <span>
+          {job.title(locale)}
+          {" · "}
+          {job.at(locale)}
+        </span>
+      </Link>
+    </h3>
+
+    <div
+      class="text-pretty text-base font-semibold text-muted-foreground/70 transition-colors duration-200"
+    >
+      <span>{job.location(locale)}</span>
+      <span class="opacity-50">{" | "}</span>
+      <span aria-label={dateRangeLabel}>
+        <time datetime={getDatetime(startDate)}>
+          {start}
+        </time>
+        {" - "}
+        <time datetime={getDatetime(endDate)}>
+          {end}
+        </time>
+      </span>
+    </div>
+  </header>
+
+  <p
+    class="max-w-[800px] whitespace-pre-line text-pretty text-base text-foreground/80 group-hover:text-accent-foreground/80"
+    set:html={job.description(locale)}
+  />
+
+  <footer class="mt-10 flex flex-wrap gap-2">
+    {
+      job.skills.map((skill) => (
+        <SkillBadge
+          class="text-2xs sm:text-xs"
+          skill={skill}
+        />
+      ))
+    }
+  </footer>
+</article>
