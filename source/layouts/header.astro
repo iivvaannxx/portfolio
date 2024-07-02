@@ -2,7 +2,6 @@
 import { cn } from "@lib/utils/shadcn";
 import { Hamburguer, NavLinks } from "@modules/navigation";
 import type { HTMLAttributes } from "astro/types";
-import UserLocation from "@app/components/user-location.astro";
 
 export type Props = HTMLAttributes<"header"> & {};
 const { class: clazz, ...props } = Astro.props;
@@ -18,7 +17,7 @@ const { class: clazz, ...props } = Astro.props;
   <div
     class="mx-auto flex max-w-screen-xl items-center justify-around px-6 py-4 font-header"
   >
-    <NavLinks class="hidden w-full justify-between lg:flex" />
-    <Hamburguer class="ml-auto lg:hidden" />
+    <NavLinks class="hidden w-full justify-between md:flex" />
+    <Hamburguer class="ml-auto md:hidden" />
   </div>
 </header>
