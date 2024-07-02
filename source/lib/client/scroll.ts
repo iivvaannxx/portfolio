@@ -19,7 +19,7 @@ export function getLenisInstance() {
 /** Initializes the Lenis library for smooth scrolling. */
 export function initLenis(options: LenisOptions = {}) {
   lenis = new Lenis({
-    syncTouch: true,
+    // syncTouch: true,
     ...options,
   });
 
