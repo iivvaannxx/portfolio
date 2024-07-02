@@ -5,7 +5,7 @@ import {
   type TurnstileProps,
 } from "@marsidev/react-turnstile";
 
-import { cn } from "@app/utils";
+import { cn } from "@lib/utils/shadcn";
 import { useMediaQuery } from "@app/lib/utils/hooks/use-media-query";
 import { type Locale } from "@app/modules/i18n";
 

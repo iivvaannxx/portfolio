@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Select as SelectPrimitive } from "bits-ui";
   import { scale } from "svelte/transition";
-  import { cn, flyAndScale } from "@app/utils.js";
+  import { cn, flyAndScale } from "@app/lib/utils/shadcn.js";
 
   type $$Props = SelectPrimitive.ContentProps;
   type $$Events = SelectPrimitive.ContentEvents;

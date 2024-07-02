@@ -12,7 +12,7 @@ import {
 } from "@components/ui/react/dialog";
 import { useStore } from "@nanostores/react";
 import { useRef, useState } from "react";
-import { cn } from "@app/utils";
+import { cn } from "@lib/utils/shadcn";
 import { destroyLenis, initLenis } from "@lib/client/scroll";
 import { useMediaQuery } from "@lib/utils/hooks/use-media-query";
 import { fireworks } from "@lib/client/confetti";

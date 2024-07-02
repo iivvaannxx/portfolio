@@ -2,7 +2,7 @@
   lang="ts"
   context="module"
 >
-  import { cn } from "@app/utils";
+  import { cn } from "@lib/utils/shadcn";
 </script>
 
 <script lang="ts">

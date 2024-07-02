@@ -5,7 +5,7 @@
   context="module"
 >
   import { onMount } from "svelte";
-  import { cn } from "@app/utils";
+  import { cn } from "@lib/utils/shadcn";
 
   /**
    * Retrieves the progress of the CSS timeline "grow" animation.

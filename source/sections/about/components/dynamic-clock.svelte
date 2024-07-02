@@ -5,7 +5,7 @@
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
 
-  import { cn } from "@app/utils";
+  import { cn } from "@lib/utils/shadcn";
   import { MY_TIMEZONE } from "@modules/i18n";
 
   // Formatter which writes hours in range 1-12 for my time.

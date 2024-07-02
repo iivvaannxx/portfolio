@@ -8,7 +8,7 @@
   import type { CarouselAPI } from "@app/components/ui/svelte/carousel/context";
   import Button from "@app/components/ui/svelte/button/button.svelte";
 
-  import { splitArrayIntoChunks } from "@app/utils";
+  import { splitArrayIntoChunks } from "@lib/utils/arrays";
   import type { SkillData, SkillName } from "../lib/types";
 
   import { currentSkill } from "../lib/store";
