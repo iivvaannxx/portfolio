@@ -117,7 +117,9 @@ const config: Config = {
       fontFamily: {
         sans: ["Satoshi", ...fontFamily.sans],
         header: ["Onest", "Arial", "Liberation Sans", "sans-serif"],
-        mono: ["Monaspace Neon", "Monaspace Neon Fallback", ...fontFamily.mono],
+
+        // Unused in the final design. Left here for potential future use.
+        // mono: ["Monaspace Neon", "Monaspace Neon Fallback", ...fontFamily.mono],
       },
 
       keyframes: {
