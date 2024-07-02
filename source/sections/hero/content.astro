@@ -1,8 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-
 import { Badge, Link } from "@app/components/base";
-import Typewriter from "@app/components/typewriter.svelte";
 
 import { email, github, linkedIn } from "@app/lib/data/socials";
 import { getTranslations } from "@modules/i18n";
@@ -39,11 +37,11 @@ const t = translations.sections.hero;
     />
 
     <div
-      class="mt-8 flex animate-fade-up flex-col items-center gap-y-4 animate-delay-700 xs:flex-row"
+      class="mt-8 flex animate-fade-up flex-col items-center gap-y-4 animate-delay-700 xs:flex-row [@media(width>=335px)]:flex-row"
     >
       <Badge
         hoverGlow
-        class="w-fit select-none gap-3 rounded-md px-2.5 py-1.5 text-xs sm:px-4 sm:text-sm"
+        class="w-fit select-none gap-3 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs sm:px-4 sm:text-sm"
       >
         <span class="relative flex h-[10px] w-[10px]">
           <span
@@ -57,7 +55,7 @@ const t = translations.sections.hero;
       </Badge>
 
       <span
-        class="ml-4 mr-2 hidden text-3xl font-bold text-muted-foreground/30 xs:inline-block"
+        class="ml-2 mr-1 hidden text-3xl font-bold text-muted-foreground/30 xs:ml-4 xs:mr-2 [@media(width>=335px)]:inline-block"
         >{"|"}</span
       >
 
