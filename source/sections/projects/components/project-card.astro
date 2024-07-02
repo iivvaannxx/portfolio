@@ -15,6 +15,31 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
   Astro.props;
 ---
 
+<script>
+  // Autoplay videos when they are in view.
+  const videos = document.querySelectorAll("[data-project-video]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!(entry.target instanceof HTMLVideoElement)) {
+          return;
+        }
+
+        if (entry.isIntersecting) {
+          entry.target.play();
+        } else {
+          entry.target.pause();
+        }
+      });
+    },
+    {
+      threshold: 0.8,
+    },
+  );
+
+  // videos.forEach((video) => observer.observe(video));
+</script>
+
 <article
   data-project={name}
   class="relative mx-2 flex flex-col-reverse items-center xl:grid xl:grid-cols-12 xl:grid-rows-1"
@@ -103,9 +128,9 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
     <video
       data-project-video
       class="absolute inset-x-0 bottom-0 mx-auto size-[80%] rounded-xl"
-      autoplay
       muted
-      loop
+      poster={preview.src}
+      preload="none"
       disablepictureinpicture
       playsinline
     >
