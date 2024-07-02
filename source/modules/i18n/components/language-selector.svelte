@@ -7,7 +7,7 @@
   import { Select } from "@components/ui/svelte";
   import { type Locale, DEFAULT_LOCALE } from "@modules/i18n";
 
-  import { toggleScroll } from "@app/lib/scroll";
+  import { toggleScroll } from "@lib/client/scroll";
   import type { Selected } from "bits-ui";
 
   // The languages that are available in the app

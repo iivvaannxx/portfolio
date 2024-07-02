@@ -6,7 +6,7 @@ import {
 } from "@marsidev/react-turnstile";
 
 import { cn } from "@app/utils";
-import { useMediaQuery } from "@app/lib/hooks/use-media-query";
+import { useMediaQuery } from "@app/lib/utils/hooks/use-media-query";
 import { type Locale } from "@app/modules/i18n";
 
 // The public site key for the Turnstile widget.

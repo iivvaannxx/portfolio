@@ -1,4 +1,4 @@
-import { randomInRange } from "../math/random";
+import { randomInRange } from "../utils/random";
 
 /**
  * Retrieves the confetti module asynchronously.
@@ -16,10 +16,9 @@ async function getConfettiModule() {
  * @param interval The interval between each confetti burst in milliseconds. Default is 250ms.
  * @returns A function that can be called to stop the fireworks effect.
  */
-export async function fireworks(duration = 5, interval = 250) {
+export async function fireworks(duration = 5000, interval = 250) {
   const confetti = await getConfettiModule();
-  const millis = duration * 1000;
-  const animationEnd = Date.now() + millis;
+  const animationEnd = Date.now() + duration;
 
   const defaults: confetti.Options = {
     startVelocity: 30,
@@ -31,7 +30,7 @@ export async function fireworks(duration = 5, interval = 250) {
 
   const intervalHandle = setInterval(function () {
     const timeLeft = animationEnd - Date.now();
-    const particleCount = 30 * (timeLeft / millis);
+    const particleCount = 30 * (timeLeft / duration);
 
     if (timeLeft <= 0) {
       clearInterval(intervalHandle);

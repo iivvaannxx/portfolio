@@ -13,9 +13,9 @@ import {
 import { useStore } from "@nanostores/react";
 import { useRef, useState } from "react";
 import { cn } from "@app/utils";
-import { destroyLenis, initLenis } from "@app/lib/scroll";
-import { useMediaQuery } from "@app/lib/hooks/use-media-query";
-import { fireworks } from "@app/lib/effects/confetti";
+import { destroyLenis, initLenis } from "@lib/client/scroll";
+import { useMediaQuery } from "@lib/utils/hooks/use-media-query";
+import { fireworks } from "@lib/client/confetti";
 
 type Props = {};
 
@@ -41,7 +41,7 @@ export function ContactDialog({ ...props }: Props) {
           destroyLenis();
 
           if (!confettiShown.current) {
-            fireworks(isMobile ? 1.75 : 3);
+            fireworks(isMobile ? 1750 : 3000);
             confettiShown.current = true;
           }
         } else {

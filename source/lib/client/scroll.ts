@@ -1,6 +1,6 @@
 import Lenis, { type LenisOptions } from "lenis";
 
-let lenis: Lenis;
+let lenis: Lenis | null = null;
 let animationFrame: number;
 
 /**
@@ -28,7 +28,7 @@ export function initLenis(options: LenisOptions = {}) {
    * @param time - The current timestamp provided by `requestAnimationFrame`.
    */
   function lenisRaf(time: number) {
-    lenis.raf(time);
+    lenis?.raf(time);
     animationFrame = requestAnimationFrame(lenisRaf);
   }
 
@@ -37,17 +37,24 @@ export function initLenis(options: LenisOptions = {}) {
   return lenis;
 }
 
+/** Destroys the current lenis instance and cancels the animation frame. */
 export function destroyLenis() {
-  lenis.destroy();
+  lenis?.destroy();
   cancelAnimationFrame(animationFrame);
+
+  lenis = null;
 }
 
+/**
+ * Toggles the smooth scrolling effect.
+ * @param enable - Whether to enable or disable the smooth scrolling effect.
+ */
 export function toggleScroll(enable: boolean) {
   const lenis = getLenisInstance();
 
   if (enable) {
-    lenis.start();
+    lenis?.start();
   } else {
-    lenis.stop();
+    lenis?.stop();
   }
 }

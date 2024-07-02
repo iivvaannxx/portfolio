@@ -3,7 +3,6 @@
 /* eslint-disable ts/no-unsafe-member-access */
 
 // Polyfill for CSS scroll animations.
-
 if (!CSS.supports("animation-timeline", "auto")) {
   // @ts-expect-error There's no typings for this polyfill.
   import("https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js");
