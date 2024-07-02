@@ -7,6 +7,6 @@
   },
   "aliases": {
     "components": "@app/components",
-    "utils": "@app/utils"
+    "utils": "@app/lib/utils/shadcn"
   }
 }
