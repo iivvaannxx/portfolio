@@ -12,6 +12,7 @@ type Props = {
 };
 
 const { title, description, bodyClass } = Astro.props;
+const isDev = import.meta.env.DEV;
 ---
 
 <html
@@ -85,6 +86,7 @@ const { title, description, bodyClass } = Astro.props;
     class={cn(
       "overflow-x-scroll fold:overflow-x-clip bg-background font-sans text-foreground antialiased",
       bodyClass,
+      isDev && "debug-screens",
     )}
   >
     <slot />
