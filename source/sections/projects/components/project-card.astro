@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { Link, Video } from "@components/base";
 
@@ -112,10 +112,11 @@ const {
     class="relative -mb-4 max-w-[90%] rounded-xl md:max-w-[80%] xl:col-start-7 xl:col-end-[-1] xl:row-start-1 xl:my-2.5 xl:ml-5 xl:max-w-none xl:content-center"
     data-project-preview
   >
-    <Image
+    <Picture
       data-project-image
       class="pointer-events-none relative rounded-xl"
       src={preview}
+      formats={["avif", "webp", "png"]}
       alt={`Preview of the project "${name}"`}
     />
 
