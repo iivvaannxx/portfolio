@@ -1,5 +1,5 @@
 ---
-import { Paragraph, type Locale } from "@app/modules/i18n";
+import { type Locale } from "@app/modules/i18n";
 
 import ProjectCard from "./project-card.astro";
 import type { ProjectData } from "../lib/types";
@@ -13,7 +13,7 @@ const { projects, locale } = Astro.props;
 ---
 
 <ul
-  class="mx-4 space-y-12 py-12 lg:space-y-24"
+  class="space-y-12 py-12 sm:mx-4 lg:space-y-24"
   data-projects-list
 >
   {
@@ -33,12 +33,15 @@ const { projects, locale } = Astro.props;
             headline={headline(locale)}
             {...staticData}
           >
-            <Paragraph
-              slot="description"
-              class="text-pretty pr-0 text-sm text-foreground/70 md:text-base xl:pr-16"
-              text={description(locale)}
-              data-project-description
-            />
+            <Fragment slot="description">
+              {description(locale).map((paragraph) => (
+                <p
+                  data-project-description
+                  class="text-pretty pr-0 text-sm text-foreground/70 md:text-base xl:pr-16"
+                  set:html={paragraph}
+                />
+              ))}
+            </Fragment>
           </ProjectCard>
         </li>
       );

@@ -22,5 +22,5 @@ export interface ProjectStaticData {
 export type ProjectData = ProjectStaticData & {
   name: TranslationHandler;
   headline: TranslationHandler;
-  description: TranslationHandler;
+  description: TranslationHandler<readonly string[]>;
 };

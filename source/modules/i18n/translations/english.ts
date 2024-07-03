@@ -64,20 +64,20 @@ export const english = {
           name: "My Room In 3D",
           headline: "A (quite a bit more) fancy replica of my room.",
 
-          description: `
+          description: [
+            `
             This was my entry to the 9th edition of the challenges organised by ${bold("Bruno Simon")}
             for the students of his ${link("https://threejs-journey.com/", strong("Three.js Journey"), true)} 
             course. The theme was ${italic("Isometric Room")} and even though I had just purchased the course 
-            when the challenge was announced, I decided to participate.
-            
-            {newline}
-            
-            Turned out pretty well! It scored the ${link(
+            when the challenge was announced, I decided to participate.`,
+
+            `Turned out pretty well! It scored the ${link(
               "https://threejs-journey.com/challenges/009-isometric-room",
               strong("3rd place"),
               true,
             )}.
           `,
+          ],
         },
 
         "the-gamelab": {
@@ -85,43 +85,36 @@ export const english = {
           headline:
             "A growing collection of games built with web technologies.",
 
-          description: `
-            I started this project very recently, after quite some time without
+          description: [
+            `I started this project very recently, after quite some time without
             working on any game projects, I wanted to get back into it. I thought it 
             would be fun to combine my passion for both the web and game development,
-            and so this idea came up.
+            and so this idea came up.`,
 
-            {newline}
-
-            Right now there's only 1 game, but I plan to add more in the future. I'll be using
+            `Right now there's only 1 game, but I plan to add more in the future. I'll be using
             many different technologies, including ${strong("Three.js")}, ${strong("Phaser")}, 
             ${strong("Pixi.js")}, ${strong("Canvas")}, among all the other cool stuff out there.
           `,
-        },
-
-        "channel-packer": {
-          name: "Channel Packer",
-          headline: "A simple tool to pack or extract RGB image channels.",
-          description: "",
+          ],
         },
 
         "the-izland": {
           name: "The Izland",
           headline: "A zombie survival game we made back in college.",
 
-          description: `
+          description: [
+            `
             This is one of my favorite games I've worked on. It was a project for a
             college subject, where we had to develop a game in ${strong("Unity")}.
             Although we were very limited in time and couldn't make it as polished
-            as we wanted, we were very happy with the result.
+            as we wanted, we were very happy with the result.`,
 
-            {newline}
-
-            I was in charge of programming the game's main mechanics, such as
+            `I was in charge of programming the game's main mechanics, such as
             the ${strong("zombies' AI")}, the ${strong("user interface")}, the
             ${strong("player interactions")}, and the overall ${strong("game's progression")}, 
             among other elements.
           `,
+          ],
         },
       },
 

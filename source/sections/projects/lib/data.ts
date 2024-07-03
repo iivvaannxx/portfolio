@@ -87,5 +87,3 @@ export const projects = [
     },
   }),
 ] as const satisfies ProjectData[];
-
-/** A union of all the projects we have defined. */
