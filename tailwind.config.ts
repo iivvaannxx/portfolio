@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import pluginContainerQueries from "@tailwindcss/container-queries";
 
 import plugin from "tailwindcss/plugin";
 import { fontFamily, screens } from "tailwindcss/defaultTheme";
@@ -44,7 +43,6 @@ const config: Config = {
     pluginAnimated,
     pluginAnimate,
     pluginCustomVariants,
-    pluginContainerQueries,
   ],
 
   theme: {
