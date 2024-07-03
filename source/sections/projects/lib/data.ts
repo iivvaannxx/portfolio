@@ -43,6 +43,8 @@ export const projects = [
         h264: (await import("../assets/my-room/preview-h264.mp4")).default,
         h265: (await import("../assets/my-room/preview-h265.mp4")).default,
       },
+
+      poster: (await import("../assets/my-room/poster.png")).default,
     },
   }),
 
@@ -64,6 +66,8 @@ export const projects = [
         h264: (await import("../assets/gamelab/preview-h264.mp4")).default,
         h265: (await import("../assets/gamelab/preview-h265.mp4")).default,
       },
+
+      poster: (await import("../assets/gamelab/poster.png")).default,
     },
   }),
 
@@ -84,6 +88,8 @@ export const projects = [
         h264: (await import("../assets/the-izland/preview-h264.mp4")).default,
         h265: (await import("../assets/the-izland/preview-h265.mp4")).default,
       },
+
+      poster: (await import("../assets/the-izland/poster.png")).default,
     },
   }),
 ] as const satisfies ProjectData[];
