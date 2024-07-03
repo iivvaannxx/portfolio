@@ -29,7 +29,9 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 </Fragment>
 
 <Page bodyClass="debug-screens">
-  <Header class="animate-fade-down animate-delay-0 animate-duration-500" />
+  <Header
+    class="animate-fade-down overflow-x-auto animate-delay-0 animate-duration-500"
+  />
 
   <Canvas client:idle />
 
@@ -40,8 +42,9 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
     <Work />
     <Projects />
-    <Skills />
-    <About />
+
+    <!-- <Skills />
+    <About /> -->
   </main>
 
   <SkillSprites />

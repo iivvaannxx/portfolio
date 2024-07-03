@@ -20,7 +20,6 @@ function defineJob(jobKey: JobKey, data: JobStaticData) {
     location: getTranslationHandler(`${i18nKey}.location`),
     description: getTranslationHandler(`${i18nKey}.description`),
 
-    jobKey,
     ...data,
   };
 }

@@ -1,0 +1,55 @@
+---
+import { Paragraph, type Locale } from "@app/modules/i18n";
+
+import ProjectCard from "./project-card.astro";
+import type { ProjectData } from "../lib/types";
+
+export type Props = {
+  projects: ProjectData[];
+  locale: Locale;
+};
+
+const { projects, locale } = Astro.props;
+---
+
+<ul
+  class="mx-4 space-y-12 py-12 lg:space-y-24"
+  data-projects-list
+>
+  {
+    projects.map(({ name, headline, description, featured, ...staticData }) => {
+      // This section only shows the featured ones.
+      if (!featured) {
+        return null;
+      }
+
+      return (
+        <li
+          data-scroll-reveal
+          data-scroll-away
+        >
+          <ProjectCard
+            name={name(locale)}
+            headline={headline(locale)}
+            {...staticData}
+          >
+            <Paragraph
+              slot="description"
+              class="text-pretty pr-0 text-sm text-foreground/70 md:text-base xl:pr-16"
+              text={description(locale)}
+              data-project-description
+            />
+          </ProjectCard>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  :global([data-project-description] a) {
+    text-decoration: underline;
+    text-decoration-color: theme("colors.primary.DEFAULT");
+    text-underline-offset: 0.15em;
+  }
+</style>

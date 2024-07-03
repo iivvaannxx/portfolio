@@ -13,18 +13,18 @@ const t = translations.sections.hero;
 
 <section
   data-scroll-away
-  class="mx-auto max-w-screen-lg content-center px-4 xs:px-6 xl:px-0"
+  class="mx-auto max-w-screen-lg content-center px-4 xs:px-6"
 >
   <header>
-    <h1 class="animate-fade-up font-header">
+    <h1 class="animate-fade-up text-balance font-header">
       <span
-        class="block text-3xl font-extrabold tracking-wide opacity-90 fold:whitespace-nowrap xs:text-4xl"
+        class="block text-3xl font-extrabold tracking-wide opacity-90 xs:text-4xl"
         >{t.greeting}</span
       >
     </h1>
 
     <p
-      class="mt-4 block min-h-[2lh] animate-fade-up whitespace-nowrap text-lg font-bold text-foreground/50 animate-delay-500 xs:text-2xl"
+      class="mt-4 block min-h-[2lh] animate-fade-up text-lg font-bold text-foreground/50 animate-delay-500 xs:text-2xl"
       set:html={t.headline.content}
     />
   </header>
@@ -37,25 +37,25 @@ const t = translations.sections.hero;
     />
 
     <div
-      class="mt-8 flex animate-fade-up flex-col items-center gap-y-4 animate-delay-700 xs:flex-row [@media(width>=335px)]:flex-row"
+      class="mt-8 flex animate-fade-up flex-col flex-wrap items-center gap-y-4 animate-delay-700 xs:flex-row [@media(width>=335px)]:flex-row"
     >
       <Badge
         hoverGlow
         class="w-fit select-none gap-3 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs sm:px-4 sm:text-sm"
       >
-        <span class="relative flex h-[10px] w-[10px]">
+        <span class="relative flex h-[0.7em] w-[0.7em]">
           <span
             class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 animate-duration-[1000ms]"
           ></span>
           <span
-            class="relative inline-flex h-[10px] w-[10px] rounded-full bg-green-500"
+            class="relative inline-flex h-[0.7em] w-[0.7em] rounded-full bg-green-500"
           ></span>
         </span>
         <span>{t.statusLabel}</span>
       </Badge>
 
       <span
-        class="ml-2 mr-1 hidden text-3xl font-bold text-muted-foreground/30 xs:ml-4 xs:mr-2 [@media(width>=335px)]:inline-block"
+        class="ml-2 mr-1 hidden text-3xl font-bold text-muted xs:ml-4 xs:mr-2 [@media(width>=335px)]:inline-block"
         >{"|"}</span
       >
 

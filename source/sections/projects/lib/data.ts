@@ -1,10 +1,8 @@
 import { getTranslationHandler } from "@app/modules/i18n";
-import type {
-  ProjectData,
-  ProjectStaticData,
-  TranslatedProjectDataKey,
-  TranslatedProjectKey,
-} from "./types";
+import type { ProjectData, ProjectKey, ProjectStaticData } from "./types";
+
+/** The translation object that contains the translated data of my job projects. */
+const PROJECTS_I18N = "sections.projects.archive" as const;
 
 /**
  * Defines a project with the given project key and static data.
@@ -13,23 +11,14 @@ import type {
  * @param data - The static data for the project.
  * @returns An object representing the defined project.
  */
-function defineProject(
-  projectKey: TranslatedProjectKey,
-  data: ProjectStaticData,
-) {
-  // Will create a function, that given a locale, will return the
-  // translation of the given property for this project.
-  const createTranslationHandler = (property: TranslatedProjectDataKey) => {
-    const key = `sections.projects.archive.${projectKey}.${property}` as const;
-    return getTranslationHandler(key);
-  };
+function defineProject(projectKey: ProjectKey, data: ProjectStaticData) {
+  const i18nKey = `${PROJECTS_I18N}.${projectKey}` as const;
 
   return {
-    name: createTranslationHandler("name"),
-    headline: createTranslationHandler("headline"),
-    description: createTranslationHandler("description"),
+    name: getTranslationHandler(`${i18nKey}.name`),
+    headline: getTranslationHandler(`${i18nKey}.headline`),
+    description: getTranslationHandler(`${i18nKey}.description`),
 
-    projectKey,
     ...data,
   };
 }
@@ -100,4 +89,3 @@ export const projects = [
 ] as const satisfies ProjectData[];
 
 /** A union of all the projects we have defined. */
-export type ProjectKey = (typeof projects)[number]["projectKey"];

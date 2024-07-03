@@ -1,10 +1,10 @@
 import type { TranslationHandler } from "@modules/i18n";
 import type { SkillName } from "@app/sections/skills";
 
-/** A union of all the keys of the projects we have localized. */
+/** A union of all the keys used to define jobs. */
 export type JobKey = "codelearn" | "gilab";
 
-/** The data of a project, which doesn't need translation. */
+/** The data of a job which doesn't need translation. */
 export interface JobStaticData {
   url?: string;
   skills: SkillName[];
@@ -13,7 +13,7 @@ export interface JobStaticData {
   endDate: Date;
 }
 
-/** Defines the shape of a project. */
+/** Defines the shape of a job. */
 export type JobData = JobStaticData & {
   title: TranslationHandler;
   at: TranslationHandler;

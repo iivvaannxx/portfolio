@@ -57,6 +57,7 @@ export const english = {
     projects: {
       name: "Projects",
       id: "projects",
+      title: "Some of my favorite projects",
 
       archive: {
         "my-room": {

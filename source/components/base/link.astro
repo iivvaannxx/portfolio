@@ -26,7 +26,7 @@ const {
   ...props
 } = Astro.props;
 
-const ariaLabel = `Link to "${label}"${targetBlank ? ` (opens in a new tab).` : "."}`;
+const ariaLabel = `Link to "${label}"${targetBlank ? ` (opens in a new tab)` : ""}`;
 const tippyProps = Object.entries(withTooltip).reduce(
   (props, [key, value]) => {
     props[`data-tippy-${key}`] = `${value}`;

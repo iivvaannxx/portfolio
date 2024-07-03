@@ -1,0 +1,172 @@
+---
+import { cn } from "@lib/utils/shadcn";
+import type { HTMLAttributes } from "astro/types";
+
+/** Defines the data used to display a video. */
+export interface VideoMetadata {
+  // Provide 5 different sources to maximize compatibility and size.
+  webm: {
+    av1: string;
+    vp9: string;
+  };
+
+  mp4: {
+    av1: string;
+    h264: string;
+    h265: string;
+  };
+
+  poster: ImageMetadata;
+}
+
+// The props of the video component.
+export type Props = HTMLAttributes<"div"> &
+  VideoMetadata & {
+    play?: "auto" | "manual" | "onview";
+    loop?: boolean;
+    muted?: boolean;
+
+    videoClass?: string;
+  };
+
+const {
+  webm,
+  mp4,
+  poster,
+  play = "auto",
+  loop = true,
+  muted = true,
+  ...props
+} = Astro.props;
+
+const optionalAttrs = {
+  ...(play === "onview" && { "data-play-on-view": "" }),
+};
+---
+
+<script>
+  import "ldrs/ring";
+
+  /**
+   * Binds a loader element to a video element.
+   * @param video - The video element to bind the loader to.
+   */
+  function bindLoader(video: HTMLVideoElement) {
+    const parent = video.parentElement;
+    const loader = parent?.querySelector("[data-loader]");
+
+    const hideLoader = () => {
+      loader?.classList.add("hidden");
+    };
+
+    const showLoader = () => {
+      loader?.classList.remove("hidden");
+    };
+
+    // Show the loader when the video is loading or waiting.
+    // We do this because we want the videos to autoplay and not allow video controls.
+    video.addEventListener("canplay", hideLoader);
+    video.addEventListener("playing", hideLoader);
+    video.addEventListener("error", hideLoader);
+    video.addEventListener("stalled", showLoader);
+    video.addEventListener("waiting", showLoader);
+  }
+
+  // Autoplay videos when they are in view.
+  const videos = document.querySelectorAll("video[data-play-on-view]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!(entry.target instanceof HTMLVideoElement)) {
+          return;
+        }
+
+        if (entry.isIntersecting) {
+          entry.target.play();
+        } else {
+          entry.target.pause();
+        }
+      });
+    },
+    {
+      threshold: 0.8,
+    },
+  );
+
+  videos.forEach((video) => {
+    observer.observe(video);
+    bindLoader(video);
+  });
+</script>
+
+<div
+  {...props}
+  class={cn("relative", props.class)}
+>
+  <video
+    autoplay={play === "auto"}
+    {muted}
+    {loop}
+    preload="metadata"
+    poster={poster.src}
+    disablepictureinpicture
+    playsinline
+    class={cn("max-h-full max-w-full m-auto", props.videoClass)}
+    {...optionalAttrs}
+  >
+    <source
+      src={webm.av1}
+      type="video/webm"
+    />
+
+    <source
+      src={webm.vp9}
+      type="video/webm"
+    />
+
+    <source
+      src={mp4.av1}
+      type="video/mp4"
+    />
+
+    <source
+      src={mp4.h265}
+      type="video/mp4"
+    />
+
+    <source
+      src={mp4.h264}
+      type="video/mp4"
+    />
+
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    <l-ring
+      data-loader
+      stroke="5"
+      bg-opacity="0"
+      speed="2"
+      color="white"
+    ></l-ring>
+  </div>
+</div>
+
+<style>
+  [data-loader] {
+    --uib-size: 30px;
+  }
+
+  @media screen(xs) {
+    [data-loader] {
+      --uib-size: 40px;
+    }
+  }
+
+  @media screen(md) {
+    [data-loader] {
+      --uib-size: 60px;
+    }
+  }
+</style>

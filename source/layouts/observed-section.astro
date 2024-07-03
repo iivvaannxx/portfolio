@@ -98,7 +98,9 @@ const { order = 1, title, ...props } = Astro.props;
   {...props}
   data-observed-section={order}
 >
-  <h2 class="my-12 ml-2 text-pretty text-3xl font-bold opacity-85 sm:ml-0">
+  <h2
+    class="my-12 ml-2 w-fit text-pretty text-3xl font-bold opacity-85 sm:ml-0"
+  >
     {title}
   </h2>
 
@@ -127,7 +129,7 @@ const { order = 1, title, ...props } = Astro.props;
 
   h2::after {
     content: "";
-    width: 50%;
+    width: 120%;
     height: 2px;
 
     position: absolute;

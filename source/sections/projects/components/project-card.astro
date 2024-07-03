@@ -1,61 +1,53 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { Link } from "@components/base";
+import { Link, Video } from "@components/base";
 
 import { SkillBadge } from "@app/sections/skills";
 import type { ProjectStaticData } from "../lib/types";
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@app/lib/utils/shadcn";
 
-type Props = Omit<ProjectStaticData, "featured"> & {
-  name: string;
-  headline: string;
-};
+type Props = Omit<ProjectStaticData, "featured"> &
+  HTMLAttributes<"article"> & {
+    name: string;
+    headline: string;
+  };
 
-const { name, headline, url, relatedSkills, preview, video, repository } =
-  Astro.props;
+const {
+  name,
+  headline,
+  url,
+  relatedSkills,
+  preview,
+  video,
+  repository,
+  ...articleProps
+} = Astro.props;
 ---
-
-<script>
-  // Autoplay videos when they are in view.
-  const videos = document.querySelectorAll("[data-project-video]");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!(entry.target instanceof HTMLVideoElement)) {
-          return;
-        }
-
-        if (entry.isIntersecting) {
-          entry.target.play();
-        } else {
-          entry.target.pause();
-        }
-      });
-    },
-    {
-      threshold: 0.8,
-    },
-  );
-
-  // videos.forEach((video) => observer.observe(video));
-</script>
 
 <article
   data-project={name}
-  class="relative mx-2 flex flex-col-reverse items-center xl:grid xl:grid-cols-12 xl:grid-rows-1"
+  {...articleProps}
+  class={cn(
+    "relative mx-2 flex flex-col-reverse items-center xl:grid xl:grid-cols-12 xl:grid-rows-1",
+    articleProps.class,
+  )}
 >
   <div
-    class="flex flex-col rounded-xl border px-7 py-6 md:px-10 md:py-8 xl:col-start-1 xl:col-end-11 xl:row-start-1 xl:min-h-[450px] *:xl:max-w-xl *:2xl:max-w-2xl"
+    class="flex flex-col rounded-xl border px-7 py-6 md:px-10 md:py-8 xl:col-start-1 xl:col-end-11 xl:row-start-1 xl:min-h-96 *:xl:max-w-xl *:2xl:max-w-2xl"
   >
     <header class="mt-2 py-2 xl:mt-0">
-      <div class="inline-flex items-center">
+      <div
+        class="inline-flex w-full flex-col items-center xs:w-auto xs:flex-row"
+      >
         <h3
-          class="inline whitespace-nowrap font-header text-2xl font-semibold text-primary"
+          class="inline text-balance text-center font-header text-2xl font-semibold text-primary xs:whitespace-nowrap xs:text-left"
         >
           {name}
         </h3>
 
-        <div class="ml-2 inline-flex items-center gap-1">
+        <div class="ml-2 mt-2 inline-flex items-center gap-1 xs:mt-0">
           {
             repository && (
               <Link
@@ -66,7 +58,7 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
                 withTooltip={{ content: "Source Code", placement: "bottom" }}
               >
                 <Icon
-                  class="size-6"
+                  class="size-5 xs:size-6"
                   name="lucide:github"
                 />
               </Link>
@@ -82,8 +74,8 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
                 withTooltip={{ content: "Try it out!", placement: "bottom" }}
               >
                 <Icon
-                  class="size-6"
-                  name={"lucide:external-link"}
+                  class="size-5 xs:size-6"
+                  name="lucide:external-link"
                 />
               </Link>
             )
@@ -91,7 +83,9 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
         </div>
       </div>
 
-      <p class="mt-2 text-pretty text-sm text-foreground md:text-base">
+      <p
+        class="mt-2 text-balance text-center text-sm text-foreground xs:text-left md:text-base"
+      >
         {headline}
       </p>
     </header>
@@ -103,7 +97,7 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
           relatedSkills.map((skill) => (
             <li>
               <SkillBadge
-                class="text-xs font-semibold text-foreground/90"
+                class="font-semibold text-foreground/90 text-2xs sm:text-xs"
                 skill={skill}
                 hoverGlow
               />
@@ -125,40 +119,17 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
       alt={`Preview of the project "${name}"`}
     />
 
-    <video
+    <Video
       data-project-video
-      class="absolute inset-x-0 bottom-0 mx-auto size-[80%] rounded-xl"
+      class="absolute inset-x-0 bottom-0 mx-auto size-[80%]"
+      videoClass="rounded-sm shadow-xl"
       muted
-      poster={preview.src}
-      preload="none"
-      disablepictureinpicture
-      playsinline
-    >
-      <source
-        src={video.webm.av1}
-        type="video/webm"
-      />
-
-      <source
-        src={video.webm.vp9}
-        type="video/webm"
-      />
-
-      <source
-        src={video.mp4.av1}
-        type="video/mp4"
-      />
-
-      <source
-        src={video.mp4.h265}
-        type="video/mp4"
-      />
-
-      <source
-        src={video.mp4.h264}
-        type="video/mp4"
-      />
-    </video>
+      loop
+      webm={video.webm}
+      mp4={video.mp4}
+      poster={preview}
+      play="onview"
+    />
   </div>
 </article>
 
@@ -166,6 +137,14 @@ const { name, headline, url, relatedSkills, preview, video, repository } =
   h3::after {
     content: " | ";
     color: theme("colors.muted.DEFAULT");
+
+    display: none;
+  }
+
+  @media screen(xs) {
+    h3::after {
+      display: inline-block;
+    }
   }
 
   [data-project-image],
