@@ -20,9 +20,6 @@ const { startDate, endDate } = job;
 const start = capitalize(formatter.format(startDate));
 const end = capitalize(formatter.format(endDate));
 
-const dateRange = getTranslation("helpers.dateRange", locale);
-const dateRangeLabel = dateRange(start, end);
-
 /**
  * Returns the formatted datetime string for the given date.
  * The format is "YYYY-MM".
@@ -69,7 +66,7 @@ function getDatetime(date: Date) {
     >
       <span>{job.location(locale)}</span>
       <span class="opacity-50">{" | "}</span>
-      <span aria-label={dateRangeLabel}>
+      <span>
         <time datetime={getDatetime(startDate)}>
           {start}
         </time>

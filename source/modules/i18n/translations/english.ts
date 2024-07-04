@@ -7,10 +7,6 @@ export const english = {
     locale: "en",
   },
 
-  helpers: {
-    dateRange: (start: string, end: string) => `From ${start} until ${end}`,
-  },
-
   sections: {
     hero: {
       headline: {
