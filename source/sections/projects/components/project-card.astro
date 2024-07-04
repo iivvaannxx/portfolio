@@ -6,7 +6,7 @@ import { Link, Video } from "@components/base";
 import { SkillBadge } from "@app/sections/skills";
 import type { ProjectStaticData } from "../lib/types";
 import type { HTMLAttributes } from "astro/types";
-import { cn } from "@app/lib/utils/shadcn";
+import { cn } from "@lib/utils/shadcn";
 
 type Props = Omit<ProjectStaticData, "featured"> &
   HTMLAttributes<"article"> & {

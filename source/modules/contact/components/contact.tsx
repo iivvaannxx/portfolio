@@ -26,7 +26,7 @@ import {
   type UseContactFormParams,
 } from "../lib/hooks/use-contact-form";
 
-import { email } from "@app/lib/data/socials";
+import { email } from "@lib/data/socials";
 import { useClientTranslation } from "@app/modules/i18n";
 import { currentLang } from "../lib/store";
 
