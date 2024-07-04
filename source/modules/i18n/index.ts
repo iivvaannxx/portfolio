@@ -13,6 +13,7 @@ export {
 export {
   isValidLocale,
   getCurrentLocale,
+  getLocaleRoute,
   getLocalizedStaticPaths,
 } from "./lib/utils/locales";
 

@@ -1,5 +1,5 @@
 import type { SetOptional } from "type-fest";
-import type { SkillData, SkillKey, SkillName, SkillStaticData } from "./types";
+import type { SkillData, SkillStaticData } from "./types";
 
 /** The categories used to classify skills. */
 export const categories = [
@@ -45,6 +45,12 @@ async function defineSkill(
 
 /** The list with all the skills we want to showcase. */
 export const skills = (await Promise.all([
+  defineSkill({
+    name: "AWS",
+    categories: ["infrastructure"],
+    tags: ["devops", "platform"],
+  }),
+
   defineSkill({
     name: "C++",
     safeName: "cpp",

@@ -15,12 +15,12 @@ export interface ProjectStaticData {
 
   relatedSkills: SkillName[];
   preview: ImageMetadata;
-  video: VideoMetadata;
+  video?: VideoMetadata;
 }
 
 /** Defines the shape of a project. */
 export type ProjectData = ProjectStaticData & {
   name: TranslationHandler;
   headline: TranslationHandler;
-  description: TranslationHandler<readonly string[]>;
+  description: TranslationHandler<string | readonly string[]>;
 };

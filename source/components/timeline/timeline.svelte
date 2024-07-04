@@ -80,6 +80,10 @@
 
   let element: HTMLElement;
 
+  // Future Note: This can work with new CSS features without JavaScript.
+  // But it needs some new features that are still not supported in all browsers.
+  // Reminder: I almost made it work, I have a screenshot of the partial working solution.
+  // Refer back to it when the time comes.
   onMount(() => {
     const growAnimation = getGrowAnimation(element);
     const progressVar = "--track-progress";

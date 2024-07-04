@@ -1,12 +1,13 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { Link, Video } from "@components/base";
+import type { HTMLAttributes } from "astro/types";
 
 import { SkillBadge } from "@app/sections/skills";
-import type { ProjectStaticData } from "../lib/types";
-import type { HTMLAttributes } from "astro/types";
+import { Link, Video } from "@components/base";
 import { cn } from "@lib/utils/shadcn";
+
+import type { ProjectStaticData } from "../lib/types";
 
 type Props = Omit<ProjectStaticData, "featured"> &
   HTMLAttributes<"article"> & {
@@ -22,17 +23,19 @@ const {
   preview,
   video,
   repository,
-  ...articleProps
+  ...props
 } = Astro.props;
+
+const { class: clazz, ...articleProps } = props;
 ---
 
 <article
   data-project={name}
-  {...articleProps}
   class={cn(
     "relative flex flex-col-reverse items-center xl:grid xl:grid-cols-12 xl:grid-rows-1",
-    articleProps.class,
+    clazz,
   )}
+  {...articleProps}
 >
   <div
     class="flex flex-col rounded-xl border px-7 py-6 md:px-10 md:py-8 xl:col-start-1 xl:col-end-11 xl:row-start-1 xl:min-h-96 *:xl:max-w-xl *:2xl:max-w-2xl"
@@ -47,40 +50,50 @@ const {
           {name}
         </h3>
 
-        <div class="ml-2 mt-2 inline-flex items-center gap-1 xs:mt-0">
-          {
-            repository && (
-              <Link
-                href={repository}
-                label={`GitHub repository for project "${name}"`}
-                targetBlank
-                class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
-                withTooltip={{ content: "Source Code", placement: "bottom" }}
-              >
-                <Icon
-                  class="size-5 xs:size-6"
-                  name="lucide:github"
-                />
-              </Link>
-            )
-          }
-          {
-            url && (
-              <Link
-                href={url}
-                label={`Live link to project "${name}"`}
-                targetBlank
-                class="aspect-square content-center rounded-md p-2 text-lg font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
-                withTooltip={{ content: "Try it out!", placement: "bottom" }}
-              >
-                <Icon
-                  class="size-5 xs:size-6"
-                  name="lucide:external-link"
-                />
-              </Link>
-            )
-          }
-        </div>
+        {
+          (url || repository) && (
+            <div
+              data-links
+              class="ml-2 mt-2 inline-flex items-center gap-1 xs:mt-0"
+            >
+              {repository && (
+                <Link
+                  href={repository}
+                  label={`GitHub repository for project "${name}"`}
+                  targetBlank
+                  class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
+                  withTooltip={{
+                    content: "Source Code",
+                    placement: "bottom",
+                  }}
+                  data-github
+                >
+                  <Icon
+                    class="size-5 xs:size-6"
+                    name="lucide:github"
+                  />
+                </Link>
+              )}
+              {url && (
+                <Link
+                  href={url}
+                  label={`Live link to project "${name}"`}
+                  targetBlank
+                  class="aspect-square content-center rounded-md p-2 text-lg font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
+                  withTooltip={{
+                    content: "Try it out!",
+                    placement: "bottom",
+                  }}
+                >
+                  <Icon
+                    class="size-5 xs:size-6"
+                    name="lucide:external-link"
+                  />
+                </Link>
+              )}
+            </div>
+          )
+        }
       </div>
 
       <p
@@ -120,18 +133,24 @@ const {
       alt={`Preview of the project "${name}"`}
     />
 
-    <Video
-      data-project-video
-      class="absolute inset-x-0 bottom-0 mx-auto size-[80%]"
-      videoClass="rounded-sm shadow-xl"
-      muted
-      loop
-      webm={video.webm}
-      mp4={video.mp4}
-      poster={video.poster}
-      play="onview"
-    />
+    {
+      video && (
+        <Video
+          data-project-video
+          class="absolute inset-x-0 bottom-0 mx-auto size-[80%]"
+          videoClass="rounded-sm shadow-xl"
+          muted
+          loop
+          webm={video.webm}
+          mp4={video.mp4}
+          poster={video.poster}
+          play="onview"
+        />
+      )
+    }
   </div>
+
+  <slot />
 </article>
 
 <style>
@@ -143,15 +162,15 @@ const {
   }
 
   @media screen(xs) {
-    h3::after {
+    h3:has(+ div[data-links])::after {
       display: inline-block;
     }
   }
 
-  [data-project-image],
-  [data-project-preview]::after {
+  [data-project-preview]:has(video) [data-project-image],
+  [data-project-preview]:has(video)::after {
     animation: preview linear both;
-    animation-timeline: view(calc(10% + var(--header-height)));
+    animation-timeline: view(calc(10% + theme("height.header")));
   }
 
   :global([data-github-link] path) {
@@ -163,12 +182,12 @@ const {
     fill: theme("colors.primary.foreground");
   }
 
-  [data-project-video] {
+  [data-project-preview]:has(video) [data-project-video] {
     opacity: 0;
     z-index: 10;
 
     animation: preview-video linear both;
-    animation-timeline: view(calc(10% + var(--header-height)));
+    animation-timeline: view(calc(10% + theme("height.header")));
   }
 
   [data-project-preview]::after {

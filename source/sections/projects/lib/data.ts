@@ -93,3 +93,11 @@ export const projects = [
     },
   }),
 ] as const satisfies ProjectData[];
+
+export const current = {
+  name: getTranslationHandler("sections.projects.current.name"),
+  headline: getTranslationHandler("sections.projects.current.headline"),
+  description: getTranslationHandler("sections.projects.current.description"),
+
+  relatedSkills: ["AWS", "Docker", "Terraform", "TypeScript"],
+} as const satisfies Partial<ProjectData>;

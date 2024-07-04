@@ -65,13 +65,12 @@ export const english = {
           headline: "A (quite a bit more) fancy replica of my room.",
 
           description: [
-            `
-            This was my entry to the 9th edition of the challenges organised by ${bold("Bruno Simon")}
+            `This was my entry to the 9th edition of the challenges organised by ${bold("Bruno Simon")}
             for the students of his ${link("https://threejs-journey.com/", strong("Three.js Journey"), true)} 
             course. The theme was ${italic("Isometric Room")} and even though I had just purchased the course 
             when the challenge was announced, I decided to participate.`,
 
-            `Turned out pretty well! It scored the ${link(
+            `Turned out quite good! It scored the ${link(
               "https://threejs-journey.com/challenges/009-isometric-room",
               strong("3rd place"),
               true,
@@ -103,8 +102,7 @@ export const english = {
           headline: "A zombie survival game we made back in college.",
 
           description: [
-            `
-            This is one of my favorite games I've worked on. It was a project for a
+            `This is one of my favorite games I've worked on. It was a project for a
             college subject, where we had to develop a game in ${strong("Unity")}.
             Although we were very limited in time and couldn't make it as polished
             as we wanted, we were very happy with the result.`,
@@ -119,7 +117,19 @@ export const english = {
       },
 
       current: {
-        name: "Selflink",
+        name: "Use Link",
+        headline: "A self-hostable URL shortener and file sharing service.",
+        description: [
+          `I usually work on many things at once, but this is my current focus. 
+          I plan to make it a full-featured service with a ${strong("modular architecture")}
+          that allows ${bold("seamless integration")} with various cloud providers, database
+          systems, and file storage solutions.`,
+
+          `My primary motivation for this project is to specialize my skills in 
+          ${strong("cloud infrastructure")}, ${strong("DevOps")}, and 
+          ${strong("backend development")} as these are the areas I want to focus 
+          on in the future.`,
+        ],
       },
     },
 

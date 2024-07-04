@@ -6,6 +6,7 @@ import type { categories, tags } from "./data";
 /** A union of all the hard skills. */
 export type HardSkillName =
   | "Astro"
+  | "AWS"
   | "Bash"
   | "Blender"
   | "C#"

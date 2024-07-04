@@ -32,6 +32,19 @@ export function getCurrentLocale(defaultLoc = DEFAULT_LOCALE) {
 }
 
 /**
+ * Returns the route with the specified locale prefix.
+ * If the locale is the default locale, the route is returned as is.
+ * Otherwise, the route is prefixed with the locale.
+ *
+ * @param locale The locale to use for the route.
+ * @param route The route to be prefixed with the locale.
+ * @returns The route with the locale prefix.
+ */
+export function getLocaleRoute(locale: Locale, route: string) {
+  return locale === DEFAULT_LOCALE ? `/${route}` : `/${locale}/${route}`;
+}
+
+/**
  * Returns the localized static paths used by Astro to generate pages.
  * @returns An array of static path definitions.
  */

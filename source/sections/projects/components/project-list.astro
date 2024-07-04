@@ -3,21 +3,22 @@ import { type Locale } from "@modules/i18n";
 
 import ProjectCard from "./project-card.astro";
 import type { ProjectData } from "../lib/types";
+import type { HTMLAttributes } from "astro/types";
 
-export type Props = {
+export type Props = HTMLAttributes<"ul"> & {
   projects: ProjectData[];
   locale: Locale;
 };
 
-const { projects, locale } = Astro.props;
+const { projects, locale, ...props } = Astro.props;
 ---
 
-<ul
-  class="space-y-12 py-12 sm:mx-4 lg:space-y-24"
-  data-projects-list
->
+<ul {...props}>
   {
     projects.map(({ name, headline, description, featured, ...staticData }) => {
+      const desc = description(locale);
+      const paragraphs = Array.isArray(desc) ? desc : [desc];
+
       return (
         <li
           data-scroll-reveal
@@ -29,7 +30,7 @@ const { projects, locale } = Astro.props;
             {...staticData}
           >
             <Fragment slot="description">
-              {description(locale).map((paragraph) => (
+              {paragraphs.map((paragraph) => (
                 <p
                   data-project-description
                   class="text-pretty pr-0 text-sm text-foreground/70 md:text-base xl:pr-16"
