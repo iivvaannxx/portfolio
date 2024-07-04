@@ -7,7 +7,7 @@ import {
 
 import { cn } from "@lib/utils/shadcn";
 import { useMediaQuery } from "@lib/utils/hooks/use-media-query";
-import { type Locale } from "@app/modules/i18n";
+import { type Locale } from "@modules/i18n";
 
 // The public site key for the Turnstile widget.
 const PUBLIC_SITE_KEY = "0x4AAAAAAAMvB2JUUxIcQ2Y8";

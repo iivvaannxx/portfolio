@@ -27,7 +27,7 @@ import {
 } from "../lib/hooks/use-contact-form";
 
 import { email } from "@lib/data/socials";
-import { useClientTranslation } from "@app/modules/i18n";
+import { useClientTranslation } from "@modules/i18n";
 import { currentLang } from "../lib/store";
 
 // The props received by <ContactFormFields> component.

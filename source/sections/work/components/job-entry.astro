@@ -1,12 +1,12 @@
 ---
 import capitalize from "just-capitalize";
 
-import { Link } from "@app/components/base";
+import { Link } from "@components/base";
 import { SkillBadge } from "@app/sections/skills";
-import type { Locale } from "@app/modules/i18n";
+import type { Locale } from "@modules/i18n";
 
 import type { JobData } from "../lib/types";
-import { getTranslation } from "@app/modules/i18n";
+import { getTranslation } from "@modules/i18n";
 
 export type Props = JobData & { locale: Locale };
 const { locale, ...job } = Astro.props;

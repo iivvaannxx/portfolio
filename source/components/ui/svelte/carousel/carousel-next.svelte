@@ -7,7 +7,7 @@
     Button,
     type Props,
     type buttonVariants,
-  } from "@app/components/ui/svelte/button/index.js";
+  } from "@components/ui/svelte/button/index.js";
 
   type $$Props = Props;
 

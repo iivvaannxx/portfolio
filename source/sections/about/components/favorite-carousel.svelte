@@ -2,7 +2,7 @@
   lang="ts"
   context="module"
 >
-  import * as Carousel from "@app/components/ui/svelte/carousel";
+  import * as Carousel from "@components/ui/svelte/carousel";
   import kh from "../assets/games/kingdom-hearts.png";
 </script>
 

@@ -1,4 +1,4 @@
-import { getTranslationHandler } from "@app/modules/i18n";
+import { getTranslationHandler } from "@modules/i18n";
 import type { ProjectData, ProjectKey, ProjectStaticData } from "./types";
 
 /** The translation object that contains the translated data of my job projects. */

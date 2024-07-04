@@ -2,7 +2,7 @@
   import type { VariantProps } from "tailwind-variants";
   import { ToggleGroup as ToggleGroupPrimitive } from "bits-ui";
   import { setToggleGroupCtx } from "./index.js";
-  import type { toggleVariants } from "@app/components/ui/svelte/toggle/index.js";
+  import type { toggleVariants } from "@components/ui/svelte/toggle/index.js";
   import { cn } from "@lib/utils/shadcn";
 
   type T = $$Generic<"single" | "multiple">;

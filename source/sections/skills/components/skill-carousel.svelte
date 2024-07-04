@@ -2,11 +2,11 @@
   lang="ts"
   context="module"
 >
-  import * as Carousel from "@app/components/ui/svelte/carousel";
-  import * as ToggleGroup from "@app/components/ui/svelte/toggle-group";
+  import * as Carousel from "@components/ui/svelte/carousel";
+  import * as ToggleGroup from "@components/ui/svelte/toggle-group";
 
-  import type { CarouselAPI } from "@app/components/ui/svelte/carousel/context";
-  import Button from "@app/components/ui/svelte/button/button.svelte";
+  import type { CarouselAPI } from "@components/ui/svelte/carousel/context";
+  import Button from "@components/ui/svelte/button/button.svelte";
 
   import { splitArrayIntoChunks } from "@lib/utils/arrays";
   import type { SkillData, SkillName } from "../lib/types";

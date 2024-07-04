@@ -8,7 +8,7 @@
     DEFAULT_LOCALE,
     RealTime,
     TimeDiff,
-  } from "@app/modules/i18n";
+  } from "@modules/i18n";
 </script>
 
 <script lang="ts">

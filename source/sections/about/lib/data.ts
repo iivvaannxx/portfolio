@@ -1,4 +1,4 @@
-import { getTranslationHandler } from "@app/modules/i18n";
+import { getTranslationHandler } from "@modules/i18n";
 import type {
   EducationData,
   EducationItemKey,

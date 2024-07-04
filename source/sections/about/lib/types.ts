@@ -1,4 +1,4 @@
-import type { TranslationHandler } from "@app/modules/i18n";
+import type { TranslationHandler } from "@modules/i18n";
 
 export type EducationItemKey = "gddv";
 

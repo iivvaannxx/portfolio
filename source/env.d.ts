@@ -2,7 +2,7 @@
 /// <reference types="astro/client" />
 /// <reference types="typed-query-selector" />
 
-import type { Locale } from "@app/modules/i18n";
+import type { Locale } from "@modules/i18n";
 
 declare global {
   namespace App {

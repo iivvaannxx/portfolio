@@ -1,5 +1,5 @@
-import { ContactForm } from "@app/modules/contact/components/contact";
-import { currentLang } from "@app/modules/contact/lib/store";
+import { ContactForm } from "@modules/contact/components/contact";
+import { currentLang } from "@modules/contact/lib/store";
 import { Mail, X } from "lucide-react";
 import {
   Dialog,

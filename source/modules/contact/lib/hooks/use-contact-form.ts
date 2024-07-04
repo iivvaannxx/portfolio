@@ -4,7 +4,7 @@ import { valibotResolver } from "@hookform/resolvers/valibot";
 import type { TurnstileInstance } from "@marsidev/react-turnstile";
 
 import { ContactFormSchema, type ContactFormData } from "../schema";
-import { useClientTranslation, type Locale } from "@app/modules/i18n";
+import { useClientTranslation, type Locale } from "@modules/i18n";
 
 /** Defines the different states of the turnstile captcha. */
 export type TurnstileStatus = "unknown" | "solved" | "error";
