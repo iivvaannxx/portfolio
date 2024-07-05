@@ -18,7 +18,10 @@ const currentDescription = current.description(locale);
 ---
 
 <script>
-  const currentProject = document.querySelector("div[data-current-project]")!;
+  const currentProject = document.querySelector(
+    "[data-current-project]",
+  ) as HTMLElement;
+
   const currentProjectButton = document.querySelector(
     "button[data-current-project-button]",
   )!;
@@ -27,12 +30,8 @@ const currentDescription = current.description(locale);
   currentProjectButton.addEventListener(
     "click",
     () => {
-      currentProject.style.visibility = "visible";
-      currentProject.style.gridTemplateRows = "1fr";
-
-      setTimeout(() => {
-        mask.classList.add("hide");
-      }, 150);
+      currentProject.classList.add("show");
+      mask.classList.add("hide");
     },
     { once: true },
   );
@@ -50,7 +49,41 @@ const currentDescription = current.description(locale);
     {locale}
   />
 
-  <div class="mx-4 mb-6 mt-8 sm:mx-12">
+  <div
+    data-current-project
+    class="grid overflow-hidden"
+  >
+    <div class="overflow-hidden *:my-12">
+      <ProjectCard
+        name={current.name(locale)}
+        headline={current.headline(locale)}
+        relatedSkills={current.relatedSkills}
+        preview={projects[0].preview}
+        class="relative -z-10 sm:mx-4 lg:mt-12"
+      >
+        <Fragment slot="description">
+          {
+            currentDescription.map((description) => (
+              <p
+                data-project-description
+                class="text-pretty pr-0 text-sm text-foreground/70 md:text-base xl:pr-16"
+                set:html={description}
+              />
+            ))
+          }
+        </Fragment>
+
+        <div
+          data-mask
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0 size-full bg-background"
+        >
+        </div>
+      </ProjectCard>
+    </div>
+  </div>
+
+  <div class="mx-4 mb-6 mt-12 sm:mx-12 lg:mt-24">
     <p class="text-pretty text-right text-lg font-medium sm:text-xl xl:mr-10">
       <span class="text-foreground/80">See more of my projects in</span>
       <Link
@@ -66,67 +99,72 @@ const currentDescription = current.description(locale);
       </Link>
     </p>
 
-    <!-- <Button3D
+    <Button3D
       data-current-project-button
       class="mx-auto my-2 w-fit !px-8"
     >
       What I am currently working on?
-    </Button3D> -->
-  </div>
-
-  <div
-    data-current-project
-    class="grid *:overflow-hidden"
-  >
-    <ProjectCard
-      name={current.name(locale)}
-      headline={current.headline(locale)}
-      relatedSkills={current.relatedSkills}
-      preview={projects[0].preview}
-      class="relative sm:mx-4"
-    >
-      <Fragment slot="description">
-        {
-          currentDescription.map((description) => (
-            <p
-              data-project-description
-              class="text-pretty pr-0 text-sm text-foreground/70 md:text-base xl:pr-16"
-              set:html={description}
-            />
-          ))
-        }
-      </Fragment>
-
-      <div
-        data-mask
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-0 size-full bg-background"
-      >
-      </div>
-    </ProjectCard>
+    </Button3D>
   </div>
 </ObservedSection>
 
 <style>
-  [data-current-project] {
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
+  @property --mask-alpha {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 1;
+  }
 
-    /* visibility: hidden; */
+  @property --mask-position {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 70%;
+  }
+
+  [data-current-project] {
+    transition: grid-template-rows 0.6s ease-in-out;
+    grid-template-rows: 0.4fr;
+    align-items: flex-start;
+  }
+
+  [data-current-project].show {
+    grid-template-rows: 1fr;
   }
 
   [data-mask] {
+    --mask-position: 70%;
+    --mask-alpha: 1;
+
     mask-image: linear-gradient(
-      to bottom,
-      black 0%,
-      transparent 10%,
-      transparent 90%,
-      black 100%
+      to top,
+      rgba(0, 0, 0, var(--mask-alpha)) var(--mask-position),
+      rgba(0, 0, 0, 0) 100%
     );
   }
 
   [data-mask].hide {
-    @apply animate-fade-out;
-    animation-duration: 0.3s;
+    animation:
+      mask-slide 0.3s forwards,
+      mask-fade 0.3s forwards 0.2s;
+  }
+
+  @keyframes mask-slide {
+    from {
+      --mask-position: 70%;
+    }
+
+    to {
+      --mask-position: 0%;
+    }
+  }
+
+  @keyframes mask-fade {
+    from {
+      --mask-alpha: 1;
+    }
+
+    to {
+      --mask-alpha: 0;
+    }
   }
 </style>
