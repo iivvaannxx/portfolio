@@ -1,13 +1,14 @@
 ---
+import { Icon } from "astro-icon/components";
+
+import { Link } from "@app/components/base";
+import { Button } from "@app/components/ui/react";
 import { ObservedSection } from "@app/layouts";
 import { getTranslations, getLocaleRoute } from "@modules/i18n";
 
 import { projects, current } from "./lib/data";
 import ProjectList from "./components/project-list.astro";
 import ProjectCard from "./components/project-card.astro";
-import Button3D from "@app/components/button-3d.astro";
-import { Link } from "@app/components/base";
-import { Icon } from "astro-icon/components";
 
 const { locale } = Astro.locals;
 const translations = getTranslations(locale);
@@ -22,16 +23,11 @@ const currentDescription = current.description(locale);
     "[data-current-project]",
   ) as HTMLElement;
 
-  const currentProjectButton = document.querySelector(
-    "button[data-current-project-button]",
-  )!;
-
-  const mask = currentProject.querySelector("div[data-mask]")!;
-  currentProjectButton.addEventListener(
+  const button = currentProject.querySelector("button")!;
+  button.addEventListener(
     "click",
     () => {
       currentProject.classList.add("show");
-      mask.classList.add("hide");
     },
     { once: true },
   );
@@ -51,60 +47,71 @@ const currentDescription = current.description(locale);
 
   <div
     data-current-project
-    class="grid overflow-hidden"
+    class="relative"
   >
-    <div class="overflow-hidden *:my-12">
-      <ProjectCard
-        name={current.name(locale)}
-        headline={current.headline(locale)}
-        relatedSkills={current.relatedSkills}
-        preview={projects[0].preview}
-        class="relative -z-10 sm:mx-4 lg:mt-12"
-      >
-        <Fragment slot="description">
-          {
-            currentDescription.map((description) => (
-              <p
-                data-project-description
-                class="text-pretty pr-0 text-sm text-foreground/70 md:text-base xl:pr-16"
-                set:html={description}
-              />
-            ))
-          }
-        </Fragment>
-
-        <div
-          data-mask
-          aria-hidden="true"
-          class="pointer-events-none absolute inset-0 size-full bg-background"
+    <div class="grid overflow-hidden">
+      <div class="overflow-hidden *:my-12">
+        <ProjectCard
+          name={current.name(locale)}
+          headline={current.headline(locale)}
+          relatedSkills={current.relatedSkills}
+          preview={projects[0].preview}
+          class="relative -z-10 sm:mx-4 lg:mt-12"
         >
-        </div>
-      </ProjectCard>
+          <Fragment slot="description">
+            {
+              currentDescription.map((description) => (
+                <p
+                  data-project-description
+                  class="text-pretty pr-0 text-sm text-foreground/70 md:text-base xl:pr-16"
+                  set:html={description}
+                />
+              ))
+            }
+          </Fragment>
+
+          <div
+            data-mask
+            aria-hidden="true"
+            class="pointer-events-none absolute inset-0 size-full bg-background"
+          >
+          </div>
+        </ProjectCard>
+      </div>
+    </div>
+
+    <div
+      data-current-project-trigger
+      class="pointer-events-none absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
+    >
+      <Button
+        className="pointer-events-auto px-6"
+        variant="default"
+      >
+        {t.buttonReveal}
+      </Button>
+      <p class="mt-3 text-base font-medium text-foreground/60">
+        {t.currentProject}
+      </p>
     </div>
   </div>
 
   <div class="mx-4 mb-6 mt-12 sm:mx-12 lg:mt-24">
     <p class="text-pretty text-right text-lg font-medium sm:text-xl xl:mr-10">
-      <span class="text-foreground/80">See more of my projects in</span>
+      <span class="text-foreground/80">{t.seeMore}</span>
       <Link
         class="group inline-block w-fit font-semibold text-primary"
         href={getLocaleRoute(locale, "archive")}
         label="Project Archive"
       >
-        <span class="underline underline-offset-2">the archive</span>
+        <span class="underline underline-offset-2">{t.archiveText}</span>
         <Icon
           name="lucide:arrow-right"
           class="ml-0.5 inline-block size-[1em] text-primary transition-transform group-hover:translate-x-3"
+          is:inline
         />
       </Link>
     </p>
-
-    <Button3D
-      data-current-project-button
-      class="mx-auto my-2 w-fit !px-8"
-    >
-      What I am currently working on?
-    </Button3D>
   </div>
 </ObservedSection>
 
@@ -122,16 +129,44 @@ const currentDescription = current.description(locale);
   }
 
   [data-current-project] {
+    --min-space: 6rem;
+    padding-bottom: var(--min-space);
+  }
+
+  @media screen(lg) {
+    [data-current-project] {
+      --min-space: 4rem;
+    }
+  }
+
+  [data-current-project].show {
+    animation: remove-pb 0.6s forwards ease-in-out 0.2s;
+  }
+
+  [data-current-project] > div:first-of-type {
     transition: grid-template-rows 0.6s ease-in-out;
+    transition-delay: 0.2s;
+
     grid-template-rows: 0.4fr;
     align-items: flex-start;
   }
 
-  [data-current-project].show {
+  [data-current-project].show > div:first-of-type {
     grid-template-rows: 1fr;
   }
 
-  [data-mask] {
+  [data-current-project] [data-current-project-trigger] {
+    top: calc(100% - var(--min-space));
+  }
+
+  [data-current-project].show [data-current-project-trigger] {
+    animation: 
+      /* fade-out is a globally available animation. */
+      fade-out 0.2s forwards ease-in-out,
+      display-none 0s forwards 0.2s;
+  }
+
+  [data-current-project] [data-mask] {
     --mask-position: 70%;
     --mask-alpha: 1;
 
@@ -142,27 +177,31 @@ const currentDescription = current.description(locale);
     );
   }
 
-  [data-mask].hide {
+  [data-current-project].show [data-mask] {
     animation:
-      mask-slide 0.3s forwards,
-      mask-fade 0.3s forwards 0.2s;
+      mask-slide 0.3s forwards ease-in-out 0.5s,
+      mask-fade 0.3s forwards ease-in-out 0.7s;
+  }
+
+  @keyframes remove-pb {
+    to {
+      padding-bottom: 0;
+    }
+  }
+
+  @keyframes display-none {
+    to {
+      display: none;
+    }
   }
 
   @keyframes mask-slide {
-    from {
-      --mask-position: 70%;
-    }
-
     to {
       --mask-position: 0%;
     }
   }
 
   @keyframes mask-fade {
-    from {
-      --mask-alpha: 1;
-    }
-
     to {
       --mask-alpha: 0;
     }

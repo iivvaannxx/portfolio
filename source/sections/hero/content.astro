@@ -1,9 +1,12 @@
 ---
+import { Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { Badge, Link } from "@components/base";
 
 import { email, github, linkedIn } from "@lib/data/socials";
 import { getTranslations } from "@modules/i18n";
+
+import profile from "./assets/profile.webp";
 
 // Retrieve the localized strings for the hero section.
 const { locale } = Astro.locals;
@@ -11,11 +14,8 @@ const translations = getTranslations(locale);
 const t = translations.sections.hero;
 ---
 
-<section
-  data-scroll-away
-  class="mx-auto max-w-screen-lg content-center px-4 xs:px-6"
->
-  <header>
+<section class="mx-auto max-w-screen-lg content-center px-4 xs:px-6">
+  <header class="relative">
     <h1 class="animate-fade-up text-balance font-header">
       <span
         class="block text-3xl font-extrabold tracking-wide opacity-90 xs:text-4xl"
@@ -26,6 +26,13 @@ const t = translations.sections.hero;
     <p
       class="mt-4 block min-h-[2lh] animate-fade-up text-lg font-bold text-foreground/50 animate-delay-500 xs:text-2xl"
       set:html={t.headline.content}
+    />
+
+    <Picture
+      class="absolute right-14 top-0 size-28 rounded-full"
+      src={profile}
+      alt="Profile picture"
+      formats={["avif", "webp", "png"]}
     />
   </header>
 

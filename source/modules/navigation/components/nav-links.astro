@@ -1,20 +1,39 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-import { LanguageSelector, getTranslations } from "@modules/i18n";
 import { Link } from "@components/base";
-import { sections } from "../lib/sections";
+import { LanguageSelector, getTranslations } from "@modules/i18n";
 
-export type Props = HTMLAttributes<"nav">;
+import { sections } from "../lib/sections";
+import { Icon } from "astro-icon/components";
+
+export type Props = HTMLAttributes<"nav"> & {
+  variant?: "header" | "menu";
+};
+
+const { variant = "header", ...props } = Astro.props;
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections;
 ---
 
 <script>
-  import { getLenisInstance } from "@lib/client/scroll";
+  /* import { getLenisInstance } from "@lib/client/scroll";
 
   const lenis = getLenisInstance();
-  document.querySelectorAll("a[data-nav-link]").forEach(
+  const links = [
+    ...(document.querySelectorAll("a[data-nav-link]") ?? []),
+    ...(document.querySelectorAll("a[data-navmenu-link]") ?? []),
+  ];
+
+  console.log(links);
+
+  setInterval(() => {
+    console.log([
+      ...(document.querySelectorAll("a[data-nav-link]") ?? []),
+      ...(document.querySelectorAll("a[data-navmenu-link]") ?? []),
+    ]);
+  }, 1000);
+  links.forEach(
     (link) => {
       // Make lenis scroll to the target of the link.
       link.addEventListener("click", (event) => {
@@ -28,31 +47,61 @@ const t = translations.sections;
       });
     },
     { passive: false },
-  );
+  ); */
 </script>
 
-<nav {...Astro.props}>
-  <ul class="flex items-center gap-6 text-sm font-medium">
-    {
-      sections.map(({ name }) => (
-        <li>
-          <Link
-            data-nav-link
-            href={`#${t[name].id}`}
-            label={name}
-          >
-            {t[name].name}
-          </Link>
-        </li>
-      ))
-    }
-  </ul>
+{
+  variant === "header" ? (
+    <nav {...props}>
+      <ul class="flex items-center gap-6 text-sm font-medium">
+        {sections.map(({ name }) => (
+          <li>
+            <Link
+              data-nav-link
+              isPageLink
+              href={`#${t[name].id}`}
+              label={name}
+            >
+              {t[name].name}
+            </Link>
+          </li>
+        ))}
+      </ul>
 
-  <LanguageSelector
-    currentLocale={Astro.locals.locale}
-    client:load
-  />
-</nav>
+      <LanguageSelector
+        currentLocale={Astro.locals.locale}
+        client:load
+      />
+    </nav>
+  ) : (
+    <nav {...props}>
+      <ul class="flex w-max flex-col items-center gap-6 text-sm font-medium">
+        {sections.map(({ name, icon }) => (
+          <li class="w-full border-b pb-4 text-center last-of-type:border-none">
+            <Link
+              data-navmenu-link
+              href={`#${t[name].id}`}
+              label={name}
+              class="inline-flex items-center justify-center gap-x-4 text-xl"
+            >
+              <Icon
+                name={icon}
+                is:inline
+              />
+              <span>{t[name].name}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <LanguageSelector
+        currentLocale={Astro.locals.locale}
+        class="hidden"
+        client:load
+      />
+    </nav>
+  )
+}
 
 <style is:global>
   [data-nav-link] {
@@ -61,6 +110,10 @@ const t = translations.sections;
 
   [data-nav-link].active {
     color: theme("colors.foreground");
+  }
+
+  [data-navmenu-link].active {
+    color: theme("colors.primary.DEFAULT");
   }
 
   ul:not(:has([data-nav-link].active)) [data-nav-link] {

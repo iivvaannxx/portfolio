@@ -7,14 +7,15 @@
   import { Select } from "@components/ui/svelte";
   import { type Locale, DEFAULT_LOCALE } from "@modules/i18n";
 
+  import { cn } from "@app/lib/utils/shadcn";
   import { toggleScroll } from "@lib/client/scroll";
   import type { Selected } from "bits-ui";
 
   // The languages that are available in the app
   const languages = {
-    en: { label: "ENG", name: "English" },
-    es: { label: "ESP", name: "Español" },
-    ca: { label: "CAT", name: "Català" },
+    en: { label: "ENG", name: "English", buttonName: "Language" },
+    es: { label: "ESP", name: "Español", buttonName: "Idioma" },
+    ca: { label: "CAT", name: "Català", buttonName: "Llengua" },
   };
 
   /**
@@ -44,8 +45,6 @@
 
 <script lang="ts">
   export let currentLocale: Locale = DEFAULT_LOCALE;
-  $: currentLanguage = makeLocalePath(currentLocale);
-
   const entries = Object.entries(languages) as [
     Locale,
     { label: string; name: string },
@@ -56,11 +55,14 @@
   selected={{ value: currentLocale, label: languages[currentLocale].label }}
   preventScroll={false}
   onOpenChange={(value) => {
-    // toggleScroll(!value);
+    toggleScroll(!value);
   }}
   {onSelectedChange}
 >
-  <Select.Trigger class="w-fit text-foreground/80">
+  <Select.Trigger
+    name={languages[currentLocale].buttonName}
+    class={cn("w-fit text-foreground/80", $$props.class)}
+  >
     <Languages class="mb-1 mr-0.5 size-[1.2em]" />
     <Select.Value
       placeholder="Language"

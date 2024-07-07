@@ -1,0 +1,28 @@
+---
+export interface Props {
+  /** The amount of particles to render simultaneously on screen. */
+  quantity?: number;
+}
+
+// Set a default quantity.
+const { quantity = 30 } = Astro.props;
+---
+
+<script>
+  // Decorative effects like this should not be blocking.
+  window.requestIdleCallback(() => {
+    // So we import it dynamically after page load.
+    import("./particle-canvas")
+      .then((module) => {
+        const ParticleCanvas = module.ParticleCanvas;
+        customElements.define("particle-canvas", ParticleCanvas);
+      })
+      .catch(console.error);
+  });
+</script>
+
+<!-- Inspired by: https://cruip.com/how-to-create-a-beautiful-particle-animation-with-html-canvas/ -->
+<particle-canvas
+  {quantity}
+  aria-hidden="true"
+></particle-canvas>

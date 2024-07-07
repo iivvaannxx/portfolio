@@ -4,19 +4,28 @@ import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
 
 import { cn } from "@lib/utils/shadcn";
+import { Icon } from "astro-icon/components";
+
+import ScrollToTop from "@app/components/scroll-to-top.svelte";
+import { getTranslations } from "@app/modules/i18n";
+import { NavLinks } from "@app/modules/navigation";
 
 type Props = {
   title?: string;
   description?: string;
   bodyClass?: string;
+  withScrollToTop?: boolean;
 };
 
-const { title, description, bodyClass } = Astro.props;
+const { title, description, bodyClass, withScrollToTop = false } = Astro.props;
 const isDev = import.meta.env.DEV;
+
+const { locale } = Astro.locals;
+const t = getTranslations(locale);
 ---
 
 <html
-  lang={Astro.locals.locale}
+  lang={locale}
   class="dark"
 >
   <head>
@@ -76,19 +85,57 @@ const isDev = import.meta.env.DEV;
       content="#0c0a09"
     />
 
-    <script src="@lib/client/polyfills"></script>
-    <slot name="head" />
+    <script
+      is:inline
+      src="/polyfills.js"
+    ></script>
 
+    <slot name="head" />
     <title>{title}</title>
   </head>
 
   <body
     class={cn(
-      "overflow-x-scroll fold:overflow-x-clip bg-background font-sans text-foreground antialiased",
+      "relative overflow-x-scroll fold:overflow-x-clip bg-background font-sans text-foreground antialiased",
       bodyClass,
       isDev && "debug-screens",
     )}
   >
     <slot />
+
+    <div class="pointer-events-none fixed top-0 z-50 h-dvh w-dvw">
+      {
+        withScrollToTop && (
+          <ScrollToTop
+            name={t.misc.scrollToTop}
+            class="pointer-events-auto absolute -bottom-32 right-0 m-6 aspect-square size-12 rounded-full p-0 lg:m-12 xl:size-16 xl:p-2"
+            data-tippy-content={t.misc.scrollToTop}
+            data-tippy-placement="top"
+            data-scroll-to-top
+            client:visible
+          >
+            <Icon
+              class="aspect-square size-6 xl:size-8"
+              name="lucide:arrow-up"
+              is:inline
+            />
+          </ScrollToTop>
+        )
+      }
+    </div>
   </body>
 </html>
+
+<style>
+  [data-scroll-to-top] {
+    animation: reveal-up 0.6s forwards;
+    animation-timeline: scroll();
+    animation-range: 100px 40vh;
+  }
+
+  @keyframes reveal-up {
+    to {
+      bottom: 0;
+    }
+  }
+</style>

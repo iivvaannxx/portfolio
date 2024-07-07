@@ -1,10 +1,26 @@
-import { bold, italic, link, strong } from "../lib/helpers/html";
+import { bold, italic, link, strong, small } from "../lib/helpers/html";
 
 /** The english strings for the website. */
 export const english = {
   meta: {
     name: "English",
     locale: "en",
+  },
+
+  misc: {
+    scrollToTop: "Scroll To Top",
+  },
+
+  noscript: {
+    headline: `Oops! It seems that ${strong("JavaScript")} is disabled in your browser.`,
+    message: `This site ${strong("requires it")} for some content ${strong("to be displayed correctly")}.
+      Please enable it or dismiss this message by clicking the button below, but some content may 
+      not be shown as expected.`,
+
+    dismissText: "I understand, show me the website",
+    hint: small(
+      "In case you're wondering, no, this button does not use JavaScript.",
+    ),
   },
 
   sections: {
@@ -54,6 +70,11 @@ export const english = {
       name: "Projects",
       id: "projects",
       title: "Some of my favorite projects",
+
+      buttonReveal: "Reveal",
+      currentProject: "What I'm currently working on?",
+      seeMore: "See more of my projects in",
+      archiveText: "the archive",
 
       archive: {
         "my-room": {

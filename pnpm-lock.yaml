@@ -8,6 +8,9 @@ patchedDependencies:
   astro-icon@1.1.0:
     hash: aw6wqf7jktne6acpa5dasqp7hy
     path: patches/astro-icon@1.1.0.patch
+  vaul@0.9.1:
+    hash: 7cdof4lwvoms46qxzv3odwgwde
+    path: patches/vaul@0.9.1.patch
 
 dependencies:
   '@astrojs/react':
@@ -73,6 +76,9 @@ dependencies:
   just-capitalize:
     specifier: ^3.2.0
     version: 3.2.0
+  just-debounce-it:
+    specifier: ^3.2.0
+    version: 3.2.0
   ldrs:
     specifier: ^1.0.2
     version: 1.0.2
@@ -121,6 +127,9 @@ dependencies:
   valibot:
     specifier: ^0.35.0
     version: 0.35.0
+  vaul:
+    specifier: ^0.9.1
+    version: 0.9.1(patch_hash=7cdof4lwvoms46qxzv3odwgwde)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
 
 devDependencies:
   '@astrojs/check':
@@ -4077,6 +4086,10 @@ packages:
     resolution: {integrity: sha512-FK8U9A5AHCIGxlEXg3RFJkb9Nz/fS9luJlrfRf0bFBZU6xnIQ6tbwl+HitMJLwCFszZqVaXQcyeoy8/PYABS6A==}
     dev: false
 
+  /just-debounce-it@3.2.0:
+    resolution: {integrity: sha512-WXzwLL0745uNuedrCsCs3rpmfD6DBaf7uuVwaq98/8dafURfgQaBsSpjiPp5+CW6Vjltwy9cOGI6qE71b3T8iQ==}
+    dev: false
+
   /kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
@@ -6768,6 +6781,21 @@ packages:
     dependencies:
       filename-reserved-regex: 3.0.0
     dev: true
+
+  /vaul@0.9.1(patch_hash=7cdof4lwvoms46qxzv3odwgwde)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-fAhd7i4RNMinx+WEm6pF3nOl78DFkAazcN04ElLPFF9BMCNGbY/kou8UMhIcicm0rJCNePJP0Yyza60gGOD0Jw==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@radix-ui/react-dialog': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
+    dev: false
+    patched: true
 
   /vfile-location@5.0.2:
     resolution: {integrity: sha512-NXPYyxyBSH7zB5U6+3uDdd6Nybz6o6/od9rk8bp9H8GR3L+cm/fC0uUTbqBmUTnMCUDslAGBOIKNfvvb+gGlDg==}

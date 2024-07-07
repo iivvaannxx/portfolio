@@ -21,3 +21,31 @@ if (!CSS.supports("text-wrap", "balance")) {
       console.error(error);
     });
 }
+
+// See: https://gist.github.com/paullewis/55efe5d6f05434a96c36
+// Can't believe how such an old API (< 2015) is still not supported in Safari.
+window.requestIdleCallback =
+  window.requestIdleCallback ??
+  function (cb) {
+    return setTimeout(function () {
+      var start = Date.now();
+      cb({
+        didTimeout: false,
+        timeRemaining: function () {
+          return Math.max(0, 50 - (Date.now() - start));
+        },
+      });
+    }, 1);
+  };
+
+window.cancelIdleCallback =
+  window.cancelIdleCallback ??
+  function (id) {
+    clearTimeout(id);
+  };
+
+// I keep this file for maintenance purposes,
+// but it's manually minified and inlined in the final bundle.
+// This is done because it's a priority script that needs to be loaded first.
+// Astro doesn't allow to specify the order of scripts in the head.
+// TODO: Automate this process.

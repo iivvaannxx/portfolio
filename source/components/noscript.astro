@@ -1,0 +1,63 @@
+---
+import { getTranslations } from "@app/modules/i18n";
+
+const { locale } = Astro.locals;
+const translations = getTranslations(locale);
+const t = translations.noscript;
+---
+
+<!-- See: https://codepen.io/chriscoyier/post/a-closeable-noscript-warning-modal -->
+<noscript
+  data-nojs
+  class="fixed inset-0 z-[100] size-full text-balance bg-background p-6"
+>
+  <div
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
+  >
+    <p
+      class="mx-auto max-w-prose font-header text-2xl font-bold"
+      set:html={t.headline}
+    />
+
+    <p
+      class="mx-auto mt-8 max-w-[60ch] text-lg font-medium text-foreground/70"
+      set:html={t.message}
+    />
+
+    <p
+      data-hint
+      class="mx-auto mb-8 mt-16 max-w-[50ch] text-lg text-muted-foreground"
+      set:html={t.hint}
+    />
+
+    <label
+      data-no-js-label
+      class="relative min-h-10 cursor-pointer select-none rounded-md bg-primary px-6 py-3 text-primary-foreground ring-offset-background transition-colors focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 hover:bg-primary/90"
+    >
+      <span set:html={t.dismissText} />
+      <input
+        tabindex="0"
+        class="sr-only"
+        type="checkbox"
+      />
+    </label>
+  </div>
+</noscript>
+
+<style is:global>
+  noscript:has(input:checked) > div {
+    animation: fade-out 0.3s forwards ease-in-out;
+  }
+
+  noscript:has(input:checked) {
+    /** these are globally available animations */
+    animation:
+      fade-out 0.6s forwards ease-in-out 0.4s,
+      display-none 0s forwards linear 1s;
+
+    [data-hint],
+    [data-no-js-label] {
+      visibility: hidden;
+    }
+  }
+</style>

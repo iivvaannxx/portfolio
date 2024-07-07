@@ -9,6 +9,7 @@ import { cn } from "@lib/utils/shadcn";
 export type Props = HTMLAttributes<"a"> & {
   label: string;
 
+  isPageLink?: boolean;
   withTooltip?: Partial<TippyProps>;
   targetBlank?: boolean;
   withExternalLinkArrow?: boolean;
@@ -40,17 +41,6 @@ const optionalAttrs = {
   ...tippyProps,
 };
 ---
-
-<script>
-  import tippy from "tippy.js";
-  tippy("a[data-tippy-content]", {
-    placement: "right",
-    offset: [0, 16],
-
-    animation: "scale",
-    inertia: true,
-  });
-</script>
 
 <a
   {...props}

@@ -1,5 +1,4 @@
-import { ContactForm } from "@modules/contact/components/contact";
-import { currentLang } from "@modules/contact/lib/store";
+import { useRef, useState } from "react";
 import { Mail, X } from "lucide-react";
 import {
   Dialog,
@@ -10,12 +9,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@components/ui/react/dialog";
-import { useStore } from "@nanostores/react";
-import { useRef, useState } from "react";
+
 import { cn } from "@lib/utils/shadcn";
-import { destroyLenis, initLenis } from "@lib/client/scroll";
-import { useMediaQuery } from "@lib/utils/hooks/use-media-query";
 import { fireworks } from "@lib/client/confetti";
+import { toggleScroll } from "@lib/client/scroll";
+import { useMediaQuery } from "@lib/utils/hooks/use-media-query";
+
+import { ContactForm } from "@modules/contact";
 
 type Props = {};
 
@@ -23,7 +23,6 @@ export function ContactDialog({ ...props }: Props) {
   const [isOpen, setOpen] = useState(false);
   const confettiShown = useRef(false);
 
-  const locale = useStore(currentLang);
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
@@ -31,22 +30,12 @@ export function ContactDialog({ ...props }: Props) {
       open={isOpen}
       onOpenChange={(open) => {
         setOpen(open);
+        toggleScroll(!open);
 
-        if (open) {
-          // Ideally I would just lock scroll using "lenis.stop()"
-          // But because we need `syncTouch` for the 3D models to not lag
-          // on scroll we need to destroy and reinitialize Lenis.
-          // With `syncTouch` enabled, the model form doesn't scroll
-          // properly on mobile, even after calling `lenis.stop()`.
-          destroyLenis();
-
-          if (!confettiShown.current) {
-            fireworks(isMobile ? 1750 : 3000);
-            confettiShown.current = true;
-          }
-        } else {
-          // Reinitialize Lenis after closing the dialog.
-          initLenis();
+        // We only want to show the confetti once.
+        if (!confettiShown.current) {
+          fireworks(isMobile ? 1750 : 3000);
+          confettiShown.current = true;
         }
       }}
     >
@@ -74,7 +63,7 @@ export function ContactDialog({ ...props }: Props) {
             event.preventDefault();
           }
         }}
-        className="max-h-[90vh] w-[90%] max-w-xl gap-0 overflow-y-scroll pt-0 svh:!max-h-[90svh] xl:w-full"
+        className="max-h-[80vh] w-[90%] max-w-xl gap-0 overflow-y-scroll pt-0 svh:!max-h-[80svh] xl:w-full"
       >
         <DialogHeader className="sticky top-0 bg-background py-8">
           <DialogTitle className="inline-flex items-center justify-center gap-x-4 text-xl sm:justify-start">

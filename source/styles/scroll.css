@@ -17,6 +17,7 @@ html {
   overflow-x: clip;
 }
 
+html.lenis,
 html.lenis body {
   height: auto;
 }
@@ -37,17 +38,22 @@ html.lenis body {
   pointer-events: none;
 }
 
-[data-scroll-reveal] {
-  animation: scroll-reveal linear both;
-  animation-timeline: view(block);
+html.lenis body[data-scroll-locked] {
+  /* 
+    This fixes some issues with the Radix Dialog.
+
+    When opened it sets overflow to hidden and that breaks 
+    some scroll driven animations, which only allow "clip". 
+  */
+  overflow: clip !important;
 }
 
-[data-scroll-away] {
-  animation: scroll-away linear both;
-  animation-timeline: view(block var(--header-height));
+[data-scroll-fade] {
+  animation: scroll-fade linear both;
+  animation-timeline: view(block 64px);
 }
 
-@keyframes scroll-reveal {
+@keyframes scroll-fade {
   entry 0%,
   entry 20% {
     opacity: 0;
@@ -56,9 +62,7 @@ html.lenis body {
   entry 50% {
     opacity: 1;
   }
-}
 
-@keyframes scroll-away {
   exit 50% {
     opacity: 1;
   }

@@ -1,6 +1,7 @@
 @import "./fonts.css";
 @import "./theme.css";
 @import "./scroll.css";
+@import "./animations.css";
 
 @tailwind base;
 @tailwind components;
@@ -10,6 +11,8 @@
   /** If dvh is supported, it will take priority, otherwise will fallback to vh. */
   --screen-safe-height: 100vh;
   --screen-safe-height: 100dvh;
+  --screen-safe-width: 100vw;
+  --screen-safe-width: 100dvw;
 
   --header-height: 64px;
   --content-height: calc(var(--screen-safe-height) - var(--header-height));
@@ -25,10 +28,8 @@
 }
 
 html {
-  width: 100%;
+  width: var(--screen-safe-width);
   height: auto;
-
-  scrollbar-gutter: stable;
 }
 
 body {
@@ -41,6 +42,10 @@ body {
 strong,
 b {
   font-weight: bold;
+}
+
+small {
+  font-size: 0.8em;
 }
 
 strong {
@@ -58,6 +63,10 @@ textarea {
 
 code {
   @apply !font-mono;
+}
+
+[data-ensure-scrollbar-gutter] {
+  padding-left: calc(var(--screen-safe-width) - 100%);
 }
 
 .tippy-box {

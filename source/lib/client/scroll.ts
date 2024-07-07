@@ -32,6 +32,7 @@ export function initLenis(options: LenisOptions = {}) {
     animationFrame = requestAnimationFrame(lenisRaf);
   }
 
+  window.lenis = lenis;
   animationFrame = requestAnimationFrame(lenisRaf);
 
   return lenis;
@@ -57,4 +58,12 @@ export function toggleScroll(enable: boolean) {
   } else {
     lenis?.stop();
   }
+}
+
+/** Scrolls to the top of the page. */
+export function scrollToTop() {
+  const lenis = getLenisInstance();
+  lenis?.scrollTo(0, {
+    lock: true,
+  });
 }

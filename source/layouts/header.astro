@@ -1,6 +1,7 @@
 ---
+import { HamburguerMenu } from "@app/modules/navigation/components/hamburguer-menu";
 import { cn } from "@lib/utils/shadcn";
-import { Hamburguer, NavLinks } from "@modules/navigation";
+import { NavLinks } from "@modules/navigation";
 import type { HTMLAttributes } from "astro/types";
 
 export type Props = HTMLAttributes<"header"> & {};
@@ -8,16 +9,45 @@ const { class: clazz, ...props } = Astro.props;
 ---
 
 <header
+  data-ensure-scrollbar-gutter
   class={cn(
-    "fixed inset-x-0 top-0 z-50 min-h-header content-center bg-background",
+    "fixed inset-x-0 top-0 z-50 min-h-header content-center backdrop-blur-md",
     clazz,
   )}
   {...props}
 >
   <div
-    class="mx-auto flex max-w-screen-xl items-center justify-around px-6 py-4 font-header"
+    class="mx-auto grid max-w-screen-xl px-6 py-4 font-header md:flex md:items-center md:justify-around"
   >
-    <NavLinks class="hidden w-full justify-between md:flex" />
-    <Hamburguer class="ml-auto md:hidden" />
+    <NavLinks
+      variant="header"
+      class="hidden w-full justify-between md:flex"
+    />
+
+    <HamburguerMenu
+      className="justify-self-end md:hidden"
+      client:media="(max-width: 768px)"
+    >
+      <Fragment slot="menuContent">
+        <NavLinks
+          variant="menu"
+          class="my-12 flex w-full justify-center"
+        />
+      </Fragment>
+    </HamburguerMenu>
   </div>
 </header>
+
+<style>
+  header {
+    animation: apply-bg linear both;
+    animation-timeline: scroll();
+    animation-range: 0px 128px;
+  }
+
+  @keyframes apply-bg {
+    to {
+      background-color: theme("colors.background");
+    }
+  }
+</style>

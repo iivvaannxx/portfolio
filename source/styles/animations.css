@@ -1,0 +1,25 @@
+@keyframes display-none {
+  to {
+    display: none;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: var(--from-opacity, 1);
+  }
+
+  100% {
+    opacity: var(--to-opacity, 0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: var(--from-opacity, 0);
+  }
+
+  100% {
+    opacity: var(--to-opacity, 1);
+  }
+}

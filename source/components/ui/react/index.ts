@@ -5,3 +5,4 @@ export * from "./textarea";
 export * from "./label";
 export * from "./button";
 export * from "./dialog";
+export * from "./drawer";

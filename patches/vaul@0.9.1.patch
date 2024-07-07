@@ -1,0 +1,62 @@
+diff --git a/dist/index.js b/dist/index.js
+index ec36ce840e18e623ef3bcfb6cde0254a85b77438..85fe5ae0481fbd42c2831c6cddf70df6aa9ad859 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -1067,7 +1067,7 @@ function Root({ open: openProp, onOpenChange, children, shouldScaleBackground, o
+         shouldScaleBackground
+     ]);
+     // LayoutEffect to prevent extra render where openProp and isOpen are not synced yet
+-    React__namespace.default.useLayoutEffect(()=>{
++    useIsomorphicLayoutEffect(()=>{
+         if (openProp) {
+             setIsOpen(true);
+             setHasBeenOpened(true);
+@@ -1104,7 +1104,7 @@ function Root({ open: openProp, onOpenChange, children, shouldScaleBackground, o
+         if (shouldScaleBackground && currentSwipeAmount && currentSwipeAmount > 0 && isOpen) {
+             set(wrapper, {
+                 borderRadius: `${BORDER_RADIUS}px`,
+-                overflow: 'hidden',
++                overflow: 'clip',
+                 ...isVertical(direction) ? {
+                     transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`,
+                     transformOrigin: 'top'
+@@ -1221,7 +1221,7 @@ function Root({ open: openProp, onOpenChange, children, shouldScaleBackground, o
+             }
+             set(wrapper, {
+                 borderRadius: `${BORDER_RADIUS}px`,
+-                overflow: 'hidden',
++                overflow: 'clip',
+                 ...isVertical(direction) ? {
+                     transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`,
+                     transformOrigin: 'top'
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 36734490810831a22a088e001a0383e1d8c5e2af..0e4a25bab72168ac259b335b5b508a86b943725a 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -1045,7 +1045,7 @@ function Root({ open: openProp, onOpenChange, children, shouldScaleBackground, o
+         shouldScaleBackground
+     ]);
+     // LayoutEffect to prevent extra render where openProp and isOpen are not synced yet
+-    React__default.useLayoutEffect(()=>{
++    useIsomorphicLayoutEffect(()=>{
+         if (openProp) {
+             setIsOpen(true);
+             setHasBeenOpened(true);
+@@ -1082,7 +1082,7 @@ function Root({ open: openProp, onOpenChange, children, shouldScaleBackground, o
+         if (shouldScaleBackground && currentSwipeAmount && currentSwipeAmount > 0 && isOpen) {
+             set(wrapper, {
+                 borderRadius: `${BORDER_RADIUS}px`,
+-                overflow: 'hidden',
++                overflow: 'clip',
+                 ...isVertical(direction) ? {
+                     transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`,
+                     transformOrigin: 'top'
+@@ -1199,7 +1199,7 @@ function Root({ open: openProp, onOpenChange, children, shouldScaleBackground, o
+             }
+             set(wrapper, {
+                 borderRadius: `${BORDER_RADIUS}px`,
+-                overflow: 'hidden',
++                overflow: 'clip',
+                 ...isVertical(direction) ? {
+                     transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`,
+                     transformOrigin: 'top'

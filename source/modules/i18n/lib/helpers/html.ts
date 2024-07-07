@@ -1,5 +1,3 @@
-import type { HTMLAttributes } from "astro/types";
-
 /**
  * Creates an HTML link element with the specified href and text.
  *
@@ -23,7 +21,7 @@ export function link<const H extends string, const T extends string>(
  * @returns The HTML string representing the strong element.
  */
 export function strong<const T extends string>(content: T) {
-  return `<strong>${content}</strong>` as const;
+  return wrapInTags(content, "strong");
 }
 
 /**
@@ -33,7 +31,7 @@ export function strong<const T extends string>(content: T) {
  * @returns The HTML string representing the bold element.
  */
 export function bold<const T extends string>(content: T) {
-  return `<b>${content}</b>` as const;
+  return wrapInTags(content, "b");
 }
 
 /**
@@ -43,9 +41,29 @@ export function bold<const T extends string>(content: T) {
  * @returns The HTML string representing the italic element.
  */
 export function italic<const T extends string>(content: T) {
-  return `<i>${content}</i>` as const;
+  return wrapInTags(content, "i");
 }
 
-export function br(props: HTMLAttributes<"br">) {
-  return `<br ${JSON.stringify(props)} />` as const;
+/**
+ * Wraps the provided content in an HTML <small> tag.
+ *
+ * @param content - The content to be wrapped.
+ * @returns The wrapped content.
+ */
+export function small<const T extends string>(content: T) {
+  return wrapInTags(content, "small");
+}
+
+/**
+ * Wraps the given content in HTML tags.
+ *
+ * @param content - The content to be wrapped.
+ * @param tag - The HTML tag to wrap the content with.
+ * @returns The content wrapped in the specified HTML tag.
+ */
+function wrapInTags<const T extends string, const Tag extends string>(
+  content: T,
+  tag: Tag,
+) {
+  return `<${tag}>${content}</${tag}>` as const;
 }
