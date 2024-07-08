@@ -8,8 +8,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "postinstall": "lefthook install",
-    "pages:dev": "wrangler pages dev --local=false --compatibility-date 2024-05-24 --port 3000 build",
-    "optimize:apng": "./scripts/optimize-apng.js"
+    "pages:dev": "wrangler pages dev --local=false --compatibility-date 2024-05-24 --port 3000 build"
   },
   "dependencies": {
     "@astrojs/react": "3.6.0",
@@ -22,8 +21,6 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@react-three/drei": "^9.107",
-    "@react-three/fiber": "^8.16.8",
     "astro": "4.11.5",
     "astro-icon": "^1.1.0",
     "balance-text": "^3.3.1",
@@ -31,7 +28,6 @@
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "embla-carousel-svelte": "^8.1.5",
     "just-capitalize": "^3.2.0",
     "just-debounce-it": "^3.2.0",
     "ldrs": "^1.0.2",
@@ -45,9 +41,6 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.0",
     "resend": "^3.4.0",
-    "svelte-media-queries": "^1.6.2",
-    "three": "^0.165.0",
-    "three-stdlib": "^2.30.3",
     "tippy.js": "^6.3.7",
     "valibot": "^0.35.0",
     "vaul": "^0.9.1"
@@ -69,14 +62,12 @@
     "@types/object-path": "^0.11.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@types/three": "^0.165.0",
     "astro-robots-txt": "^1.0.0",
     "autoprefixer": "^10.4.19",
     "cssnano": "^7.0.3",
     "lefthook": "^1.6.18",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-glsl": "^0.2.0",
     "prettier-plugin-svelte": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "sharp": "^0.33.4",
@@ -101,7 +92,6 @@
   ],
   "pnpm": {
     "patchedDependencies": {
-      "astro-icon@1.1.0": "patches/astro-icon@1.1.0.patch",
       "vaul@0.9.1": "patches/vaul@0.9.1.patch"
     }
   }

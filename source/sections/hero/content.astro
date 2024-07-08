@@ -7,7 +7,6 @@ import { email, github, linkedIn } from "@lib/data/socials";
 import { getTranslations } from "@modules/i18n";
 
 import profile from "./assets/profile.webp";
-import { ContactDialog } from "../about/components/contact-dialog";
 
 // Retrieve the localized strings for the hero section.
 const { locale } = Astro.locals;
@@ -15,7 +14,7 @@ const translations = getTranslations(locale);
 const t = translations.sections.hero;
 ---
 
-<section class="mx-auto max-w-screen-lg content-center px-4 xs:px-6">
+<section id={t.id} class="mx-auto max-w-screen-lg content-center px-4 xs:px-6">
   <header class="relative">
     <h1 class="text-balance font-header">
       <span

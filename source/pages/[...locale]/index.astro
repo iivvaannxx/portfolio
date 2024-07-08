@@ -1,8 +1,9 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { Icon } from "astro-icon/components";
 
 import { Page } from "@app/layouts";
-import { getLocalizedStaticPaths } from "@modules/i18n";
+import { getLocalizedStaticPaths, getTranslations } from "@modules/i18n";
 
 import ParticlesCanvas from "@components/particles/particle-canvas.astro";
 
@@ -11,8 +12,12 @@ import Footer from "@app/layouts/footer.astro";
 
 import { Work, Projects, About, Hero } from "@app/sections";
 import { fade, slide } from "astro:transitions";
+import { Link } from "@app/components/base";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
+
+const { locale } = Astro.locals;
+const t = getTranslations(locale);
 ---
 
 <script>
@@ -33,7 +38,6 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
 <Page
   class="relative"
-  withScrollToTop
   withNoScriptFallback
   withViewTransitions
 >
@@ -52,6 +56,24 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
   <Footer />
 
+  <div class="pointer-events-none fixed top-0 z-50 h-dvh w-dvw">
+    <Link
+      href={`#${t.sections.hero.id}`}
+      label={t.misc.scrollToTop}
+      class="pointer-events-auto absolute -bottom-32 right-0 m-6 inline-flex aspect-square size-12 items-center justify-center whitespace-nowrap rounded-full border border-input bg-background p-0 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:m-12 xl:size-16 xl:p-2"
+      onclick={`window.lenisScrollTo('#${t.sections.hero.id}', event, -200)`}
+      data-tippy-content={t.misc.scrollToTop}
+      data-tippy-placement="top"
+      data-scroll-to-top
+    >
+      <Icon
+        class="aspect-square size-6 xl:size-8"
+        name="lucide:arrow-up"
+        is:inline
+      />
+    </Link>
+  </div>
+
   <div
     data-particles
     class="pointer-events-none absolute inset-0 top-0 -z-50 mx-auto w-full max-w-screen-lg"
@@ -61,13 +83,32 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 </Page>
 
 <style>
-  :global(body) {
-    background: url("/pattern.svg") theme("colors.background");
+  :global(body::before) {
+    position: absolute;
+    content: "";
+
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+
+    background-image: url("/pattern.svg");
     background-position-y: top;
     background-position-x: 40%;
-
     background-repeat: no-repeat;
     background-blend-mode: difference;
+  }
+
+  [data-scroll-to-top] {
+    animation: reveal-up 0.6s forwards;
+    animation-timeline: scroll();
+    animation-range: 100px 40vh;
+  }
+
+  @keyframes reveal-up {
+    to {
+      bottom: 0;
+    }
   }
 
   [data-particles] {

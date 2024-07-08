@@ -4,10 +4,7 @@ import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
 
 import { ViewTransitions } from "astro:transitions";
-import { Icon } from "astro-icon/components";
-
 import { NoScript } from "@components/base";
-import ScrollToTop from "@components/scroll-to-top.svelte";
 
 import { cn } from "@lib/utils/shadcn";
 import { getTranslations } from "@modules/i18n";
@@ -17,7 +14,6 @@ type Props = HTMLAttributes<"body"> & {
   title?: string;
   description?: string;
 
-  withScrollToTop?: boolean;
   withViewTransitions?: boolean;
   withNoScriptFallback?: boolean;
 };
@@ -26,7 +22,6 @@ const isDev = import.meta.env.DEV;
 const {
   title,
   description,
-  withScrollToTop = false,
   withViewTransitions = false,
   withNoScriptFallback = false,
   class: clazz,
@@ -116,46 +111,17 @@ const t = getTranslations(locale);
     class={cn(
       "relative overflow-x-scroll fold:overflow-x-clip font-sans antialiased",
       clazz,
-      isDev && "debug-screens",
     )}
   >
     <slot />
 
-    <div class="pointer-events-none fixed top-0 z-50 h-dvh w-dvw">
-      {
-        withScrollToTop && (
-          <ScrollToTop
-            name={t.misc.scrollToTop}
-            class="pointer-events-auto absolute -bottom-32 right-0 m-6 aspect-square size-12 rounded-full p-0 lg:m-12 xl:size-16 xl:p-2"
-            data-tippy-content={t.misc.scrollToTop}
-            data-tippy-placement="top"
-            data-scroll-to-top
-            client:visible
-          >
-            <Icon
-              class="aspect-square size-6 xl:size-8"
-              name="lucide:arrow-up"
-              is:inline
-            />
-          </ScrollToTop>
-        )
-      }
-    </div>
+    {
+      // Adds a debug screens little badge to debug the current TailwindCSS screen.
+      isDev && (
+        <div class="debug-screens pointer-events-none absolute inset-0 size-full" />
+      )
+    }
 
     {withNoScriptFallback && <NoScript />}
   </body>
 </html>
-
-<style>
-  [data-scroll-to-top] {
-    animation: reveal-up 0.6s forwards;
-    animation-timeline: scroll();
-    animation-range: 100px 40vh;
-  }
-
-  @keyframes reveal-up {
-    to {
-      bottom: 0;
-    }
-  }
-</style>

@@ -72,12 +72,13 @@ export function toggleScroll(enable: boolean) {
  * @param target - The target element to scroll to.
  * @param event - Optional event object to prevent the default behavior.
  */
-export function lenisScrollTo(target: string, event?: Event) {
+export function lenisScrollTo(target: string, event?: Event, offset = -100) {
   const lenis = getLenisInstance();
 
   // Optional event to prevent the default behavior.
   // This is used for inlined onclick events.
   event?.preventDefault();
+  history.pushState(null, "", target);
 
   if (lenis) {
     let stoppedProps = {};
@@ -91,7 +92,7 @@ export function lenisScrollTo(target: string, event?: Event) {
 
     lenis.scrollTo(target, {
       duration: 1.5,
-      offset: -100,
+      offset,
       ...stoppedProps,
     });
   }

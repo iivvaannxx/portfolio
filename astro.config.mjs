@@ -21,13 +21,6 @@ export default defineConfig({
     service: squooshImageService(),
   },
 
-  markdown: {
-    shikiConfig: {
-      theme: "ayu-dark",
-      wrap: true,
-    },
-  },
-
   devToolbar: {
     enabled: false,
   },
@@ -41,14 +34,7 @@ export default defineConfig({
     }),
 
     icon({
-      // The original `astro-icon` integration only supports one icon source.
-      // This project contains a custom patch that allows multiple sources.
-      iconSource: [
-        {
-          path: "source/assets/icons",
-          keyword: (file) => `${file.subdir}${file.file}`,
-        },
-      ],
+      iconDir: "source/assets/icons",
 
       // See: https://github.com/natemoo-re/astro-icon/issues/195
       svgoOptions: {

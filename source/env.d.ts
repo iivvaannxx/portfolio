@@ -3,7 +3,6 @@
 /// <reference types="typed-query-selector" />
 
 import type { Locale } from "@modules/i18n";
-import type Lenis from "lenis";
 
 declare global {
   namespace App {
