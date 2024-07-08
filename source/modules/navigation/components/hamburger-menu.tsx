@@ -5,9 +5,10 @@ import {
   DrawerHeader,
   DrawerTrigger,
   DrawerTitle,
+  Button,
 } from "@components/ui/react";
 
-import { getLenisInstance, toggleScroll } from "@app/lib/client/scroll";
+import { toggleScroll } from "@app/lib/client/scroll";
 import { useMediaQuery } from "@app/lib/utils/hooks/use-media-query";
 
 export const DRAWER_ID = "navmenu-drawer";
@@ -16,7 +17,7 @@ type Props = HTMLAttributes<HTMLButtonElement> & {
   menuContent?: React.ReactNode;
 };
 
-export function HamburguerMenu({ menuContent, ...props }: Props) {
+export function HamburgerMenu({ menuContent, ...props }: Props) {
   const [isOpen, setOpen] = useState(false);
 
   // Ensure the drawer hides on non-mobile screens.
@@ -43,7 +44,10 @@ export function HamburguerMenu({ menuContent, ...props }: Props) {
         asChild
         {...props}
       >
-        <button className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-background p-2 text-center text-accent-foreground transition hover:bg-accent">
+        <Button
+          variant="ghost"
+          className="aspect-square p-0.5"
+        >
           <span className="sr-only">Menu</span>
           <svg
             className="pointer-events-none h-6 w-6 fill-current"
@@ -70,7 +74,7 @@ export function HamburguerMenu({ menuContent, ...props }: Props) {
               rx="1"
             ></rect>
           </svg>
-        </button>
+        </Button>
       </DrawerTrigger>
       <DrawerContent
         data-lenis-prevent

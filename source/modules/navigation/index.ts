@@ -1,1 +1,2 @@
-export { default as NavLinks } from "./components/nav-links.astro";
+export { default as PageLinks } from "./components/page-links.astro";
+export { HamburgerMenu, DRAWER_ID } from "./components/hamburger-menu";

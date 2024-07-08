@@ -1,0 +1,8 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getLocalizedStaticPaths } from "@modules/i18n";
+
+export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
+---
+
+<h1>Archive</h1>

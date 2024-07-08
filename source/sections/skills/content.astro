@@ -1,10 +1,10 @@
 ---
-import ObservedSection from "@app/layouts/observed-section.astro";
+import { Section } from "@app/layouts";
 import SkillGallerySvelte from "./components/skill-gallery.svelte";
 import { SkillView } from "./components/skill-view";
 ---
 
-<ObservedSection
+<Section
   class="mt-48"
   title="Which technologies can I use?"
   class="mx-auto max-w-screen-2xl px-8 md:px-12 lg:px-16"
@@ -18,4 +18,4 @@ import { SkillView } from "./components/skill-view";
       client:visible={{ rootMargin: "50%" }}
     />
   </SkillGallerySvelte>
-</ObservedSection>
+</Section>

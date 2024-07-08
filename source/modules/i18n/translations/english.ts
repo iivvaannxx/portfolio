@@ -73,8 +73,8 @@ export const english = {
       id: "projects",
       title: "Some of my favorite projects",
 
-      buttonReveal: "Reveal",
-      currentProject: "What I'm currently working on?",
+      buttonReveal: "On what I'm currently working?",
+      currentProject: "On what I'm currently working?",
       seeMore: "See more of my projects in",
       archiveText: "the archive",
 

@@ -2,14 +2,18 @@
   lang="ts"
   context="module"
 >
+  // @ts-expect-error For some reason, the types not work on client components.
+  // Although docs say that this function can be used in client components.
+  // See: https://docs.astro.build/en/guides/view-transitions/#trigger-navigation
+  import { navigate } from "astro:transitions/client";
+
   import { Languages } from "lucide-svelte";
-
-  import { Select } from "@components/ui/svelte";
-  import { type Locale, DEFAULT_LOCALE } from "@modules/i18n";
-
-  import { cn } from "@app/lib/utils/shadcn";
-  import { toggleScroll } from "@lib/client/scroll";
   import type { Selected } from "bits-ui";
+
+  import { cn } from "@lib/utils/shadcn";
+  import { Select } from "@components/ui/svelte";
+  import { toggleScroll } from "@lib/client/scroll";
+  import { type Locale, DEFAULT_LOCALE } from "@modules/i18n";
 
   // The languages that are available in the app
   const languages = {
@@ -39,7 +43,7 @@
       return;
     }
 
-    window.location.href = makeLocalePath(value.value as Locale);
+    navigate(makeLocalePath(value.value as Locale));
   }
 </script>
 
@@ -59,20 +63,20 @@
   {portal}
   selected={{ value: currentLocale, label: languages[currentLocale].label }}
   preventScroll={false}
+  {onSelectedChange}
   onOpenChange={(value) => {
     open = value;
     toggleScroll(!value);
   }}
-  {onSelectedChange}
 >
   <Select.Trigger
     name={languages[currentLocale].buttonName}
     class={cn("w-fit text-foreground/80", $$props.class)}
   >
-    <Languages class="mb-1 mr-0.5 size-[1.2em]" />
+    <Languages class="mr-0.5 size-[1.2em] md:mb-1" />
     <Select.Value
       placeholder="Language"
-      class="font-medium tracking-wide"
+      class="font-semibold tracking-wide"
     />
   </Select.Trigger>
   <Select.Content>
@@ -80,7 +84,8 @@
       {@const [locale, language] = entry}
       <Select.Item
         value={locale}
-        label={language.label}>{language.name}</Select.Item
+        label={language.label}
+        class="font-medium">{language.name}</Select.Item
       >
     {/each}
   </Select.Content>

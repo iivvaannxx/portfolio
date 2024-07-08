@@ -17,7 +17,7 @@ const t = translations.sections.hero;
 
 <section class="mx-auto max-w-screen-lg content-center px-4 xs:px-6">
   <header class="relative">
-    <h1 class="animate-fade-up text-balance font-header">
+    <h1 class="text-balance font-header">
       <span
         class="block text-3xl font-extrabold tracking-wide opacity-90 xs:text-4xl"
         >{t.greeting}</span
@@ -25,7 +25,7 @@ const t = translations.sections.hero;
     </h1>
 
     <p
-      class="mt-4 block min-h-[2lh] animate-fade-up text-lg font-bold text-foreground/50 animate-delay-500 xs:text-2xl"
+      class="mt-4 block min-h-[2lh] text-lg font-bold text-foreground/50 xs:text-2xl"
       set:html={t.headline.content}
     />
 
@@ -39,13 +39,13 @@ const t = translations.sections.hero;
 
   <div>
     <p
-      class="mt-4 max-w-[58ch] animate-fade-up text-balance text-left text-base text-foreground/65 animate-delay-700 xs:text-lg"
+      class="mt-4 max-w-[58ch] text-balance text-left text-base text-foreground/65 xs:text-lg"
       set:html={t.introduction}
       data-hero-p
     />
 
     <div
-      class="mt-8 flex animate-fade-up flex-col flex-wrap items-center gap-y-4 animate-delay-700 xs:flex-row [@media(width>=335px)]:flex-row"
+      class="mt-8 flex flex-col flex-wrap items-center gap-y-4 xs:flex-row [@media(width>=335px)]:flex-row"
     >
       <Badge
         hoverGlow

@@ -24,7 +24,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@react-three/drei": "^9.107",
     "@react-three/fiber": "^8.16.8",
-    "astro": "4.11.0",
+    "astro": "4.11.5",
     "astro-icon": "^1.1.0",
     "balance-text": "^3.3.1",
     "bits-ui": "^0.21.10",
@@ -53,10 +53,10 @@
     "vaul": "^0.9.1"
   },
   "devDependencies": {
-    "@astrojs/check": "0.7.0",
+    "@astrojs/check": "0.8.0",
     "@astrojs/sitemap": "3.1.6",
     "@astrojs/tailwind": "^5.1.0",
-    "@astrojs/ts-plugin": "^1.8.0",
+    "@astrojs/ts-plugin": "^1.9.0",
     "@cloudflare/workers-types": "^4.20240620.0",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",

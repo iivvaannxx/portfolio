@@ -1,5 +1,5 @@
 ---
-import { ObservedSection } from "@app/layouts";
+import { Section } from "@app/layouts";
 import { getTranslations } from "@modules/i18n";
 import { Timeline, TimelineEntry } from "@components/timeline";
 
@@ -11,9 +11,9 @@ const translations = getTranslations(locale);
 const t = translations.sections.experience;
 ---
 
-<ObservedSection
+<Section
   id={t.id}
-  class="mx-auto max-w-screen-lg animate-fade px-4 animate-delay-1000 xs:px-6"
+  class="z-0 mx-auto max-w-screen-lg px-4 xs:px-6"
   aria-label={t.name}
   title={t.title}
   order={1}
@@ -40,4 +40,4 @@ const t = translations.sections.experience;
       }
     </ul>
   </Timeline>
-</ObservedSection>
+</Section>

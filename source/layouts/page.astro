@@ -3,21 +3,35 @@ import "@app/styles/index.css";
 import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
 
-import { cn } from "@lib/utils/shadcn";
+import { ViewTransitions } from "astro:transitions";
 import { Icon } from "astro-icon/components";
 
-import ScrollToTop from "@app/components/scroll-to-top.svelte";
-import { getTranslations } from "@app/modules/i18n";
+import { NoScript } from "@components/base";
+import ScrollToTop from "@components/scroll-to-top.svelte";
 
-type Props = {
+import { cn } from "@lib/utils/shadcn";
+import { getTranslations } from "@modules/i18n";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"body"> & {
   title?: string;
   description?: string;
-  bodyClass?: string;
+
   withScrollToTop?: boolean;
+  withViewTransitions?: boolean;
+  withNoScriptFallback?: boolean;
 };
 
-const { title, description, bodyClass, withScrollToTop = false } = Astro.props;
 const isDev = import.meta.env.DEV;
+const {
+  title,
+  description,
+  withScrollToTop = false,
+  withViewTransitions = false,
+  withNoScriptFallback = false,
+  class: clazz,
+  ...props
+} = Astro.props;
 
 const { locale } = Astro.locals;
 const t = getTranslations(locale);
@@ -86,8 +100,11 @@ const t = getTranslations(locale);
 
     <script
       is:inline
+      data-astro-rerun
       src="/polyfills.js"
     ></script>
+
+    {withViewTransitions && <ViewTransitions />}
 
     <slot name="head" />
 
@@ -95,9 +112,10 @@ const t = getTranslations(locale);
   </head>
 
   <body
+    {...props}
     class={cn(
       "relative overflow-x-scroll fold:overflow-x-clip font-sans antialiased",
-      bodyClass,
+      clazz,
       isDev && "debug-screens",
     )}
   >
@@ -123,6 +141,8 @@ const t = getTranslations(locale);
         )
       }
     </div>
+
+    {withNoScriptFallback && <NoScript />}
   </body>
 </html>
 

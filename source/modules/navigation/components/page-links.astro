@@ -16,32 +16,6 @@ const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections;
 ---
 
-<script>
-  import { getLenisInstance } from "@lib/client/scroll";
-
-  const lenis = getLenisInstance();
-  const links = [
-    ...(document.querySelectorAll("a[data-nav-link]") ?? []),
-    ...(document.querySelectorAll("a[data-navmenu-link]") ?? []),
-  ];
-
-  /* links.forEach(
-    (link) => {
-      // Make lenis scroll to the target of the link.
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        const target = link.href.substring(link.href.indexOf("#"));
-        lenis?.scrollTo(target, {
-          duration: 1.5,
-          offset: -100,
-        });
-      });
-    },
-    { passive: false },
-  ); */
-</script>
-
 {
   variant === "header" ? (
     <nav {...props}>
@@ -62,8 +36,6 @@ const t = translations.sections;
           );
         })}
       </ul>
-
-      <slot />
     </nav>
   ) : (
     <nav {...props}>
@@ -73,7 +45,6 @@ const t = translations.sections;
           return (
             <li class="w-full border-b pb-4 text-center last-of-type:border-none">
               <Link
-                data-navmenu-link
                 {href}
                 label={name}
                 onclick={`lenisScrollTo('${href}', event)`}
@@ -89,8 +60,6 @@ const t = translations.sections;
           );
         })}
       </ul>
-
-      <slot />
     </nav>
   )
 }
@@ -102,10 +71,6 @@ const t = translations.sections;
 
   [data-nav-link].active {
     color: theme("colors.foreground");
-  }
-
-  [data-navmenu-link].active {
-    color: theme("colors.primary.DEFAULT");
   }
 
   ul:not(:has([data-nav-link].active)) [data-nav-link] {

@@ -1,4 +1,5 @@
 import { clientEnglish, english } from "../translations/english";
+import { clientSpanish, spanish } from "../translations/spanish";
 // import { catalan } from "../translations/catalan";
 // import { spanish } from "../translations/spanish";
 
@@ -24,7 +25,7 @@ export const TRANSLATIONS = {
 
   // TODO: Finish translations.
   ca: english,
-  es: english,
+  es: spanish,
 } as const;
 
 export const CLIENT_TRANSLATIONS = {
@@ -32,7 +33,7 @@ export const CLIENT_TRANSLATIONS = {
 
   // TODO: Finish translations.
   ca: clientEnglish,
-  es: clientEnglish,
+  es: clientSpanish,
 };
 
 /** The formatting options passed to the Intl API. */

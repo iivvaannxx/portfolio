@@ -66,6 +66,12 @@ export function toggleScroll(enable: boolean) {
   }
 }
 
+/**
+ * Scrolls to the specified target element using the Lenis library.
+ *
+ * @param target - The target element to scroll to.
+ * @param event - Optional event object to prevent the default behavior.
+ */
 export function lenisScrollTo(target: string, event?: Event) {
   const lenis = getLenisInstance();
 

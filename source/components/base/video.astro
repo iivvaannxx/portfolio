@@ -72,30 +72,33 @@ const optionalAttrs = {
     video.addEventListener("waiting", showLoader);
   }
 
-  // Autoplay videos when they are in view.
-  const videos = document.querySelectorAll("video[data-play-on-view]");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!(entry.target instanceof HTMLVideoElement)) {
-          return;
-        }
+  // To re-run on View Transitions.
+  document.addEventListener("astro:page-load", () => {
+    // Autoplay videos when they are in view.
+    const videos = document.querySelectorAll("video[data-play-on-view]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!(entry.target instanceof HTMLVideoElement)) {
+            return;
+          }
 
-        if (entry.isIntersecting) {
-          entry.target.play();
-        } else {
-          entry.target.pause();
-        }
-      });
-    },
-    {
-      threshold: 0.8,
-    },
-  );
+          if (entry.isIntersecting) {
+            entry.target.play();
+          } else {
+            entry.target.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.8,
+      },
+    );
 
-  videos.forEach((video) => {
-    observer.observe(video);
-    bindLoader(video);
+    videos.forEach((video) => {
+      observer.observe(video);
+      bindLoader(video);
+    });
   });
 </script>
 

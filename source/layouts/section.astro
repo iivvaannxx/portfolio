@@ -12,6 +12,12 @@ const { order = 1, title, ...props } = Astro.props;
 ---
 
 <script>
+  type Section = {
+    order: number;
+    target: HTMLElement;
+    visible: boolean;
+  };
+
   function compareSections(a: Element, b: Element) {
     const aOrder = +a.getAttribute("data-observed-section")!;
     const bOrder = +b.getAttribute("data-observed-section")!;
@@ -41,57 +47,58 @@ const { order = 1, title, ...props } = Astro.props;
     return latest;
   }
 
-  type Section = {
-    order: number;
-    target: HTMLElement;
-    visible: boolean;
-  };
+  // Add the "active" class to the links that point to the currently visible section.
+  function updatePageLinks(currentlyVisibleSection: Section) {
+    const documentLinks = document.querySelectorAll("a[href^='#']");
 
-  const documentLinks = document.querySelectorAll("nav a[href^='#']");
-  const sections = [...document.querySelectorAll("[data-observed-section]")];
-  sections.sort(compareSections);
-
-  const sectionStates: Record<string, Section> = {};
-  let lastVisibleSection: Section;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      // Update the state of each section.
-      for (const entry of entries) {
-        // The ID is an enforced prop, so we can safely assume it exists.
-        const id = entry.target.id;
-        sectionStates[id] = getEntryInfo(entry);
-      }
-
-      // Find the latest visible section.
-      const newLast =
-        getLatestVisibleSection(Object.values(sectionStates)) ??
-        lastVisibleSection;
-
-      // If there's a new section in view, update the corresponding links.
-      if (newLast !== lastVisibleSection) {
-        lastVisibleSection = newLast;
-
-        for (const link of documentLinks) {
-          const [, target] = link.href.split("#");
-          link.classList.toggle(
-            "active",
-            target === lastVisibleSection.target.id,
-          );
-        }
-      }
-    },
-    {
-      threshold: 0.5,
-      rootMargin: getComputedStyle(document.documentElement).getPropertyValue(
-        "--header-height",
-      ),
-    },
-  );
-
-  for (const section of sections) {
-    observer.observe(section);
+    for (const link of documentLinks) {
+      const [, target] = link.href.split("#");
+      link.classList.toggle(
+        "active",
+        target === currentlyVisibleSection.target.id,
+      );
+    }
   }
+
+  document.addEventListener("astro:page-load", () => {
+    const sections = [...document.querySelectorAll("[data-observed-section]")];
+    sections.sort(compareSections);
+
+    const sectionStates: Record<string, Section> = {};
+    let lastVisibleSection: Section;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Update the state of each section.
+        for (const entry of entries) {
+          // The ID is an enforced prop, so we can safely assume it exists.
+          const id = entry.target.id;
+          sectionStates[id] = getEntryInfo(entry);
+        }
+
+        // Find the latest visible section.
+        const newLast =
+          getLatestVisibleSection(Object.values(sectionStates)) ??
+          lastVisibleSection;
+
+        // If there's a new section in view, update the corresponding links.
+        if (newLast !== lastVisibleSection) {
+          lastVisibleSection = newLast;
+          updatePageLinks(lastVisibleSection);
+        }
+      },
+      {
+        threshold: 0.5,
+        rootMargin: getComputedStyle(document.documentElement).getPropertyValue(
+          "--header-height",
+        ),
+      },
+    );
+
+    for (const section of sections) {
+      observer.observe(section);
+    }
+  });
 </script>
 
 <section

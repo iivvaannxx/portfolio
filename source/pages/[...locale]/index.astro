@@ -4,10 +4,7 @@ import type { GetStaticPaths } from "astro";
 import { Page } from "@app/layouts";
 import { getLocalizedStaticPaths } from "@modules/i18n";
 
-/* import { Canvas } from "@components/experience/canvas";
- */ import ParticlesCanvas from "@components/particles/particle-canvas.astro";
-
-import NoScript from "@components/noscript.astro";
+import ParticlesCanvas from "@components/particles/particle-canvas.astro";
 
 import Header from "@app/layouts/header.astro";
 import Work from "@app/sections/work/content.astro";
@@ -18,16 +15,16 @@ import About from "@app/sections/about/content.astro";
 import { SkillSprites } from "@app/sections/skills";
 import Footer from "@app/layouts/footer.astro";
 import Hero from "@app/sections/hero/content.astro";
-import { Button } from "@app/components/ui/react";
+import { fade, slide } from "astro:transitions";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 ---
 
-<Fragment slot="head">
-  <script>
-    import { initLenis } from "@lib/client/scroll";
-    import tippy from "tippy.js";
+<script>
+  import { initLenis } from "@lib/client/scroll";
+  import tippy from "tippy.js";
 
+  document.addEventListener("astro:page-load", () => {
     // Enable smooth-scrolling and hydrate tippy tooltips.
     initLenis();
     tippy("[data-tippy-content]", {
@@ -36,28 +33,24 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
       animation: "scale",
       inertia: true,
     });
-  </script>
-</Fragment>
+  });
+</script>
 
 <Page
-  bodyClass="relative"
+  class="relative"
   withScrollToTop
+  withNoScriptFallback
 >
-  <!--   <Canvas client:idle />
- -->
-  <Header
-    class="animate-fade-down overflow-x-auto animate-delay-0 animate-duration-500"
-  />
+  <Header class="overflow-x-auto" />
 
   <main
     vaul-drawer-wrapper
-    class="animate-fade-in space-y-36 pt-32 opacity-0 animate-delay-300 animate-duration-300 lg:space-y-48"
+    transition:animate={slide({ duration: "1s" })}
+    class="z-0 space-y-36 pt-32 lg:space-y-48"
   >
     <Hero />
     <Work />
     <Projects />
-
-    <!-- <Skills />  -->
     <About />
   </main>
 
@@ -65,34 +58,21 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
   <Footer />
 
   <div
-    data-pattern
-    class="pointer-events-none absolute inset-0 -z-50 m-auto size-full"
-  >
-  </div>
-
-  <div
     data-particles
     class="pointer-events-none absolute inset-0 top-0 -z-50 mx-auto w-full max-w-screen-lg"
   >
     <ParticlesCanvas quantity={80} />
   </div>
-
-  <NoScript />
 </Page>
 
 <style>
-  [data-pattern] {
-    /* Pattern from: https://github.com/thevrus/vrus.vercel.app */
-    background-image: url(/pattern.svg);
+  :global(body) {
+    background: url(/pattern.svg) theme("colors.background");
     background-position-y: top;
     background-position-x: 40%;
 
     background-repeat: no-repeat;
     background-blend-mode: difference;
-    overflow-y: visible;
-    overflow-x: clip;
-
-    opacity: 0.6;
   }
 
   [data-particles] {
@@ -108,7 +88,7 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
   }
 
   @media screen(lg) {
-    [data-pattern] {
+    :global(body) {
       background-position-x: 50%;
     }
 
