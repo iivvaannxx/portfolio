@@ -27,8 +27,6 @@ export const english = {
 
   sections: {
     hero: {
-      id: "home",
-
       headline: {
         content: `I'm a ${strong("software")} developer.`,
         // words: ["game", "web", "software"],

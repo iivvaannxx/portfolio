@@ -12,7 +12,7 @@ import Footer from "@app/layouts/footer.astro";
 
 import { Work, Projects, About, Hero } from "@app/sections";
 import { fade, slide } from "astro:transitions";
-import { Link } from "@app/components/base";
+import ScrollToTop from "@app/components/scroll-to-top.svelte";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
@@ -57,21 +57,20 @@ const t = getTranslations(locale);
   <Footer />
 
   <div class="pointer-events-none fixed top-0 z-50 h-dvh w-dvw">
-    <Link
-      href={`#${t.sections.hero.id}`}
-      label={t.misc.scrollToTop}
-      class="pointer-events-auto absolute -bottom-32 right-0 m-6 inline-flex aspect-square size-12 items-center justify-center whitespace-nowrap rounded-full border border-input bg-background p-0 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:m-12 xl:size-16 xl:p-2"
-      onclick={`window.lenisScrollTo('#${t.sections.hero.id}', event, -200)`}
+    <ScrollToTop
+      name={t.misc.scrollToTop}
+      class="pointer-events-auto absolute -bottom-32 right-0 m-6 aspect-square size-12 rounded-full lg:m-12 xl:size-16 xl:p-2"
       data-tippy-content={t.misc.scrollToTop}
       data-tippy-placement="top"
       data-scroll-to-top
+      client:visible
     >
       <Icon
         class="aspect-square size-6 xl:size-8"
         name="lucide:arrow-up"
         is:inline
       />
-    </Link>
+    </ScrollToTop>
   </div>
 
   <div
