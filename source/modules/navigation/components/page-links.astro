@@ -6,63 +6,57 @@ import { getTranslations } from "@modules/i18n";
 
 import { sections } from "../lib/sections";
 import { Icon } from "astro-icon/components";
+import { cva } from "class-variance-authority";
 
 export type Props = HTMLAttributes<"nav"> & {
   variant?: "header" | "menu";
 };
+
+const variants = cva("flex items-center font-medium text-sm", {
+  variants: {
+    list: {
+      header: "gap-8",
+      menu: "w-max flex-col gap-6",
+    },
+
+    element: {
+      header: "inline-flex items-center justify-center gap-x-2",
+      menu: "inline-flex items-center justify-center gap-x-4 text-xl",
+    },
+  },
+});
 
 const { variant = "header", ...props } = Astro.props;
 const translations = getTranslations(Astro.locals.locale);
 const t = translations.sections;
 ---
 
-{
-  variant === "header" ? (
-    <nav {...props}>
-      <ul class="flex items-center gap-6 text-sm font-medium">
-        {sections.map(({ name }) => {
-          const href = `#${t[name].id}`;
-          return (
-            <li>
-              <Link
-                data-nav-link
-                {href}
-                onclick={`window.lenisScrollTo('${href}', event)`}
-                label={name}
-              >
-                {t[name].name}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  ) : (
-    <nav {...props}>
-      <ul class="flex w-max flex-col items-center gap-6 text-sm font-medium">
-        {sections.map(({ name, icon }) => {
-          const href = `#${t[name].id}`;
-          return (
-            <li class="w-full border-b pb-4 text-center last-of-type:border-none">
-              <Link
-                {href}
-                label={name}
-                onclick={`lenisScrollTo('${href}', event)`}
-                class="inline-flex items-center justify-center gap-x-4 text-xl"
-              >
-                <Icon
-                  name={icon}
-                  is:inline
-                />
-                <span>{t[name].name}</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  )
-}
+<nav {...props}>
+  <ul class={variants({ list: variant })}>
+    {
+      sections.map(({ name, icon }) => {
+        const href = `#${t[name].id}`;
+        return (
+          <li>
+            <Link
+              {href}
+              label={name}
+              class={variants({ element: variant })}
+              onclick={`window.lenisScrollTo('${href}', event)`}
+              data-nav-link
+            >
+              <Icon
+                name={icon}
+                is:inline
+              />
+              <span>{t[name].name}</span>
+            </Link>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
 
 <style is:global>
   [data-nav-link] {

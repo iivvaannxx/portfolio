@@ -7,14 +7,9 @@ import { getLocalizedStaticPaths } from "@modules/i18n";
 import ParticlesCanvas from "@components/particles/particle-canvas.astro";
 
 import Header from "@app/layouts/header.astro";
-import Work from "@app/sections/work/content.astro";
-import Projects from "@app/sections/projects/content.astro";
-import Skills from "@app/sections/skills/content.astro";
-import About from "@app/sections/about/content.astro";
-
-import { SkillSprites } from "@app/sections/skills";
 import Footer from "@app/layouts/footer.astro";
-import Hero from "@app/sections/hero/content.astro";
+
+import { Work, Projects, About, Hero } from "@app/sections";
 import { fade, slide } from "astro:transitions";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
@@ -40,6 +35,7 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
   class="relative"
   withScrollToTop
   withNoScriptFallback
+  withViewTransitions
 >
   <Header class="overflow-x-auto" />
 
@@ -54,7 +50,6 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
     <About />
   </main>
 
-  <SkillSprites />
   <Footer />
 
   <div
@@ -67,7 +62,7 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
 <style>
   :global(body) {
-    background: url(/pattern.svg) theme("colors.background");
+    background: url("/pattern.svg") theme("colors.background");
     background-position-y: top;
     background-position-x: 40%;
 

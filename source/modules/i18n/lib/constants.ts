@@ -25,7 +25,7 @@ export const TRANSLATIONS = {
 
   // TODO: Finish translations.
   ca: english,
-  es: spanish,
+  es: english,
 } as const;
 
 export const CLIENT_TRANSLATIONS = {

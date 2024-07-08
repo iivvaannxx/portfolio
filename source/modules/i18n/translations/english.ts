@@ -155,11 +155,7 @@ export const english = {
     skills: {
       name: "Skills",
       id: "skills",
-
-      known: {
-        "astro": [],
-        "c++": ["This is a test note"],
-      },
+      title: "Which technologies can I use?",
     },
 
     about: {

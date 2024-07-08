@@ -17,7 +17,7 @@
     "**/Thumbs.db": true,
     "**/.direnv": true,
     "**/node_modules": true,
-    "**/.astro": false
+    "**/.astro": true
   },
 
   "editor.formatOnSave": true,

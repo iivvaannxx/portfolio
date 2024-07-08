@@ -51,14 +51,14 @@ const currentDescription = current.description(locale);
     data-current-project
     class="relative"
   >
-    <div class="grid overflow-hidden">
+    <div class="pointer-events-none grid overflow-hidden">
       <div class="overflow-hidden *:my-12">
         <ProjectCard
           name={current.name(locale)}
           headline={current.headline(locale)}
           relatedSkills={current.relatedSkills}
           preview={projects[0].preview}
-          class="relative -z-10 sm:mx-4 lg:mt-12"
+          class="pointer-events-auto relative -z-10 sm:mx-4 lg:mt-12"
         >
           <Fragment slot="description">
             {
