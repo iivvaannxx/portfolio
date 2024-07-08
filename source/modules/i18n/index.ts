@@ -2,7 +2,11 @@ export { default as RealTime } from "./components/real-time.svelte";
 export { default as TimeDiff } from "./components/time-diff.svelte";
 export { default as LanguageSelector } from "./components/language-selector.svelte";
 
-export { DEFAULT_LOCALE, MY_TIMEZONE } from "./lib/constants";
+export {
+  DEFAULT_LOCALE,
+  MY_TIMEZONE,
+  SUPPORTED_LOCALES,
+} from "./lib/constants";
 export {
   getTranslations,
   getTranslation,

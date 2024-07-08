@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 
 import { Link } from "@components/base";
-import { LanguageSelector, getTranslations } from "@modules/i18n";
+import { getTranslations } from "@modules/i18n";
 
 import { sections } from "../lib/sections";
 import { Icon } from "astro-icon/components";
@@ -17,7 +17,7 @@ const t = translations.sections;
 ---
 
 <script>
-  /* import { getLenisInstance } from "@lib/client/scroll";
+  import { getLenisInstance } from "@lib/client/scroll";
 
   const lenis = getLenisInstance();
   const links = [
@@ -25,15 +25,7 @@ const t = translations.sections;
     ...(document.querySelectorAll("a[data-navmenu-link]") ?? []),
   ];
 
-  console.log(links);
-
-  setInterval(() => {
-    console.log([
-      ...(document.querySelectorAll("a[data-nav-link]") ?? []),
-      ...(document.querySelectorAll("a[data-navmenu-link]") ?? []),
-    ]);
-  }, 1000);
-  links.forEach(
+  /* links.forEach(
     (link) => {
       // Make lenis scroll to the target of the link.
       link.addEventListener("click", (event) => {
@@ -54,51 +46,51 @@ const t = translations.sections;
   variant === "header" ? (
     <nav {...props}>
       <ul class="flex items-center gap-6 text-sm font-medium">
-        {sections.map(({ name }) => (
-          <li>
-            <Link
-              data-nav-link
-              isPageLink
-              href={`#${t[name].id}`}
-              label={name}
-            >
-              {t[name].name}
-            </Link>
-          </li>
-        ))}
+        {sections.map(({ name }) => {
+          const href = `#${t[name].id}`;
+          return (
+            <li>
+              <Link
+                data-nav-link
+                {href}
+                onclick={`window.lenisScrollTo('${href}', event)`}
+                label={name}
+              >
+                {t[name].name}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
 
-      <LanguageSelector
-        currentLocale={Astro.locals.locale}
-        client:load
-      />
+      <slot />
     </nav>
   ) : (
     <nav {...props}>
       <ul class="flex w-max flex-col items-center gap-6 text-sm font-medium">
-        {sections.map(({ name, icon }) => (
-          <li class="w-full border-b pb-4 text-center last-of-type:border-none">
-            <Link
-              data-navmenu-link
-              href={`#${t[name].id}`}
-              label={name}
-              class="inline-flex items-center justify-center gap-x-4 text-xl"
-            >
-              <Icon
-                name={icon}
-                is:inline
-              />
-              <span>{t[name].name}</span>
-            </Link>
-          </li>
-        ))}
+        {sections.map(({ name, icon }) => {
+          const href = `#${t[name].id}`;
+          return (
+            <li class="w-full border-b pb-4 text-center last-of-type:border-none">
+              <Link
+                data-navmenu-link
+                {href}
+                label={name}
+                onclick={`lenisScrollTo('${href}', event)`}
+                class="inline-flex items-center justify-center gap-x-4 text-xl"
+              >
+                <Icon
+                  name={icon}
+                  is:inline
+                />
+                <span>{t[name].name}</span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
 
-      <LanguageSelector
-        currentLocale={Astro.locals.locale}
-        class="hidden"
-        client:load
-      />
+      <slot />
     </nav>
   )
 }

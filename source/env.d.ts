@@ -14,6 +14,6 @@ declare global {
   }
 
   interface Window {
-    lenis: Lenis;
+    lenisScrollTo: (target: string, event?: Event) => void;
   }
 }

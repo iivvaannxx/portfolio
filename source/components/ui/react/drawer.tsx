@@ -42,7 +42,7 @@ const DrawerContent = React.forwardRef<
       ref={ref}
       data-scroll-thin
       className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto max-h-[80vh] flex-col overflow-y-auto rounded-t-[10px] border bg-background svh:!max-h-[80svh]",
+        "fixed inset-x-0.5 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
         className,
       )}
       {...props}

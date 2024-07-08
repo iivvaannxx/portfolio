@@ -4,8 +4,8 @@ import type { GetStaticPaths } from "astro";
 import { Page } from "@app/layouts";
 import { getLocalizedStaticPaths } from "@modules/i18n";
 
-import { Canvas } from "@components/experience/canvas";
-import ParticlesCanvas from "@components/particles/particle-canvas.astro";
+/* import { Canvas } from "@components/experience/canvas";
+ */ import ParticlesCanvas from "@components/particles/particle-canvas.astro";
 
 import NoScript from "@components/noscript.astro";
 
@@ -43,8 +43,8 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
   bodyClass="relative"
   withScrollToTop
 >
-  <Canvas client:idle />
-
+  <!--   <Canvas client:idle />
+ -->
   <Header
     class="animate-fade-down overflow-x-auto animate-delay-0 animate-duration-500"
   />
@@ -65,8 +65,8 @@ export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
   <Footer />
 
   <div
-    class="pointer-events-none absolute inset-0 -z-50 m-auto size-full"
     data-pattern
+    class="pointer-events-none absolute inset-0 -z-50 m-auto size-full"
   >
   </div>
 

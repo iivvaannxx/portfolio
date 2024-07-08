@@ -37,7 +37,7 @@ const tippyProps = Object.entries(withTooltip).reduce(
 );
 
 const optionalAttrs = {
-  ...(targetBlank && { target: "_blank" }),
+  ...(targetBlank && { target: "_blank", rel: "noopener noreferrer" }),
   ...tippyProps,
 };
 ---
@@ -47,7 +47,6 @@ const optionalAttrs = {
   {...optionalAttrs}
   {href}
   aria-label={ariaLabel}
-  rel="noopener noreferrer"
   class={cn("group", clazz)}
 >
   {

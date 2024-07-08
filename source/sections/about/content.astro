@@ -1,5 +1,4 @@
 ---
-import { CharacterView } from "@components/experience/views/character";
 import ObservedSection from "@app/layouts/observed-section.astro";
 
 import { ContactDialog } from "./components/contact-dialog";
@@ -330,10 +329,10 @@ const t = translations.sections.about;
         "[@media(width>=600px)]:row-start-5",
       ]}
     >
-      <CharacterView
+      <!-- <CharacterView
         className="pointer-events-none absolute inset-0 -top-4 size-full xs:-top-8"
         client:visible={{ rootMargin: "50%" }}
-      />
+      /> -->
 
       <div
         class:list={[

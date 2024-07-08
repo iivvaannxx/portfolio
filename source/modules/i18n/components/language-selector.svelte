@@ -45,6 +45,9 @@
 
 <script lang="ts">
   export let currentLocale: Locale = DEFAULT_LOCALE;
+  export let open = false;
+  export let portal = "body";
+
   const entries = Object.entries(languages) as [
     Locale,
     { label: string; name: string },
@@ -52,9 +55,12 @@
 </script>
 
 <Select.Root
+  {open}
+  {portal}
   selected={{ value: currentLocale, label: languages[currentLocale].label }}
   preventScroll={false}
   onOpenChange={(value) => {
+    open = value;
     toggleScroll(!value);
   }}
   {onSelectedChange}

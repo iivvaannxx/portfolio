@@ -32,7 +32,13 @@ export function initLenis(options: LenisOptions = {}) {
     animationFrame = requestAnimationFrame(lenisRaf);
   }
 
-  window.lenis = lenis;
+  // This is a bit hacky but is the best I could come up.
+  // Because not all links are mounted on the DOM when the Lenis
+  // instance is created, we can't bind click listeners to them upon load.
+  // So instead we expose this function and we inline it in the HTML onclick attribute.
+  // See: https://github.com/darkroomengineering/lenis?tab=readme-ov-file#anchor-links
+
+  window.lenisScrollTo = lenisScrollTo;
   animationFrame = requestAnimationFrame(lenisRaf);
 
   return lenis;
@@ -57,6 +63,31 @@ export function toggleScroll(enable: boolean) {
     lenis?.start();
   } else {
     lenis?.stop();
+  }
+}
+
+export function lenisScrollTo(target: string, event?: Event) {
+  const lenis = getLenisInstance();
+
+  // Optional event to prevent the default behavior.
+  // This is used for inlined onclick events.
+  event?.preventDefault();
+
+  if (lenis) {
+    let stoppedProps = {};
+
+    if (lenis.isStopped) {
+      stoppedProps = {
+        lock: true,
+        force: true,
+      };
+    }
+
+    lenis.scrollTo(target, {
+      duration: 1.5,
+      offset: -100,
+      ...stoppedProps,
+    });
   }
 }
 

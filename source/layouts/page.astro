@@ -8,7 +8,6 @@ import { Icon } from "astro-icon/components";
 
 import ScrollToTop from "@app/components/scroll-to-top.svelte";
 import { getTranslations } from "@app/modules/i18n";
-import { NavLinks } from "@app/modules/navigation";
 
 type Props = {
   title?: string;
@@ -91,12 +90,13 @@ const t = getTranslations(locale);
     ></script>
 
     <slot name="head" />
+
     <title>{title}</title>
   </head>
 
   <body
     class={cn(
-      "relative overflow-x-scroll fold:overflow-x-clip bg-background font-sans text-foreground antialiased",
+      "relative overflow-x-scroll fold:overflow-x-clip font-sans antialiased",
       bodyClass,
       isDev && "debug-screens",
     )}

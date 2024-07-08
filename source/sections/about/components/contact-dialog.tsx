@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type HTMLAttributes } from "react";
 import { Mail, X } from "lucide-react";
 import {
   Dialog,
@@ -17,7 +17,7 @@ import { useMediaQuery } from "@lib/utils/hooks/use-media-query";
 
 import { ContactForm } from "@modules/contact";
 
-type Props = {};
+type Props = HTMLAttributes<HTMLButtonElement & {}>;
 
 export function ContactDialog({ ...props }: Props) {
   const [isOpen, setOpen] = useState(false);
@@ -40,11 +40,13 @@ export function ContactDialog({ ...props }: Props) {
       }}
     >
       <DialogTrigger
+        {...props}
         className={cn([
           "relative inline-flex h-10 w-full items-center justify-center gap-4 whitespace-nowrap rounded-md bg-primary px-6 text-base font-bold text-primary-foreground transition will-change-transform",
           "xs:h-12",
           "hover:scale-105",
           "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-ring",
+          props.className,
         ])}
       >
         <div className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-primary/70 to-primary opacity-75 blur"></div>
