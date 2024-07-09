@@ -52,7 +52,9 @@ export const email = {
 export const bento = {
   href: "https://bento.me/ivanporto",
   i18nKey: "bento",
-  iconKey: "lucide:layout-dashboard",
+
+  // Unfortunately, the icon is not available in the lucide set.
+  iconKey: "simple-icons:bento",
 } as const satisfies SocialData;
 
 /** My Discord handle. */
@@ -64,21 +66,11 @@ export const discord = {
   iconKey: "tabler:brand-discord",
 } as const satisfies SocialData;
 
-/** My Threads profile. */
-export const threads = {
-  href: "https://threads.net/@iivanportoo",
-  i18nKey: "threads",
-
-  // Unfortunately, the icon is not available in the lucide set.
-  iconKey: "tabler:brand-threads",
-} as const satisfies SocialData;
-
 /** All the socials I provide a link to. */
 export const socials = [
   linkedIn,
   github,
   xTwitter,
-  threads,
   discord,
   email,
   resume,

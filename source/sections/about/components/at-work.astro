@@ -1,0 +1,61 @@
+---
+import { Picture } from "astro:assets";
+import type { HTMLAttributes } from "astro/types";
+
+import { getTranslations } from "@modules/i18n";
+
+import laptop from "../assets/emojis/laptop.png";
+import approach from "../assets/images/approach.png";
+
+type Props = HTMLAttributes<"article">;
+
+const { locale } = Astro.locals;
+const translations = getTranslations(locale);
+const t = translations.sections.about.bento.atWork;
+---
+
+<article {...Astro.props}>
+  <header
+    class="flex items-center gap-4 text-balance font-header text-xl font-bold"
+  >
+    <Picture
+      src={laptop}
+      alt={t.iconAlt}
+      formats={["avif", "webp", "png"]}
+      class="mt-2 size-[1.3em]"
+    />
+    <h3 class="mt-3 capitalize">{t.title}</h3>
+  </header>
+  <p
+    class="mt-8 text-pretty text-base text-foreground/80"
+    set:html={t.text[0]}
+  />
+
+  <!-- I like to automate things, sometimes when im a bit too lazy to do something, my current career focus. -->
+  <p
+    class="mb-64 mt-6 text-pretty text-base text-foreground/80"
+    set:html={t.text[1]}
+  />
+
+  <div class="absolute inset-x-0 -bottom-32 w-full">
+    <Picture
+      src={approach}
+      alt={t.approachAlt}
+      formats={["avif", "webp", "png"]}
+      class="opacity-50"
+    />
+
+    <div
+      class="absolute inset-x-0 bottom-1/4 z-10 h-1/4 w-full -translate-y-1/4"
+      data-mask
+    >
+    </div>
+  </div>
+</article>
+
+<style>
+  [data-mask] {
+    background-color: theme("colors.background");
+    mask-image: linear-gradient(to bottom, transparent 0%, black 110%);
+  }
+</style>

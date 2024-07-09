@@ -6,6 +6,7 @@
   import {
     type Locale,
     DEFAULT_LOCALE,
+    MY_TIMEZONE,
     RealTime,
     TimeDiff,
   } from "@modules/i18n";
@@ -36,24 +37,24 @@
   >
     <time
       datetime={`${datetime.slice(0, 16)}Z`}
-      class="whitespace-nowrap text-3xl font-semibold tabular-nums"
+      class="flex items-center gap-x-3 whitespace-nowrap text-2xl font-semibold tabular-nums"
     >
       <span class="font-black capitalize text-primary">{time.join("")}</span>
-      <span class="text-lg uppercase text-foreground/80">{timezone}</span>
-      <span
-        class="mt-1 block text-center text-base font-semibold text-foreground/60"
+      <span class="mt-2 text-base uppercase text-foreground/80">{timezone}</span
+      >
+
+      <span class="text-muted">{"|"}</span>
+      <span class="mt-1 text-center text-base font-semibold text-foreground/60"
         >{date}</span
       >
     </time>
 
     <TimeDiff
-      timezoneA="Europe/Madrid"
+      timezoneA={MY_TIMEZONE}
       timezoneB="user"
       let:formattedTimeDiff
     >
-      <p
-        class="my-3 whitespace-nowrap text-sm font-semibold leading-6 text-foreground/80"
-      >
+      <p class="mt-4 whitespace-nowrap text-sm font-medium text-foreground/80">
         {formattedTimeDiff}
       </p>
     </TimeDiff>

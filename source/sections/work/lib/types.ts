@@ -1,5 +1,5 @@
 import type { TranslationHandler } from "@modules/i18n";
-import type { SkillName } from "@app/sections/skills";
+import type { SkillName } from "@lib/data/skills";
 
 /** A union of all the keys used to define jobs. */
 export type JobKey = "codelearn" | "gilab";

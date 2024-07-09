@@ -1,48 +1,21 @@
 import type { TranslationHandler } from "@modules/i18n";
 
+/** A union of all the keys used to define education entries. */
 export type EducationItemKey = "gddv";
 
-export type FavoriteMusic = {
-  name: string;
-  artist: string;
-  spotifyUrl: string;
-  coverUrl: string;
-};
-
-export type FavoriteGame = {
-  name: string;
-  storeUrl: string;
-  coverUrl: string;
-
-  // Only these two because they're the only ones I play.
-  platform: "PS5" | "Nintendo Switch";
-};
-
-export type FavoriteShow = {
-  name: string;
-  platform: "Netflix" | "HBO" | "Disney+" | "Prime Video";
-};
-
-export type FavoriteMovie = {
-  name: string;
-  platform: "Netflix" | "HBO" | "Disney+" | "Prime Video";
-};
-
-export type Favorite =
-  | FavoriteMusic
-  | FavoriteGame
-  | FavoriteShow
-  | FavoriteMovie;
-
+/** The data of an education entry which don't need translation. */
 export type EducationStaticData = {
-  url: string;
-
   startDate: Date;
   endDate: Date;
 };
 
+/** Defines the shape of an education entry. */
 export type EducationData = EducationStaticData & {
   title: TranslationHandler;
   location: TranslationHandler;
   description: TranslationHandler;
+
+  // Although the URL is not translated, we may have multiple URLs for different languages.
+  // So we retrieve them using a translation handler.
+  url: TranslationHandler;
 };

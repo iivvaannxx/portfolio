@@ -3,17 +3,26 @@ import type {
   EducationData,
   EducationItemKey,
   EducationStaticData,
-  Favorite,
 } from "./types";
 
+/**
+ * Defines the education data for a specific key.
+ *
+ * @param key - The key for the education item.
+ * @param data - The static data for the education item.
+ * @returns An object containing the translated data for the education item.
+ */
 function defineEducationData(key: EducationItemKey, data: EducationStaticData) {
-  const translationItemKey = `sections.about.education.${key}` as const;
+  const translationItemKey =
+    `sections.about.bento.education.items.${key}` as const;
 
   // These functions return translated data about the education item.
   const titleHandler = getTranslationHandler(`${translationItemKey}.title`);
   const locationHandler = getTranslationHandler(
     `${translationItemKey}.location`,
   );
+
+  const urlHandler = getTranslationHandler(`${translationItemKey}.url`);
   const descriptionHandler = getTranslationHandler(
     `${translationItemKey}.description`,
   );
@@ -22,30 +31,16 @@ function defineEducationData(key: EducationItemKey, data: EducationStaticData) {
     title: titleHandler,
     location: locationHandler,
     description: descriptionHandler,
+    url: urlHandler,
+
     ...data,
   };
 }
 
-function defineFavorite(data: Favorite) {
-  return {
-    ...data,
-  };
-}
-
+/** All the education entries. */
 export const education = [
   defineEducationData("gddv", {
-    url: "https://www.udg.edu/en/estudia/Oferta-formativa/Graus/Fitxes?IDE=1436&ID=3105G1315",
-
     startDate: new Date("2018-09"),
     endDate: new Date("2022-06"),
   }),
 ] satisfies EducationData[];
-
-export const favorites = [
-  defineFavorite({
-    name: "The Weeknd",
-    artist: "The Weeknd",
-    spotifyUrl: "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ",
-    coverUrl: "/images/favorites/the-weeknd.jpg",
-  }),
-] satisfies Favorite[];

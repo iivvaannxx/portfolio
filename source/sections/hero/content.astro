@@ -6,7 +6,7 @@ import { Badge, Link } from "@components/base";
 import { email, github, linkedIn } from "@lib/data/socials";
 import { getTranslations } from "@modules/i18n";
 
-import profile from "./assets/profile.webp";
+import avatar from "./assets/avatar.png";
 
 // Retrieve the localized strings for the hero section.
 const { locale } = Astro.locals;
@@ -28,12 +28,16 @@ const t = translations.sections.hero;
       set:html={t.headline.content}
     />
 
-    <Picture
-      class="absolute right-14 top-0 size-28 rounded-full"
-      src={profile}
-      alt="Profile picture"
-      formats={["avif", "webp", "png"]}
-    />
+    <div
+      class="absolute right-14 top-0 size-28 overflow-clip rounded-full bg-white object-cover"
+    >
+      <Picture
+        class="relative right-0.5 top-0.5"
+        src={avatar}
+        alt="Avatar picture"
+        formats={["avif", "webp", "png"]}
+      />
+    </div>
   </header>
 
   <div>

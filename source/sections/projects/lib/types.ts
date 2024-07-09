@@ -1,7 +1,7 @@
 import type { ImageMetadata } from "astro";
 import type { VideoMetadata } from "@components/base/video.astro";
 
-import type { SkillName } from "@app/sections/skills";
+import type { SkillName } from "@lib/data/skills";
 import type { TranslationHandler } from "@modules/i18n";
 
 /** A union of all the keys used to define projects. */

@@ -10,7 +10,7 @@ import ParticlesCanvas from "@components/particles/particle-canvas.astro";
 import Header from "@app/layouts/header.astro";
 import Footer from "@app/layouts/footer.astro";
 
-import { Work, Projects, About, Hero } from "@app/sections";
+import { Work, Projects, About, Hero, Contact } from "@app/sections";
 import { fade, slide } from "astro:transitions";
 import ScrollToTop from "@app/components/scroll-to-top.svelte";
 
@@ -52,6 +52,7 @@ const t = getTranslations(locale);
     <Work />
     <Projects />
     <About />
+    <Contact />
   </main>
 
   <Footer />

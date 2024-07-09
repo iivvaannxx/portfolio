@@ -8,11 +8,6 @@ export const english = {
     locale: "en",
   },
 
-  misc: {
-    scrollToTop: "Scroll To Top",
-    language: "Language",
-  },
-
   noscript: {
     headline: `Oops! It seems that ${strong("JavaScript")} is disabled in your browser.`,
     message: `This site ${strong("requires it")} for some content ${strong("to be displayed correctly")}.
@@ -152,12 +147,6 @@ export const english = {
       },
     },
 
-    skills: {
-      name: "Skills",
-      id: "skills",
-      title: "Which technologies can I use?",
-    },
-
     about: {
       name: "About",
       title: "A little more about me",
@@ -174,20 +163,78 @@ export const english = {
         not only to learn new things but also to understand them.`,
       ],
 
-      education: {
-        title: "Education",
-        gddv: {
-          title: "Bachelor's Degree in Game Design and Development",
-          location: "Girona, Spain",
-          description: `
-            Graduated by the ${link("https://www.udg.edu/en/", strong("University of Girona"), true)},
-            where I gained a comprehensive understanding of the theoretical and practical
-            aspects of my field. This included not only game development, but also  
-            ${strong("3D modeling")}, ${strong("algorithms and data structures")}, 
-            ${strong("systems architecture")}, ${strong("web development")}, and more.
-          `,
+      bento: {
+        atWork: {
+          title: "At Work",
+          iconAlt: "Laptop Emoji",
+          approachAlt: "My approach with code",
+
+          text: [
+            `With nearly 7 years of coding experience, I always approach my work with a 
+            careful ${strong("attention to detail")} and a ${strong("diligent")} attitude.
+            Back in college, we used to work on many things in groups, thanks to that
+            experience, I'm well-versed in teamwork settings.`,
+
+            `I like to automate things. Sometimes `,
+          ],
+        },
+
+        aboutMe: {
+          title: "My personal side",
+          dogEmojiText: "Dogs",
+          gameEmojiText: "Games",
+
+          iconAlt: "Waving Hand Emoji",
+          dogEmojiAlt: "Dog",
+          gamepadEmojiAlt: "Gamepad",
+
+          text: [
+            `With nearly 7 years of coding experience, I always approach my work with a 
+            careful ${strong("attention to detail")} and a ${strong("diligent")} attitude.
+            Back in college, we used to work on many things in groups, thanks to that
+            experience, I'm well-versed in teamwork settings.`,
+
+            `I like to automate things. Sometimes `,
+
+            `I'm a software developer ${strong("based in Barcelona")} with a passion for creating
+            engaging and interactive experiences, whether it's a website, a game, or a mobile app.`,
+
+            `I've always been ${strong("naturally curious")} 🧐, looking 
+            not only to learn new things but also to understand them.`,
+
+            `However, I mostly work alone,
+            which has helped me develop a ${strong("strong sense of autonomy")} and also made 
+            me very comfortable in solo environments as well.
+            `,
+          ],
+        },
+
+        education: {
+          title: "Education",
+          iconAlt: "Graduation Cap Emoji",
+
+          items: {
+            gddv: {
+              title: "Bachelor's Degree in Game Design and Development",
+              location: "Girona, Spain",
+
+              url: "https://www.udg.edu/en/estudia/Oferta-formativa/Graus/Fitxes?IDE=1436&ID=3105G1315",
+              description: `Graduated by the ${link("https://www.udg.edu/en/", strong("University of Girona"), true)},
+              where I gained a comprehensive understanding of the theoretical and practical
+              aspects of my field. This included not only game development, but also  
+              ${strong("3D modeling")}, ${strong("algorithms and data structures")}, 
+              ${strong("systems architecture")}, ${strong("web development")}, and more.
+            `,
+            },
+          },
         },
       },
+    },
+
+    contact: {
+      name: "Contact",
+      title: "Shoot me a message",
+      id: "contact",
     },
   },
 
@@ -197,6 +244,12 @@ export const english = {
       ${link("https://svelte.dev", "Svelte", true)}, and ${link("https://react.dev", "React", true)}. 
       Deployed on ${link("https://cloudflare.com", "Cloudflare", true)}.
     `,
+  },
+
+  misc: {
+    scrollToTop: "Scroll To Top",
+    language: "Language",
+    loveIconSr: "Love",
   },
 
   socials: {

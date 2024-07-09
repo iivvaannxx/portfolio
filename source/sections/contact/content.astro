@@ -1,0 +1,16 @@
+---
+import { Section } from "@app/layouts";
+import { getTranslations } from "@modules/i18n";
+
+const { locale } = Astro.locals;
+const translations = getTranslations(locale);
+const t = translations.sections.contact;
+---
+
+<Section
+  id={t.id}
+  class="z-0 mx-auto max-w-screen-lg px-4 xs:px-6"
+  aria-label={t.name}
+  title={t.title}
+  order={4}
+/>
