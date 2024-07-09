@@ -2,9 +2,6 @@
   lang="ts"
   context="module"
 >
-  // @ts-expect-error For some reason, the types not work on client components.
-  // Although docs say that this function can be used in client components.
-  // See: https://docs.astro.build/en/guides/view-transitions/#trigger-navigation
   import { navigate } from "astro:transitions/client";
 
   import { Languages } from "lucide-svelte";
@@ -71,6 +68,7 @@
 >
   <Select.Trigger
     name={languages[currentLocale].buttonName}
+    aria-label={languages[currentLocale].buttonName}
     class={cn("w-fit text-foreground/80", $$props.class)}
   >
     <Languages class="mr-0.5 size-[1.2em] md:mb-1" />
