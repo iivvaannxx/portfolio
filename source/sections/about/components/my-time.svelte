@@ -37,19 +37,17 @@
   >
     <time
       datetime={`${datetime.slice(0, 16)}Z`}
-      class="flex items-center gap-x-3 whitespace-nowrap text-2xl font-semibold tabular-nums"
+      class="whitespace-nowrap text-2xl font-semibold tabular-nums"
     >
       <span class="font-black capitalize text-primary">{time.join("")}</span>
       <span class="mt-2 text-base uppercase text-foreground/80">{timezone}</span
       >
-
-      <span class="text-muted">{"|"}</span>
-      <span class="mt-1 text-center text-base font-semibold text-foreground/60"
+      <span class="mt-1 block text-base font-semibold text-foreground/60"
         >{date}</span
       >
     </time>
 
-    <TimeDiff
+    <!-- <TimeDiff
       timezoneA={MY_TIMEZONE}
       timezoneB="user"
       let:formattedTimeDiff
@@ -57,6 +55,6 @@
       <p class="mt-4 whitespace-nowrap text-sm font-medium text-foreground/80">
         {formattedTimeDiff}
       </p>
-    </TimeDiff>
+    </TimeDiff> -->
   </div>
 </RealTime>

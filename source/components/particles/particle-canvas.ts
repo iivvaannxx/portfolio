@@ -18,6 +18,7 @@ export interface ParticleCanvas {
   canvasSize: [number, number];
   particles: Particle[];
   quantity: number;
+  color: string;
 }
 
 /** Defines the attributes of a particle. */
@@ -32,7 +33,7 @@ export interface Particle {
 // See: https://github.com/microsoft/TypeScript/issues/340#issuecomment-184964440
 export class ParticleCanvas extends HTMLElement implements ParticleCanvas {
   // Custom attributes used to customize the particles inside the canvas.
-  static observedAttributes = ["quantity"];
+  static observedAttributes = ["quantity", "color"];
 
   // Save the previous time to calculate the delta.
   private previousTime = Date.now();
@@ -64,12 +65,18 @@ export class ParticleCanvas extends HTMLElement implements ParticleCanvas {
 
     this.bindEvents();
     this.initialize();
+
+    console.log(this.color);
   }
 
   /** Callback function that is invoked whenever an observed attribute changes. */
   attributeChangedCallback(name: string, oldValue: string, newValue: string) {
     if (name === "quantity") {
       this.quantity = Number(newValue) || DEFAULT_PARTICLE_QUANTITY;
+    }
+
+    if (name === "color") {
+      this.color = newValue;
     }
 
     // We only trigger a reinitialization if an attribute was not set before.
@@ -85,6 +92,7 @@ export class ParticleCanvas extends HTMLElement implements ParticleCanvas {
     this.resize();
 
     this.quantity ??= DEFAULT_PARTICLE_QUANTITY;
+    this.color ??= "rgb(255, 255, 255)";
     this.particles = [];
 
     for (let i = 0; i < this.quantity; i++) {
@@ -127,9 +135,13 @@ export class ParticleCanvas extends HTMLElement implements ParticleCanvas {
     const [x, y] = particle.position;
     this.context.beginPath();
 
+    const prevAlpha = this.context.globalAlpha;
     this.context.arc(x, y, particle.size, 0, 2 * Math.PI);
-    this.context.fillStyle = `rgba(255, 255, 255, ${particle.alpha})`;
+    this.context.fillStyle = this.color;
+    this.context.globalAlpha = particle.alpha;
+
     this.context.fill();
+    this.context.globalAlpha = prevAlpha;
   }
 
   /**

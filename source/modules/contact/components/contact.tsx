@@ -96,22 +96,22 @@ function ContactFormActions({
   disableReset,
 }: ContactFormActionsProps) {
   return (
-    <div className="ml-auto mt-8 flex w-full flex-col justify-end gap-4 fold:flex-row">
+    <div className="mt-8 flex w-full flex-col flex-wrap justify-start gap-4 fold:flex-row xs:flex-nowrap">
       <Button
-        type="reset"
-        variant="outline"
-        className="xs:w-20 sm:h-12 sm:w-32"
-        onClick={resetForm}
-        disabled={disableReset}
-      >
-        {resetText}
-      </Button>
-      <Button
-        className="xs:w-32 sm:h-12 sm:w-48"
+        className="w-full xs:w-32 sm:h-12 sm:w-48"
         type="submit"
         disabled={disableSubmit}
       >
         {submitText}
+      </Button>
+      <Button
+        type="reset"
+        variant="outline"
+        className="w-full xs:w-20 sm:h-12 sm:w-32"
+        onClick={resetForm}
+        disabled={disableReset}
+      >
+        {resetText}
       </Button>
     </div>
   );

@@ -21,6 +21,8 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@types/aos": "^3.0.7",
+    "aos": "^2.3.4",
     "astro": "4.11.5",
     "astro-icon": "^1.1.0",
     "balance-text": "^3.3.1",

@@ -2,10 +2,11 @@
 export interface Props {
   /** The amount of particles to render simultaneously on screen. */
   quantity?: number;
+  color?: `rgb(${number}, ${number}, ${number})`;
 }
 
 // Set a default quantity.
-const { quantity = 30 } = Astro.props;
+const { quantity = 30, color = "rgb(255, 0, 0)" } = Astro.props;
 ---
 
 <script>
@@ -24,5 +25,6 @@ const { quantity = 30 } = Astro.props;
 <!-- Inspired by: https://cruip.com/how-to-create-a-beautiful-particle-animation-with-html-canvas/ -->
 <particle-canvas
   {quantity}
+  {color}
   aria-hidden="true"
 ></particle-canvas>
