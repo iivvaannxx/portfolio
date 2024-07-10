@@ -15,26 +15,29 @@ const t = translations.sections.hero;
 ---
 
 <section class="mx-auto max-w-screen-lg content-center px-4 xs:px-6">
-  <header class="relative">
-    <h1 class="text-balance font-header">
-      <span
-        class="block text-3xl font-extrabold tracking-wide opacity-90 xs:text-4xl"
-        >{t.greeting}</span
-      >
-    </h1>
+  <header
+    class="relative flex flex-row-reverse flex-wrap-reverse justify-end sm:flex-nowrap [@media(width>=37rem)]:flex-row [@media(width>=37rem)]:justify-between"
+  >
+    <div>
+      <h1 class="text-balance font-header">
+        <span class="block text-4xl font-extrabold tracking-wide opacity-90"
+          >{t.greeting}</span
+        >
+      </h1>
 
-    <p
-      class="mt-4 block min-h-[2lh] text-lg font-bold text-foreground/50 xs:text-2xl"
-      set:html={t.headline.content}
-    />
+      <p
+        class="mt-4 block min-h-[2lh] text-lg font-bold text-foreground/50"
+        set:html={t.headline.content}
+      />
+    </div>
 
     <div
-      class="absolute right-14 top-0 size-28 overflow-clip rounded-full bg-white object-cover"
+      class="-mt-2 mb-6 mr-10 aspect-square size-16 overflow-clip rounded-full bg-white object-cover xs:size-24 sm:mb-0 md:-mt-4 md:size-28 lg:-mt-2 2xl:-mt-0 [@media(width>=37rem)]:mr-14"
     >
       <Picture
         class="relative right-0.5 top-0.5"
         src={avatar}
-        alt="Avatar picture"
+        alt="Avatar"
         formats={["avif", "webp", "png"]}
       />
     </div>
@@ -48,7 +51,7 @@ const t = translations.sections.hero;
     />
 
     <div
-      class="mt-8 flex flex-col flex-wrap items-center gap-y-4 xs:flex-row [@media(width>=335px)]:flex-row"
+      class="mt-8 flex flex-col flex-wrap items-center justify-center gap-y-4 xs:flex-row [@media(width>=335px)]:flex-row [@media(width>=37rem)]:justify-start"
     >
       <Badge
         hoverGlow

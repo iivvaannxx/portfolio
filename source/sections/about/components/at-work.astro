@@ -31,31 +31,29 @@ const t = translations.sections.about.bento.atWork;
     set:html={t.text[0]}
   />
 
-  <!-- I like to automate things, sometimes when im a bit too lazy to do something, my current career focus. -->
   <p
     class="mb-64 mt-6 text-pretty text-base text-foreground/80"
     set:html={t.text[1]}
   />
 
-  <div class="absolute inset-x-0 -bottom-32 w-full">
+  <div class="absolute inset-x-0 -bottom-32 w-full overflow-hidden">
     <Picture
       src={approach}
       alt={t.approachAlt}
       formats={["avif", "webp", "png"]}
       class="opacity-50"
-    />
-
-    <div
-      class="absolute inset-x-0 bottom-1/4 z-10 h-1/4 w-full -translate-y-1/4"
       data-mask
-    >
-    </div>
+    />
   </div>
 </article>
 
 <style>
   [data-mask] {
-    background-color: theme("colors.background");
-    mask-image: linear-gradient(to bottom, transparent 0%, black 110%);
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 40%,
+      transparent 80%
+    );
   }
 </style>

@@ -170,12 +170,15 @@ export const english = {
           approachAlt: "My approach with code",
 
           text: [
-            `With nearly 7 years of coding experience, I always approach my work with a 
+            `With nearly 7 years of coding experience, I approach my work with a 
             careful ${strong("attention to detail")} and a ${strong("diligent")} attitude.
-            Back in college, we used to work on many things in groups, thanks to that
-            experience, I'm well-versed in teamwork settings.`,
+            Back in college, we often worked in groups; thanks to that experience, 
+            I'm ${strong("well-versed in teamwork settings")}, although I'm equally 
+            comfortable and productive working alone.`,
 
-            `I like to automate things. Sometimes `,
+            `I like automating tasks, especially when I'm feeling a bit lazy. This habit
+            aligns well with my ${strong("career focus")} on backend and cloud infrastructure development,
+            as I enjoy building systems that ${strong("make work easier and faster")} for everyone.`,
           ],
         },
 
