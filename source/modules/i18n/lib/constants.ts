@@ -33,7 +33,7 @@ export const CLIENT_TRANSLATIONS = {
 
   // TODO: Finish translations.
   ca: clientEnglish,
-  es: clientSpanish,
+  es: clientEnglish,
 };
 
 /** The formatting options passed to the Intl API. */

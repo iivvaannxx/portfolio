@@ -65,8 +65,6 @@ export class ParticleCanvas extends HTMLElement implements ParticleCanvas {
 
     this.bindEvents();
     this.initialize();
-
-    console.log(this.color);
   }
 
   /** Callback function that is invoked whenever an observed attribute changes. */

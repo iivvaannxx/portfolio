@@ -5,6 +5,7 @@ import { getTranslations } from "@modules/i18n";
 import AtWork from "./components/at-work.astro";
 import Education from "./components/education.astro";
 import PersonalSide from "./components/personal-side.astro";
+import Location from "./components/location.astro";
 
 const { locale } = Astro.locals;
 const translations = getTranslations(locale);
@@ -12,7 +13,7 @@ const t = translations.sections.about;
 ---
 
 <Section
-  order={4}
+  order={3}
   id={t.id}
   title={t.title}
   class="mx-auto max-w-screen-xl px-4 xs:px-8"
@@ -20,13 +21,23 @@ const t = translations.sections.about;
   <div
     class:list={[
       "my-24 grid grid-cols-10 justify-center gap-6",
-      "*:overflow-clip *:rounded-xl *:border *:bg-background *:p-8",
+      "*:overflow-clip *:rounded-xl *:border *:bg-background",
     ]}
   >
-    <AtWork class="relative col-span-10 col-start-1 lg:col-span-6" />
-    <PersonalSide
-      class="col-span-10 col-start-1 lg:col-span-4 lg:col-start-7 lg:row-span-2"
+    <AtWork
+      class="relative col-span-10 col-start-1 px-8 pb-0 pt-8 lg:col-span-6"
     />
-    <Education class="col-span-10 col-start-1 lg:col-span-6" />
+
+    <PersonalSide
+      class="col-span-10 col-start-1 py-8 *:px-8 lg:col-span-4 lg:col-start-7"
+    />
+
+    <Location
+      class="[@media(width<=880px)]:@container col-span-10 col-start-1 p-8 [@media(width>=880px)]:col-span-4"
+    />
+
+    <Education
+      class="col-span-10 col-start-1 p-8 lg:col-span-6 lg:col-start-5 [@media(width>=880px)]:col-span-6 [@media(width>=880px)]:col-start-5"
+    />
   </div>
 </Section>

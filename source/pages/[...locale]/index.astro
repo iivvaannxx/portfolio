@@ -13,6 +13,7 @@ import Footer from "@app/layouts/footer.astro";
 import { Work, Projects, About, Hero, Contact } from "@app/sections";
 import { fade, slide } from "astro:transitions";
 import ScrollToTop from "@app/components/scroll-to-top.svelte";
+import { Toaster } from "@components/ui/react";
 
 export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
 
@@ -26,7 +27,7 @@ const t = getTranslations(locale);
 
   document.addEventListener("astro:page-load", () => {
     // Enable smooth-scrolling and hydrate tippy tooltips.
-    initLenis();
+    //initLenis();
     tippy("[data-tippy-content]", {
       placement: "right",
       offset: [0, 16],
@@ -41,7 +42,13 @@ const t = getTranslations(locale);
   withNoScriptFallback
   withViewTransitions
 >
-  <Header class="overflow-x-auto" />
+  <Header class="overflow-x-auto fold:overflow-x-clip">
+    <!-- <div
+      data-scroll-progress
+      class="absolute inset-x-0 h-1 w-full bg-secondary/80"
+    >
+    </div> -->
+  </Header>
 
   <main
     vaul-drawer-wrapper
@@ -80,6 +87,8 @@ const t = getTranslations(locale);
   >
     <ParticlesCanvas quantity={80} />
   </div>
+
+  <Toaster client:idle />
 </Page>
 
 <style>
@@ -105,9 +114,25 @@ const t = getTranslations(locale);
     animation-range: 100px 40vh;
   }
 
+  [data-scroll-progress] {
+    transform-origin: left;
+
+    animation: scaleX linear both;
+    animation-timeline: scroll();
+  }
+
   @keyframes reveal-up {
     to {
       bottom: 0;
+    }
+  }
+
+  @keyframes scaleX {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
     }
   }
 

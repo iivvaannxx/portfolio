@@ -3,7 +3,7 @@ import { Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { Badge, Link } from "@components/base";
 
-import { email, github, linkedIn } from "@lib/data/socials";
+import { bento, email, github, linkedIn, resume } from "@lib/data/socials";
 import { getTranslations } from "@modules/i18n";
 
 import avatar from "./assets/avatar.png";
@@ -76,32 +76,34 @@ const t = translations.sections.hero;
 
       <ul class="flex gap-x-2">
         {
-          [linkedIn, github, email].map(({ href, i18nKey, iconKey }) => {
-            const translatedLabel = translations.socials[i18nKey];
-            return (
-              <li
-                class:list={[
-                  "rounded-lg text-foreground/80 transition duration-200",
-                  "hover:bg-accent hover:text-accent-foreground/80",
-                ]}
-              >
-                <Link
-                  {href}
-                  label={`${translatedLabel}`}
-                  targetBlank
-                  withTooltip={{
-                    content: `${translatedLabel}`,
-                    placement: "bottom",
-                  }}
+          [linkedIn, github, email, resume, bento].map(
+            ({ href, i18nKey, iconKey }) => {
+              const translatedLabel = translations.socials[i18nKey];
+              return (
+                <li
+                  class:list={[
+                    "rounded-lg text-foreground/80 transition duration-200",
+                    "hover:bg-accent hover:text-accent-foreground/80",
+                  ]}
                 >
-                  <Icon
-                    name={iconKey}
-                    class="box-content size-6 p-2 text-current sm:size-7 md:size-8"
-                  />
-                </Link>
-              </li>
-            );
-          })
+                  <Link
+                    {href}
+                    label={`${translatedLabel}`}
+                    targetBlank
+                    withTooltip={{
+                      content: `${translatedLabel}`,
+                      placement: "bottom",
+                    }}
+                  >
+                    <Icon
+                      name={iconKey}
+                      class="box-content size-6 p-2 text-current sm:size-7 md:size-8"
+                    />
+                  </Link>
+                </li>
+              );
+            },
+          )
         }
       </ul>
     </div>

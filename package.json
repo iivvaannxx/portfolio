@@ -21,6 +21,8 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.1",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@types/aos": "^3.0.7",
     "aos": "^2.3.4",
     "astro": "4.11.5",
@@ -44,6 +46,7 @@
     "react-hook-form": "^7.52.0",
     "resend": "^3.4.0",
     "tippy.js": "^6.3.7",
+    "use-resize-observer": "^9.1.0",
     "valibot": "^0.35.0",
     "vaul": "^0.9.1"
   },

@@ -68,7 +68,7 @@ export const english = {
       id: "projects",
       title: "Some of my favorite projects",
 
-      buttonReveal: "On what I'm currently working?",
+      buttonReveal: "What's next?",
       currentProject: "On what I'm currently working?",
       seeMore: "See more of my projects in",
       archiveText: "the archive",
@@ -231,6 +231,13 @@ export const english = {
             },
           },
         },
+
+        location: {
+          title: "Location",
+          iconAlt: "House Emoji",
+
+          where: `Based in ${strong("Barcelona")}`,
+        },
       },
     },
 
@@ -314,7 +321,7 @@ export const clientEnglish = {
     },
 
     persistingError:
-      "If the problem persists, please contact me directly at my email: ",
+      "If the problem persists, you contact me directly at my email: ",
     captchaTrouble:
       "Are you having trouble with the captcha? Try reloading or clearing the cache.",
     turnstileFailed: "Human Verification Failed",

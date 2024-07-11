@@ -3,6 +3,7 @@ import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import { fontFamily, screens } from "tailwindcss/defaultTheme";
 
+import pluginContainerQueries from "@tailwindcss/container-queries";
 import pluginMaskImage from "tailwind-gradient-mask-image";
 import pluginFluidType from "tailwindcss-fluid-type";
 import pluginDebugScreens from "tailwindcss-debug-screens";
@@ -42,6 +43,7 @@ const config: Config = {
     pluginDebugScreens,
     pluginAnimated,
     pluginAnimate,
+    pluginContainerQueries,
     pluginCustomVariants,
   ],
 

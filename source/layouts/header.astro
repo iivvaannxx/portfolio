@@ -1,10 +1,7 @@
 ---
 import { LanguageSelector } from "@app/modules/i18n";
 import PageLinks from "@modules/navigation/components/page-links.astro";
-import {
-  HamburgerMenu,
-  DRAWER_ID,
-} from "@modules/navigation/components/hamburger-menu";
+import { HamburgerMenu } from "@modules/navigation/components/hamburger-menu";
 
 import { cn } from "@lib/utils/shadcn";
 import type { HTMLAttributes } from "astro/types";
@@ -46,6 +43,8 @@ const { class: clazz, ...props } = Astro.props;
       client:idle
     />
   </div>
+
+  <slot />
 </header>
 
 <style>

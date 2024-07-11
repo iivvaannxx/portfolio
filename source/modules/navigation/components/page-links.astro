@@ -43,7 +43,7 @@ const t = translations.sections;
               label={name}
               class={variants({ element: variant })}
               onclick={`window.lenisScrollTo('${href}', event)`}
-              data-nav-link
+              data-nav-link={variant}
             >
               <Icon
                 name={icon}
@@ -59,15 +59,15 @@ const t = translations.sections;
 </nav>
 
 <style is:global>
-  [data-nav-link] {
+  [data-nav-link="header"] {
     color: theme("colors.muted.foreground / 0.8");
   }
 
-  [data-nav-link].active {
+  [data-nav-link="header"].active {
     color: theme("colors.foreground");
   }
 
-  ul:not(:has([data-nav-link].active)) [data-nav-link] {
+  ul:not(:has([data-nav-link="header"].active)) [data-nav-link="header"] {
     color: theme("colors.foreground");
   }
 </style>

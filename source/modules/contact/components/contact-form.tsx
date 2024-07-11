@@ -29,6 +29,7 @@ import {
 import { email } from "@lib/data/socials";
 import { useClientTranslation } from "@modules/i18n";
 import { currentLang } from "../lib/store";
+import { useToast } from "@app/components/ui/react/use-toast";
 
 // The props received by <ContactFormFields> component.
 type ContactFormFieldsProps = {
@@ -66,7 +67,7 @@ function ContactFormFields({ formControl }: ContactFormFieldsProps) {
             control={formControl}
             key={key}
             name={key as ContactFormFieldName}
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <FormItem className={className}>
                 <FormLabel className="text-foreground">{label}</FormLabel>
                 <FormControl>
@@ -161,7 +162,7 @@ export function ContactForm({ onAfterSubmit, ...props }: Props) {
   const locale = useStore(currentLang);
   const {
     form,
-    requestStatus,
+    requestResult,
     turnstileRef,
     turnstileStatus,
     onTurnstileError,
@@ -171,6 +172,7 @@ export function ContactForm({ onAfterSubmit, ...props }: Props) {
   } = useContactForm({ locale, onAfterSubmit });
 
   const t = useClientTranslation("contact", locale);
+
   return (
     <Form {...form}>
       <form
@@ -194,25 +196,6 @@ export function ContactForm({ onAfterSubmit, ...props }: Props) {
             <p>
               <span>{t.captchaTrouble}</span>
               <PersistingErrorFallback message={t.persistingError} />
-            </p>
-          </ContactFormAlert>
-        )}
-
-        {requestStatus !== null && (
-          <ContactFormAlert
-            variant={requestStatus.success ? "success" : "destructive"}
-            title={requestStatus.success ? t.contactSuccess : t.contactError}
-          >
-            <p>
-              <span>{requestStatus.message}</span>
-              {[
-                "internal-error",
-                "failed-to-determine-ip",
-                "turnstile-error",
-                "schema-error",
-              ].includes(requestStatus.code) && (
-                <PersistingErrorFallback message={t.persistingError} />
-              )}
             </p>
           </ContactFormAlert>
         )}

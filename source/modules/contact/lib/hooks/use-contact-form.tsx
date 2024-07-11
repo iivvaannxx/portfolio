@@ -5,21 +5,24 @@ import type { TurnstileInstance } from "@marsidev/react-turnstile";
 
 import { ContactFormSchema, type ContactFormData } from "../schema";
 import { useClientTranslation, type Locale } from "@modules/i18n";
+import { useToast } from "@components/ui/react";
 
 /** Defines the different states of the turnstile captcha. */
 export type TurnstileStatus = "unknown" | "solved" | "error";
 
 /** Defines the status of the contact form request. */
-export type ContactRequestStatus = {
+export type ContactRequestResult = {
   code: string;
   success: boolean;
+
+  title: string;
   message: string;
 };
 
 /** The parameters for the useContactForm hook. */
 export type UseContactFormParams = {
   locale: Locale;
-  onAfterSubmit?: (status: ContactRequestStatus) => void;
+  onAfterSubmit?: (status: ContactRequestResult) => void;
 };
 
 /** The endpoint for the contact form. */
@@ -55,12 +58,13 @@ async function sendForm(values: ContactFormData, turnstileToken: string) {
  * @returns An object indicating the success status and the corresponding message.
  */
 async function handleContactAPIResponse(response: Response, locale: Locale) {
-  const t = useClientTranslation("contact.form", locale);
+  const t = useClientTranslation("contact", locale);
+  const tForm = t.form;
 
   if (!response.ok) {
     let message: string;
     const { code, data } = (await response.json()) as {
-      code: keyof typeof t.errors;
+      code: keyof typeof tForm.errors;
       data: Record<string, any>;
     };
 
@@ -69,7 +73,7 @@ async function handleContactAPIResponse(response: Response, locale: Locale) {
         style: "long",
       });
 
-      message = t.errors["rate-limit-exceeded"](
+      message = tForm.errors["rate-limit-exceeded"](
         formatter.format(
           data.retryAfter < 3600
             ? Math.ceil(data.retryAfter / 60)
@@ -78,19 +82,33 @@ async function handleContactAPIResponse(response: Response, locale: Locale) {
         ),
       );
     } else {
-      message = t.errors[code] ?? t.errors.unknown;
+      message = tForm.errors[code] ?? tForm.errors.unknown;
+    }
+
+    if (
+      [
+        "internal-error",
+        "failed-to-determine-ip",
+        "turnstile-error",
+        "schema-error",
+      ].includes(code)
+    ) {
+      message += ` ${t.persistingError}`;
     }
 
     return {
       code,
       message,
+
+      title: t.contactError,
       success: false,
     };
   }
 
   return {
     code: "success",
-    message: t.success,
+    title: t.contactSuccess,
+    message: tForm.success,
     success: true,
   };
 }
@@ -107,6 +125,9 @@ export function useContactForm({
   locale,
   onAfterSubmit,
 }: UseContactFormParams) {
+  const { toast } = useToast();
+
+  const t = useClientTranslation("contact", locale);
   const form = useForm<ContactFormData>({
     resolver: valibotResolver(ContactFormSchema),
     mode: "onTouched",
@@ -119,8 +140,8 @@ export function useContactForm({
     },
   });
 
-  const [requestStatus, setRequestStatus] =
-    useState<ContactRequestStatus | null>(null);
+  const [requestResult, setRequestResult] =
+    useState<ContactRequestResult | null>(null);
 
   const turnstileRef = useRef<TurnstileInstance>();
   const [turnstileToken, setTurnstileToken] = useState("");
@@ -134,7 +155,7 @@ export function useContactForm({
 
     setTurnstileToken("");
     setTurnstileStatus("unknown");
-    setRequestStatus(null);
+    setRequestResult(null);
   };
 
   /* Submit the form data. */
@@ -146,7 +167,14 @@ export function useContactForm({
     const response = await sendForm(values, turnstileToken);
     const result = await handleContactAPIResponse(response, locale);
 
-    setRequestStatus(result);
+    toast({
+      // Display the success or error message.
+      title: result.title,
+      description: result.message,
+      variant: result.success ? "success" : "destructive",
+    });
+
+    setRequestResult(result);
     onAfterSubmit?.(result);
   });
 
@@ -163,7 +191,7 @@ export function useContactForm({
 
   return {
     form,
-    requestStatus,
+    requestResult,
     turnstileRef,
     turnstileToken,
     turnstileStatus,

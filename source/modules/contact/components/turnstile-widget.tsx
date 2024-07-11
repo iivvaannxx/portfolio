@@ -1,13 +1,12 @@
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import {
   Turnstile,
   type TurnstileInstance,
   type TurnstileProps,
 } from "@marsidev/react-turnstile";
 
-import { useMediaQuery } from "@lib/utils/hooks/use-media-query";
+import useResizeObserver from "use-resize-observer";
 import { type Locale } from "@modules/i18n";
-import { cn } from "@app/lib/utils/shadcn";
 
 // The public site key for the Turnstile widget.
 const PUBLIC_SITE_KEY = "0x4AAAAAAAMvB2JUUxIcQ2Y8";
@@ -19,21 +18,31 @@ type Props = Partial<TurnstileProps> & {
 // Simple wrapper with some customizations for the Turnstile widget.
 export const TurnstileWidget = forwardRef<TurnstileInstance | undefined, Props>(
   ({ onError, onSuccess, locale }, ref) => {
-    const isLargeScreen = useMediaQuery("(min-width: 350px)");
+    const [widgetFits, setWidgetFits] = useState(true);
+    const { ref: containerRef } = useResizeObserver<HTMLDivElement>({
+      box: "border-box",
+
+      // Assume it doesn't fit (default = 0) to
+      // prevent overflow. The non-compact size is 300px.
+      onResize: ({ width = 0 }) => {
+        setWidgetFits(width > 300);
+      },
+    });
+
     return (
-      <div className="mx-auto mt-6 w-[95%]">
+      <div
+        ref={containerRef}
+        className="@container mx-auto mt-6 w-full"
+      >
         <Turnstile
           ref={ref}
-          className={cn(
-            "mx-auto",
-            isLargeScreen ? "min-h-[65px]" : "min-h-[120px]",
-          )}
+          className={"@[301px]:min-h-[65px] mx-auto min-h-[120px]"}
           siteKey={PUBLIC_SITE_KEY}
           onError={onError}
           onSuccess={onSuccess}
           options={{
             theme: "dark",
-            size: isLargeScreen ? "normal" : "compact",
+            size: widgetFits ? "normal" : "compact",
 
             // As of this moment catalan is not available.
             language: locale === "ca" ? "es" : locale,
