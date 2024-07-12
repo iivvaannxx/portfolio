@@ -27,7 +27,7 @@ const t = getTranslations(locale);
 
   document.addEventListener("astro:page-load", () => {
     // Enable smooth-scrolling and hydrate tippy tooltips.
-    //initLenis();
+    initLenis();
     tippy("[data-tippy-content]", {
       placement: "right",
       offset: [0, 16],
@@ -67,14 +67,14 @@ const t = getTranslations(locale);
   <div class="pointer-events-none fixed top-0 z-50 h-dvh w-dvw">
     <ScrollToTop
       name={t.misc.scrollToTop}
-      class="pointer-events-auto absolute -bottom-32 right-0 m-6 aspect-square size-12 rounded-full lg:m-12 xl:size-16 xl:p-2"
+      class="pointer-events-auto absolute -bottom-32 right-0 m-6 aspect-square size-12 min-h-12 min-w-12 rounded-full lg:m-12 xl:size-16 xl:min-h-16 xl:min-w-16 xl:p-2"
       data-tippy-content={t.misc.scrollToTop}
       data-tippy-placement="top"
       data-scroll-to-top
       client:visible
     >
       <Icon
-        class="aspect-square size-6 xl:size-8"
+        class="aspect-square size-6 min-h-6 min-w-6 xl:size-8"
         name="lucide:arrow-up"
         is:inline
       />

@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 
 import { getTranslations } from "@modules/i18n";
+import { cn } from "@lib/utils/shadcn";
 
 import pizzaEmoji from "../assets/emojis/pizza.png";
 import gamepadEmoji from "../assets/emojis/gamepad.png";
@@ -56,21 +57,10 @@ const t = translations.sections.about.bento.aboutMe;
     />
   </div>
 
-  <!-- class:list={[
-        "absolute aspect-square w-1/4 -translate-x-1/2 -translate-y-1/2 animate-float",
-        "left-[12.5%] top-[40%] min-w-[80px] max-w-[4.5em] rotate-[75deg]",
-        "xs:min-w-[5.5em] xs:max-w-[7.5em]",
-        "md:max-w-[10em]",
-        "lg:left-[25%] lg:top-[20%] lg:max-w-[8.5em]",
-        "xl:left-[18%] xl:top-[25%] xl:max-w-[10em]",
-      ]} -->
-
-  <div class="relative mt-4 hidden grid-cols-3 grid-rows-1 p-[15%] xs:grid">
-    <div
-      class="absolute inset-0 grid grid-cols-3 grid-rows-1 gap-8 p-[3%] px-4"
-    >
-      <div
-        class="relative aspect-square max-h-full -rotate-12 animate-float justify-self-center"
+  <div class="grid grid-cols-3 grid-rows-1 gap-x-8 pt-8 sm:gap-x-2">
+    <!-- <div
+        data-emoji
+        class="relative aspect-square -rotate-[20deg] animate-float self-start justify-self-center"
       >
         <Picture
           src={pizzaEmoji}
@@ -80,11 +70,11 @@ const t = translations.sections.about.bento.aboutMe;
         />
 
         <div
-          class="absolute inset-x-0 left-1/2 top-full -z-10 -mt-1 min-h-fit w-full min-w-max -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-[#1d1b1b] px-[1.2em] py-[0.2em] text-center xs:text-xs sm:text-sm"
+          class="absolute inset-x-0 left-[49%] top-full -z-10 min-h-fit w-full min-w-max -translate-x-1/2 -translate-y-1/2 rounded-full border bg-[#1d1b1b] px-[1em] py-[0.2em] text-center text-xs"
         >
           <p class="mt-2 inline-flex items-center gap-x-2">
             <Icon
-              class="size-[1.15em]"
+              class="size-[1em]"
               name="heart"
             />
             <span class="sr-only">{translations.misc.loveIconSr}</span>
@@ -93,7 +83,10 @@ const t = translations.sections.about.bento.aboutMe;
         </div>
       </div>
 
-      <div class="relative aspect-square max-h-full justify-self-center">
+      <div
+        data-emoji
+        class="relative aspect-square self-end justify-self-center"
+      >
         <picture>
           <source
             srcset="/images/emojis/dog/dog.avif"
@@ -118,61 +111,47 @@ const t = translations.sections.about.bento.aboutMe;
         </picture>
 
         <p
-          class="absolute inset-x-0 left-[5%] top-[94%] z-10 mx-auto min-h-fit w-full min-w-max rounded-full border bg-[#1d1b1b] py-[0.2em] text-center text-3xs xs:text-xs sm:text-sm"
+          class="absolute inset-x-0 left-[5%] top-[94%] z-10 min-h-fit w-full min-w-max rounded-full border bg-[#1d1b1b] px-[1em] py-[0.2em] text-center text-xs"
         >
           <span class="mt-1 inline-flex items-center gap-x-2">
             <Icon
-              class="size-[1.15em]"
+              class="size-[1em]"
               name="heart"
             />
             <span class="sr-only">{translations.misc.loveIconSr}</span>
             <span class="font-medium"> Dogs </span>
           </span>
         </p>
-      </div>
+      </div> -->
 
-      <div
-        class="relative aspect-square max-h-full rotate-12 animate-float justify-self-center"
-      >
-        <Picture
-          src={gamepadEmoji}
-          alt="Gamepad"
-          formats={["avif", "webp", "png"]}
-          class="size-full"
-        />
-
-        <p
-          class="absolute inset-x-0 top-full -z-10 mx-auto min-h-fit w-full min-w-max -translate-y-1/2 rounded-full border bg-[#1d1b1b] py-[0.2em] text-center xs:text-xs sm:text-sm"
-        >
-          <span class="mt-1 inline-flex items-center gap-x-2">
-            <Icon
-              class="size-[1.15em]"
-              name="heart"
-            />
-            <span class="sr-only">{translations.misc.loveIconSr}</span>
-            <span class="font-medium"> Games </span>
-          </span>
-        </p>
-      </div>
-    </div>
-
-    <!-- <div class="absolute inset-0 aspect-square max-h-full">
+    <div
+      data-emoji
+      class="relative flex -rotate-12 animate-float flex-col items-center -space-y-3 self-start justify-self-center"
+    >
       <Picture
         src={pizzaEmoji}
         alt="Pizza"
         formats={["avif", "webp", "png"]}
-        class="inset-0 size-full"
+        class="size-full"
       />
-    </div> -->
 
-    <!-- <div
-      class:list={[
-        "absolute left-1/2 top-[60%] aspect-square w-1/4 min-w-[80px] max-w-[4.5em] -translate-x-1/2 -translate-y-1/2",
-        "xs:min-w-[5.5em] xs:max-w-[7.5em]",
-        "md:max-w-[10em]",
-        "lg:top-[70%] lg:max-w-[8.5em]",
-        "xl:max-w-[10em]",
-      ]}
+      <p
+        class="inset-x-0 -z-10 mt-2 min-h-fit min-w-max rounded-full border bg-[#1d1b1b] px-[1em] py-[0.2em] text-center text-2xs sm:text-xs"
+      >
+        <span class="mt-1 inline-flex items-center gap-x-2">
+          <Icon
+            class="size-[1em]"
+            name="heart"
+          />
+          <span class="sr-only">{translations.misc.loveIconSr}</span>
+          <span class="font-medium"> Pizza </span>
+        </span>
+      </p>
+    </div>
+
+    <div
+      data-emoji
+      class="relative flex flex-col items-center -space-y-1.5 self-end justify-self-center md:bottom-3 lg:bottom-0"
     >
       <picture>
         <source
@@ -190,64 +169,94 @@ const t = translations.sections.about.bento.aboutMe;
         <img
           src="/images/emojis/dog/dog.gif"
           alt={t.dogEmojiAlt}
-          width={116}
-          height={116}
+          width={256}
+          height={256}
           decoding="async"
           loading="lazy"
         />
       </picture>
 
       <p
-        class:list={[
-          "absolute -bottom-6 z-10 w-full min-w-max -translate-x-1/2 rounded-full border text-center",
-          "left-[55%] bg-[#1d1b1b] px-[1em] py-[0.5em]",
-          "xs:text-xs",
-        ]}
+        class="relative left-[5%] z-10 mt-2 min-h-fit min-w-max rounded-full border bg-[#1d1b1b] px-[1em] py-[0.2em] text-center text-2xs sm:text-xs"
       >
-        <span>
+        <span class="mt-1 inline-flex items-center gap-x-2">
           <Icon
-            class="mx-px mb-px inline size-[1.15em]"
+            class="size-[1em]"
             name="heart"
           />
           <span class="sr-only">{translations.misc.loveIconSr}</span>
+          <span class="font-medium"> Dogs </span>
         </span>
-        <span class="ml-0.5"> {t.dogEmojiText} </span>
       </p>
     </div>
 
     <div
-      class:list={[
-        "absolute aspect-square w-1/4 -translate-x-1/2 -translate-y-1/2 rotate-12 animate-float animate-delay-1000",
-        "left-[90%] top-[35%] min-w-[80px] max-w-[4.5em]",
-        "xs:min-w-[5.5em] xs:max-w-[7.5em]",
-        "md:max-w-[10em]",
-        "lg:top-[30%] lg:max-w-[8.5em]",
-        "xl:left-[85%] xl:max-w-[10em]",
-      ]}
+      data-emoji
+      class="relative flex rotate-12 animate-float flex-col items-center -space-y-3 self-start justify-self-center animate-delay-700 md:top-0 lg:top-[10%]"
     >
       <Picture
         src={gamepadEmoji}
-        alt={t.gamepadEmojiAlt}
+        alt="Gamepad"
         formats={["avif", "webp", "png"]}
+        class="size-full"
       />
 
       <p
-        class:list={[
-          "absolute -bottom-6 left-1/2 -z-10 w-full min-w-max -translate-x-1/2 rounded-full border text-center",
-          "bg-[#1d1b1b] px-[1em] py-[0.5em]",
-          "xs:text-xs",
-        ]}
+        class="inset-x-0 -z-10 mt-2 min-h-fit min-w-max rounded-full border bg-[#1d1b1b] px-[1em] py-[0.2em] text-center text-2xs sm:text-xs"
       >
-        <span>
+        <span class="mt-1 inline-flex items-center gap-x-2">
           <Icon
-            class="mx-px mb-px inline size-[1.15em]"
+            class="size-[1em]"
             name="heart"
           />
           <span class="sr-only">{translations.misc.loveIconSr}</span>
+          <span class="font-medium"> Games </span>
         </span>
-        <span class="ml-0.5"> {t.gameEmojiText} </span>
       </p>
     </div>
-  </div> -->
   </div>
 </article>
+
+<style>
+  /*   [data-emoji] {
+    max-width: min(100%, 6rem);
+    max-height: min(100%, 6rem);
+  }
+ */
+  article {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+  }
+
+  [data-emoji] {
+    max-width: min(100%, 7rem);
+  }
+
+  [data-emoji] > picture {
+    padding-inline: 10%;
+  }
+
+  @media (768px <= width <= 1024px) {
+    article {
+      column-gap: 2rem;
+
+      grid-template-rows: auto;
+      grid-template-columns: 0.6fr 0.4fr;
+      grid-template-areas:
+        "title emojis"
+        "content emojis";
+    }
+
+    article > header {
+      grid-area: title;
+    }
+
+    article > div:first-of-type {
+      grid-area: content;
+    }
+
+    article > div:last-of-type {
+      grid-area: emojis;
+    }
+  }
+</style>

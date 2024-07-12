@@ -33,7 +33,7 @@ const t = translations.sections.hero;
     </div>
 
     <div
-      class="-mt-2 mb-6 mr-10 aspect-square size-16 overflow-clip rounded-full bg-white object-cover xs:size-24 sm:mb-0 md:-mt-4 md:size-28 lg:-mt-2 2xl:-mt-0 [@media(width>=37rem)]:mr-14"
+      class="-mt-2 mb-6 mr-10 aspect-square size-16 min-h-16 min-w-16 overflow-clip rounded-full bg-white object-cover xs:min-h-24 xs:min-w-24 sm:mb-0 md:-mt-4 md:min-h-28 md:min-w-28 lg:-mt-2 2xl:-mt-0 [@media(width>=37rem)]:mr-14"
     >
       <Picture
         class="relative right-0.5 top-0.5"
@@ -51,61 +51,62 @@ const t = translations.sections.hero;
       data-hero-p
     />
 
-    <div
-      class="mt-8 flex flex-col flex-wrap items-center justify-center gap-y-4 xs:flex-row [@media(width>=335px)]:flex-row [@media(width>=37rem)]:justify-start"
-    >
-      <Badge
-        hoverGlow
-        class="w-fit select-none gap-3 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs sm:px-4 sm:text-sm"
+    <div class="mt-8 @container">
+      <div
+        class="flex flex-col-reverse items-center justify-center gap-y-4 @[25rem]:flex-row @[25rem]:justify-start"
       >
-        <span class="relative flex h-[0.7em] w-[0.7em]">
-          <span
-            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 animate-duration-[1000ms]"
-          ></span>
-          <span
-            class="relative inline-flex h-[0.7em] w-[0.7em] rounded-full bg-green-500"
-          ></span>
-        </span>
-        <span>{t.statusLabel}</span>
-      </Badge>
+        <Badge
+          hoverGlow
+          class="w-fit select-none gap-3 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs sm:px-4 sm:text-sm"
+        >
+          <span class="relative flex h-[0.7em] w-[0.7em]">
+            <span
+              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 animate-duration-[1000ms]"
+            ></span>
+            <span
+              class="relative inline-flex h-[0.7em] w-[0.7em] rounded-full bg-green-500"
+            ></span>
+          </span>
+          <span>{t.statusLabel}</span>
+        </Badge>
 
-      <span
-        class="ml-2 mr-1 hidden text-3xl font-bold text-muted xs:ml-4 xs:mr-2 [@media(width>=335px)]:inline-block"
-        >{"|"}</span
-      >
+        <span
+          class="ml-4 mr-2 hidden bg-muted-foreground/50 @[25rem]:inline-block @[25rem]:h-6 @[25rem]:w-0.5 @[36rem]:h-8"
+        ></span>
 
-      <ul class="flex gap-x-2">
-        {
-          [linkedIn, github, email, resume, bento].map(
-            ({ href, i18nKey, iconKey }) => {
-              const translatedLabel = translations.socials[i18nKey];
-              return (
-                <li
-                  class:list={[
-                    "rounded-lg text-foreground/80 transition duration-200",
-                    "hover:bg-accent hover:text-accent-foreground/80",
-                  ]}
-                >
-                  <Link
-                    {href}
-                    label={`${translatedLabel}`}
-                    targetBlank
-                    withTooltip={{
-                      content: `${translatedLabel}`,
-                      placement: "bottom",
-                    }}
+        <ul class="flex gap-x-2">
+          {
+            [linkedIn, github, email, resume, bento].map(
+              ({ href, i18nKey, iconKey }) => {
+                const translatedLabel = translations.socials[i18nKey];
+                return (
+                  <li
+                    class:list={[
+                      "rounded-lg text-foreground/80 transition duration-200",
+                      "hover:bg-accent hover:text-accent-foreground/80",
+                    ]}
                   >
-                    <Icon
-                      name={iconKey}
-                      class="box-content size-6 p-2 text-current sm:size-7 md:size-8"
-                    />
-                  </Link>
-                </li>
-              );
-            },
-          )
-        }
-      </ul>
+                    <Link
+                      {href}
+                      label={`${translatedLabel}`}
+                      targetBlank
+                      withTooltip={{
+                        content: `${translatedLabel}`,
+                        placement: "bottom",
+                      }}
+                    >
+                      <Icon
+                        name={iconKey}
+                        class="box-content size-6 p-2 text-current sm:size-7 md:size-8"
+                      />
+                    </Link>
+                  </li>
+                );
+              },
+            )
+          }
+        </ul>
+      </div>
     </div>
   </div>
 </section>
