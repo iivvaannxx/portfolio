@@ -1,14 +1,12 @@
 ---
 import { Section } from "@app/layouts";
-import { getTranslations } from "@modules/i18n";
 
 import AtWork from "./components/at-work.astro";
 import Education from "./components/education.astro";
 import PersonalSide from "./components/personal-side.astro";
 import Location from "./components/location.astro";
 
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+const { translations } = Astro.locals;
 const t = translations.sections.about;
 ---
 

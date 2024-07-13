@@ -4,14 +4,13 @@ import { Icon } from "astro-icon/components";
 import { Link } from "@app/components/base";
 import { Button } from "@app/components/ui/react";
 import { Section } from "@app/layouts";
-import { getTranslations, getLocaleRoute } from "@modules/i18n";
+import { getLocaleRoute } from "@modules/i18n";
 
 import { projects, current } from "./lib/data";
 import ProjectList from "./components/project-list.astro";
 import ProjectCard from "./components/project-card.astro";
 
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+const { locale, translations } = Astro.locals;
 const t = translations.sections.projects;
 
 const featuredProjects = projects.filter((project) => project.featured);

@@ -7,7 +7,6 @@ import { ViewTransitions } from "astro:transitions";
 import { NoScript } from "@components/base";
 
 import { cn } from "@lib/utils/shadcn";
-import { getTranslations } from "@modules/i18n";
 import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"body"> & {
@@ -28,8 +27,7 @@ const {
   ...props
 } = Astro.props;
 
-const { locale } = Astro.locals;
-const t = getTranslations(locale);
+const { locale, translations: t } = Astro.locals;
 ---
 
 <html

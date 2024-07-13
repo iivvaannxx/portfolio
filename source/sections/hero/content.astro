@@ -1,16 +1,14 @@
 ---
 import { Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { Badge, Link } from "@components/base";
 
+import { Badge, Link } from "@components/base";
 import { bento, email, github, linkedIn, resume } from "@lib/data/socials";
-import { getTranslations } from "@modules/i18n";
 
 import avatar from "./assets/avatar.png";
 
 // Retrieve the localized strings for the hero section.
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+const { translations } = Astro.locals;
 const t = translations.sections.hero;
 ---
 

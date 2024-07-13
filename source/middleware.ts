@@ -14,7 +14,7 @@ import { DEFAULT_LOCALE, getTranslations, isValidLocale } from "@modules/i18n";
  * @param next - The next function.
  */
 const localize = defineMiddleware(
-  async ({ params, locals, redirect, url }, next) => {
+  async ({ params, locals, redirect }, next) => {
     // Assign the locale or the default if it's not defined.
     const { locale = DEFAULT_LOCALE } = params;
 
@@ -27,20 +27,6 @@ const localize = defineMiddleware(
     locals.translations = getTranslations(locale);
     locals.locale = locale;
 
-    const { pathname } = url;
-    const [, slug] = pathname.split("/");
-
-    redirect("/ca/404");
-
-    /* const { pathname } = url;
-
-    console.log(params);
-    console.log(pathname, `/${locale}/wtf`, pathname === `/${locale}/wtf`);
-
-    if (pathname === `/${locale}/wtf`) {
-      return redirect(`/${locale}/test`);
-    }
- */
     return await next();
   },
 );

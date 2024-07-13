@@ -1,25 +1,15 @@
 ---
-import { Picture } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 import { Section } from "@app/layouts";
 import { ContactForm } from "@modules/contact";
-import { getTranslations } from "@modules/i18n";
 
-import memoji from "./assets/memoji.png";
-import {
-  discord,
-  email,
-  github,
-  linkedIn,
-  xTwitter,
-} from "@app/lib/data/socials";
-import { Badge, Link } from "@app/components/base";
-import { Icon } from "astro-icon/components";
-import ParticleCanvas from "@app/components/particles/particle-canvas.astro";
-import MyTime from "../about/components/my-time.svelte";
+import { Link } from "@components/base";
+import ParticleCanvas from "@components/particles/particle-canvas.astro";
 
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+import { discord, email, linkedIn, xTwitter } from "@app/lib/data/socials";
+
+const { translations } = Astro.locals;
 const t = translations.sections.contact;
 ---
 

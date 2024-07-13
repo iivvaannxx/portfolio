@@ -2,8 +2,6 @@
 import { Picture } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
-import { getTranslations } from "@modules/i18n";
-
 import laptop from "../assets/emojis/laptop.png";
 import approachEs from "../assets/images/metodo.png";
 import approachEn from "../assets/images/method.png";
@@ -11,8 +9,7 @@ import approachCa from "../assets/images/metode.png";
 
 type Props = HTMLAttributes<"article">;
 
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+const { locale, translations } = Astro.locals;
 const t = translations.sections.about.bento.atWork;
 
 // Select the correct image based on the locale

@@ -3,16 +3,12 @@ import { Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 
-import { getTranslations } from "@modules/i18n";
-import { cn } from "@lib/utils/shadcn";
-
 import pizzaEmoji from "../assets/emojis/pizza.png";
 import gamepadEmoji from "../assets/emojis/gamepad.png";
 
 type Props = HTMLAttributes<"article">;
 
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+const { translations } = Astro.locals;
 const t = translations.sections.about.bento.aboutMe;
 ---
 

@@ -2,7 +2,6 @@
 import { Picture } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
-import { getTranslations } from "@modules/i18n";
 import { cn } from "@lib/utils/shadcn";
 
 import MyTime from "./my-time.svelte";
@@ -11,8 +10,7 @@ import houseEmoji from "../assets/emojis/house.png";
 export type Props = HTMLAttributes<"article">;
 const { class: clazz, ...props } = Astro.props;
 
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+const { translations } = Astro.locals;
 const t = translations.sections.about.bento.location;
 ---
 
@@ -32,7 +30,7 @@ const t = translations.sections.about.bento.location;
   </header>
 
   <div
-    class="@lg:grid-cols-[auto,auto,auto] @lg:grid-rows-1 mt-8 grid grid-cols-1 grid-rows-[1fr,auto,1fr] gap-y-5"
+    class="mt-8 grid grid-cols-1 grid-rows-[1fr,auto,1fr] gap-y-5 @lg:grid-cols-[auto,auto,auto] @lg:grid-rows-1"
   >
     <div class="self-end">
       <p
@@ -47,12 +45,12 @@ const t = translations.sections.about.bento.location;
     </div>
 
     <div
-      class="@lg:h-full @lg:w-0.5 h-0.5 w-[80%] justify-self-center bg-muted"
+      class="h-0.5 w-[80%] justify-self-center bg-muted @lg:h-full @lg:w-0.5"
     >
     </div>
 
     <MyTime
-      class="@lg:w-fit @lg:justify-self-center justify-start text-center font-sans"
+      class="justify-start text-center font-sans @lg:w-fit @lg:justify-self-center"
       client:idle
     />
   </div>

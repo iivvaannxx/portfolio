@@ -1,12 +1,10 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-
-import { Link } from "@components/base";
-import { getTranslations } from "@modules/i18n";
-
-import { sections } from "../lib/sections";
 import { Icon } from "astro-icon/components";
 import { cva } from "class-variance-authority";
+
+import { Link } from "@components/base";
+import { sections } from "../lib/sections";
 
 export type Props = HTMLAttributes<"nav"> & {
   variant?: "header" | "menu";
@@ -27,7 +25,7 @@ const variants = cva("flex items-center font-medium text-sm", {
 });
 
 const { variant = "header", ...props } = Astro.props;
-const translations = getTranslations(Astro.locals.locale);
+const { translations } = Astro.locals;
 const t = translations.sections;
 ---
 

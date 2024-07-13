@@ -1,8 +1,5 @@
 ---
-import { getTranslations } from "@app/modules/i18n";
-
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+const { translations } = Astro.locals;
 const t = translations.noscript;
 ---
 

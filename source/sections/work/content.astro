@@ -1,13 +1,11 @@
 ---
 import { Section } from "@app/layouts";
-import { getTranslations } from "@modules/i18n";
 import { Timeline, TimelineEntry } from "@components/timeline";
 
 import { jobs } from "./lib/data";
 import JobEntry from "./components/job-entry.astro";
 
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+const { locale, translations } = Astro.locals;
 const t = translations.sections.experience;
 ---
 

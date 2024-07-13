@@ -1,8 +1,7 @@
 ---
-import { getTranslations } from "@modules/i18n";
 import { Icon } from "astro-icon/components";
 
-const translations = getTranslations(Astro.locals.locale);
+const { translations } = Astro.locals;
 const t = translations.footer;
 
 const [beforeHeart, afterHeart] = t.note.split("{heart}");

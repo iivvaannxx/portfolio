@@ -3,15 +3,13 @@ import type { HTMLAttributes } from "astro/types";
 import { Picture } from "astro:assets";
 
 import { Link } from "@components/base";
-import { getTranslations } from "@modules/i18n";
 
 import { education } from "../lib/data";
 import graduationCapEmoji from "../assets/emojis/graduation-cap.png";
 
 type Props = HTMLAttributes<"article">;
 
-const { locale } = Astro.locals;
-const translations = getTranslations(locale);
+const { locale, translations } = Astro.locals;
 const t = translations.sections.about.bento.education;
 
 const formatter = new Intl.DateTimeFormat(locale, {
