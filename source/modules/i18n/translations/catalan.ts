@@ -11,6 +11,20 @@ export const catalan = {
     },
   },
 
+  pages: {
+    notfound: {
+      meta: {
+        title: "404: Página No Trobada",
+        description: "La pàgina que estàs buscant no existeix.",
+      },
+
+      headline: "Ups! Sembla que t'has perdut.",
+      text: "La pàgina que estàs buscant no existeix.",
+      back: "Torna a la página principal",
+      label: "Pàgina Principal",
+    },
+  },
+
   noscript: {
     headline: `Oops! It seems that ${strong("JavaScript")} is disabled in your browser.`,
     message: `This site ${strong("requires it")} for some content ${strong("to be displayed correctly")}.

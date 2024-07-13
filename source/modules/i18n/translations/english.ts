@@ -11,6 +11,20 @@ export const english = {
     },
   },
 
+  pages: {
+    notfound: {
+      meta: {
+        title: "404: Page Not Found",
+        description: "The page you're looking for doesn't exist.",
+      },
+
+      headline: "Oops! It seems you're lost.",
+      text: "The page you're looking for doesn't exist.",
+      back: "Back to the main page",
+      label: "Main Page",
+    },
+  },
+
   noscript: {
     headline: `Oops! It seems that ${strong("JavaScript")} is disabled in your browser.`,
     message: `This site ${strong("requires it")} for some content ${strong("to be displayed correctly")}.

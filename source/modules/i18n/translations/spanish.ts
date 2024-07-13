@@ -11,6 +11,20 @@ export const spanish = {
     },
   },
 
+  pages: {
+    notfound: {
+      meta: {
+        title: "404: Página No Encontrada",
+        description: "La página que estás buscando no existe.",
+      },
+
+      headline: "Ups! Parece que te has perdido.",
+      text: "La página que estás buscando no existe.",
+      back: "Volver a la página principal",
+      label: "Página Principal",
+    },
+  },
+
   noscript: {
     headline: `Oops! It seems that ${strong("JavaScript")} is disabled in your browser.`,
     message: `This site ${strong("requires it")} for some content ${strong("to be displayed correctly")}.

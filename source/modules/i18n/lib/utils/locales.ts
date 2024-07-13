@@ -61,6 +61,8 @@ export function getLocaleRoute(locale: Locale, route: string) {
     ? useTranslation(`meta.routes.${route}`, locale)
     : route;
 
+  // Ensure we don't have a leading slash.
+  routeName = routeName.startsWith("/") ? routeName.slice(1) : routeName;
   return locale === DEFAULT_LOCALE
     ? `/${routeName}`
     : `/${locale}/${routeName}`;
