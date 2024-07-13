@@ -4,13 +4,11 @@ import { bold, italic, link, strong, small } from "../lib/helpers/html";
 export const spanish = {
   meta: {
     name: "Español",
-    label: "ESP",
     locale: "es",
-  },
 
-  misc: {
-    scrollToTop: "Scroll To Top",
-    language: "Language",
+    routes: {
+      archive: "archivo",
+    },
   },
 
   noscript: {
@@ -27,12 +25,12 @@ export const spanish = {
 
   sections: {
     hero: {
-      greeting: "Hola! Soy Ivan Porto",
       headline: {
         content: `I'm a ${strong("software")} developer.`,
         // words: ["game", "web", "software"],
       },
 
+      greeting: "Hey! I'm Ivan Porto",
       introduction: `
         Specialized in game development, yet also passionate about developing for the web. With
         ${bold("6+ years of coding expertise")}, and ${strong("4+ years of professional experience")},
@@ -73,8 +71,8 @@ export const spanish = {
       id: "projects",
       title: "Some of my favorite projects",
 
-      buttonReveal: "Reveal",
-      currentProject: "What I'm currently working on?",
+      buttonReveal: "What's next?",
+      currentProject: "On what I'm currently working?",
       seeMore: "See more of my projects in",
       archiveText: "the archive",
 
@@ -152,16 +150,6 @@ export const spanish = {
       },
     },
 
-    skills: {
-      name: "Skills",
-      id: "skills",
-
-      known: {
-        "astro": [],
-        "c++": ["This is a test note"],
-      },
-    },
-
     about: {
       name: "About",
       title: "A little more about me",
@@ -178,20 +166,88 @@ export const spanish = {
         not only to learn new things but also to understand them.`,
       ],
 
-      education: {
-        title: "Education",
-        gddv: {
-          title: "Bachelor's Degree in Game Design and Development",
-          location: "Girona, Spain",
-          description: `
-            Graduated by the ${link("https://www.udg.edu/en/", strong("University of Girona"), true)},
-            where I gained a comprehensive understanding of the theoretical and practical
-            aspects of my field. This included not only game development, but also  
-            ${strong("3D modeling")}, ${strong("algorithms and data structures")}, 
-            ${strong("systems architecture")}, ${strong("web development")}, and more.
-          `,
+      bento: {
+        atWork: {
+          title: "At Work",
+          iconAlt: "Laptop Emoji",
+          approachAlt: "My approach with code",
+
+          text: [
+            `With nearly 7 years of coding experience, I approach my work with a 
+            careful ${strong("attention to detail")} and a ${strong("diligent")} attitude.
+            Back in college, we often worked in groups; thanks to that experience, 
+            I'm ${strong("well-versed in teamwork settings")}, although I'm equally 
+            comfortable and productive working alone.`,
+
+            `I like automating tasks, especially when I'm feeling a bit lazy. This habit
+            aligns well with my ${strong("career focus")} on backend and cloud infrastructure development,
+            as I enjoy building systems that ${strong("make work easier and faster")} for everyone.`,
+          ],
+        },
+
+        aboutMe: {
+          title: "My personal side",
+          dogEmojiText: "Dogs",
+          gameEmojiText: "Games",
+
+          iconAlt: "Waving Hand Emoji",
+          dogEmojiAlt: "Dog",
+          gamepadEmojiAlt: "Gamepad",
+
+          text: [
+            `With nearly 7 years of coding experience, I always approach my work with a 
+            careful ${strong("attention to detail")} and a ${strong("diligent")} attitude.
+            Back in college, we used to work on many things in groups, thanks to that
+            experience, I'm well-versed in teamwork settings.`,
+
+            `I like to automate things. Sometimes `,
+
+            `I'm a software developer ${strong("based in Barcelona")} with a passion for creating
+            engaging and interactive experiences, whether it's a website, a game, or a mobile app.`,
+
+            `I've always been ${strong("naturally curious")} 🧐, looking 
+            not only to learn new things but also to understand them.`,
+
+            `However, I mostly work alone,
+            which has helped me develop a ${strong("strong sense of autonomy")} and also made 
+            me very comfortable in solo environments as well.
+            `,
+          ],
+        },
+
+        education: {
+          title: "Education",
+          iconAlt: "Graduation Cap Emoji",
+
+          items: {
+            gddv: {
+              title: "Bachelor's Degree in Game Design and Development",
+              location: "Girona, Spain",
+
+              url: "https://www.udg.edu/en/estudia/Oferta-formativa/Graus/Fitxes?IDE=1436&ID=3105G1315",
+              description: `Graduated by the ${link("https://www.udg.edu/en/", strong("University of Girona"), true)},
+              where I gained a comprehensive understanding of the theoretical and practical
+              aspects of my field. This included not only game development, but also  
+              ${strong("3D modeling")}, ${strong("algorithms and data structures")}, 
+              ${strong("systems architecture")}, ${strong("web development")}, and more.
+            `,
+            },
+          },
+        },
+
+        location: {
+          title: "Location",
+          iconAlt: "House Emoji",
+
+          where: `Based in ${strong("Barcelona")}`,
         },
       },
+    },
+
+    contact: {
+      name: "Contact",
+      title: "Shoot me a message",
+      id: "contact",
     },
   },
 
@@ -201,6 +257,12 @@ export const spanish = {
       ${link("https://svelte.dev", "Svelte", true)}, and ${link("https://react.dev", "React", true)}. 
       Deployed on ${link("https://cloudflare.com", "Cloudflare", true)}.
     `,
+  },
+
+  misc: {
+    scrollToTop: "Scroll To Top",
+    language: "Language",
+    loveIconSr: "Love",
   },
 
   socials: {
@@ -262,7 +324,7 @@ export const clientSpanish = {
     },
 
     persistingError:
-      "If the problem persists, please contact me directly at my email: ",
+      "If the problem persists, you contact me directly at my email: ",
     captchaTrouble:
       "Are you having trouble with the captcha? Try reloading or clearing the cache.",
     turnstileFailed: "Human Verification Failed",

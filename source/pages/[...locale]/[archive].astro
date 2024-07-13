@@ -1,0 +1,10 @@
+---
+import type { GetStaticPaths } from "astro";
+import { createStaticPathsHandler } from "@modules/i18n";
+
+export const getStaticPaths = createStaticPathsHandler(
+  "archive",
+) satisfies GetStaticPaths;
+---
+
+<h1>Archive</h1>

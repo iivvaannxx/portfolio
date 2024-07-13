@@ -6,10 +6,11 @@ export {
   DEFAULT_LOCALE,
   MY_TIMEZONE,
   SUPPORTED_LOCALES,
+  LOCALIZED_ROUTES,
 } from "./lib/constants";
 export {
   getTranslations,
-  getTranslation,
+  useTranslation as getTranslation,
   getTranslationHandler,
   useClientTranslation,
 } from "./lib/utils/translations";
@@ -18,7 +19,7 @@ export {
   isValidLocale,
   getCurrentLocale,
   getLocaleRoute,
-  getLocalizedStaticPaths,
+  createStaticPathsHandler,
 } from "./lib/utils/locales";
 
 export {

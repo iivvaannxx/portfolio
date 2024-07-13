@@ -1,7 +1,6 @@
 import { clientEnglish, english } from "../translations/english";
 import { clientSpanish, spanish } from "../translations/spanish";
-// import { catalan } from "../translations/catalan";
-// import { spanish } from "../translations/spanish";
+import { clientCatalan, catalan } from "../translations/catalan";
 
 import type { Locale, Timezone } from "./types";
 
@@ -10,6 +9,9 @@ export const MY_TIMEZONE = "Europe/Madrid" satisfies Timezone;
 
 /** The locales available in the website. */
 export const SUPPORTED_LOCALES = ["en", "es", "ca"] as const;
+
+/** The localized routes in the website. */
+export const LOCALIZED_ROUTES = ["archive"] as const;
 
 /** The default locale of the website. */
 export const DEFAULT_LOCALE = "en" as const satisfies Locale;
@@ -24,8 +26,8 @@ export const TRANSLATIONS = {
   en: english,
 
   // TODO: Finish translations.
-  ca: english,
-  es: english,
+  ca: catalan,
+  es: spanish,
 } as const;
 
 export const CLIENT_TRANSLATIONS = {

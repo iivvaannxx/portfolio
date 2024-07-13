@@ -1,12 +1,16 @@
 import type { Get, Paths } from "type-fest";
 import type {
   CLIENT_TRANSLATIONS,
+  LOCALIZED_ROUTES,
   SUPPORTED_LOCALES,
   TRANSLATIONS,
 } from "./constants";
 
 /** Defines a locale code of the website. */
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
+
+/** Defines the routes that have different names depending on the locale. */
+export type LocalizedRoute = (typeof LOCALIZED_ROUTES)[number];
 
 /**
  * Defines the signature of a function which, given a locale, returns the localized string of a pre-given key.

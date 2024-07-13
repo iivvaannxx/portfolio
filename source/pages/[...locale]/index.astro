@@ -3,7 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { Icon } from "astro-icon/components";
 
 import { Page } from "@app/layouts";
-import { getLocalizedStaticPaths, getTranslations } from "@modules/i18n";
+import { createStaticPathsHandler, getTranslations } from "@modules/i18n";
 
 import ParticlesCanvas from "@components/particles/particle-canvas.astro";
 
@@ -15,7 +15,8 @@ import { fade, slide } from "astro:transitions";
 import ScrollToTop from "@app/components/scroll-to-top.svelte";
 import { Toaster } from "@components/ui/react";
 
-export const getStaticPaths = getLocalizedStaticPaths satisfies GetStaticPaths;
+export const getStaticPaths =
+createStaticPathsHandler() satisfies GetStaticPaths;
 
 const { locale } = Astro.locals;
 const t = getTranslations(locale);

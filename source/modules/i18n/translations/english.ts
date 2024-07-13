@@ -4,8 +4,11 @@ import { bold, italic, link, strong, small } from "../lib/helpers/html";
 export const english = {
   meta: {
     name: "English",
-    label: "ENG",
     locale: "en",
+
+    routes: {
+      archive: "archive",
+    },
   },
 
   noscript: {

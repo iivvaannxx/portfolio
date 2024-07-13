@@ -36,7 +36,7 @@ export function getTranslations<L extends Locale>(locale: Locale) {
  * @param locale - The locale for which to retrieve the translation. Defaults to the defaultLocale.
  * @returns The translation value for the given key and locale.
  */
-export function getTranslation<
+export function useTranslation<
   K extends TranslationKey<L>,
   L extends Locale = typeof DEFAULT_LOCALE,
 >(key: K, locale?: L) {
