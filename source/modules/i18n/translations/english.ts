@@ -169,17 +169,6 @@ export const english = {
       title: "A little more about me",
       id: "about",
 
-      introduction: [
-        `I'm a software developer ${strong("based in Barcelona")} with a passion 
-        for creating interactive experiences, whether it's a website, a game, 
-        or a mobile app. With nearly 7 years of coding experience, I approach 
-        my work with a careful ${strong("attention to detail")} and a ${strong("diligent")} 
-        attitude.`,
-
-        `On a personal note, I've always been ${strong("naturally curious")} 🧐, looking 
-        not only to learn new things but also to understand them.`,
-      ],
-
       bento: {
         atWork: {
           title: "At Work",
@@ -189,11 +178,10 @@ export const english = {
           text: [
             `With nearly 7 years of coding experience, I approach my work with a 
             careful ${strong("attention to detail")} and a ${strong("diligent")} attitude.
-            Back in college, we often worked in groups; thanks to that experience, 
-            I'm ${strong("well-versed in teamwork settings")}, although I'm equally 
-            comfortable and productive working alone.`,
+            Through collaborative projects in college, I've become ${strong("well-versed in teamwork settings")}, 
+            although I'm equally comfortable and productive working independently.`,
 
-            `I like automating tasks, especially when I'm feeling a bit lazy. This habit
+            `I like automating tasks, especially when efficiency is key. This habit
             aligns well with my ${strong("career focus")} on backend and cloud infrastructure development,
             as I enjoy building systems that ${strong("make work easier and faster")} for everyone.`,
           ],
@@ -209,23 +197,12 @@ export const english = {
           gamepadEmojiAlt: "Gamepad",
 
           text: [
-            `With nearly 7 years of coding experience, I always approach my work with a 
-            careful ${strong("attention to detail")} and a ${strong("diligent")} attitude.
-            Back in college, we used to work on many things in groups, thanks to that
-            experience, I'm well-versed in teamwork settings.`,
+            `The 3 words that best define me are ${strong("resilient")}, ${strong("honest")}, and 
+            ${strong("independent")}. It's hard for me to give up on something I've set my mind to, 
+            and I always try to be as authentic as possible in my interactions.`,
 
-            `I like to automate things. Sometimes `,
-
-            `I'm a software developer ${strong("based in Barcelona")} with a passion for creating
-            engaging and interactive experiences, whether it's a website, a game, or a mobile app.`,
-
-            `I've always been ${strong("naturally curious")} 🧐, looking 
-            not only to learn new things but also to understand them.`,
-
-            `However, I mostly work alone,
-            which has helped me develop a ${strong("strong sense of autonomy")} and also made 
-            me very comfortable in solo environments as well.
-            `,
+            `Additionally, I've always been ${strong("naturally curious")}, looking not only to learn new things,
+            but also to understand them. That's why I love asking questions and figuring out how things work.`,
           ],
         },
 
@@ -239,11 +216,11 @@ export const english = {
               location: "Girona, Spain",
 
               url: "https://www.udg.edu/en/estudia/Oferta-formativa/Graus/Fitxes?IDE=1436&ID=3105G1315",
-              description: `Graduated by the ${link("https://www.udg.edu/en/", strong("University of Girona"), true)},
-              where I gained a comprehensive understanding of the theoretical and practical
+              description: `Graduated from the ${link("https://www.udg.edu/en/", strong("University of Girona"), true)},
+              with a comprehensive understanding of the theoretical and practical
               aspects of my field. This included not only game development, but also  
-              ${strong("3D modeling")}, ${strong("algorithms and data structures")}, 
-              ${strong("systems architecture")}, ${strong("web development")}, and more.
+              ${strong("algorithms and data structures")}, ${strong("systems architecture")}, 
+              ${strong("databases")}, and other relevant areas.
             `,
             },
           },

@@ -38,88 +38,22 @@ const t = translations.sections.about.bento.aboutMe;
         class="size-[1.5em]"
       />
     </picture>
-    <h3 class="mt-3 capitalize">My personal side</h3>
+    <h3 class="mt-3 capitalize">{t.title}</h3>
   </header>
 
   <div>
     <p
       class="mt-8 text-pretty text-base text-foreground/80"
-      set:html={t.text[2]}
+      set:html={t.text[0]}
     />
 
     <p
       class="mt-6 text-pretty text-base text-foreground/80"
-      set:html={t.text[3]}
+      set:html={t.text[1]}
     />
   </div>
 
   <div class="grid grid-cols-3 grid-rows-1 gap-x-8 pt-8 sm:gap-x-2">
-    <!-- <div
-        data-emoji
-        class="relative aspect-square -rotate-[20deg] animate-float self-start justify-self-center"
-      >
-        <Picture
-          src={pizzaEmoji}
-          alt="Pizza"
-          formats={["avif", "webp", "png"]}
-          class="size-full"
-        />
-
-        <div
-          class="absolute inset-x-0 left-[49%] top-full -z-10 min-h-fit w-full min-w-max -translate-x-1/2 -translate-y-1/2 rounded-full border bg-[#1d1b1b] px-[1em] py-[0.2em] text-center text-xs"
-        >
-          <p class="mt-2 inline-flex items-center gap-x-2">
-            <Icon
-              class="size-[1em]"
-              name="heart"
-            />
-            <span class="sr-only">{translations.misc.loveIconSr}</span>
-            <span class="font-medium"> Pizza </span>
-          </p>
-        </div>
-      </div>
-
-      <div
-        data-emoji
-        class="relative aspect-square self-end justify-self-center"
-      >
-        <picture>
-          <source
-            srcset="/images/emojis/dog/dog.avif"
-            type="image/avif"
-          />
-          <source
-            srcset="/images/emojis/dog/dog.webp"
-            type="image/webp"
-          />
-          <source
-            srcset="/images/emojis/dog/dog.png"
-            type="image/png"
-          />
-          <img
-            src="/images/emojis/dog/dog.gif"
-            alt={t.dogEmojiAlt}
-            width={256}
-            height={256}
-            decoding="async"
-            loading="lazy"
-          />
-        </picture>
-
-        <p
-          class="absolute inset-x-0 left-[5%] top-[94%] z-10 min-h-fit w-full min-w-max rounded-full border bg-[#1d1b1b] px-[1em] py-[0.2em] text-center text-xs"
-        >
-          <span class="mt-1 inline-flex items-center gap-x-2">
-            <Icon
-              class="size-[1em]"
-              name="heart"
-            />
-            <span class="sr-only">{translations.misc.loveIconSr}</span>
-            <span class="font-medium"> Dogs </span>
-          </span>
-        </p>
-      </div> -->
-
     <div
       data-emoji
       class="relative flex -rotate-12 animate-float flex-col items-center -space-y-3 self-start justify-self-center"
@@ -181,7 +115,7 @@ const t = translations.sections.about.bento.aboutMe;
             name="heart"
           />
           <span class="sr-only">{translations.misc.loveIconSr}</span>
-          <span class="font-medium"> Dogs </span>
+          <span class="font-medium"> {t.dogEmojiText} </span>
         </span>
       </p>
     </div>
@@ -192,7 +126,7 @@ const t = translations.sections.about.bento.aboutMe;
     >
       <Picture
         src={gamepadEmoji}
-        alt="Gamepad"
+        alt={t.gamepadEmojiAlt}
         formats={["avif", "webp", "png"]}
         class="size-full"
       />
@@ -206,7 +140,7 @@ const t = translations.sections.about.bento.aboutMe;
             name="heart"
           />
           <span class="sr-only">{translations.misc.loveIconSr}</span>
-          <span class="font-medium"> Games </span>
+          <span class="font-medium"> {t.gameEmojiText} </span>
         </span>
       </p>
     </div>
@@ -214,11 +148,6 @@ const t = translations.sections.about.bento.aboutMe;
 </article>
 
 <style>
-  /*   [data-emoji] {
-    max-width: min(100%, 6rem);
-    max-height: min(100%, 6rem);
-  }
- */
   article {
     display: grid;
     grid-template-rows: auto auto 1fr;
