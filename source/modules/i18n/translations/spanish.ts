@@ -9,6 +9,13 @@ export const spanish = {
     routes: {
       archive: "archivo",
     },
+
+    title: "Ivan Porto | Desarrollador de Software",
+    description: `
+      ¡Hola! Soy Ivan Porto, un desarrollador de software especializado en el desarrollo de juegos y
+      apasionado por el desarrollo web. Hábil tanto en backend como en frontend.
+      Fluido en catalán, español e inglés.
+    `,
   },
 
   pages: {

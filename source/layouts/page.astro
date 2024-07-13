@@ -4,14 +4,14 @@ import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
 
 import { ViewTransitions } from "astro:transitions";
-import { NoScript } from "@components/base";
+import type { ComponentProps, HTMLAttributes } from "astro/types";
 
+import { SEO } from "@app/layouts";
+import { NoScript } from "@components/base";
 import { cn } from "@lib/utils/shadcn";
-import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"body"> & {
-  title?: string;
-  description?: string;
+  seo: ComponentProps<typeof SEO>;
 
   withViewTransitions?: boolean;
   withNoScriptFallback?: boolean;
@@ -19,14 +19,15 @@ type Props = HTMLAttributes<"body"> & {
 
 const isDev = import.meta.env.DEV;
 const {
-  title,
-  description,
+  seo,
   withViewTransitions = false,
   withNoScriptFallback = false,
   class: clazz,
   ...props
 } = Astro.props;
 
+const makeProductionUrl = (pathname: string) =>
+  `${Astro.site?.origin}${pathname}`;
 const { locale, translations: t } = Astro.locals;
 ---
 
@@ -35,22 +36,6 @@ const { locale, translations: t } = Astro.locals;
   class="dark"
 >
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-
-    <meta
-      name="description"
-      content={description}
-    />
-
-    <meta
-      name="robots"
-      content="noindex,follow"
-    />
-
     <link
       rel="sitemap"
       href="/sitemap-index.xml"
@@ -91,6 +76,11 @@ const { locale, translations: t } = Astro.locals;
       content="#ffffff"
     />
 
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <script
       is:inline
       data-astro-rerun
@@ -99,9 +89,8 @@ const { locale, translations: t } = Astro.locals;
 
     {withViewTransitions && <ViewTransitions />}
 
+    <SEO {...seo} />
     <slot name="head" />
-
-    <title>{title}</title>
   </head>
 
   <body

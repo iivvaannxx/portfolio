@@ -1,0 +1,40 @@
+---
+import type { ComponentProps } from "astro/types";
+import { SEO } from "astro-seo";
+
+import {
+  DEFAULT_LOCALE,
+  SUPPORTED_LOCALES,
+  getLocaleRoute,
+} from "@modules/i18n";
+
+type Props = Pick<ComponentProps<typeof SEO>, "title" | "description"> & {
+  title: string;
+  description: string;
+  canonicalPathname: string;
+};
+
+const { title, description, canonicalPathname } = Astro.props;
+const { locale } = Astro.locals;
+
+// All the others that are not the current one.
+const alternateLocales = SUPPORTED_LOCALES.filter((lang) => lang !== locale);
+const makeProductionUrl = (pathname: string) =>
+  `${Astro.site?.origin}${pathname}`;
+---
+
+<!-- noindex and nofollow are temporal. -->
+<SEO
+  title={title.trim()}
+  description={description.replace(/\s+/g, " ").trim()}
+  charset="utf-8"
+  languageAlternates={alternateLocales.map((locale) => ({
+    href: makeProductionUrl(getLocaleRoute(locale, canonicalPathname)),
+    hrefLang: locale,
+  }))}
+  canonical={makeProductionUrl(
+    getLocaleRoute(DEFAULT_LOCALE, canonicalPathname),
+  )}
+  noindex
+  nofollow
+/>

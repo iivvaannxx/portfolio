@@ -27,6 +27,7 @@
     "aos": "^2.3.4",
     "astro": "4.11.5",
     "astro-icon": "^1.1.0",
+    "astro-seo": "^0.8.4",
     "balance-text": "^3.3.1",
     "bits-ui": "^0.21.10",
     "canvas-confetti": "^1.9.3",

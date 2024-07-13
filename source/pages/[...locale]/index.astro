@@ -38,6 +38,11 @@ const { translations: t } = Astro.locals;
   class="relative"
   withNoScriptFallback
   withViewTransitions
+  seo={{
+    title: t.meta.title,
+    description: t.meta.description,
+    canonicalPathname: "/",
+  }}
 >
   <Header class="overflow-x-auto fold:overflow-x-clip" />
 

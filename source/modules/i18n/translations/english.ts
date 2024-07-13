@@ -9,6 +9,13 @@ export const english = {
     routes: {
       archive: "archive",
     },
+
+    title: "Ivan Porto | Software Developer",
+    description: `
+      Hey! I'm Ivan Porto, a software developer specialized in game development, yet also
+      passionate about developing for the web. Skilled both in backend and frontend.
+      Fluent in Catalan, Spanish, and English.
+    `,
   },
 
   pages: {
