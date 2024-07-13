@@ -6,7 +6,7 @@ import { Button } from "@app/components/ui/react";
 import { Section } from "@app/layouts";
 import { getLocaleRoute } from "@modules/i18n";
 
-import { projects, current } from "./lib/data";
+import { projects, next } from "./lib/data";
 import ProjectList from "./components/project-list.astro";
 import ProjectCard from "./components/project-card.astro";
 
@@ -14,7 +14,7 @@ const { locale, translations } = Astro.locals;
 const t = translations.sections.projects;
 
 const featuredProjects = projects.filter((project) => project.featured);
-const currentDescription = current.description(locale);
+const currentDescription = next.description(locale);
 ---
 
 <script>
@@ -53,10 +53,10 @@ const currentDescription = current.description(locale);
     <div class="grid overflow-hidden">
       <div class="overflow-hidden *:my-12">
         <ProjectCard
-          name={current.name(locale)}
-          headline={current.headline(locale)}
-          relatedSkills={current.relatedSkills}
-          preview={projects[0].preview}
+          name={next.name(locale)}
+          headline={next.headline(locale)}
+          relatedSkills={next.relatedSkills}
+          preview={next.preview}
           data-current-project-card
           class="relative sm:mx-4 lg:mt-12"
         >

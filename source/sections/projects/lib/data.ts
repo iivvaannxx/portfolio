@@ -94,10 +94,11 @@ export const projects = [
   }),
 ] as const satisfies ProjectData[];
 
-export const current = {
-  name: getTranslationHandler("sections.projects.current.name"),
-  headline: getTranslationHandler("sections.projects.current.headline"),
-  description: getTranslationHandler("sections.projects.current.description"),
+export const next = {
+  name: getTranslationHandler("sections.projects.next.name"),
+  headline: getTranslationHandler("sections.projects.next.headline"),
+  description: getTranslationHandler("sections.projects.next.description"),
 
+  preview: (await import("../assets/next/cover.png")).default,
   relatedSkills: ["AWS", "Docker", "Terraform", "TypeScript"],
 } as const satisfies Partial<ProjectData>;

@@ -147,7 +147,7 @@ export const catalan = {
         },
       },
 
-      current: {
+      next: {
         name: "Use Link",
         headline: "A self-hostable URL shortener and file sharing service.",
         description: [
