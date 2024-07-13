@@ -217,7 +217,7 @@ export const english = {
 
               url: "https://www.udg.edu/en/estudia/Oferta-formativa/Graus/Fitxes?IDE=1436&ID=3105G1315",
               description: `Graduated from the ${link("https://www.udg.edu/en/", strong("University of Girona"), true)},
-              with a comprehensive understanding of the theoretical and practical
+              where I gained a comprehensive understanding of the theoretical and practical
               aspects of my field. This included not only game development, but also  
               ${strong("algorithms and data structures")}, ${strong("systems architecture")}, 
               ${strong("databases")}, and other relevant areas.
