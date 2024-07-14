@@ -19,7 +19,7 @@ const t = translations.sections.contact;
   title={t.title}
   order={4}
 >
-  <div class="contact-section-grid mx-4 xl:mx-8">
+  <div class="contact-section-grid">
     <div
       class="grid-area-thanks text-balance px-8 text-center font-header xl:self-center xl:px-0 xl:text-left"
     >
@@ -111,7 +111,7 @@ const t = translations.sections.contact;
       <span class="h-0.5 w-1/2 bg-muted xl:h-1/2 xl:w-0.5"></span>
     </div>
 
-    <div class="grid-area-form relative flex flex-col gap-y-8 py-6">
+    <div class="grid-area-form relative flex flex-col py-6">
       <p
         class="mx-auto max-w-prose text-balance text-center font-header text-base font-medium tracking-wide text-foreground/80"
       >
@@ -128,7 +128,7 @@ const t = translations.sections.contact;
 
       <ContactForm
         data-contact-form
-        className="my-8 max-w-xl rounded-xl border border-primary/40 bg-[#0e0c0c] p-6 backdrop-blur-md xs:mx-4 sm:mx-auto"
+        className="my-8 max-w-xl rounded-xl border border-primary/40 bg-[#0e0c0c] p-6 backdrop-blur-md sm:mx-auto"
         client:visible={{ rootMargin: "30%" }}
       />
       <small

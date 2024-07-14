@@ -103,12 +103,12 @@ export const english = {
           headline: "A (quite a bit more) fancy replica of my room.",
 
           description: [
-            `This was my entry to the 9th edition of the challenges organised by ${bold("Bruno Simon")}
+            `This project was my entry to the 9th edition of challenges organized by ${bold("Bruno Simon")}
             for the students of his ${link("https://threejs-journey.com/", strong("Three.js Journey"), true)} 
-            course. The theme was ${italic("Isometric Room")} and even though I had just purchased the course 
+            course. The theme was ${italic("Isometric Room")}. Despite having just purchased the course 
             when the challenge was announced, I decided to participate.`,
 
-            `Turned out quite good! It scored the ${link(
+            `It was very well received, scoring ${link(
               "https://threejs-journey.com/challenges/009-isometric-room",
               strong("3rd place"),
               true,
@@ -123,29 +123,28 @@ export const english = {
             "A growing collection of games built with web technologies.",
 
           description: [
-            `I started this project very recently, after quite some time without
-            working on any game projects, I wanted to get back into it. I thought it 
-            would be fun to combine my passion for both the web and game development,
-            and so this idea came up.`,
+            `This project represents my return to game development after quite some time, 
+            combining my passion for web and game creation. Currently, it features a single game, 
+            with plans to expand using various technologies like ${strong("Three.js")}, 
+            ${strong("Phaser")}, ${strong("Pixi.js")}, and ${strong("Canvas")}, along with other cool stuff. `,
 
-            `Right now there's only 1 game, but I plan to add more in the future. I'll be using
-            many different technologies, including ${strong("Three.js")}, ${strong("Phaser")}, 
-            ${strong("Pixi.js")}, ${strong("Canvas")}, among all the other cool stuff out there.
+            `Future goals include exploring ${strong("multiplayer games")}, which aligns 
+            well with my ${bold("growing interest in backend and cloud infrastructure")}.
           `,
           ],
         },
 
         "the-izland": {
           name: "The Izland",
-          headline: "A zombie survival game we made back in college.",
+          headline: "A zombie survival game developed as a college project.",
 
           description: [
-            `This is one of my favorite games I've worked on. It was a project for a
-            college subject, where we had to develop a game in ${strong("Unity")}.
-            Although we were very limited in time and couldn't make it as polished
-            as we wanted, we were very happy with the result.`,
+            `Among the games I've worked on, this is one of my favorites. It was a project for a
+            college course assignment, where we had to create a game using ${strong("Unity")}.
+            Despite the time constraints that prevented us from adding everything we would
+            have liked, we were very happy with the result.`,
 
-            `I was in charge of programming the game's main mechanics, such as
+            `I was responsible for programming the game's main mechanics, such as
             the ${strong("zombies' AI")}, the ${strong("user interface")}, the
             ${strong("player interactions")}, and the overall ${strong("game's progression")}, 
             among other elements.
@@ -158,15 +157,14 @@ export const english = {
         name: "Use Link",
         headline: "A self-hostable URL shortener and file sharing service.",
         description: [
-          `I usually work on many things at once, but this is my current focus. 
-          I plan to make it a full-featured service with a ${strong("modular architecture")}
-          that allows ${bold("seamless integration")} with various cloud providers, database
+          `While I usually work on many things at once, this is currently my main focus. 
+          I aim to develop it into a comprehensive service featuring a ${strong("modular architecture")}
+          that allows for ${bold("seamless integration")} with various cloud providers, database
           systems, and file storage solutions.`,
 
-          `My primary motivation for this project is to specialize my skills in 
+          `My primary motivation for this project is to further specialize my skills in 
           ${strong("cloud infrastructure")}, ${strong("DevOps")}, and 
-          ${strong("backend development")} as these are the areas I want to focus 
-          on in the future.`,
+          ${strong("backend development")}, as these are the areas I intend to focus in my career.`,
         ],
       },
     },
@@ -204,9 +202,9 @@ export const english = {
           gamepadEmojiAlt: "Gamepad",
 
           text: [
-            `The 3 words that best define me are ${strong("resilient")}, ${strong("honest")}, and 
+            `The 3 words that best define me are ${strong("resilient")}, ${strong("optimistic")}, and 
             ${strong("independent")}. It's hard for me to give up on something I've set my mind to, 
-            and I always try to be as authentic as possible in my interactions.`,
+            and I always try to bring a positive outlook to every situation.`,
 
             `Additionally, I've always been ${strong("naturally curious")}, looking not only to learn new things,
             but also to understand them. That's why I love asking questions and figuring out how things work.`,

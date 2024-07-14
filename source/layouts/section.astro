@@ -69,8 +69,6 @@ const { order = 1, title, ...props } = Astro.props;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        console.log(entries);
-
         // Update the state of each section.
         for (const entry of entries) {
           // The ID is an enforced prop, so we can safely assume it exists.

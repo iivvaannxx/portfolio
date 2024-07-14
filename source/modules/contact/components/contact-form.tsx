@@ -97,9 +97,9 @@ function ContactFormActions({
   disableReset,
 }: ContactFormActionsProps) {
   return (
-    <div className="mt-8 flex w-full flex-col flex-wrap justify-start gap-4 fold:flex-row xs:flex-nowrap">
+    <div className="mt-8 flex w-full flex-col justify-start gap-4 [@media(width>=415px)]:flex-row">
       <Button
-        className="w-full xs:w-32 sm:h-12 sm:w-48"
+        className="w-full sm:h-12 [@media(width>=415px)]:w-1/2"
         type="submit"
         disabled={disableSubmit}
       >
@@ -108,7 +108,7 @@ function ContactFormActions({
       <Button
         type="reset"
         variant="outline"
-        className="w-full xs:w-20 sm:h-12 sm:w-32"
+        className="w-full sm:h-12 [@media(width>=415px)]:w-1/2"
         onClick={resetForm}
         disabled={disableReset}
       >
