@@ -66,6 +66,15 @@ export const discord = {
   iconKey: "tabler:brand-discord",
 } as const satisfies SocialData;
 
+/** My Threads profile. */
+export const threads = {
+  href: "https://threads.net/@iivanportoo",
+  i18nKey: "threads",
+
+  // Unfortunately, the icon is not available in the lucide set.
+  iconKey: "tabler:brand-threads",
+} as const satisfies SocialData;
+
 /** All the socials I provide a link to. */
 export const socials = [
   linkedIn,
@@ -75,4 +84,5 @@ export const socials = [
   email,
   resume,
   bento,
+  threads,
 ] as const satisfies SocialData[];

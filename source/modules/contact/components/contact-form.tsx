@@ -1,4 +1,4 @@
-import type { HTMLAttributes, PropsWithChildren } from "react";
+import { useEffect, type HTMLAttributes, type PropsWithChildren } from "react";
 import type { Control } from "react-hook-form";
 
 import { useStore } from "@nanostores/react";
@@ -162,7 +162,6 @@ export function ContactForm({ onAfterSubmit, ...props }: Props) {
   const locale = useStore(currentLang);
   const {
     form,
-    requestResult,
     turnstileRef,
     turnstileStatus,
     onTurnstileError,
@@ -172,6 +171,9 @@ export function ContactForm({ onAfterSubmit, ...props }: Props) {
   } = useContactForm({ locale, onAfterSubmit });
 
   const t = useClientTranslation("contact", locale);
+  useEffect(() => {
+    document.dispatchEvent(new CustomEvent("contact-form:ready"));
+  }, []);
 
   return (
     <Form {...form}>

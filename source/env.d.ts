@@ -2,8 +2,15 @@
 /// <reference types="astro/client" />
 /// <reference types="typed-query-selector" />
 
+import "astro";
 import type { Locale } from "@modules/i18n";
 import type { TRANSLATIONS } from "./modules/i18n/lib/constants";
+
+declare module "astro" {
+  interface AstroClientDirectives {
+    "client:event"?: string;
+  }
+}
 
 declare global {
   namespace App {

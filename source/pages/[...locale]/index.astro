@@ -85,7 +85,16 @@ const { translations: t } = Astro.locals;
     <ParticlesCanvas quantity={80} />
   </div>
 
-  <Toaster client:idle />
+  <!-- 
+    This is a custom client directive that hydrates the 
+    component when an event is fired on the document. 
+
+    Because the toaster is a fixed element, client:visible 
+    (which would be the most appropiate) fires right away.
+    As we only use toasts on the contact section, we can hydrate 
+    it when the contact section is hydrated, via a custom event.
+  -->
+  <Toaster client:event="contact-form:ready" />
 </Page>
 
 <style>

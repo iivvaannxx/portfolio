@@ -12,7 +12,7 @@ const { translations } = Astro.locals;
 const t = translations.sections.hero;
 ---
 
-<section class="mx-auto max-w-screen-lg content-center px-4 xs:px-6">
+<section class="mx-auto max-w-screen-lg content-center px-4 xs:px-8">
   <header
     data-aos="fade-up"
     class="relative flex flex-row-reverse flex-wrap-reverse justify-end sm:flex-nowrap [@media(width>=37rem)]:flex-row [@media(width>=37rem)]:justify-between"
@@ -55,7 +55,7 @@ const t = translations.sections.hero;
       >
         <Badge
           hoverGlow
-          class="w-fit select-none gap-3 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs sm:px-4 sm:text-sm"
+          class="w-fit select-none gap-3 whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm @[25rem]:text-xs sm:px-4 sm:text-sm"
         >
           <span class="relative flex h-[0.7em] w-[0.7em]">
             <span

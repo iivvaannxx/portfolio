@@ -8,6 +8,8 @@ import tailwind from "@astrojs/tailwind";
 import robotsTxt from "astro-robots-txt";
 import icon from "astro-icon";
 
+import eventDirective from "./source/lib/utils/directives/event/register";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://ivanporto.io",
@@ -26,6 +28,8 @@ export default defineConfig({
   },
 
   integrations: [
+    eventDirective(),
+
     react(),
     svelte(),
 

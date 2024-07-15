@@ -55,7 +55,7 @@ export const english = {
       introduction: `
         Specialized in game development, yet also passionate about developing for the web. With
         ${bold("6+ years of coding expertise")}, and ${strong("4+ years of professional experience")},
-        I am ${bold("open to opportunities")} in the game industry, but actively ${strong("seeking a role as a web developer")}.
+        I am ${bold("open to opportunities")} in the game industry, but actively ${strong("seeking a role as a backend developer")}.
       `,
 
       statusLabel: "Available for work",
@@ -73,7 +73,7 @@ export const english = {
           at: "Codelearn",
 
           description:
-            "<q>There's no better way to learn than to teach</q>\n\nWeekly guided <strong>20+ students</strong> through a broad range of computer science topics ranging from basic programming to advanced subjects such as <strong>Python</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>C++</strong>, and many more. My role was <b>to help them navigate the different courses</b> available in an internal e-learning platform, assisting them when they encountered challenges and ensuring they made the most of the interactive learning tools available.\n\n<b>Participated in extracurricular teaching at local schools</b> and <strong>received positive parental feedback</strong>, as a result of an improvement in their children's academic performance.",
+            "<q>There's no better way to learn than to teach</q>\n\nWeekly guided <strong>20+ students</strong> through a broad range of computer science topics ranging from basic programming to advanced subjects such as <strong>Python</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>C++</strong>, and many more. My role involved <b>helping the students navigate various courses </b> available on an internal e-learning platform, providing assistance with challenges and ensuring an optimal use of the interactive learning tools available.\n\n<b>Participated in extracurricular teaching at local schools</b> and <strong>received positive parental feedback</strong>, as a result of an improvement in their children's academic performance.",
         },
 
         gilab: {
@@ -270,17 +270,6 @@ export const english = {
     bento: "Bento",
     discord: "Discord",
     threads: "Threads",
-  },
-
-  userLocation: {
-    lastVisit: "Last visit from",
-    notice: {
-      title: "Privacy Notice",
-      message: `
-        The displayed location is an approximation of the most recent visitor's geographical area, derived from their IP address.\n
-        I temporarily store this location (not the IP address itself) to display it on this website. I do not share it or use it for any other purposes.
-      `,
-    },
   },
 } as const;
 
