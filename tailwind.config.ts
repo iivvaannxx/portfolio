@@ -143,23 +143,13 @@ const config: Config = {
       },
 
       keyframes: {
-        "beat": {
+        beat: {
           "0%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.1)" },
           "100%": { transform: "scale(1)" },
         },
 
-        "fade-in": {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-
-        "fade-out": {
-          "0%": { opacity: "1" },
-          "100%": { opacity: "0" },
-        },
-
-        "float": {
+        float: {
           "0%": { translate: "0px 0px" },
           "50%": { translate: "0px -15px" },
           "100%": { translate: "0px 0px" },
@@ -167,10 +157,8 @@ const config: Config = {
       },
 
       animation: {
-        "beat": "beat 1s infinite",
-        "fade-in": "fade-in 1s forwards",
-        "fade-out": "fade-out 1s forwards",
-        "float": "float 3s infinite alternate ease-in-out",
+        beat: "beat 1s infinite",
+        float: "float 3s infinite alternate ease-in-out",
       },
     },
   },

@@ -169,7 +169,7 @@ const currentDescription = next.description(locale);
 
   [data-current-project].show [data-current-project-trigger] {
     animation: 
-      /* fade-out is a globally available animation. */
+      /* these are globally available animations. */
       fade-out 0.2s forwards ease-in-out,
       display-none 0s forwards 0.2s;
   }
@@ -194,12 +194,6 @@ const currentDescription = next.description(locale);
   @keyframes remove-pb {
     to {
       padding-bottom: 0;
-    }
-  }
-
-  @keyframes display-none {
-    to {
-      display: none;
     }
   }
 

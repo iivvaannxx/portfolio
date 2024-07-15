@@ -4,7 +4,6 @@ export * from "./input";
 export * from "./textarea";
 export * from "./label";
 export * from "./button";
-export * from "./dialog";
 export * from "./drawer";
 export * from "./toaster";
 export * from "./toast";

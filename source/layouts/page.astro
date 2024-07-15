@@ -26,9 +26,7 @@ const {
   ...props
 } = Astro.props;
 
-const makeProductionUrl = (pathname: string) =>
-  `${Astro.site?.origin}${pathname}`;
-const { locale, translations: t } = Astro.locals;
+const { locale } = Astro.locals;
 ---
 
 <html

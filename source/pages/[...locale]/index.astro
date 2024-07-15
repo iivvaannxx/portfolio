@@ -16,6 +16,27 @@ export const getStaticPaths =
   createStaticPathsHandler() satisfies GetStaticPaths;
 
 const { translations: t } = Astro.locals;
+const viewTransition = {
+  old: {
+    name: "dissolve-up",
+    duration: "0.2s",
+    easing: "ease-in-out",
+    fillMode: "forwards",
+  },
+
+  new: {
+    name: "fade-down",
+    delay: "0.25s",
+    duration: "0.2s",
+    easing: "ease-in-out",
+    fillMode: "forwards",
+  },
+};
+
+const animation = {
+  forwards: viewTransition,
+  backwards: viewTransition,
+};
 ---
 
 <script>
@@ -48,7 +69,7 @@ const { translations: t } = Astro.locals;
 
   <main
     vaul-drawer-wrapper
-    transition:animate={slide({ duration: "1s" })}
+    transition:animate={fade({ duration: "0.5s" })}
     class="z-0 space-y-36 pt-32 lg:space-y-48"
   >
     <Hero />
