@@ -85,7 +85,7 @@ const { locale } = Astro.locals;
       src="/polyfills.js"
     ></script>
 
-    {withViewTransitions && <ViewTransitions />}
+    {withViewTransitions && <ViewTransitions fallback="swap" />}
 
     <SEO {...seo} />
     <slot name="head" />

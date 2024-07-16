@@ -44,8 +44,9 @@
       <span class="font-black capitalize text-primary">{time.join("")}</span>
       <span class="mt-2 text-base uppercase text-foreground/80">{timezone}</span
       >
-      <span class="mt-1 block text-base font-semibold text-foreground/60"
-        >{capitalize(date)}</span
+      <span
+        class="mt-1 block text-base font-semibold text-foreground/60"
+        class:capitalize={locale === "en"}>{capitalize(date)}</span
       >
     </time>
   </div>

@@ -20,15 +20,15 @@ const viewTransition = {
   old: {
     name: "dissolve-up",
     duration: "0.2s",
-    easing: "ease-in-out",
+    easing: "cubic-bezier(0.4, 0, 0.2, 1);",
     fillMode: "forwards",
   },
 
   new: {
     name: "fade-down",
-    delay: "0.25s",
+    delay: "0.2s",
     duration: "0.2s",
-    easing: "ease-in-out",
+    easing: "cubic-bezier(0.4, 0, 0.2, 1)",
     fillMode: "forwards",
   },
 };
@@ -59,27 +59,30 @@ const animation = {
   class="relative"
   withNoScriptFallback
   withViewTransitions
+  transition:name="body"
+  transition:animate={animation}
   seo={{
     title: t.meta.title,
     description: t.meta.description,
     canonicalPathname: "/",
   }}
 >
-  <Header class="overflow-x-auto fold:overflow-x-clip" />
+  <div class="animate-fade-down opacity-0 animate-delay-200">
+    <Header class="sticky overflow-x-auto fold:overflow-x-clip" />
 
-  <main
-    vaul-drawer-wrapper
-    transition:animate={fade({ duration: "0.5s" })}
-    class="z-0 space-y-36 pt-32 lg:space-y-48"
-  >
-    <Hero />
-    <Work />
-    <Projects />
-    <About />
-    <Contact />
-  </main>
+    <main
+      vaul-drawer-wrapper
+      class="z-0 space-y-36 pt-16 lg:space-y-48"
+    >
+      <Hero />
+      <Work />
+      <Projects />
+      <About />
+      <Contact />
+    </main>
 
-  <Footer />
+    <Footer />
+  </div>
 
   <div class="pointer-events-none fixed top-0 z-50 h-dvh w-dvw">
     <ScrollToTop
@@ -133,6 +136,10 @@ const animation = {
     background-position-x: 40%;
     background-repeat: no-repeat;
     background-blend-mode: difference;
+  }
+
+  :global(::view-transition-new(body)) {
+    opacity: 0;
   }
 
   [data-scroll-to-top] {

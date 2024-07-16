@@ -106,7 +106,7 @@ const { order = 1, title, ...props } = Astro.props;
   data-observed-section={order}
 >
   <h2
-    class="my-12 ml-2 inline-flex w-full items-center text-pretty text-3xl font-bold opacity-85 sm:ml-0"
+    class="my-12 ml-2 inline-flex w-full items-center text-pretty font-header text-3xl font-semibold opacity-85 sm:ml-0"
   >
     <span>{title}</span>
     <span class="ml-[0.6em] mt-1 h-0.5 grow translate-y-full bg-muted"></span>
@@ -124,6 +124,10 @@ const { order = 1, title, ...props } = Astro.props;
     position: relative;
   }
 
+  h2 > span {
+    font-size: 0.9em;
+  }
+
   h2::before {
     @apply tabular-nums;
 
@@ -131,7 +135,10 @@ const { order = 1, title, ...props } = Astro.props;
     content: "0" counter(section) ". ";
     opacity: 0.9;
 
-    font-size: 0.8em;
+    margin-top: 0.1em;
     margin-right: 0.5em;
+
+    font-size: 0.8em;
+    font-family: theme("fontFamily.sans");
   }
 </style>

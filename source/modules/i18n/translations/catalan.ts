@@ -212,7 +212,7 @@ export const catalan = {
 
     about: {
       name: "Sobre Mi",
-      title: "Un mica més sobre mi",
+      title: "Una mica més sobre mi",
       id: "sobre-mi",
 
       bento: {

@@ -55,6 +55,7 @@ export class ParticleCanvas extends HTMLElement implements ParticleCanvas {
 
     this.shadowRoot.appendChild(this.canvas);
     this.style.display = "block";
+    this.style.opacity = "0";
     this.canvas.style.display = "block";
   }
 
@@ -98,6 +99,7 @@ export class ParticleCanvas extends HTMLElement implements ParticleCanvas {
       this.drawParticle(newParticle);
     }
 
+    this.style.animation = "fade-in 0.5s forwards";
     this.render();
   }
 

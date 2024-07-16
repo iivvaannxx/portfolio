@@ -24,7 +24,6 @@ import {
   type UseContactFormParams,
 } from "../lib/hooks/use-contact-form";
 
-import { email } from "@lib/data/socials";
 import { useClientTranslation, type Locale } from "@modules/i18n";
 
 // The props received by <ContactFormFields> component.
@@ -137,22 +136,6 @@ function ContactFormAlert({ title, variant, children }: ContactFormAlertProps) {
   );
 }
 
-// Renders a fallback message for the user to contact me directly.
-function PersistingErrorFallback({ message }: PersistingErrorFallbackProps) {
-  return (
-    <span>
-      {message}
-      <a
-        className="font-medium underline underline-offset-2"
-        href={email.href}
-      >
-        {email.href.slice(7)}
-      </a>
-      {"."}
-    </span>
-  );
-}
-
 // The props received by the <ContactForm> component.
 type Props = Pick<UseContactFormParams, "onAfterSubmit"> &
   HTMLAttributes<HTMLFormElement> & {
@@ -200,8 +183,7 @@ export function ContactForm({ onAfterSubmit, locale, ...props }: Props) {
             variant="destructive"
           >
             <p>
-              <span>{t.captchaTrouble}</span>
-              <PersistingErrorFallback message={t.persistingError} />
+              {t.captchaTrouble} {t.persistingError}
             </p>
           </ContactFormAlert>
         )}
