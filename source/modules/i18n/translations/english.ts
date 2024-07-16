@@ -303,20 +303,6 @@ export const english = {
       formFill: `Fill this form and I will get back to you ${strong("as soon as possible")}`,
       privacy: "I don't retain nor share any of your data.",
       or: "OR",
-
-      formPlaceholders: {
-        name: "Bill Gates",
-        email: "bill.gates@microsoft.com",
-        subject: "Regarding your latest project...",
-        message: "I have a question about...",
-      },
-
-      labels: {
-        name: "Name",
-        email: "Email",
-        subject: "Subject",
-        message: "Message",
-      },
     },
   },
 
@@ -347,6 +333,20 @@ export const clientEnglish = {
 
   contact: {
     form: {
+      placeholders: {
+        name: "Bill Gates",
+        email: "bill.gates@microsoft.com",
+        subject: "Regarding your latest project...",
+        message: "I have a question about...",
+      },
+
+      labels: {
+        name: "Name",
+        email: "Email",
+        subject: "Subject",
+        message: "Message",
+      },
+
       success: `Thanks for reaching out! I'll get back to you as soon as possible.`,
       errors: {
         "resend-rate-limit-exceeded": `Rate limit exceeded. Please try again later.`,

@@ -300,20 +300,6 @@ export const spanish = {
       formFill: `Rellena esta formulario y me pondré en contacto contigo ${strong("lo antes possible")}`,
       privacy: "No conservo ni comparto ninguno de tus datos personales.",
       or: "O",
-
-      formPlaceholders: {
-        name: "Bill Gates",
-        email: "bill.gates@microsoft.com",
-        subject: "Sobre tu último proyecto...",
-        message: "Tengo una pregunta sobre...",
-      },
-
-      labels: {
-        name: "Nombre",
-        email: "Correo",
-        subject: "Asunto",
-        message: "Mensaje",
-      },
     },
   },
 
@@ -344,6 +330,20 @@ export const clientSpanish = {
 
   contact: {
     form: {
+      placeholders: {
+        name: "Bill Gates",
+        email: "bill.gates@microsoft.com",
+        subject: "Sobre tu último proyecto...",
+        message: "Tengo una pregunta sobre...",
+      },
+
+      labels: {
+        name: "Nombre",
+        email: "Correo",
+        subject: "Asunto",
+        message: "Mensaje",
+      },
+
       success: `Gracias por tu mensaje. Te responderé lo antes posible.`,
       errors: {
         "resend-rate-limit-exceeded":

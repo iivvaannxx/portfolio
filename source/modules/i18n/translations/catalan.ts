@@ -298,20 +298,6 @@ export const catalan = {
       formFill: `Emplena aquest formulari i em posaré en contacte amb tu ${strong("el més aviat possible")}`,
       privacy: "No guardo ni comparteixo cap de les teves dades personals.",
       or: "O",
-
-      formPlaceholders: {
-        name: "Bill Gates",
-        email: "bill.gates@microsoft.com",
-        subject: "Sobre el teu últim projecte...",
-        message: "Tinc una pregunta sobre...",
-      },
-
-      labels: {
-        name: "Nom",
-        email: "Correu",
-        subject: "Assumpte",
-        message: "Missatge",
-      },
     },
   },
 
@@ -342,6 +328,20 @@ export const clientCatalan = {
 
   contact: {
     form: {
+      placeholders: {
+        name: "Bill Gates",
+        email: "bill.gates@microsoft.com",
+        subject: "Sobre el teu últim projecte...",
+        message: "Tinc una pregunta sobre...",
+      },
+
+      labels: {
+        name: "Nom",
+        email: "Correu",
+        subject: "Assumpte",
+        message: "Missatge",
+      },
+
       success: "Gràcies per contactar-me! Et respondré tan aviat com pugui.",
       errors: {
         "resend-rate-limit-exceeded": `S'ha superat el límit d'enviament. Si us plau, torna a intentar-ho més tard.`,

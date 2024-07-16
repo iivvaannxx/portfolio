@@ -1,5 +1,4 @@
-import { type Locale } from "@app/modules/i18n";
-import { useTranslation } from "@app/modules/i18n/lib/utils/translations";
+import { type Locale, useClientTranslation } from "@modules/i18n";
 import { Input, Textarea } from "@components/ui/react";
 
 /** The fields of the contact form. */
@@ -11,9 +10,9 @@ export const CONTACT_FORM_FIELDS = {
     Component: Input,
 
     label: (locale: Locale) =>
-      useTranslation("sections.contact.labels.name", locale),
+      useClientTranslation("contact.form.labels.name", locale),
     placeholder: (locale: Locale) =>
-      useTranslation("sections.contact.formPlaceholders.name", locale),
+      useClientTranslation("contact.form.placeholders.name", locale),
   },
 
   email: {
@@ -23,9 +22,9 @@ export const CONTACT_FORM_FIELDS = {
     Component: Input,
 
     label: (locale: Locale) =>
-      useTranslation("sections.contact.labels.email", locale),
+      useClientTranslation("contact.form.labels.email", locale),
     placeholder: (locale: Locale) =>
-      useTranslation("sections.contact.formPlaceholders.email", locale),
+      useClientTranslation("contact.form.placeholders.email", locale),
   },
 
   subject: {
@@ -35,9 +34,9 @@ export const CONTACT_FORM_FIELDS = {
     Component: Input,
 
     label: (locale: Locale) =>
-      useTranslation("sections.contact.labels.subject", locale),
+      useClientTranslation("contact.form.labels.subject", locale),
     placeholder: (locale: Locale) =>
-      useTranslation("sections.contact.formPlaceholders.subject", locale),
+      useClientTranslation("contact.form.placeholders.subject", locale),
   },
 
   message: {
@@ -47,8 +46,8 @@ export const CONTACT_FORM_FIELDS = {
     Component: Textarea,
 
     label: (locale: Locale) =>
-      useTranslation("sections.contact.labels.message", locale),
+      useClientTranslation("contact.form.labels.message", locale),
     placeholder: (locale: Locale) =>
-      useTranslation("sections.contact.formPlaceholders.message", locale),
+      useClientTranslation("contact.form.placeholders.message", locale),
   },
 };
