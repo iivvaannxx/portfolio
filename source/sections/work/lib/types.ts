@@ -18,5 +18,5 @@ export type JobData = JobStaticData & {
   title: TranslationHandler;
   at: TranslationHandler;
   location: TranslationHandler;
-  description: TranslationHandler;
+  description: TranslationHandler<readonly string[]>;
 };

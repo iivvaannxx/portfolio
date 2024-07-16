@@ -1,4 +1,5 @@
-import type { TimeDifference, Timezone, UserTimezone } from "../types";
+import type { Locale, TimeDifference, Timezone, UserTimezone } from "../types";
+import { useClientTranslation } from "./translations";
 
 /** Retrieves the user's time zone. */
 export function getUserTimezone() {
@@ -79,23 +80,22 @@ export function getTimeDifference(
 /**
  * Formats the given time difference into a human-readable string.
  * @param diff - The difference in time between two time zones.
+ * @param locale - The locale to use for the translation.
  */
 
-export function formatTimeDifference(diff: TimeDifference) {
+export function formatTimeDifference(diff: TimeDifference, locale: Locale) {
   const { hours, minutes, offset } = diff;
+
+  if (offset === "same") {
+    return useClientTranslation("timezone.same", locale);
+  }
 
   const formatHours = hours !== 0 ? `${hours}h` : "";
   const formatMinutes = minutes !== 0 ? `${minutes}m`.padStart(3, "0") : "";
 
-  switch (offset) {
-    case "same": {
-      return "We are on the same timezone.";
-    }
-    case "ahead": {
-      return `${formatHours} ${formatMinutes} ahead of you`;
-    }
-    case "behind": {
-      return `${formatHours} ${formatMinutes} behind you`;
-    }
-  }
+  const clientTranslationKey = `timezone.${offset}` as const;
+  return useClientTranslation(clientTranslationKey, locale)(
+    formatHours,
+    formatMinutes,
+  );
 }

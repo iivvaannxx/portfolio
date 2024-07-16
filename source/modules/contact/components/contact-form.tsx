@@ -1,7 +1,5 @@
 import { useEffect, type HTMLAttributes, type PropsWithChildren } from "react";
 import type { Control } from "react-hook-form";
-
-import { useStore } from "@nanostores/react";
 import { TriangleAlert, CircleCheckBig } from "lucide-react";
 
 import {
@@ -27,13 +25,12 @@ import {
 } from "../lib/hooks/use-contact-form";
 
 import { email } from "@lib/data/socials";
-import { useClientTranslation } from "@modules/i18n";
-import { currentLang } from "../lib/store";
-import { useToast } from "@app/components/ui/react/use-toast";
+import { useClientTranslation, type Locale } from "@modules/i18n";
 
 // The props received by <ContactFormFields> component.
 type ContactFormFieldsProps = {
   formControl: Control<ContactFormData>;
+  locale: Locale;
 };
 
 // The props received by <ContactFormActions> component.
@@ -58,21 +55,24 @@ type PersistingErrorFallbackProps = {
 };
 
 // Renders the form fields for the contact form.
-function ContactFormFields({ formControl }: ContactFormFieldsProps) {
+function ContactFormFields({ formControl, locale }: ContactFormFieldsProps) {
   return (
     <div className="grid grid-cols-4 gap-x-4 gap-y-5">
       {Object.entries(CONTACT_FORM_FIELDS).map(
-        ([key, { label, Component, className, ...props }]) => (
+        ([key, { label, Component, placeholder, className, ...props }]) => (
           <FormField
             control={formControl}
             key={key}
             name={key as ContactFormFieldName}
             render={({ field, fieldState }) => (
               <FormItem className={className}>
-                <FormLabel className="text-foreground">{label}</FormLabel>
+                <FormLabel className="text-foreground">
+                  {label(locale)}
+                </FormLabel>
                 <FormControl>
                   <Component
                     className="sm:min-h-12"
+                    placeholder={placeholder(locale)}
                     {...props}
                     {...field}
                   />
@@ -155,11 +155,12 @@ function PersistingErrorFallback({ message }: PersistingErrorFallbackProps) {
 
 // The props received by the <ContactForm> component.
 type Props = Pick<UseContactFormParams, "onAfterSubmit"> &
-  HTMLAttributes<HTMLFormElement> & {};
+  HTMLAttributes<HTMLFormElement> & {
+    locale: Locale;
+  };
 
 /** Defines the form used to contact me. */
-export function ContactForm({ onAfterSubmit, ...props }: Props) {
-  const locale = useStore(currentLang);
+export function ContactForm({ onAfterSubmit, locale, ...props }: Props) {
   const {
     form,
     turnstileRef,
@@ -182,7 +183,10 @@ export function ContactForm({ onAfterSubmit, ...props }: Props) {
         onSubmit={submitForm}
         {...props}
       >
-        <ContactFormFields formControl={form.control} />
+        <ContactFormFields
+          locale={locale}
+          formControl={form.control}
+        />
         <TurnstileWidget
           locale={locale}
           onError={onTurnstileError}

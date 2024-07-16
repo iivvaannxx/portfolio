@@ -8,6 +8,7 @@ import { Link, Video } from "@components/base";
 import { cn } from "@lib/utils/shadcn";
 
 import type { ProjectStaticData } from "../lib/types";
+import { useTranslation } from "@app/modules/i18n/lib/utils/translations";
 
 type Props = Omit<ProjectStaticData, "featured"> &
   HTMLAttributes<"article"> & {
@@ -26,6 +27,7 @@ const {
   ...props
 } = Astro.props;
 
+const { locale } = Astro.locals;
 const { class: clazz, ...articleProps } = props;
 ---
 
@@ -63,7 +65,10 @@ const { class: clazz, ...articleProps } = props;
                   targetBlank
                   class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
                   withTooltip={{
-                    content: "Source Code",
+                    content: useTranslation(
+                      "sections.projects.sourceCode",
+                      locale,
+                    ),
                     placement: "bottom",
                   }}
                   data-github
@@ -81,7 +86,10 @@ const { class: clazz, ...articleProps } = props;
                   targetBlank
                   class="aspect-square content-center rounded-md p-2 text-lg font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
                   withTooltip={{
-                    content: "Try it out!",
+                    content: useTranslation(
+                      "sections.projects.liveDemo",
+                      locale,
+                    ),
                     placement: "bottom",
                   }}
                 >

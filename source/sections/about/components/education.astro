@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import { Picture } from "astro:assets";
+import capitalize from "just-capitalize";
 
 import { Link } from "@components/base";
 
@@ -34,8 +35,8 @@ const formatter = new Intl.DateTimeFormat(locale, {
     {
       education.map((item) => {
         const { startDate, endDate } = item;
-        const start = formatter.format(startDate);
-        const end = formatter.format(endDate);
+        const start = capitalize(formatter.format(startDate));
+        const end = capitalize(formatter.format(endDate));
 
         return (
           <li>

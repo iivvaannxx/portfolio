@@ -2,6 +2,8 @@
   lang="ts"
   context="module"
 >
+  import capitalize from "just-capitalize";
+
   import { cn } from "@lib/utils/shadcn";
   import {
     type Locale,
@@ -43,18 +45,8 @@
       <span class="mt-2 text-base uppercase text-foreground/80">{timezone}</span
       >
       <span class="mt-1 block text-base font-semibold text-foreground/60"
-        >{date}</span
+        >{capitalize(date)}</span
       >
     </time>
-
-    <!-- <TimeDiff
-      timezoneA={MY_TIMEZONE}
-      timezoneB="user"
-      let:formattedTimeDiff
-    >
-      <p class="mt-4 whitespace-nowrap text-sm font-medium text-foreground/80">
-        {formattedTimeDiff}
-      </p>
-    </TimeDiff> -->
   </div>
 </RealTime>

@@ -1,7 +1,5 @@
 import * as v from "valibot";
-
-import { currentLang } from "./store";
-import { useClientTranslation } from "@modules/i18n";
+import { getCurrentLocale, useClientTranslation } from "@modules/i18n";
 
 const MIN_SUBJECT_LENGTH = 5;
 const MIN_MESSAGE_LENGTH = 10;
@@ -15,13 +13,13 @@ export const ContactFormSchema = v.object({
     v.nonEmpty(() =>
       useClientTranslation(
         "contact.form.validation.email-required",
-        currentLang.get(),
+        getCurrentLocale(),
       ),
     ),
     v.email(() =>
       useClientTranslation(
         "contact.form.validation.email-invalid",
-        currentLang.get(),
+        getCurrentLocale(),
       ),
     ),
   ),
@@ -33,7 +31,7 @@ export const ContactFormSchema = v.object({
     v.nonEmpty(() =>
       useClientTranslation(
         "contact.form.validation.name-required",
-        currentLang.get(),
+        getCurrentLocale(),
       ),
     ),
   ),
@@ -45,7 +43,7 @@ export const ContactFormSchema = v.object({
     v.minLength(MIN_SUBJECT_LENGTH, () =>
       useClientTranslation(
         "contact.form.validation.clearer-subject",
-        currentLang.get(),
+        getCurrentLocale(),
       )(MIN_SUBJECT_LENGTH),
     ),
   ),
@@ -57,7 +55,7 @@ export const ContactFormSchema = v.object({
     v.minLength(MIN_MESSAGE_LENGTH, () =>
       useClientTranslation(
         "contact.form.validation.clearer-message",
-        currentLang.get(),
+        getCurrentLocale(),
       )(MIN_MESSAGE_LENGTH),
     ),
   ),

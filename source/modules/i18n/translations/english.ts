@@ -1,4 +1,4 @@
-import { bold, italic, link, strong, small } from "../lib/helpers/html";
+import { bold, italic, link, strong, small, quote } from "../lib/helpers/html";
 
 /** The english strings for the website. */
 export const english = {
@@ -35,7 +35,7 @@ export const english = {
   noscript: {
     headline: `Oops! It seems that ${strong("JavaScript")} is disabled in your browser.`,
     message: `This site ${strong("requires it")} for some content ${strong("to be displayed correctly")}.
-      Please enable it or dismiss this message by clicking the button below, but some content may 
+      Please enable it or dismiss this message by clicking the button below, but some elements may 
       not be shown as expected.`,
 
     dismissText: "I understand, show me the website",
@@ -54,7 +54,7 @@ export const english = {
       greeting: "Hey! I'm Ivan Porto",
       introduction: `
         Specialized in game development, yet also passionate about developing for the web. With
-        ${bold("6+ years of coding expertise")}, and ${strong("4+ years of professional experience")},
+        ${bold("6+ years of coding expertise")} and ${strong("4+ years of professional experience")},
         I am ${bold("open to opportunities")} in the game industry, but actively ${strong("seeking a role as a backend developer")}.
       `,
 
@@ -72,8 +72,17 @@ export const english = {
           location: "Barcelona, Spain",
           at: "Codelearn",
 
-          description:
-            "<q>There's no better way to learn than to teach</q>\n\nWeekly guided <strong>20+ students</strong> through a broad range of computer science topics ranging from basic programming to advanced subjects such as <strong>Python</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>C++</strong>, and many more. My role involved <b>helping the students navigate various courses </b> available on an internal e-learning platform, providing assistance with challenges and ensuring an optimal use of the interactive learning tools available.\n\n<b>Participated in extracurricular teaching at local schools</b> and <strong>received positive parental feedback</strong>, as a result of an improvement in their children's academic performance.",
+          description: [
+            `${quote("There's no better way to learn than to teach")}`,
+
+            `Weekly guided ${strong("20+ students")} through a broad range of computer science topics
+            ranging from basic programming to advanced subjects such as ${strong("Python")}, ${strong("JavaScript")},
+            ${strong("SQL")}, ${strong("C++")}, and many more. My role involved ${bold("helping the students navigate various courses")}
+            available on an internal e-learning platform, providing assistance with challenges and ensuring an optimal use of the interactive learning tools available.`,
+
+            `${bold("Participated in extracurricular teaching at local schools")} and ${strong("received positive parental feedback")},
+            as a result of an improvement in their children's academic performance.`,
+          ],
         },
 
         gilab: {
@@ -81,8 +90,18 @@ export const english = {
           location: "Girona, Spain",
           at: "GILAB (University of Girona)",
 
-          description:
-            "Transitioned from an internship to a primary role within a research lab at my university, and in collaboration with a local hospital. My role was to develop a <strong>virtual-reality rehabilitation game</strong> for stroke patients. Utilizing the (now Meta) Oculus Quest VR headset and its hand tracking capabilities, our project aimed to create <b>immersive therapeutic experiences</b>, by developing a variety of exercises <strong>tailored to address specific mobility issues</strong>.\n\nThe project also served as the <strong>thesis for my degree</strong> and was recognized with the <b>“Scholarship for Transfer, Innovation and Entrepreneurship”</b> (BTI) during 2021-2022, as a result of a partnership between the university and <q>Santander Universidades</q>.",
+          description: [
+            `Transitioned from an internship to a primary role within a research lab at my 
+            university, and in collaboration with a local hospital. My role was to develop a 
+            ${strong("virtual-reality rehabilitation game")} for stroke patients. Utilizing the 
+            (now Meta) Oculus Quest VR headset and its hand tracking capabilities, our project aimed 
+            to create ${bold("immersive therapeutic experiences")}, by developing a variety of exercises 
+            ${strong("tailored to address specific mobility issues")}.`,
+
+            `The project also served as the ${strong("thesis for my degree")} and was recognized with 
+            the ${bold("“Scholarship for Transfer, Innovation and Entrepreneurship”")} (BTI) during 2021-2022, 
+            as a result of a partnership between the university and ${quote("Santander Universidades")}.`,
+          ],
         },
       },
     },
@@ -96,6 +115,9 @@ export const english = {
       currentProject: "On what I'm currently working?",
       seeMore: "See more of my projects in",
       archiveText: "the archive",
+
+      sourceCode: "Source Code",
+      liveDemo: "Try it out!",
 
       archive: {
         "my-room": {
@@ -146,8 +168,7 @@ export const english = {
 
             `I was responsible for programming the game's main mechanics, such as
             the ${strong("zombies' AI")}, the ${strong("user interface")}, the
-            ${strong("player interactions")}, and the overall ${strong("game's progression")}, 
-            among other elements.
+            ${strong("player interactions")}, and the overall ${strong("game's progression")}.
           `,
           ],
         },
@@ -186,8 +207,8 @@ export const english = {
             Through collaborative projects in college, I've become ${strong("well-versed in teamwork settings")}, 
             although I'm equally comfortable and productive working independently.`,
 
-            `I like automating tasks, especially when efficiency is key. This habit
-            aligns well with my ${strong("career focus")} on backend and cloud infrastructure development,
+            `${bold("I like automating tasks")}, especially when efficiency is key. This habit
+            aligns well with my current ${strong("career focus")} on backend and cloud infrastructure development,
             as I enjoy building systems that ${strong("make work easier and faster")} for everyone.`,
           ],
         },
@@ -198,8 +219,9 @@ export const english = {
           gameEmojiText: "Games",
 
           iconAlt: "Waving Hand Emoji",
-          dogEmojiAlt: "Dog",
-          gamepadEmojiAlt: "Gamepad",
+          dogEmojiAlt: "Dog Emoji",
+          gamepadEmojiAlt: "Gamepad Emoji",
+          pizzaEmojiAlt: "Pizza Emoji",
 
           text: [
             `The 3 words that best define me are ${strong("resilient")}, ${strong("optimistic")}, and 
@@ -244,6 +266,32 @@ export const english = {
       name: "Contact",
       title: "Shoot me a message",
       id: "contact",
+
+      headline1: ` ${strong("get started.")}`,
+      text1:
+        "Whether you have a question, a project in mind or just want to say hi, you can reach me at:",
+
+      headline2: `Thank you for ${strong("your time!")}`,
+      text2:
+        "If you prefer it, feel free to also get in touch through any of the following channels:",
+
+      formFill: `Fill this form and I will get back to you ${strong("as soon as possible")}`,
+      privacy: "I don't retain nor share any of your data.",
+      or: "OR",
+
+      formPlaceholders: {
+        name: "Bill Gates",
+        email: "bill.gates@microsoft.com",
+        subject: "Regarding your latest project...",
+        message: "I have a question about...",
+      },
+
+      labels: {
+        name: "Name",
+        email: "Email",
+        subject: "Subject",
+        message: "Message",
+      },
     },
   },
 
@@ -280,6 +328,14 @@ export const clientEnglish = {
 
   // To not include all the other translations in there (which are only used in the server),
   // we need to create a separate object with only the client-side translations.
+  timezone: {
+    same: "We are on the same timezone",
+    ahead: (hours: string, minutes: string) =>
+      `${hours} ${minutes} ahead of you`,
+
+    behind: (hours: string, minutes: string) =>
+      `${hours} ${minutes} behind you`,
+  },
 
   contact: {
     form: {
@@ -309,7 +365,7 @@ export const clientEnglish = {
     },
 
     persistingError:
-      "If the problem persists, you contact me directly at my email: ",
+      "If the problem persists, contact me directly at my email.",
     captchaTrouble:
       "Are you having trouble with the captcha? Try reloading or clearing the cache.",
     turnstileFailed: "Human Verification Failed",

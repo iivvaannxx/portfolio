@@ -55,6 +55,16 @@ export function small<const T extends string>(content: T) {
 }
 
 /**
+ * Wraps the given content in HTML <q> tags.
+ *
+ * @param content - The content to be wrapped.
+ * @returns The content wrapped in <q> tags.
+ */
+export function quote<const T extends string>(content: T) {
+  return wrapInTags(content, "q");
+}
+
+/**
  * Wraps the given content in HTML tags.
  *
  * @param content - The content to be wrapped.

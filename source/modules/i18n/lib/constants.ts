@@ -24,18 +24,14 @@ export const DEFAULT_TRANSLATION = english satisfies {
 /** The map with all our translated strings. */
 export const TRANSLATIONS = {
   en: english,
-
-  // TODO: Finish translations.
   ca: catalan,
   es: spanish,
 } as const;
 
 export const CLIENT_TRANSLATIONS = {
   en: clientEnglish,
-
-  // TODO: Finish translations.
-  ca: clientEnglish,
-  es: clientEnglish,
+  ca: clientCatalan,
+  es: clientSpanish,
 };
 
 /** The formatting options passed to the Intl API. */

@@ -1,4 +1,4 @@
-import { bold, italic, link, strong, small } from "../lib/helpers/html";
+import { bold, italic, link, strong, small, quote } from "../lib/helpers/html";
 
 /** The catalan strings for the website. */
 export const catalan = {
@@ -68,21 +68,39 @@ export const catalan = {
 
       jobs: {
         codelearn: {
-          title: "Computer Science Educator for Kids and Teens",
-          location: "Barcelona, Spain",
+          title: "Profesor de Programación para Niños y Adolescentes",
+          location: "Barcelona, España",
           at: "Codelearn",
 
-          description:
-            "<q>There's no better way to learn than to teach</q>\n\nWeekly guided <strong>20+ students</strong> through a broad range of computer science topics ranging from basic programming to advanced subjects such as <strong>Python</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>C++</strong>, and many more. My role was <b>to help them navigate the different courses</b> available in an internal e-learning platform, assisting them when they encountered challenges and ensuring they made the most of the interactive learning tools available.\n\n<b>Participated in extracurricular teaching at local schools</b> and <strong>received positive parental feedback</strong>, as a result of an improvement in their children's academic performance.",
+          description: [
+            `${quote("There's no better way to learn than to teach")}`,
+            `Weekly guided ${strong("20+ students")} through a broad range of computer science topics
+            ranging from basic programming to advanced subjects such as ${strong("Python")}, ${strong("JavaScript")},
+            ${strong("SQL")}, ${strong("C++")}, and many more. My role involved ${bold("helping the students navigate various courses")}
+            available on an internal e-learning platform, providing assistance with challenges and ensuring an optimal use of the interactive learning tools available.`,
+
+            `${bold("Participated in extracurricular teaching at local schools")} and ${strong("received positive parental feedback")},
+            as a result of an improvement in their children's academic performance.`,
+          ],
         },
 
         gilab: {
-          title: "Unity Game Developer",
-          location: "Girona, Spain",
-          at: "GILAB (University of Girona)",
+          title: "Desarrollador de Juegos en Unity",
+          location: "Girona, España",
+          at: "GILAB (Universidad de Girona)",
 
-          description:
-            "Transitioned from an internship to a primary role within a research lab at my university, and in collaboration with a local hospital. My role was to develop a <strong>virtual-reality rehabilitation game</strong> for stroke patients. Utilizing the (now Meta) Oculus Quest VR headset and its hand tracking capabilities, our project aimed to create <b>immersive therapeutic experiences</b>, by developing a variety of exercises <strong>tailored to address specific mobility issues</strong>.\n\nThe project also served as the <strong>thesis for my degree</strong> and was recognized with the <b>“Scholarship for Transfer, Innovation and Entrepreneurship”</b> (BTI) during 2021-2022, as a result of a partnership between the university and <q>Santander Universidades</q>.",
+          description: [
+            `Transitioned from an internship to a primary role within a research lab at my 
+            university, and in collaboration with a local hospital. My role was to develop a 
+            ${strong("virtual-reality rehabilitation game")} for stroke patients. Utilizing the 
+            (now Meta) Oculus Quest VR headset and its hand tracking capabilities, our project aimed 
+            to create ${bold("immersive therapeutic experiences")}, by developing a variety of exercises 
+            ${strong("tailored to address specific mobility issues")}.`,
+
+            `The project also served as the ${strong("thesis for my degree")} and was recognized with 
+            the ${bold("“Scholarship for Transfer, Innovation and Entrepreneurship”")} (BTI) during 2021-2022, 
+            as a result of a partnership between the university and ${quote("Santander Universidades")}.`,
+          ],
         },
       },
     },
@@ -96,6 +114,9 @@ export const catalan = {
       currentProject: "On what I'm currently working?",
       seeMore: "See more of my projects in",
       archiveText: "the archive",
+
+      sourceCode: "Repositorio de GitHub",
+      liveDemo: "¡Pruébalo!",
 
       archive: {
         "my-room": {
@@ -214,6 +235,7 @@ export const catalan = {
           iconAlt: "Waving Hand Emoji",
           dogEmojiAlt: "Dog",
           gamepadEmojiAlt: "Gamepad",
+          pizzaEmojiAlt: "Pizza Emoji",
 
           text: [
             `With nearly 7 years of coding experience, I always approach my work with a 
@@ -269,6 +291,32 @@ export const catalan = {
       name: "Contact",
       title: "Shoot me a message",
       id: "contact",
+
+      headline1: `Let's ${strong("get started.")}`,
+      text1:
+        "Whether you have a question, a project in mind or just want to say hi, you can reach me at:",
+
+      headline2: `Thank you for ${strong("your time!")}`,
+      text2:
+        "If you prefer it, feel free to also get in touch through any of the following channels:",
+
+      formFill: `Fill this form and I will get back to you ${strong("as soon as possible")}`,
+      privacy: "I don't retain nor share any of your data.",
+      or: "O",
+
+      formPlaceholders: {
+        name: "Bill Gates",
+        email: "bill.gates@microsoft.com",
+        subject: "Sobre tu último proyecto...",
+        message: "Tengo una pregunta sobre...",
+      },
+
+      labels: {
+        name: "Nombre",
+        email: "Correo",
+        subject: "Asunto",
+        message: "Mensaje",
+      },
     },
   },
 
@@ -316,9 +364,24 @@ export const clientCatalan = {
 
   // To not include all the other translations in there (which are only used in the server),
   // we need to create a separate object with only the client-side translations.
+  timezone: {
+    same: "Estamos en la misma zona horaria.",
+    ahead: (hours: string, minutes: string) =>
+      `${hours} ${minutes} por delante de ti`,
+
+    behind: (hours: string, minutes: string) =>
+      `${hours} ${minutes} por detrás de ti`,
+  },
 
   contact: {
     form: {
+      placeholders: {
+        name: "Bill Gates",
+        email: "bill.gates@microsoft.com",
+        subject: "Regarding your latest project...",
+        message: "I have a question about...",
+      },
+
       success: `Thanks for reaching out! I'll get back to you as soon as possible.`,
       errors: {
         "resend-rate-limit-exceeded": `Rate limit exceeded. Please try again later.`,

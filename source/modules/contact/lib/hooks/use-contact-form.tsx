@@ -91,6 +91,7 @@ async function handleContactAPIResponse(response: Response, locale: Locale) {
         "failed-to-determine-ip",
         "turnstile-error",
         "schema-error",
+        "unknown",
       ].includes(code)
     ) {
       message += ` ${t.persistingError}`;
