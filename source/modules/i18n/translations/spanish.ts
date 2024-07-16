@@ -97,7 +97,7 @@ export const spanish = {
           description: [
             `${quote("No hay mejor manera de aprender que enseñando.")}`,
 
-            `Guié semanalmente a ${strong("más de 20 estudiantes")} a través de una amplia gama de conceptos de informática,
+            `Guié a ${strong("más de 20 estudiantes")} semanalmente a través de una amplia gama de conceptos de informática,
             desde programación básica hasta materias avanzadas como ${strong("Python")}, ${strong("JavaScript")},
             ${strong("SQL")}, ${strong("C++")}, y muchas más. Mi función era ${bold("ayudarles a navegar por los diferentes cursos")}
             disponibles en una plataforma interna de ${italic("e-learning")}, asistiéndoles cuando encontraban dificultades y asegurándome de que 

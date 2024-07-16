@@ -30,13 +30,13 @@ export const jobs = [
     url: "https://www.codelearn.com",
     startDate: new Date("2021-11"),
     endDate: new Date("2024-05"),
-    skills: ["Communication", "Python", "JavaScript"],
+    skills: ["Communication", "Python", "JavaScript", "Bash", "C++"],
   }),
 
   defineJob("gilab", {
     url: "https://gilab.udg.edu",
     startDate: new Date("2020-11"),
     endDate: new Date("2022-9"),
-    skills: ["Analytical Thinking", "C#", "Unity"],
+    skills: ["Analytical Thinking", "C#", "Unity", "PHP", "MySQL"],
   }),
 ] as const satisfies JobData[];

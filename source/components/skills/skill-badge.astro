@@ -12,7 +12,6 @@ export type Props = BadgeProps & {
 const { translations } = Astro.locals;
 const { skill, class: clazz, ...props } = Astro.props;
 const data = skills.find((s) => s.name === skill)!;
-console.log(data);
 ---
 
 <Badge

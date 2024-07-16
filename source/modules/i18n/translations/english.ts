@@ -253,7 +253,7 @@ export const english = {
             ${strong("independent")}. It's hard for me to give up on something I've set my mind to, 
             and I always try to bring a positive outlook to every situation.`,
 
-            `Additionally, I've always been ${strong("naturally curious")}, looking not only to learn new things,
+            `I've always been ${strong("naturally curious")}, looking not only to learn new things,
             but also to understand them. That's why I love asking questions and figuring out how things work.`,
           ],
         },
@@ -292,7 +292,7 @@ export const english = {
       title: "Shoot me a message",
       id: "contact",
 
-      headline1: ` ${strong("get started.")}`,
+      headline1: `Contact me at ${strong("any moment.")}`,
       text1:
         "Whether you have a question, a project in mind or just want to say hi, you can reach me at:",
 
