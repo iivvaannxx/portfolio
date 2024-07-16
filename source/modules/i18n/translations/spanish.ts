@@ -31,15 +31,21 @@ export const spanish = {
         description: "La página que estás buscando no existe.",
       },
 
-      headline: "Ups! Parece que te has perdido.",
+      headline: "¡Ups! Parece que te has perdido.",
       text: "La página que estás buscando no existe.",
       back: "Volver a la página principal",
       label: "Página Principal",
     },
   },
 
+  skills: {
+    "teamwork": "Trabajo en Equipo",
+    "analytical-thinking": "Pensamiento Analítico",
+    "communication": "Comunicación",
+  },
+
   noscript: {
-    headline: `Ups! Parece que ${strong("JavaScript")} está desactivado en tu navegador.`,
+    headline: `¡Ups! Parece que ${strong("JavaScript")} está desactivado en tu navegador.`,
     message: `Este sitio web ${strong("lo requiere")} para que algunos contenidos ${strong("se muestren correctamente")}.
       Por favor, actívalo o descarta este mensaje haciendo clic en el botón de abajo, pero puede
       que algunos elementos no se muestren adecuadamente.`,
@@ -129,7 +135,7 @@ export const spanish = {
       id: "proyectos",
       title: "Algunos de mis proyectos favoritos",
 
-      buttonReveal: "Cuál es mi siguiente proyecto?",
+      buttonReveal: "¿Cuál es mi siguiente proyecto?",
       seeMore: "Ver más proyectos en",
       archiveText: "el archivo",
 
@@ -287,7 +293,7 @@ export const spanish = {
       text1:
         "Si tienes una pregunta, un proyecto en mente, o simplemente quieres saludar, mi correo es:",
 
-      headline2: `Muchas gracias por ${strong("tu tiempo!")}`,
+      headline2: `¡Muchas gracias por ${strong("tu tiempo!")}`,
       text2:
         "Si así lo prefieres, no dudes en contactarme a través de cualquiera de estos canales:",
 
@@ -371,7 +377,7 @@ export const clientSpanish = {
       "Si el problema persiste, contacta conmigo directamente en mi email.",
 
     captchaTrouble:
-      "Estás teniendo problemas con el captcha? Intenta recargar la página o limpiar la caché.",
+      "¿Estás teniendo problemas con el captcha? Intenta recargar la página o limpiar la caché.",
 
     turnstileFailed: "Verificación del captcha fallida",
     contactSuccess: "Mensaje enviado",

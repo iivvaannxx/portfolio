@@ -9,8 +9,10 @@ export type Props = BadgeProps & {
   skill: SkillName;
 };
 
+const { translations } = Astro.locals;
 const { skill, class: clazz, ...props } = Astro.props;
 const data = skills.find((s) => s.name === skill)!;
+console.log(data);
 ---
 
 <Badge
@@ -25,5 +27,11 @@ const data = skills.find((s) => s.name === skill)!;
     class="size-4"
     is:inline
   />
-  <span>{skill}</span>
+  <span
+    >{
+      data.i18nKey in translations.skills
+        ? translations.skills[data.i18nKey as keyof typeof translations.skills]
+        : data.name
+    }</span
+  >
 </Badge>

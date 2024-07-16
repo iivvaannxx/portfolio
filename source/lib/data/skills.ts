@@ -19,6 +19,7 @@ function defineSkill<const Name extends string, const Tags extends string[]>(
     name,
     tags,
 
+    i18nKey: filename,
     icon: `${skillsSubDir}/${filename}` as const,
   };
 }

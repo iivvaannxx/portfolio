@@ -44,6 +44,12 @@ export const catalan = {
     ),
   },
 
+  skills: {
+    "teamwork": "Trabajo en Equipo",
+    "analytical-thinking": "Pensamiento Analítico",
+    "communication": "Comunicación",
+  },
+
   sections: {
     hero: {
       headline: {

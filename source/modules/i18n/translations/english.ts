@@ -44,6 +44,14 @@ export const english = {
     ),
   },
 
+  skills: {
+    // In english these are redundant, but in other languages they might be different.
+    // If we dont include them TypeScript complains about the translations not having the same keys.
+    "teamwork": "Teamwork",
+    "analytical-thinking": "Analytical Thinking",
+    "communication": "Communication",
+  },
+
   sections: {
     hero: {
       headline: {
@@ -178,7 +186,7 @@ export const english = {
         name: "Use Link",
         headline: "A self-hostable URL shortener and file sharing service.",
         description: [
-          `While I usually work on many things at once, this is currently my main focus. 
+          `While I usually work on many things at once, this is currently my next priority. 
           I aim to develop it into a comprehensive service featuring a ${strong("modular architecture")}
           that allows for ${bold("seamless integration")} with various cloud providers, database
           systems, and file storage solutions.`,
@@ -353,14 +361,14 @@ export const clientEnglish = {
       },
 
       validation: {
-        "email-invalid": `This email address is invalid.`,
-        "email-required": `Please provide an email address.`,
-        "name-required": `Please provide a name.`,
+        "email-invalid": `This address seems to be invalid.`,
+        "email-required": `An email address is required.`,
+        "name-required": `Your name is required.`,
 
         "clearer-subject": (minChars: number) =>
-          `Please provide a clearer subject (more than ${minChars} characters).`,
+          `Provide a longer subject (more than ${minChars} characters).`,
         "clearer-message": (minChars: number) =>
-          `Please provide a clearer message (more than ${minChars} characters).`,
+          `Provide a longer message (more than ${minChars} characters).`,
       },
     },
 
