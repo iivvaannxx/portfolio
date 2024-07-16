@@ -18,6 +18,23 @@ export const english = {
     `,
   },
 
+  misc: {
+    scrollToTop: "Scroll To Top",
+    language: "Language",
+    loveIconSr: "Love",
+  },
+
+  socials: {
+    github: "GitHub",
+    linkedIn: "LinkedIn",
+    xTwitter: "X (Twitter)",
+    resume: "Resume",
+    email: "Email",
+    bento: "Bento",
+    discord: "Discord",
+    threads: "Threads",
+  },
+
   pages: {
     notfound: {
       meta: {
@@ -309,23 +326,6 @@ export const english = {
       ${link("https://svelte.dev", "Svelte", true)}, and ${link("https://react.dev", "React", true)}. 
       Deployed on ${link("https://cloudflare.com", "Cloudflare", true)}.
     `,
-  },
-
-  misc: {
-    scrollToTop: "Scroll To Top",
-    language: "Language",
-    loveIconSr: "Love",
-  },
-
-  socials: {
-    github: "GitHub",
-    linkedIn: "LinkedIn",
-    xTwitter: "X (Twitter)",
-    resume: "Resume",
-    email: "Email",
-    bento: "Bento",
-    discord: "Discord",
-    threads: "Threads",
   },
 } as const;
 

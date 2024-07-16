@@ -18,6 +18,12 @@ export const catalan = {
     `,
   },
 
+  misc: {
+    scrollToTop: "Scroll To Top",
+    language: "Language",
+    loveIconSr: "Love",
+  },
+
   pages: {
     notfound: {
       meta: {
@@ -332,12 +338,6 @@ export const catalan = {
       ${link("https://svelte.dev", "Svelte", true)}, and ${link("https://react.dev", "React", true)}. 
       Deployed on ${link("https://cloudflare.com", "Cloudflare", true)}.
     `,
-  },
-
-  misc: {
-    scrollToTop: "Scroll To Top",
-    language: "Language",
-    loveIconSr: "Love",
   },
 
   socials: {

@@ -24,6 +24,12 @@ export const spanish = {
     loveIconSr: "Amor",
   },
 
+  skills: {
+    "teamwork": "Trabajo en Equipo",
+    "analytical-thinking": "Pensamiento Analítico",
+    "communication": "Comunicación",
+  },
+
   pages: {
     notfound: {
       meta: {
@@ -36,12 +42,6 @@ export const spanish = {
       back: "Volver a la página principal",
       label: "Página Principal",
     },
-  },
-
-  skills: {
-    "teamwork": "Trabajo en Equipo",
-    "analytical-thinking": "Pensamiento Analítico",
-    "communication": "Comunicación",
   },
 
   noscript: {
