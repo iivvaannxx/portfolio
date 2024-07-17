@@ -55,15 +55,7 @@ export default defineConfig({
       },
     }),
 
-    // sitemap(),
-    robotsTxt({
-      policy: [
-        {
-          userAgent: "*",
-          disallow: "/",
-          sitemap: false,
-        },
-      ],
-    }),
+    sitemap(),
+    robotsTxt(),
   ],
 });
