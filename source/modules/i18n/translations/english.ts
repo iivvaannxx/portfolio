@@ -41,7 +41,7 @@ export const english = {
   pages: {
     notfound: {
       meta: {
-        title: "404: Page Not Found",
+        title: "404: Page Not Found - Ivan Porto | Software Developer",
         description: "The page you're looking for doesn't exist.",
       },
 

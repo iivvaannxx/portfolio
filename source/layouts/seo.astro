@@ -10,22 +10,31 @@ import {
   getLocaleRoute,
 } from "@modules/i18n";
 
-type Props = Pick<ComponentProps<typeof SEO>, "title" | "description"> & {
+type Props = Pick<
+  ComponentProps<typeof SEO>,
+  "title" | "description" | "noindex" | "nofollow"
+> & {
   title: string;
   description: string;
   canonicalPathname: string;
+  site?: string;
 };
 
-const { title, description, canonicalPathname } = Astro.props;
 const { locale, translations } = Astro.locals;
+const {
+  title,
+  description,
+  canonicalPathname,
+  site = Astro.site?.origin,
+  ...props
+} = Astro.props;
 
 // All the others that are not the current one.
 const alternateLocales = SUPPORTED_LOCALES.filter((lang) => lang !== locale);
 const alternateLocaleTerritories = SUPPORTED_LOCALES.map((lang) => {
   return TRANSLATIONS[lang].meta.code;
 });
-const makeProductionUrl = (pathname: string) =>
-  `${Astro.site?.origin}${pathname}`;
+const makeProductionUrl = (pathname: string) => `${site}${pathname}`;
 
 const cleanTitle = title.trim();
 const cleanDescription = description.replace(/\s+/g, " ").trim();
@@ -34,7 +43,6 @@ const canonicalURL = makeProductionUrl(
 );
 ---
 
-<!-- noindex and nofollow are temporal. -->
 <SEO
   title={cleanTitle}
   description={cleanDescription}
@@ -64,12 +72,11 @@ const canonicalURL = makeProductionUrl(
   }}
   twitter={{
     card: "summary_large_image",
-    site: `@${xTwitter.href.slice(xTwitter.href.lastIndexOf("/") + 1)}`,
+    creator: `@${xTwitter.href.slice(xTwitter.href.lastIndexOf("/") + 1)}`,
     title: cleanTitle,
     image: makeProductionUrl(`/og-${locale}.png`),
     imageAlt: translations.meta.ogAlt,
     description: cleanDescription,
   }}
-  noindex
-  nofollow
+  {...props}
 />

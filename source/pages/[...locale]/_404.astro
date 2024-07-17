@@ -24,7 +24,16 @@ const t = translations.pages.notfound;
 
 <ErrorPage
   class="grid overflow-clip"
-  {...t.meta}
+  seo={{
+    title: t.meta.title,
+    description: t.meta.description,
+    canonicalPathname: "/404",
+
+    /* For some reason Astro.site is not set with how we have setup 404 pages. */
+    site: "https://ivanporto.io",
+    noindex: true,
+    nofollow: true,
+  }}
 >
   <Fragment slot="head">
     <link

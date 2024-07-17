@@ -36,7 +36,8 @@ export const catalan = {
   pages: {
     notfound: {
       meta: {
-        title: "404: Página No Trobada",
+        title:
+          "404: Página No Trobada - Ivan Porto | Desenvolupador de Software",
         description: "La pàgina que estàs buscant no existeix.",
       },
 

@@ -1,19 +1,14 @@
 ---
-import { cn } from "@app/lib/utils/shadcn";
-import type { HTMLAttributes } from "astro/types";
+import type { ComponentProps, HTMLAttributes } from "astro/types";
+import { SEO } from "@app/layouts";
+
+import { cn } from "@lib/utils/shadcn";
 
 type Props = HTMLAttributes<"body"> & {
-  title?: string;
-  description?: string;
+  seo: ComponentProps<typeof SEO>;
 };
 
-const {
-  title = "404: Page Not Found",
-  description = "The page you are looking for could not be found.",
-  class: clazz,
-  ...props
-} = Astro.props;
-
+const { seo, class: clazz, ...props } = Astro.props;
 const { locale } = Astro.locals;
 ---
 
@@ -22,27 +17,9 @@ const { locale } = Astro.locals;
   class="dark"
 >
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <meta
-      name="description"
-      content={description}
-    />
-    <meta
-      name="robots"
-      content="noindex,follow"
-    />
-
-    <meta
-      name="msapplication-TileColor"
-      content="#ffffff"
-    />
-    <meta
-      name="theme-color"
-      content="#ffffff"
+    <link
+      rel="sitemap"
+      href="/sitemap-index.xml"
     />
 
     <link
@@ -72,8 +49,22 @@ const { locale } = Astro.locals;
       color="#3fa5ff"
     />
 
+    <meta
+      name="msapplication-TileColor"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+    />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <SEO {...seo} />
     <slot name="head" />
-    <title>{title}</title>
   </head>
 
   <body

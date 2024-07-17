@@ -36,7 +36,8 @@ export const spanish = {
   pages: {
     notfound: {
       meta: {
-        title: "404: Página No Encontrada",
+        title:
+          "404: Página No Encontrada - Ivan Porto | Desarrollador de Software",
         description: "La página que estás buscando no existe.",
       },
 
