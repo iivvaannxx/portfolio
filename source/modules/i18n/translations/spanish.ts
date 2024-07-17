@@ -332,6 +332,11 @@ export const clientSpanish = {
       `${hours} ${minutes} por detrás de ti`,
   },
 
+  navigation: {
+    drawerTitle: "Menú",
+    drawerDescription: "Haz clic en la sección a la que quieras ir.",
+  },
+
   contact: {
     form: {
       placeholders: {

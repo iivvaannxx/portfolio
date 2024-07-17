@@ -7,13 +7,7 @@ import { ContactForm } from "@modules/contact";
 import { Link } from "@components/base";
 import ParticleCanvas from "@components/particles/particle-canvas.astro";
 
-import {
-  discord,
-  email,
-  linkedIn,
-  xTwitter,
-  threads,
-} from "@app/lib/data/socials";
+import { discord, email, linkedIn, xTwitter, threads } from "@lib/data/socials";
 
 const { locale, translations } = Astro.locals;
 const t = translations.sections.contact;

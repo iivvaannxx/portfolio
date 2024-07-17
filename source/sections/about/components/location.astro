@@ -3,10 +3,10 @@ import { Picture } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
 import { cn } from "@lib/utils/shadcn";
+import { MY_TIMEZONE, TimeDiff } from "@modules/i18n";
 
 import MyTime from "./my-time.svelte";
 import houseEmoji from "../assets/emojis/house.png";
-import { MY_TIMEZONE, TimeDiff } from "@app/modules/i18n";
 
 export type Props = HTMLAttributes<"article">;
 const { class: clazz, ...props } = Astro.props;

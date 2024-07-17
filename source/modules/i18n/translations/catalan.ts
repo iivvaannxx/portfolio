@@ -330,6 +330,11 @@ export const clientCatalan = {
       `${hours} ${minutes} per darrere teu`,
   },
 
+  navigation: {
+    drawerTitle: "Menú",
+    drawerDescription: "Clica la secció a la que vols anar",
+  },
+
   contact: {
     form: {
       placeholders: {

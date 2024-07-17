@@ -5,13 +5,7 @@
   import capitalize from "just-capitalize";
 
   import { cn } from "@lib/utils/shadcn";
-  import {
-    type Locale,
-    DEFAULT_LOCALE,
-    MY_TIMEZONE,
-    RealTime,
-    TimeDiff,
-  } from "@modules/i18n";
+  import { type Locale, DEFAULT_LOCALE, RealTime } from "@modules/i18n";
 </script>
 
 <script lang="ts">

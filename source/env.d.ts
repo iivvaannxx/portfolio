@@ -3,8 +3,7 @@
 /// <reference types="typed-query-selector" />
 
 import "astro";
-import type { Locale } from "@modules/i18n";
-import type { TRANSLATIONS } from "./modules/i18n/lib/constants";
+import type { Locale, TRANSLATIONS } from "@modules/i18n";
 
 declare module "astro" {
   interface AstroClientDirectives {

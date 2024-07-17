@@ -334,6 +334,11 @@ export const clientEnglish = {
       `${hours} ${minutes} behind you`,
   },
 
+  navigation: {
+    drawerTitle: "Menu",
+    drawerDescription: "Click the section you want to navigate to.",
+  },
+
   contact: {
     form: {
       placeholders: {

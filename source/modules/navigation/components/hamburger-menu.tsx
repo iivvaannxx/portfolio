@@ -6,12 +6,12 @@ import {
   DrawerTrigger,
   DrawerTitle,
   Button,
+  DrawerDescription,
 } from "@components/ui/react";
 
-import { toggleScroll } from "@app/lib/client/scroll";
-import { useMediaQuery } from "@app/lib/utils/hooks/use-media-query";
-
-export const DRAWER_ID = "navmenu-drawer";
+import { toggleScroll } from "@lib/client/scroll";
+import { useMediaQuery } from "@lib/utils/hooks/use-media-query";
+import { useClientTranslation } from "@modules/i18n";
 
 type Props = HTMLAttributes<HTMLButtonElement> & {
   menuContent?: React.ReactNode;
@@ -76,12 +76,14 @@ export function HamburgerMenu({ menuContent, ...props }: Props) {
           </svg>
         </Button>
       </DrawerTrigger>
-      <DrawerContent
-        data-lenis-prevent
-        id={DRAWER_ID}
-      >
+      <DrawerContent data-lenis-prevent>
         <DrawerHeader>
-          <DrawerTitle className="sr-only">Menu</DrawerTitle>
+          <DrawerTitle className="sr-only">
+            {useClientTranslation("navigation.drawerTitle")}
+          </DrawerTitle>
+          <DrawerDescription className="sr-only">
+            {useClientTranslation("navigation.drawerDescription")}
+          </DrawerDescription>
         </DrawerHeader>
         {menuContent}
       </DrawerContent>

@@ -8,7 +8,7 @@ import { Link, Video } from "@components/base";
 import { cn } from "@lib/utils/shadcn";
 
 import type { ProjectStaticData } from "../lib/types";
-import { useTranslation } from "@app/modules/i18n/lib/utils/translations";
+import { getTranslation } from "@modules/i18n";
 
 type Props = Omit<ProjectStaticData, "featured"> &
   HTMLAttributes<"article"> & {
@@ -65,7 +65,7 @@ const { class: clazz, ...articleProps } = props;
                   targetBlank
                   class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
                   withTooltip={{
-                    content: useTranslation(
+                    content: getTranslation(
                       "sections.projects.sourceCode",
                       locale,
                     ),
@@ -86,7 +86,7 @@ const { class: clazz, ...articleProps } = props;
                   targetBlank
                   class="aspect-square content-center rounded-md p-2 text-lg font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
                   withTooltip={{
-                    content: useTranslation(
+                    content: getTranslation(
                       "sections.projects.liveDemo",
                       locale,
                     ),

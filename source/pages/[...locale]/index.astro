@@ -1,15 +1,13 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { Icon } from "astro-icon/components";
-import { fade, slide } from "astro:transitions";
 
 import { Page, Header, Footer } from "@app/layouts";
 import { Work, Projects, About, Hero, Contact } from "@app/sections";
-
 import { createStaticPathsHandler } from "@modules/i18n";
 
 import { Toaster } from "@components/ui/react";
-import ScrollToTop from "@app/components/scroll-to-top.svelte";
+import ScrollToTop from "@components/scroll-to-top.svelte";
 import ParticlesCanvas from "@components/particles/particle-canvas.astro";
 
 export const getStaticPaths =
