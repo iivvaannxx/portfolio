@@ -5,6 +5,7 @@ export const english = {
   meta: {
     name: "English",
     locale: "en",
+    code: "en_US",
 
     routes: {
       archive: "archive",
@@ -12,10 +13,12 @@ export const english = {
 
     title: "Ivan Porto | Software Developer",
     description: `
-      Hey! I'm Ivan Porto, a software developer specialized in game development, yet also
-      passionate about developing for the web. Skilled both in backend and frontend.
-      Fluent in Catalan, Spanish, and English.
+      Hey! I'm Ivan Porto, a software developer specialized in game development, yet also passionate about 
+      developing for the web. Skilled both in backend and frontend. Fluent in Catalan, Spanish, and English.
     `,
+
+    ogAlt:
+      "Hey! I'm Ivan Porto, Software Developer - An image with a dark gradient background and an avatar.",
   },
 
   misc: {

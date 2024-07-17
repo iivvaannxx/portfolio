@@ -3,8 +3,9 @@ import { bold, italic, link, strong, small, quote } from "../lib/helpers/html";
 /** The catalan strings for the website. */
 export const catalan = {
   meta: {
-    name: "Catalàz",
+    name: "Català",
     locale: "ca",
+    code: "ca_ES",
 
     routes: {
       archive: "arxiu",
@@ -12,10 +13,12 @@ export const catalan = {
 
     title: "Ivan Porto | Desenvolupador de Software",
     description: `
-      Hola! Em dic Ivan Porto i sóc un desenvolupador de software especialitzat en la programació de
-      videojocs, però també apassionat pel desenvolupament web. Hàbil tant en backend com en frontend.
-      Fluid en català, castellà i anglès.
+      Hola! Em dic Ivan Porto i sóc un desenvolupador de software especialitzat en la programació de videojocs, però també 
+      apassionat pel desenvolupament web. Hàbil tant en backend com en frontend. Fluid en català, castellà i anglès.
     `,
+
+    ogAlt:
+      "Hola! Em dic Ivan Porto, Desenvolupador de Software - Una imatge amb un fons degradat fosc i un avatar",
   },
 
   misc: {

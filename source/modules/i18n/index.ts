@@ -7,6 +7,7 @@ export {
   MY_TIMEZONE,
   SUPPORTED_LOCALES,
   LOCALIZED_ROUTES,
+  TRANSLATIONS,
 } from "./lib/constants";
 export {
   getTranslations,

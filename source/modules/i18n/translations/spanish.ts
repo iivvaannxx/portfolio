@@ -5,6 +5,7 @@ export const spanish = {
   meta: {
     name: "Español",
     locale: "es",
+    code: "es_ES",
 
     routes: {
       archive: "archivo",
@@ -12,10 +13,12 @@ export const spanish = {
 
     title: "Ivan Porto | Desarrollador de Software",
     description: `
-      ¡Hola! Soy Ivan Porto, un desarrollador de software especializado en el desarrollo de juegos y
-      apasionado por el desarrollo web. Hábil tanto en backend como en frontend.
-      Fluido en catalán, español e inglés.
+      ¡Hola! Soy Ivan Porto, un desarrollador de software especializado en el desarrollo de juegos y apasionado por 
+      el desarrollo web. Hábil tanto en backend como en frontend. Fluido en catalán, español e inglés.
     `,
+
+    ogAlt:
+      "Hola! Soy Ivan Porto, Desarrollador de Software - Una imagen con un fondo degradado oscuro y un avatar",
   },
 
   misc: {
