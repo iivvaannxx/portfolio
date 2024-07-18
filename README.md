@@ -1,1 +1,5 @@
-"map pin, location pin" (https://skfb.ly/oPYSZ) by bashgod is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+<div align="center">
+  <a href="https://pheralb.dev">
+    <img src="./.github/assets/preview.png" alt="Preview image of my website" />
+  </a>
+</div>
