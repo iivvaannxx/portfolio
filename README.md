@@ -51,3 +51,16 @@ Here are some more tools and resources used in the page that may be of interest 
 - 💬 [**Tippy**](https://atomiks.github.io/tippyjs/) - The complete tooltip, popover, dropdown, and menu solution for the web.
 
 - 🤖 [**Valibot**](https://valibot.dev) - The modular and type safe schema library for validating structural data.
+
+## 🔗 Link Shortcuts
+
+There are special routes of my domain that automatically redirect to some of my profiles. These are:
+
+- **Twitter** | **X**: [ivanporto.io/twitter](https://ivanporto.io/twitter) | [ivanporto.io/x](https://ivanporto.io/x)
+- **LinkedIn**: [ivanporto.io/linkedin](https://ivanporto.io/linkedin)
+- **GitHub**: [ivanporto.io/github](https://ivanporto.io/github)
+- **Discord**: [ivanporto.io/discord](https://ivanporto.io/discord)
+- **Threads**: [ivanporto.io/threads](https://ivanporto.io/threads)
+- **Resume**: [ivanporto.io/resume](https://ivanporto.io/resume)
+- **Bento**: [ivanporto.io/bento](https://ivanporto.io/bento)
+- **This repository**: [ivanporto.io/repo](https://ivanporto.io/repo)
