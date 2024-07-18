@@ -3,7 +3,6 @@
   <p>
     <b>Welcome to the first iteration of my personal website.</b>
   </p>
-  <p></p>
 </div>
 
 <div align="center">
@@ -16,9 +15,9 @@
 <p></p>
 
 <div align="center">
-  <a href="https://ivanporto.io" target="_blank">Website</a>
+  🌐 <a href="https://ivanporto.io" target="_blank">Website</a>
   <span>&nbsp;·&nbsp;</span>
-  <a href="https://github.com/iivvaannxx/portfolio?tab=Apache-2.0-1-ov-file#readme">License</a>
+  🔑 <a href="https://github.com/iivvaannxx/portfolio?tab=Apache-2.0-1-ov-file#readme">License</a>
 </div>
 
 ## 🔧 Stack
@@ -45,10 +44,10 @@ The primary technologies are those listed above, but I can't put every dependenc
 
 Here are some more tools and resources used in the page that may be of interest to someone:
 
-- [**Lenis**](https://lenis.darkroom.engineering/) - For a lightweight, robust and performant smooth scroll.
+- 🖱️ [**Lenis**](https://lenis.darkroom.engineering/) - For a lightweight, robust and performant smooth scroll.
 
-- [**Resend**](https://resend.com) - The email API for developers.
+- ✉️ [**Resend**](https://resend.com) - The email API for developers.
 
-- [**Tippy**](https://atomiks.github.io/tippyjs/) - The complete tooltip, popover, dropdown, and menu solution for the web.
+- 💬 [**Tippy**](https://atomiks.github.io/tippyjs/) - The complete tooltip, popover, dropdown, and menu solution for the web.
 
-- [**Valibot**](https://valibot.dev) - The modular and type safe schema library for validating structural data.
+- 🤖 [**Valibot**](https://valibot.dev) - The modular and type safe schema library for validating structural data.
