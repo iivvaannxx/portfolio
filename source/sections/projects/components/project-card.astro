@@ -31,6 +31,34 @@ const { locale } = Astro.locals;
 const { class: clazz, ...articleProps } = props;
 ---
 
+<script>
+  const projectPreviews = [
+    ...document.querySelectorAll("article[data-project] img"),
+  ];
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const { target } = entry;
+        const article = target.closest("article");
+
+        if (entry.isIntersecting) {
+          article?.classList.add("intersecting");
+        } else {
+          article?.classList.remove("intersecting");
+        }
+      });
+    },
+    {
+      threshold: 1,
+    },
+  );
+
+  projectPreviews.forEach((preview) => {
+    observer.observe(preview);
+  });
+</script>
+
 <article
   data-project={name}
   class={cn(
@@ -175,10 +203,46 @@ const { class: clazz, ...articleProps } = props;
     }
   }
 
-  [data-project-preview]:has(video) [data-project-image],
-  [data-project-preview]:has(video)::after {
-    animation: preview linear both;
-    animation-timeline: view(calc(10% + theme("height.header")));
+  article.not-supports-animation-timeline {
+    [data-project-preview]:has(video) [data-project-image],
+    [data-project-preview]:has(video)::after {
+      transition:
+        opacity 0.3s ease-out,
+        transform 0.3s ease-out;
+    }
+
+    [data-project-preview]:has(video) [data-project-video] {
+      transition:
+        opacity 0.3s ease-out,
+        transform 0.3s ease-out;
+    }
+
+    &.intersecting {
+      [data-project-preview]:has(video) [data-project-image],
+      [data-project-preview]:has(video)::after {
+        opacity: 1;
+        transform: perspective(250px) rotateX(10deg) translateY(-5%)
+          translateZ(0);
+      }
+
+      [data-project-preview]:has(video) [data-project-video] {
+        opacity: 1;
+        transform: translateY(calc(-10% - 5px));
+      }
+    }
+  }
+
+  article:not(.not-supports-animation-timeline) {
+    [data-project-preview]:has(video) [data-project-image],
+    [data-project-preview]:has(video)::after {
+      animation: preview linear both;
+      animation-timeline: view(calc(10% + theme("height.header")));
+    }
+
+    [data-project-preview]:has(video) [data-project-video] {
+      animation: preview-video linear both;
+      animation-timeline: view(calc(10% + theme("height.header")));
+    }
   }
 
   :global([data-github-link] path) {
@@ -193,9 +257,6 @@ const { class: clazz, ...articleProps } = props;
   [data-project-preview]:has(video) [data-project-video] {
     opacity: 0;
     z-index: 10;
-
-    animation: preview-video linear both;
-    animation-timeline: view(calc(10% + theme("height.header")));
   }
 
   [data-project-preview]::after {
