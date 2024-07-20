@@ -5,7 +5,7 @@ export const spanish = {
   meta: {
     name: "Español",
     locale: "es",
-    code: "es_ES",
+    code: "es-ES",
 
     routes: {
       archive: "archivo",
@@ -25,6 +25,7 @@ export const spanish = {
     scrollToTop: "Volver arriba",
     language: "Lenguaje",
     loveIconSr: "Amor",
+    newTab: "Se abrirá en una nueva pestaña",
   },
 
   skills: {

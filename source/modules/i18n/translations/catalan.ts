@@ -5,7 +5,7 @@ export const catalan = {
   meta: {
     name: "Català",
     locale: "ca",
-    code: "ca_ES",
+    code: "ca-ES",
 
     routes: {
       archive: "arxiu",
@@ -25,6 +25,7 @@ export const catalan = {
     scrollToTop: "Torna a dalt",
     language: "Llenguatge",
     loveIconSr: "Amor",
+    newTab: "S'obre en una nova pestanya",
   },
 
   skills: {

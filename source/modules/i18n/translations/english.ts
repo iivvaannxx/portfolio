@@ -5,7 +5,7 @@ export const english = {
   meta: {
     name: "English",
     locale: "en",
-    code: "en_US",
+    code: "en-US",
 
     routes: {
       archive: "archive",
@@ -25,6 +25,7 @@ export const english = {
     scrollToTop: "Scroll To Top",
     language: "Language",
     loveIconSr: "Love",
+    newTab: "Opens in a new tab",
   },
 
   socials: {
