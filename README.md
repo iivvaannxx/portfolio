@@ -1,7 +1,6 @@
 <div align="center">
   <h1>✨ My Portfolio</h1>
   <p>
-    <b>Welcome to the first iteration of my personal website.</b>
   </p>
 </div>
 
