@@ -55,7 +55,16 @@ export default defineConfig({
       },
     }),
 
-    sitemap(),
     robotsTxt(),
+    sitemap({
+      i18n: {
+        defaultLocale: "en",
+        locales: {
+          en: "en-US",
+          es: "es-ES",
+          ca: "ca-ES",
+        },
+      },
+    }),
   ],
 });
