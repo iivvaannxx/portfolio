@@ -178,6 +178,7 @@ export const english = {
 
       sourceCode: "Source Code",
       liveDemo: "Try it out!",
+      showcaseLink: "Showcase",
 
       archive: {
         "my-room": {

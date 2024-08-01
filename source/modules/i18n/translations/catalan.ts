@@ -176,6 +176,7 @@ export const catalan = {
 
       sourceCode: "Repositori de GitHub",
       liveDemo: "Prova-ho!",
+      showcaseLink: "Mostra",
 
       archive: {
         "my-room": {

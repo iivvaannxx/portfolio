@@ -178,6 +178,7 @@ export const spanish = {
 
       sourceCode: "Repositorio de GitHub",
       liveDemo: "¡Pruébalo!",
+      showcaseLink: "Muestra",
 
       archive: {
         "my-room": {

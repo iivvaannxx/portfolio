@@ -95,7 +95,10 @@ const { class: clazz, ...articleProps } = props;
                   targetBlank
                   class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
                   withTooltip={{
-                    content: "Showcase",
+                    content: getTranslation(
+                      "sections.projects.showcaseLink",
+                      locale,
+                    ),
                     placement: "bottom",
                   }}
                 >
