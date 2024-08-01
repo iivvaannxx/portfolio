@@ -57,8 +57,9 @@ export function getCurrentLocale(defaultLoc = DEFAULT_LOCALE) {
  * @returns The route with the locale prefix.
  */
 export function getLocaleRoute(locale: Locale, route: string) {
-  let routeName = isLocalizedRoute(route)
-    ? useTranslation(`meta.routes.${route}`, locale)
+  const cleanRoute = route.startsWith("/") ? route.slice(1) : route;
+  let routeName = isLocalizedRoute(cleanRoute)
+    ? useTranslation(`meta.routes.${cleanRoute}`, locale)
     : route;
 
   // Ensure we don't have a leading slash.

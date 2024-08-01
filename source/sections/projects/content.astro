@@ -1,6 +1,10 @@
 ---
+import { Icon } from "astro-icon/components";
+
+import { Link } from "@components/base";
 import { Button } from "@components/ui/react";
 import { Section } from "@app/layouts";
+import { getLocaleRoute } from "@app/modules/i18n";
 
 import { projects, next } from "./lib/data";
 import ProjectList from "./components/project-list.astro";
@@ -19,8 +23,8 @@ const currentDescription = next.description(locale);
       "[data-current-project]",
     ) as HTMLElement;
 
-    const button = currentProject.querySelector("button")!;
-    button.addEventListener(
+    const button = currentProject?.querySelector("button")!;
+    button?.addEventListener(
       "click",
       () => {
         currentProject.classList.add("show");
@@ -91,7 +95,7 @@ const currentDescription = next.description(locale);
     </div>
   </div>
 
-  <!-- <div class="mx-4 mb-6 mt-12 sm:mx-12 lg:mt-24">
+  <div class="mx-4 mb-6 mt-12 sm:mx-12 lg:mt-24">
     <p class="text-pretty text-right text-lg font-medium sm:text-xl xl:mr-10">
       <span class="text-foreground/80">{t.seeMore}</span>
       <Link
@@ -107,7 +111,7 @@ const currentDescription = next.description(locale);
         />
       </Link>
     </p>
-  </div> -->
+  </div>
 </Section>
 
 <style>

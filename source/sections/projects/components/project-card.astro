@@ -10,16 +10,18 @@ import { cn } from "@lib/utils/shadcn";
 import type { ProjectStaticData } from "../lib/types";
 import { getTranslation } from "@modules/i18n";
 
-type Props = Omit<ProjectStaticData, "featured"> &
+type Props = Omit<ProjectStaticData, "featured" | "year"> &
   HTMLAttributes<"article"> & {
     name: string;
     headline: string;
+    preview: ImageMetadata;
   };
 
 const {
   name,
   headline,
   url,
+  showcaseUrl,
   relatedSkills,
   preview,
   video,
@@ -81,11 +83,29 @@ const { class: clazz, ...articleProps } = props;
         </h3>
 
         {
-          (url || repository) && (
+          (url || repository || showcaseUrl) && (
             <div
               data-links
               class="ml-2 mt-2 inline-flex items-center gap-1 xs:mt-0"
             >
+              {showcaseUrl && (
+                <Link
+                  href={showcaseUrl}
+                  label={`Showcase for project "${name}"`}
+                  targetBlank
+                  class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
+                  withTooltip={{
+                    content: "Showcase",
+                    placement: "bottom",
+                  }}
+                >
+                  <Icon
+                    class="size-5 xs:size-6"
+                    name="lucide:external-link"
+                  />
+                </Link>
+              )}
+
               {repository && (
                 <Link
                   href={repository}

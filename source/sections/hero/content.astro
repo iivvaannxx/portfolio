@@ -44,9 +44,8 @@ const t = translations.sections.hero;
 
   <div>
     <p
-      class="mt-12 max-w-[58ch] text-balance text-left text-base text-foreground/65 xs:text-lg"
+      class="mt-12 max-w-[58ch] text-pretty text-left text-base text-foreground/65 xs:text-lg"
       set:html={t.introduction}
-      data-hero-p
     />
 
     <div class="mt-8 @container">
@@ -110,12 +109,6 @@ const t = translations.sections.hero;
 </section>
 
 <style>
-  [data-hero-p] {
-    /** If pretty is supported it will override "balance". */
-    text-wrap: balance;
-    text-wrap: pretty;
-  }
-
   :global([data-hero-p] > b) {
     color: theme("colors.foreground / 0.75");
   }

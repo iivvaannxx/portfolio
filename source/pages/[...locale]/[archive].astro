@@ -1,0 +1,220 @@
+---
+import type { GetStaticPaths } from "astro";
+import { createStaticPathsHandler, getLocaleRoute } from "@modules/i18n";
+
+import { Link } from "@components/base";
+import { Page } from "@app/layouts";
+import { projects } from "@app/sections/projects";
+import { Icon } from "astro-icon/components";
+
+export const getStaticPaths = createStaticPathsHandler(
+  "archive",
+) satisfies GetStaticPaths;
+
+const { locale, translations } = Astro.locals;
+const t = translations.pages.archive;
+
+const viewTransition = {
+  old: {
+    name: "dissolve-up",
+    duration: "0.2s",
+    easing: "cubic-bezier(0.4, 0, 0.2, 1);",
+    fillMode: "forwards",
+  },
+
+  new: {
+    name: "fade-down",
+    delay: "0.2s",
+    duration: "0.2s",
+    easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+    fillMode: "forwards",
+  },
+};
+
+console.log(getLocaleRoute(locale, "/archive"));
+
+const animation = {
+  forwards: viewTransition,
+  backwards: viewTransition,
+};
+---
+
+<script>
+  import { initLenis } from "@lib/client/scroll";
+  document.addEventListener("astro:page-load", () => {
+    initLenis();
+  });
+</script>
+
+<Page
+  class="relative"
+  withViewTransitions
+  transition:name="body"
+  transition:animate={animation}
+  seo={{
+    title: t.meta.title,
+    description: t.meta.description,
+    canonicalPathname: "/archive",
+  }}
+>
+  <div class="animate-fade-down opacity-0 animate-delay-200">
+    <main class="mx-auto max-w-screen-2xl px-4 pt-16 xs:px-6 sm:px-8">
+      <h1 class="text-4xl font-extrabold opacity-90">{t.heading}</h1>
+      <p class="mt-8 max-w-[55ch] text-lg opacity-80">
+        <span set:html={t.headline} />
+
+        <small
+          class="mt-4 hidden opacity-70 [@media(width>=450px)]:block"
+          set:html={t.whatAreShowcasesLg}
+        />
+      </p>
+
+      <p class="mt-4 text-base opacity-50">
+        <small
+          class="[@media(width>=450px)]:hidden"
+          set:html={t.whatAreShowcasesSm}
+        />
+      </p>
+
+      <Link
+        class="group mt-8 inline-block w-fit text-lg font-semibold text-primary"
+        href={getLocaleRoute(locale, "/")}
+        data-archive-link
+        label={t.homepageLinkLabel}
+      >
+        <Icon
+          name="lucide:arrow-left"
+          class="mb-1 ml-0.5 inline-block size-[1em] text-primary transition-transform group-hover:-translate-x-3"
+          is:inline
+        />
+        <span>{t.homepageLinkText}</span>
+      </Link>
+
+      <section class="my-16 w-full">
+        <table class="w-full border-collapse text-left">
+          <thead class="sticky top-0 z-10 border-b bg-background px-6 py-4">
+            <tr>
+              <th class="py-4 pr-8 text-sm font-semibold"
+                >{t.table.headers.year}</th
+              >
+              <th class="py-4 pr-8 text-sm font-semibold"
+                >{t.table.headers.project}</th
+              >
+              <th class="hidden py-4 pr-8 text-sm font-semibold lg:table-cell"
+                >{t.table.headers.description}</th
+              >
+              <th class="hidden py-4 pr-8 text-sm font-semibold sm:table-cell"
+                >{t.table.headers.builtWith}</th
+              >
+              <th class="py-4 pr-8 text-sm font-semibold"
+                >{t.table.headers.links}</th
+              >
+            </tr>
+          </thead>
+
+          <tbody>
+            {
+              projects
+                .toSorted((a, b) => b.year - a.year)
+                .map((data) => (
+                  <tr class="border-b *:py-4 *:pr-4 *:align-middle *:text-sm">
+                    <td class="font-medium tracking-wide opacity-75">
+                      {data.year}
+                    </td>
+                    <td class="text-balance font-bold">
+                      <span class="[@media(width>=450px)]:hidden">
+                        {data.showcaseUrl || data.url ? (
+                          <Link
+                            href={data.showcaseUrl ?? data.url}
+                            label="Project details"
+                            targetBlank
+                            withExternalLinkArrow
+                            class="text-primary"
+                          >
+                            {data.showcaseUrl && <span>*&nbsp;</span>}
+                            {data.name(locale)}
+                          </Link>
+                        ) : (
+                          <Fragment>{data.name(locale)}</Fragment>
+                        )}
+                      </span>
+
+                      <span class="hidden [@media(width>=450px)]:inline">
+                        {data.name(locale)}
+                      </span>
+                    </td>
+                    <td
+                      set:html={data.headline(locale)}
+                      class="hidden text-pretty font-medium opacity-85 lg:table-cell"
+                    />
+                    <td class="hidden sm:table-cell">
+                      {
+                        <ul class="flex flex-wrap gap-x-4 gap-y-2">
+                          {data.relatedSkills.slice(0, 2).map((skill) => (
+                            <li>
+                              <span class="flex items-center rounded-full bg-primary-foreground px-3 py-1 text-xs font-medium leading-5 text-primary">
+                                {skill}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      }
+                    </td>
+                    <td>
+                      {data.showcaseUrl && (
+                        <Link
+                          href={data.showcaseUrl}
+                          label={`Showcase for project "${data.name}"`}
+                          targetBlank
+                          withExternalLinkArrow
+                          class="hidden font-semibold text-primary [@media(width>=450px)]:inline"
+                        >
+                          {t.table.showcaseLink}
+                        </Link>
+                      )}
+
+                      {data.repository && (
+                        <Link
+                          href={data.repository}
+                          label={`GitHub repository for project "${data.name}"`}
+                          targetBlank
+                          withExternalLinkArrow
+                          class="font-semibold text-primary"
+                        >
+                          {t.table.codeLink}
+                        </Link>
+                      )}
+
+                      {data.repository && (data.url || data.showcaseUrl) && (
+                        <span class="mx-2 hidden opacity-40 [@media(width>=450px)]:inline">
+                          |
+                        </span>
+                      )}
+
+                      {data.url && (
+                        <Link
+                          href={data.url}
+                          label={`Live link to project "${data.name}"`}
+                          targetBlank
+                          withExternalLinkArrow
+                          class="hidden font-semibold text-primary [@media(width>=450px)]:inline"
+                        >
+                          {t.table.liveLink}
+                        </Link>
+                      )}
+                    </td>
+                  </tr>
+                ))
+            }
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</Page>
+
+<style>
+  tbody > tr:last-of-type {
+    border: none;
+  }
+</style>

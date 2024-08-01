@@ -47,6 +47,38 @@ export const spanish = {
       back: "Volver a la página principal",
       label: "Página Principal",
     },
+
+    archive: {
+      meta: {
+        title: "Ivan Porto | Archivo",
+        description:
+          "Una lista de los proyectos más destacados en los que he trabajado.",
+      },
+
+      heading: "Archivo de Proyectos",
+      headline:
+        "Aquí listo todos los proyectos en los que he trabajado y que considero que vale la pena mencionar.",
+
+      whatAreShowcasesLg: `Los enlaces de ${quote(strong("Muestra"))} son proyectos que no están publicados, pero se pueden descargar y probar.`,
+      whatAreShowcasesSm: `Los enlaces prefijados con ${quote("*")} son ${strong("muestras")} (proyectos que no están publicados, pero se pueden descargar y probar).`,
+
+      homepageLinkLabel: "Página Principal",
+      homepageLinkText: "Volver atrás",
+
+      table: {
+        headers: {
+          year: "Año",
+          project: "Proyecto",
+          description: "Descripción",
+          builtWith: "Hecho con",
+          links: "Enlaces",
+        },
+
+        showcaseLink: "Muestra",
+        codeLink: "Código",
+        liveLink: "Ver",
+      },
+    },
   },
 
   noscript: {
@@ -151,7 +183,7 @@ export const spanish = {
         "my-room": {
           name: "Mi Habitación en 3D",
           headline:
-            "Una réplica (un poco más elegante) de mi habitación en 3D.",
+            "🛏️ Una réplica (un poco más elegante) de mi habitación en 3D.",
 
           description: [
             `Este proyecto fue mi participación en la 9ª edición de los desafíos organizados por ${bold("Bruno Simon")}
@@ -170,7 +202,7 @@ export const spanish = {
         "the-gamelab": {
           name: "The Gamelab",
           headline:
-            "Una colección de juegos en crecimiento, hechos con tecnologías web.",
+            "🕹️ Una colección de juegos en crecimiento, hechos con tecnologías web.",
 
           description: [
             `Este proyecto marca mi regreso al desarrollo de juegos, combinando mi pasión por la creación 
@@ -186,7 +218,7 @@ export const spanish = {
         "the-izland": {
           name: "The Izland",
           headline:
-            "Un juego de supervivencia zombi que hicimos en la universidad.",
+            "🧟 Un juego de supervivencia zombi que hicimos en la universidad.",
 
           description: [
             `Entre los juegos en los que he trabajado, este es uno de mis favoritos. Fue desarrollado como
@@ -197,12 +229,85 @@ export const spanish = {
             la ${strong("interfaz de usuario")}, las ${strong("interacciones del jugador")} y la ${strong("progresión general del juego")}.`,
           ],
         },
+
+        "pirateland": {
+          name: "Pirateland",
+          headline:
+            "🏴‍☠ Un juego temático de piratas lleno de emocionantes minijuegos.",
+          description: "",
+        },
+
+        "the-coronavirus-war": {
+          name: "The Coronavirus War",
+          headline:
+            "☣️ Un juego de plataformas 2D donde científicos luchan contra los virus COVID-19.",
+          description: "",
+        },
+
+        "isolated": {
+          name: "Isolated",
+          headline: `🤖 Un ${quote("shooter")} multijugador de plataformas 2D, ambientado en un mundo invadido por aliens.`,
+          description: "",
+        },
+
+        "sense-quiz": {
+          name: "Sense Quiz",
+          headline:
+            "🧩 Un juego de preguntas para Android diseñado para usuarios con discapacidad visual.",
+          description: "",
+        },
+
+        "fruit-ninja-vr": {
+          name: "Fruit Ninja RV",
+          headline:
+            "🍉 Un simple clon del popular juego Fruit Ninja, pero en realidad virtual.",
+          description: "",
+        },
+
+        "racing-circuit": {
+          name: "Circuito de Carreras",
+          headline:
+            "🏎️ Un circuito de carreras que hice para enseñar a un amigo cómo usar Three.js.",
+          description: "",
+        },
+
+        "channel-packer": {
+          name: "Channel Packer",
+          headline: "🎨 Una aplicación web para crear texturas empaquetadas.",
+          description: "",
+        },
+
+        "round-mania": {
+          name: "Round Mania",
+          headline: "🦠 Un clon del popular juego multijugador Agar.io.",
+          description: "",
+        },
+
+        "geoguesser-native": {
+          name: "Geoguesser Native",
+          headline:
+            "📍 Un juego de geografía para Android que pone a prueba tus conocimientos del mundo.",
+          description: "",
+        },
+
+        "memory-native": {
+          name: "Memory Native",
+          headline:
+            "🧠 Un juego para Android para poner a prueba y mejorar tu memoria.",
+          description: "",
+        },
+
+        "ice-defend": {
+          name: "Ice Defend",
+          headline: `🏰 Un juego ${quote("tower defense")} en 2.5D, ambientado en un mundo congelado.`,
+          description: "",
+        },
       },
 
       next: {
         name: "Use Link",
         headline:
-          "Un servicio autohospedado para acortar enlaces y compartir archivos.",
+          "🔗 Un servicio autohospedado para acortar enlaces y compartir archivos.",
 
         description: [
           `Aunque suelo trabajar en varios proyectos a la vez, este va a ser mi nueva prioridad.

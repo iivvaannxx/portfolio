@@ -28,6 +28,20 @@ export function getTranslations<L extends Locale>(locale: Locale) {
 }
 
 /**
+ * Checks if a translation key exists for a given locale.
+ * @param key - The translation key to check.
+ * @param locale - The locale to check for the translation key.
+ * @returns A boolean indicating whether the translation key exists for the given locale.
+ */
+export function hasTranslation<K extends TranslationKey<L>, L extends Locale>(
+  key: K,
+  locale: L,
+) {
+  const strings = TRANSLATIONS[locale];
+  return objectPath.has(strings, key);
+}
+
+/**
  * Retrieves the translation for a given key and locale.
  * @template K The translation key type.
  * @template L The locale type.

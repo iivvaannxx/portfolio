@@ -1,5 +1,6 @@
 import { getTranslationHandler } from "@modules/i18n";
 import type { ProjectData, ProjectKey, ProjectStaticData } from "./types";
+import { hasTranslation } from "@app/modules/i18n/lib/utils/translations";
 
 /** The translation object that contains the translated data of my job projects. */
 const PROJECTS_I18N = "sections.projects.archive" as const;
@@ -30,7 +31,7 @@ export const projects = [
     repository: "https://github.com/iivvaannxx/my-room",
 
     featured: true,
-    relatedSkills: ["Blender", "ThreeJS", "TypeScript", "Git"],
+    relatedSkills: ["ThreeJS", "TypeScript", "Blender", "Git"],
 
     preview: (await import("../assets/my-room/cover.png")).default,
     video: {
@@ -46,6 +47,8 @@ export const projects = [
 
       poster: (await import("../assets/my-room/poster.webp")).default,
     },
+
+    year: 2024,
   }),
 
   defineProject("the-gamelab", {
@@ -53,7 +56,7 @@ export const projects = [
     repository: "https://github.com/iivvaannxx/the-gamelab",
 
     featured: true,
-    relatedSkills: ["PixiJS", "ThreeJS", "TypeScript"],
+    relatedSkills: ["PixiJS", "TypeScript", "ThreeJS"],
 
     preview: (await import("../assets/gamelab/cover.png")).default,
     video: {
@@ -69,13 +72,15 @@ export const projects = [
 
       poster: (await import("../assets/gamelab/poster.webp")).default,
     },
+
+    year: 2024,
   }),
 
   defineProject("the-izland", {
-    url: "https://fivemost.itch.io/the-izland",
+    showcaseUrl: "https://github.com/iivvaannxx/the-izland",
 
     featured: true,
-    relatedSkills: ["Teamwork", "Unity", "C#", "Blender"],
+    relatedSkills: ["Unity", "C#", "Blender", "Teamwork"],
 
     preview: (await import("../assets/the-izland/cover.png")).default,
     video: {
@@ -91,6 +96,87 @@ export const projects = [
 
       poster: (await import("../assets/the-izland/poster.webp")).default,
     },
+
+    year: 2021,
+  }),
+
+  defineProject("pirateland", {
+    year: 2022,
+    featured: false,
+    relatedSkills: ["Unreal Engine", "C++", "Blender"],
+
+    showcaseUrl: "https://github.com/iivvaannxx/pirateland",
+  }),
+
+  defineProject("the-coronavirus-war", {
+    year: 2020,
+    featured: false,
+    relatedSkills: ["Godot", "GDScript"],
+
+    showcaseUrl: "https://github.com/iivvaannxx/the-coronavirus-war",
+  }),
+
+  defineProject("isolated", {
+    year: 2022,
+    featured: false,
+    relatedSkills: ["Unity", "C#"],
+
+    showcaseUrl: "https://github.com/iivvaannxx/isolated",
+  }),
+
+  defineProject("sense-quiz", {
+    year: 2021,
+    featured: false,
+    relatedSkills: ["Unity", "C#"],
+
+    repository: "https://github.com/iivvaannxx/sense-quiz",
+  }),
+
+  defineProject("fruit-ninja-vr", {
+    year: 2022,
+    featured: false,
+    relatedSkills: ["Unity", "C#"],
+
+    showcaseUrl: "https://github.com/iivvaannxx/fruit-ninja-vr",
+  }),
+
+  defineProject("racing-circuit", {
+    year: 2023,
+    featured: false,
+    relatedSkills: ["ThreeJS", "JavaScript"],
+
+    repository: "https://github.com/iivvaannxx/racing-circuit",
+    url: "https://racing-circuit.pages.dev",
+  }),
+
+  defineProject("channel-packer", {
+    year: 2023,
+    featured: false,
+    relatedSkills: ["Next.js", "TypeScript"],
+  }),
+
+  defineProject("round-mania", {
+    year: 2021,
+    featured: false,
+    relatedSkills: ["Next.js", "Phaser"],
+  }),
+
+  defineProject("geoguesser-native", {
+    year: 2021,
+    featured: false,
+    relatedSkills: ["React Native", "TypeScript"],
+  }),
+
+  defineProject("memory-native", {
+    year: 2021,
+    featured: false,
+    relatedSkills: ["React Native", "TypeScript"],
+  }),
+
+  defineProject("ice-defend", {
+    year: 2020,
+    featured: false,
+    relatedSkills: ["Godot", "GDScript"],
   }),
 ] as const satisfies ProjectData[];
 

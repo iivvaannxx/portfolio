@@ -51,6 +51,37 @@ export const english = {
       back: "Back to the main page",
       label: "Main Page",
     },
+
+    archive: {
+      meta: {
+        title: "Ivan Porto | Archive",
+        description: "A list with the most noteworthy projects I've worked on.",
+      },
+
+      heading: "Projects Archive",
+      headline:
+        "Here is listed all the stuff I've worked on that I consider to be worth mentioning.",
+
+      whatAreShowcasesLg: `${quote(strong("Showcase"))} links are projects that aren't live, but can be downloaded and tested.`,
+      whatAreShowcasesSm: `The links prefixed with a ${quote("*")} are ${strong("showcases")} (projects that aren't live, but can be downloaded and tested).`,
+
+      homepageLinkLabel: "Homepage",
+      homepageLinkText: "Go back",
+
+      table: {
+        headers: {
+          year: "Year",
+          project: "Project",
+          description: "Description",
+          builtWith: "Built with",
+          links: "Links",
+        },
+
+        showcaseLink: "Showcase",
+        codeLink: "Code",
+        liveLink: "Live",
+      },
+    },
   },
 
   noscript: {
@@ -151,7 +182,7 @@ export const english = {
       archive: {
         "my-room": {
           name: "My Room In 3D",
-          headline: "A (quite a bit more) fancy replica of my room.",
+          headline: "🛏️ A (quite a bit more) fancy replica of my room.",
 
           description: [
             `This project was my entry to the 9th edition of challenges organized by ${bold("Bruno Simon")}
@@ -171,7 +202,7 @@ export const english = {
         "the-gamelab": {
           name: "The Gamelab",
           headline:
-            "A growing collection of games built with web technologies.",
+            "🕹️ A growing collection of games built with web technologies.",
 
           description: [
             `This project represents my return to game development after quite some time, 
@@ -180,14 +211,14 @@ export const english = {
             ${strong("Phaser")}, ${strong("Pixi.js")}, and ${strong("Canvas")}, along with other cool stuff. `,
 
             `Future goals include exploring ${strong("multiplayer games")}, which aligns 
-            well with my ${bold("growing interest in backend and cloud infrastructure")}.
+            well with my ${bold("growing interest in backend and cloud engineering")}.
           `,
           ],
         },
 
         "the-izland": {
           name: "The Izland",
-          headline: "A zombie survival game developed as a college project.",
+          headline: "🧟 A zombie survival game developed as a college project.",
 
           description: [
             `Among the games I've worked on, this is one of my favorites. It was a project for a
@@ -201,11 +232,84 @@ export const english = {
           `,
           ],
         },
+
+        "pirateland": {
+          name: "Pirateland",
+          headline: "🏴‍☠ A pirate-themed game packed with exciting minigames.",
+          description: "",
+        },
+
+        "the-coronavirus-war": {
+          name: "The Coronavirus War",
+          headline:
+            "☣️ A 2D platformer game where scientists battle against COVID-19 viruses.",
+          description: "",
+        },
+
+        "isolated": {
+          name: "Isolated",
+          headline:
+            "🤖 A 2D multiplayer platformer shooter, set in a world devastated by an alien invasion.",
+          description: "",
+        },
+
+        "sense-quiz": {
+          name: "Sense Quiz",
+          headline:
+            "🧩 An accessible Android quiz game designed for visually impaired users.",
+          description: "",
+        },
+
+        "fruit-ninja-vr": {
+          name: "Fruit Ninja VR",
+          headline:
+            "🍉 A simple clone of the popular Fruit Ninja game, but in virtual reality.",
+          description: "",
+        },
+
+        "racing-circuit": {
+          name: "Racing Circuit",
+          headline:
+            "🏎️ A racing circuit app I made to teach a friend how to use Three.js.",
+          description: "",
+        },
+
+        "channel-packer": {
+          name: "Channel Packer",
+          headline: "🎨 A utility web app to pack create packed textures.",
+          description: "",
+        },
+
+        "round-mania": {
+          name: "Round Mania",
+          headline: "🦠 A clone of the popular multiplayer game Agar.io.",
+          description: "",
+        },
+
+        "geoguesser-native": {
+          name: "Geoguesser Native",
+          headline:
+            "📍 An Android geography guessing game that tests your knowledge of the world.",
+          description: "",
+        },
+
+        "memory-native": {
+          name: "Memory Native",
+          headline:
+            "🧠 An Android game to test and improve your memory skills.",
+          description: "",
+        },
+
+        "ice-defend": {
+          name: "Ice Defend",
+          headline: "🏰 A 2.5D tower-defense game, set in a frozen world.",
+          description: "",
+        },
       },
 
       next: {
         name: "Use Link",
-        headline: "A self-hostable URL shortener and file sharing service.",
+        headline: "🔗 A self-hostable URL shortener and file sharing service.",
         description: [
           `While I usually work on many things at once, this is currently my next priority. 
           I aim to develop it into a comprehensive service featuring a ${strong("modular architecture")}
@@ -237,7 +341,7 @@ export const english = {
             although I'm equally comfortable and productive working independently.`,
 
             `${bold("I like automating tasks")}, especially when efficiency is key. This habit
-            aligns well with my current ${strong("career focus")} on backend and cloud infrastructure development,
+            aligns well with my current ${strong("career focus")} on backend and cloud engineering,
             as I enjoy building systems that ${strong("make work easier and faster")} for everyone.`,
           ],
         },

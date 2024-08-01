@@ -47,6 +47,38 @@ export const catalan = {
       back: "Torna a la página principal",
       label: "Pàgina Principal",
     },
+
+    archive: {
+      meta: {
+        title: "Ivan Porto | Arxiu",
+        description:
+          "Una llista dels projectes més destacats en els quals he treballat.",
+      },
+
+      heading: "Arxiu de Projectes",
+      headline:
+        "Aquesta és una llista de tots els projectes en els quals he treballat i que considero que val la pena mencionar.",
+
+      whatAreShowcasesLg: `Els enllaços de ${quote(strong("Mostra"))} són projectes que no estan publicats, però es poden descarregar i provar.`,
+      whatAreShowcasesSm: `Els enllaços prefixats amb ${quote("*")} són ${strong("mostres")} (projectes que no estan publicats, però es poden descarregar i provar).`,
+
+      homepageLinkLabel: "Pàgina Principal",
+      homepageLinkText: "Tornar enrere",
+
+      table: {
+        headers: {
+          year: "Any",
+          project: "Projecte",
+          description: "Descripció",
+          builtWith: "Fet amb",
+          links: "Enllaços",
+        },
+
+        showcaseLink: "Mostra",
+        codeLink: "Codi",
+        liveLink: "Veure",
+      },
+    },
   },
 
   noscript: {
@@ -149,7 +181,7 @@ export const catalan = {
         "my-room": {
           name: "La Meva Habitació en 3D",
           headline:
-            "Una rèplica (un mica més elegant) de la meva habitació en 3D.",
+            "🛏️ Una rèplica (un mica més elegant) de la meva habitació en 3D.",
 
           description: [
             `Aquest projecte va ser la meva participació en la 9a edició dels reptes organitzats per ${bold("Bruno Simon")}
@@ -168,7 +200,7 @@ export const catalan = {
         "the-gamelab": {
           name: "The Gamelab",
           headline:
-            "Una col·lecció de jocs en creixement, fets amb tecnologies web.",
+            "🕹️ Una col·lecció de jocs en creixement, fets amb tecnologies web.",
 
           description: [
             `Aquest projecte marca el meu retorn al desenvolupament de jocs, combinant la meva passió per la creació
@@ -184,7 +216,7 @@ export const catalan = {
         "the-izland": {
           name: "The Izland",
           headline:
-            "Un joc de supervivència zombi que vam fer a la universitat.",
+            "🧟 Un joc de supervivència zombi que vam fer a la universitat.",
 
           description: [
             `D'entre els jocs en els quals he treballat, aquest és un dels meus preferits. Va ser desenvolupat com a
@@ -195,12 +227,84 @@ export const catalan = {
             la ${strong("interfície d'usuari")}, les ${strong("interaccions del jugador")} i la ${strong("progressió general del joc")}.`,
           ],
         },
+
+        "pirateland": {
+          name: "Pirateland",
+          headline: "🏴‍☠ Un joc temàtic de pirates ple d'emocionants minijocs.",
+          description: "",
+        },
+
+        "the-coronavirus-war": {
+          name: "The Coronavirus War",
+          headline:
+            "☣️ Un joc de plataformes 2D on científics lluiten contra els virus COVID-19.",
+          description: "",
+        },
+
+        "isolated": {
+          name: "Isolated",
+          headline: `🤖 Un ${quote("shooter")} multijugador de plataformes 2D, ambientat en un món envaït per aliens.`,
+          description: "",
+        },
+
+        "sense-quiz": {
+          name: "Sense Quiz",
+          headline:
+            "🧩 Un joc de preguntes per Android dissenyat per a usuaris amb discapacitat visual.",
+          description: "",
+        },
+
+        "fruit-ninja-vr": {
+          name: "Fruit Ninja RV",
+          headline:
+            "🍉 Un senzill clon del popular joc Fruit Ninja, però en realitat virtual.",
+          description: "",
+        },
+
+        "racing-circuit": {
+          name: "Circuit de Carreres",
+          headline:
+            "🏎️ Un circuit de carreres que vaig fer per ensenyar a un amic com utilitzar Three.js",
+          description: "",
+        },
+
+        "channel-packer": {
+          name: "Channel Packer",
+          headline: "🎨 Una aplicació web per crear textures empaquetades.",
+          description: "",
+        },
+
+        "round-mania": {
+          name: "Round Mania",
+          headline: "🦠 Un clon del popular joc multijugador Agar.io",
+          description: "",
+        },
+
+        "geoguesser-native": {
+          name: "Geoguesser Native",
+          headline:
+            "📍 Un joc de geografia per Android que posa a prova els teus coneixements del món.",
+          description: "",
+        },
+
+        "memory-native": {
+          name: "Memory Native",
+          headline:
+            "🧠 Un joc per Android per posar a prova i millorar la teva memòria.",
+          description: "",
+        },
+
+        "ice-defend": {
+          name: "Ice Defend",
+          headline: `🏰 Un joc ${quote("tower defense")} en 2.5D, ambientat en un món ambgelat.`,
+          description: "",
+        },
       },
 
       next: {
         name: "Use Link",
         headline:
-          "Un servei autoallotjat per acurtar enllaços i compartir arxius.",
+          "🔗 Un servei autoallotjat per acurtar enllaços i compartir arxius.",
 
         description: [
           `Tot i que acostumo a treballar en diversos projectes alhora, aquest serà la meva nova prioritat.

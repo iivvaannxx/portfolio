@@ -34,6 +34,7 @@ const alternateLocales = SUPPORTED_LOCALES.filter((lang) => lang !== locale);
 const alternateLocaleTerritories = SUPPORTED_LOCALES.map((lang) => {
   return TRANSLATIONS[lang].meta.code;
 });
+
 const makeProductionUrl = (pathname: string) => `${site}${pathname}`;
 
 const cleanTitle = title.trim();
