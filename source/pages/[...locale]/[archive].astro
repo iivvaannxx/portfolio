@@ -31,12 +31,12 @@ const viewTransition = {
   },
 };
 
-console.log(getLocaleRoute(locale, "/archive"));
-
 const animation = {
   forwards: viewTransition,
   backwards: viewTransition,
 };
+
+const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
 ---
 
 <script>
@@ -114,97 +114,95 @@ const animation = {
 
           <tbody>
             {
-              projects
-                .toSorted((a, b) => b.year - a.year)
-                .map((data) => (
-                  <tr class="border-b *:py-4 *:pr-4 *:align-middle *:text-sm">
-                    <td class="font-medium tracking-wide opacity-75">
-                      {data.year}
-                    </td>
-                    <td class="text-balance font-bold">
-                      <span class="[@media(width>=450px)]:hidden">
-                        {data.showcaseUrl || data.url ? (
-                          <Link
-                            href={data.showcaseUrl ?? data.url}
-                            label="Project details"
-                            targetBlank
-                            withExternalLinkArrow
-                            class="text-primary"
-                          >
-                            {data.showcaseUrl && <span>*&nbsp;</span>}
-                            {data.name(locale)}
-                          </Link>
-                        ) : (
-                          <Fragment>{data.name(locale)}</Fragment>
-                        )}
+              sortedProjects.map((data) => (
+                <tr class="border-b *:py-4 *:pr-4 *:align-middle *:text-sm">
+                  <td class="font-medium tracking-wide opacity-75">
+                    {data.year}
+                  </td>
+                  <td class="text-balance font-bold">
+                    <span class="[@media(width>=450px)]:hidden">
+                      {data.showcaseUrl || data.url ? (
+                        <Link
+                          href={data.showcaseUrl ?? data.url}
+                          label="Project details"
+                          targetBlank
+                          withExternalLinkArrow
+                          class="text-primary"
+                        >
+                          {data.showcaseUrl && <span>*&nbsp;</span>}
+                          {data.name(locale)}
+                        </Link>
+                      ) : (
+                        <Fragment>{data.name(locale)}</Fragment>
+                      )}
+                    </span>
+
+                    <span class="hidden [@media(width>=450px)]:inline">
+                      {data.name(locale)}
+                    </span>
+                  </td>
+                  <td
+                    set:html={data.headline(locale)}
+                    class="hidden text-pretty font-medium opacity-85 lg:table-cell"
+                  />
+                  <td class="hidden sm:table-cell">
+                    {
+                      <ul class="flex flex-wrap gap-x-4 gap-y-2">
+                        {data.relatedSkills.slice(0, 2).map((skill) => (
+                          <li>
+                            <span class="flex items-center rounded-full bg-primary-foreground px-3 py-1 text-xs font-medium leading-5 text-primary">
+                              {skill}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    }
+                  </td>
+                  <td>
+                    {data.showcaseUrl && (
+                      <Link
+                        href={data.showcaseUrl}
+                        label={`Showcase for project "${data.name}"`}
+                        targetBlank
+                        withExternalLinkArrow
+                        class="hidden font-semibold text-primary [@media(width>=450px)]:inline"
+                      >
+                        {t.table.showcaseLink}
+                      </Link>
+                    )}
+
+                    {data.repository && (
+                      <Link
+                        href={data.repository}
+                        label={`GitHub repository for project "${data.name}"`}
+                        targetBlank
+                        withExternalLinkArrow
+                        class="font-semibold text-primary"
+                      >
+                        {t.table.codeLink}
+                      </Link>
+                    )}
+
+                    {data.repository && (data.url || data.showcaseUrl) && (
+                      <span class="mx-2 hidden opacity-40 [@media(width>=450px)]:inline">
+                        |
                       </span>
+                    )}
 
-                      <span class="hidden [@media(width>=450px)]:inline">
-                        {data.name(locale)}
-                      </span>
-                    </td>
-                    <td
-                      set:html={data.headline(locale)}
-                      class="hidden text-pretty font-medium opacity-85 lg:table-cell"
-                    />
-                    <td class="hidden sm:table-cell">
-                      {
-                        <ul class="flex flex-wrap gap-x-4 gap-y-2">
-                          {data.relatedSkills.slice(0, 2).map((skill) => (
-                            <li>
-                              <span class="flex items-center rounded-full bg-primary-foreground px-3 py-1 text-xs font-medium leading-5 text-primary">
-                                {skill}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      }
-                    </td>
-                    <td>
-                      {data.showcaseUrl && (
-                        <Link
-                          href={data.showcaseUrl}
-                          label={`Showcase for project "${data.name}"`}
-                          targetBlank
-                          withExternalLinkArrow
-                          class="hidden font-semibold text-primary [@media(width>=450px)]:inline"
-                        >
-                          {t.table.showcaseLink}
-                        </Link>
-                      )}
-
-                      {data.repository && (
-                        <Link
-                          href={data.repository}
-                          label={`GitHub repository for project "${data.name}"`}
-                          targetBlank
-                          withExternalLinkArrow
-                          class="font-semibold text-primary"
-                        >
-                          {t.table.codeLink}
-                        </Link>
-                      )}
-
-                      {data.repository && (data.url || data.showcaseUrl) && (
-                        <span class="mx-2 hidden opacity-40 [@media(width>=450px)]:inline">
-                          |
-                        </span>
-                      )}
-
-                      {data.url && (
-                        <Link
-                          href={data.url}
-                          label={`Live link to project "${data.name}"`}
-                          targetBlank
-                          withExternalLinkArrow
-                          class="hidden font-semibold text-primary [@media(width>=450px)]:inline"
-                        >
-                          {t.table.liveLink}
-                        </Link>
-                      )}
-                    </td>
-                  </tr>
-                ))
+                    {data.url && (
+                      <Link
+                        href={data.url}
+                        label={`Live link to project "${data.name}"`}
+                        targetBlank
+                        withExternalLinkArrow
+                        class="hidden font-semibold text-primary [@media(width>=450px)]:inline"
+                      >
+                        {t.table.liveLink}
+                      </Link>
+                    )}
+                  </td>
+                </tr>
+              ))
             }
           </tbody>
         </table>
