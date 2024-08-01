@@ -165,7 +165,7 @@ const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
                         label={`Showcase for project "${data.name}"`}
                         targetBlank
                         withExternalLinkArrow
-                        class="hidden font-semibold text-primary [@media(width>=450px)]:inline"
+                        class="hidden font-semibold text-primary [&>span]:whitespace-nowrap [@media(width>=450px)]:inline"
                       >
                         {t.table.showcaseLink}
                       </Link>
@@ -177,7 +177,7 @@ const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
                         label={`GitHub repository for project "${data.name}"`}
                         targetBlank
                         withExternalLinkArrow
-                        class="font-semibold text-primary"
+                        class="font-semibold text-primary [&>span]:whitespace-nowrap"
                       >
                         {t.table.codeLink}
                       </Link>
@@ -195,7 +195,7 @@ const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
                         label={`Live link to project "${data.name}"`}
                         targetBlank
                         withExternalLinkArrow
-                        class="hidden font-semibold text-primary [@media(width>=450px)]:inline"
+                        class="hidden font-semibold text-primary [&>span]:whitespace-nowrap [@media(width>=450px)]:inline"
                       >
                         {t.table.liveLink}
                       </Link>
