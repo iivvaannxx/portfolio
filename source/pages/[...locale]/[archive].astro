@@ -79,7 +79,6 @@ const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
       <Link
         class="group mt-8 inline-block w-fit text-lg font-semibold text-primary"
         href={getLocaleRoute(locale, "/")}
-        data-archive-link
         label={t.homepageLinkLabel}
       >
         <Icon
@@ -124,7 +123,7 @@ const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
                       {data.showcaseUrl || data.url ? (
                         <Link
                           href={data.showcaseUrl ?? data.url}
-                          label="Project details"
+                          label={`${data.showcaseUrl ? translations.sections.projects.showcaseLinkLabel : translations.sections.projects.liveDemoLinkLabel} "${data.name(locale)}"`}
                           targetBlank
                           withExternalLinkArrow
                           class="text-primary"
@@ -162,7 +161,7 @@ const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
                     {data.showcaseUrl && (
                       <Link
                         href={data.showcaseUrl}
-                        label={`Showcase for project "${data.name}"`}
+                        label={`${translations.sections.projects.showcaseLinkLabel} "${data.name(locale)}"`}
                         targetBlank
                         withExternalLinkArrow
                         class="hidden font-semibold text-primary [&>span]:whitespace-nowrap [@media(width>=450px)]:inline"
@@ -174,7 +173,7 @@ const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
                     {data.repository && (
                       <Link
                         href={data.repository}
-                        label={`GitHub repository for project "${data.name}"`}
+                        label={`${translations.sections.projects.sourceCodeLinkLabel} "${data.name(locale)}"`}
                         targetBlank
                         withExternalLinkArrow
                         class="font-semibold text-primary [&>span]:whitespace-nowrap"
@@ -192,7 +191,7 @@ const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
                     {data.url && (
                       <Link
                         href={data.url}
-                        label={`Live link to project "${data.name}"`}
+                        label={`${translations.sections.projects.liveDemoLinkLabel} "${data.name(locale)}"`}
                         targetBlank
                         withExternalLinkArrow
                         class="hidden font-semibold text-primary [&>span]:whitespace-nowrap [@media(width>=450px)]:inline"

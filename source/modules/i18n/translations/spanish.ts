@@ -26,6 +26,7 @@ export const spanish = {
     language: "Lenguaje",
     loveIconSr: "Amor",
     newTab: "Se abrirá en una nueva pestaña",
+    linkTo: "Enlace a",
   },
 
   skills: {
@@ -179,6 +180,10 @@ export const spanish = {
       sourceCode: "Repositorio de GitHub",
       liveDemo: "¡Pruébalo!",
       showcaseLink: "Muestra",
+
+      sourceCodeLinkLabel: "Repositorio de GitHub para el proyecto",
+      liveDemoLinkLabel: "Enlace público para el proyecto",
+      showcaseLinkLabel: "Muestra del proyecto",
 
       archive: {
         "my-room": {

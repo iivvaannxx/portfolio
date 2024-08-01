@@ -26,6 +26,7 @@ export const english = {
     language: "Language",
     loveIconSr: "Love",
     newTab: "Opens in a new tab",
+    linkTo: "Link to",
   },
 
   socials: {
@@ -179,6 +180,10 @@ export const english = {
       sourceCode: "Source Code",
       liveDemo: "Try it out!",
       showcaseLink: "Showcase",
+
+      sourceCodeLinkLabel: "GitHub repository for project",
+      liveDemoLinkLabel: "Live demo for project",
+      showcaseLinkLabel: "Showcase for project",
 
       archive: {
         "my-room": {

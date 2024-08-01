@@ -26,6 +26,7 @@ export const catalan = {
     language: "Llenguatge",
     loveIconSr: "Amor",
     newTab: "S'obre en una nova pestanya",
+    linkTo: "Enllaç a",
   },
 
   skills: {
@@ -177,6 +178,10 @@ export const catalan = {
       sourceCode: "Repositori de GitHub",
       liveDemo: "Prova-ho!",
       showcaseLink: "Mostra",
+
+      sourceCodeLinkLabel: "Repositori de GitHub pel projecte",
+      liveDemoLinkLabel: "Enllaç públic pel projecte",
+      showcaseLinkLabel: "Mostra del projecte",
 
       archive: {
         "my-room": {

@@ -15,10 +15,10 @@ const [beforeHeart, afterHeart] = t.note.split("{heart}");
     data-footer-note
   >
     <span set:html={beforeHeart} />
+    <span class="sr-only">{translations.misc.loveIconSr}</span>
     <Icon
       class="mx-px mb-px inline animate-beat"
       name="heart"
-      aria-label="love"
     />
     <span set:html={afterHeart} />
   </p>

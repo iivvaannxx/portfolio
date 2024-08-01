@@ -91,7 +91,7 @@ const { class: clazz, ...articleProps } = props;
               {showcaseUrl && (
                 <Link
                   href={showcaseUrl}
-                  label={`Showcase for project "${name}"`}
+                  label={`${getTranslation("sections.projects.showcaseLinkLabel")} "${name}"`}
                   targetBlank
                   class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
                   withTooltip={{
@@ -112,7 +112,7 @@ const { class: clazz, ...articleProps } = props;
               {repository && (
                 <Link
                   href={repository}
-                  label={`GitHub repository for project "${name}"`}
+                  label={`${getTranslation("sections.projects.sourceCodeLinkLabel")} "${name}"`}
                   targetBlank
                   class="aspect-square content-center rounded-md p-2 text-xl font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
                   withTooltip={{
@@ -133,7 +133,7 @@ const { class: clazz, ...articleProps } = props;
               {url && (
                 <Link
                   href={url}
-                  label={`Live link to project "${name}"`}
+                  label={`${getTranslation("sections.projects.liveDemoLinkLabel")} "${name}"`}
                   targetBlank
                   class="aspect-square content-center rounded-md p-2 text-lg font-semibold text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
                   withTooltip={{
