@@ -413,7 +413,7 @@ export const spanish = {
       text2:
         "Si así lo prefieres, no dudes en contactarme a través de cualquiera de estos canales:",
 
-      formFill: `Rellena esta formulario y me pondré en contacto contigo ${strong("lo antes possible")}`,
+      formFill: `Rellena esta formulario y me pondré en contacto contigo ${strong("lo antes posible")}`,
       privacy: "No conservo ni comparto ninguno de tus datos personales.",
       or: "O",
     },
