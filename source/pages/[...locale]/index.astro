@@ -16,17 +16,17 @@ export const getStaticPaths =
 const { translations: t } = Astro.locals;
 const viewTransition = {
   old: {
-    name: "dissolve-up",
+    name: "fade-out",
     duration: "0.2s",
-    easing: "cubic-bezier(0.4, 0, 0.2, 1);",
+    easing: "ease-in",
     fillMode: "forwards",
   },
 
   new: {
-    name: "fade-down",
-    delay: "0.2s",
+    name: "fade-in",
+    delay: "0.3s",
     duration: "0.2s",
-    easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+    easing: "ease-out",
     fillMode: "forwards",
   },
 };
