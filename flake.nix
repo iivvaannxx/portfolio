@@ -25,8 +25,9 @@
           pkgs.nodejs-slim
           pkgs.nodePackages_latest.pnpm
           
+          pkgs.git
+          pkgs.openssh
           pkgs.bun
-          pkgs.ngrok
           pkgs.wrangler
         ];
       };
