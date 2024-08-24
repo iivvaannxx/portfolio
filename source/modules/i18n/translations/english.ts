@@ -14,7 +14,7 @@ export const english = {
     title: "Ivan Porto | Software Developer",
     description: `
       Hey! I'm Ivan Porto, a software developer specialized in game development, yet also passionate about 
-      developing for the web. Skilled both in backend and frontend. Fluent in Catalan, Spanish, and English.
+      developing any kind of software. Skilled both in backend and frontend. Fluent in Catalan, Spanish, and English.
     `,
 
     ogAlt:
@@ -109,14 +109,13 @@ export const english = {
     hero: {
       headline: {
         content: `I'm a ${strong("software")} developer.`,
-        // words: ["game", "web", "software"],
       },
 
       greeting: "Hey! I'm Ivan Porto",
       introduction: `
-        Specialized in game development, yet also passionate about developing for the web. With
-        ${bold("6+ years of coding expertise")} and ${strong("4+ years of professional experience")},
-        I am ${bold("open to opportunities")} in the game industry, but actively ${strong("seeking a role as a backend developer")}.
+        Specialized in game development, yet also passionate about developing any kind of software. With
+        ${bold("6+&nbsp;years of coding expertise")}, I am currently seeking to leverage my 
+        ${strong("4+&nbsp;years of professional experience")} to transition into ${bold("backend development")}.
       `,
 
       statusLabel: "Available for work",

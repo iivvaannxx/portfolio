@@ -14,7 +14,7 @@ export const spanish = {
     title: "Ivan Porto | Desarrollador de Software",
     description: `
       ¡Hola! Soy Ivan Porto, un desarrollador de software especializado en el desarrollo de juegos y apasionado por 
-      el desarrollo web. Hábil tanto en backend como en frontend. Fluido en catalán, español e inglés.
+      el desarrollo de cualquier tipo de software. Hábil tanto en backend como en frontend. Fluido en catalán, español e inglés.
     `,
 
     ogAlt:
@@ -112,11 +112,9 @@ export const spanish = {
       },
 
       greeting: "¡Hola! Soy Ivan Porto",
-      introduction: `Especializado en desarrollo de videojuegos, pero también apasionado por el desarrollo web. Con
-        ${bold("+6 años de experiencia programando")} y ${strong("+4 años de experiencia profesional")},
-        estoy ${bold("abierto a oportunidades")} en la industria de videojuegos, aunque actualmente me encuentro
-        ${strong("en busca activa de un puesto como desarrollador backend")}.
-      `,
+      introduction: `Especializado en desarrollo de videojuegos, pero apasionado por el desarrollo de cualquier tipo de software. Con
+      ${bold("6+&nbsp;años de experiencia programando")}, actualmente busco aprovechar mis ${strong("4+&nbsp;años de experiencia profesional")} para
+      transicionar hacia una posición como ${bold("desarrollador backend")}.`,
 
       statusLabel: "Disponible para trabajar",
     },

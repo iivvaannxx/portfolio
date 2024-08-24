@@ -14,7 +14,7 @@ export const catalan = {
     title: "Ivan Porto | Desenvolupador de Software",
     description: `
       Hola! Em dic Ivan Porto i soc un desenvolupador de software especialitzat en la programació de videojocs, però també 
-      apassionat pel desenvolupament web. Hàbil tant en backend com en frontend. Fluid en català, castellà i anglès.
+      apassionat pel desenvolupament de qualsevol tipus de software. Hàbil tant en backend com en frontend. Fluid en català, castellà i anglès.
     `,
 
     ogAlt:
@@ -112,10 +112,9 @@ export const catalan = {
       },
 
       greeting: "Hola! Em dic Ivan Porto",
-      introduction: `Especialitzat en desenvolupament de videojocs, però també apassionat pel desenvolupament web. Amb
-        ${bold("+6 anys d'experiència programant")} i ${strong("+4 anys d'experiència professional")},
-        estic ${bold("obert a oportunitats")} dins la indústria de videojocs, tot i que actualment em trobo
-        ${strong("en busca activa d'una posició com a desenvolupador backend")}.`,
+      introduction: `Especialitzat en desenvolupament de videojocs, però apassionat pel desenvolupament de qualsevol tipus de software. Amb
+        ${bold("6+&nbsp;anys d'experiència programant")}, actualment busco aprofitar els meus ${strong("4+&nbsp;anys d'experiència professional")} per
+        transicionar cap a una posició com a ${bold("desenvolupador backend")}.`,
 
       statusLabel: "Disponible per treballar",
     },
