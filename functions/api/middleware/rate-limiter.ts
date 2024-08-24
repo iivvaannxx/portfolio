@@ -29,14 +29,18 @@ export const rateLimiter = (rateLimitInSeconds: number) => {
     const lastSentTimestamp = await env.RATE_LIMIT.get(clientIP);
 
     if (lastSentTimestamp === null) {
-      // Register the current IP.
-      const now = Date.now().toString();
-      await env.RATE_LIMIT.put(clientIP, now, {
-        expirationTtl: rateLimitInSeconds,
-      });
-
       // Proceed to the next handler.
-      return await next();
+      const result = await next();
+
+      if (result.ok) {
+        // Register the current IP.
+        const now = Date.now().toString();
+        await env.RATE_LIMIT.put(clientIP, now, {
+          expirationTtl: rateLimitInSeconds,
+        });
+      }
+
+      return result;
     }
 
     // Calculate the time difference in seconds.

@@ -59,7 +59,6 @@ export const onRequestPost: PagesFunction<Env> = async ({ data, env }) => {
     return new Response(
       JSON.stringify({
         code,
-        data: { error },
       }),
       { status },
     );
