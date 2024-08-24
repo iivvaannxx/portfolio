@@ -27,3 +27,7 @@ pnpm-debug.log*
 
 .wrangler/
 .dev.vars
+
+.devenv/
+.direnv/
+.pre-commit-config.yaml
