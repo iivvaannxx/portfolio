@@ -11,7 +11,7 @@ export function link<const H extends string, const T extends string>(
   text: T,
   targetBlank = false,
 ) {
-  return `<a href="${href}"${targetBlank ? ' target="_blank" rel="noopener noreferrer"' : ""}>${text}</a>` as const;
+  return `<a href="${href}" ${targetBlank ? ' target="_blank" rel="noopener noreferrer"' : ""}>${text}</a>` as const;
 }
 
 /**
@@ -62,6 +62,20 @@ export function small<const T extends string>(content: T) {
  */
 export function quote<const T extends string>(content: T) {
   return wrapInTags(content, "q");
+}
+
+/**
+ * Wraps the given content in a styled `<span>` element.
+ *
+ * @param content - The text content to be wrapped.
+ * @param style - The CSS style to be applied to the `<span>` element.
+ * @returns A string representing an HTML `<span>` element with the specified content and style.
+ */
+export function styled<const T extends string, const S extends string>(
+  content: T,
+  style: S,
+) {
+  return `<span style="${style}">${content}</span>` as const;
 }
 
 /**

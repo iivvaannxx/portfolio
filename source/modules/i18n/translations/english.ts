@@ -1,4 +1,13 @@
-import { bold, italic, link, strong, small, quote } from "../lib/helpers/html";
+import {
+  bold,
+  italic,
+  link,
+  strong,
+  small,
+  quote,
+  styled,
+} from "../lib/helpers/html";
+import { getAdobeLinkStyle } from "../lib/helpers/style";
 
 /** The english strings for the website. */
 export const english = {
@@ -116,6 +125,12 @@ export const english = {
         Specialized in game development, yet also passionate about developing any kind of software. With
         ${bold("6+&nbsp;years of coding expertise")}, I am currently seeking to leverage my 
         ${strong("4+&nbsp;years of professional experience")} to transition into ${bold("backend development")}.
+      `,
+
+      introductionEmployed: `
+        Specialized in game development, yet also passionate about developing any kind of software. Currently 
+        working at ${link("https://adobe.com", strong(styled("Adobe", getAdobeLinkStyle())))} as a ${strong("Junior Software Developer")}, a position
+        I started in November 2024, where I will be contributing to ${link("https://business.adobe.com/es/products/magento/magento-commerce.html", bold(styled("Adobe Commerce", getAdobeLinkStyle())))}.
       `,
 
       statusLabel: "Available for work",

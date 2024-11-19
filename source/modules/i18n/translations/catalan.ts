@@ -1,4 +1,13 @@
-import { bold, italic, link, strong, small, quote } from "../lib/helpers/html";
+import { getAdobeLinkStyle } from "../lib/helpers/style";
+import {
+  bold,
+  italic,
+  link,
+  strong,
+  small,
+  quote,
+  styled,
+} from "../lib/helpers/html";
 
 /** The catalan strings for the website. */
 export const catalan = {
@@ -115,6 +124,10 @@ export const catalan = {
       introduction: `Especialitzat en desenvolupament de videojocs, però apassionat pel desenvolupament de qualsevol tipus de software. Amb
         ${bold("6+&nbsp;anys d'experiència programant")}, actualment busco aprofitar els meus ${strong("4+&nbsp;anys d'experiència professional")} per
         transicionar cap a una posició com a ${bold("desenvolupador backend")}.`,
+
+      introductionEmployed: `Especialitzat en desenvolupament de videojocs, però apassionat pel desenvolupament de qualsevol tipus de software. Treballo a 
+        ${link("https://adobe.com", strong(styled("Adobe", getAdobeLinkStyle())), true)} com a ${strong("desenvolupador de software júnior")}, una posició que 
+        vaig començar al novembre de 2024, contribuint a ${link("https://business.adobe.com/es/products/magento/magento-commerce.html", bold(styled("Adobe Commerce", getAdobeLinkStyle())))}.`,
 
       statusLabel: "Disponible per treballar",
     },

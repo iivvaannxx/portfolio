@@ -10,6 +10,8 @@ import avatar from "./assets/avatar.png";
 // Retrieve the localized strings for the hero section.
 const { translations } = Astro.locals;
 const t = translations.sections.hero;
+
+const employed = true;
 ---
 
 <section class="mx-auto max-w-screen-lg content-center px-4 xs:px-6 sm:px-8">
@@ -45,31 +47,30 @@ const t = translations.sections.hero;
   <div>
     <p
       class="mt-12 max-w-[58ch] text-pretty text-left text-base text-foreground/65 xs:text-lg"
-      set:html={t.introduction}
+      set:html={employed ? t.introductionEmployed : t.introduction}
     />
 
     <div class="mt-8 @container">
       <div
         class="mt-2 flex flex-col items-center justify-center gap-y-4 @[25rem]:mt-0 @[25rem]:flex-row @[25rem]:justify-start"
       >
-        <Badge
-          hoverGlow
-          class="w-fit select-none gap-3 whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm @[25rem]:text-xs sm:px-4 sm:text-sm"
-        >
-          <span class="relative flex h-[0.7em] w-[0.7em]">
-            <span
-              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 animate-duration-[1000ms]"
-            ></span>
-            <span
-              class="relative inline-flex h-[0.7em] w-[0.7em] rounded-full bg-green-500"
-            ></span>
-          </span>
-          <span>{t.statusLabel}</span>
-        </Badge>
-
-        <span
-          class="inline-block h-0.5 w-1/2 bg-muted-foreground/50 @[25rem]:ml-4 @[25rem]:mr-2 @[25rem]:h-6 @[25rem]:w-0.5 @[36rem]:h-8"
-        ></span>
+        {
+          !employed && (
+            <>
+              <Badge
+                hoverGlow
+                class="w-fit select-none gap-3 whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm @[25rem]:text-xs sm:px-4 sm:text-sm"
+              >
+                <span class="relative flex h-[0.7em] w-[0.7em]">
+                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 animate-duration-[1000ms]" />
+                  <span class="relative inline-flex h-[0.7em] w-[0.7em] rounded-full bg-green-500" />
+                </span>
+                <span>{t.statusLabel}</span>
+              </Badge>
+              <span class="inline-block h-0.5 w-1/2 bg-muted-foreground/50 @[25rem]:ml-4 @[25rem]:mr-2 @[25rem]:h-6 @[25rem]:w-0.5 @[36rem]:h-8" />
+            </>
+          )
+        }
 
         <ul class="flex gap-x-2">
           {

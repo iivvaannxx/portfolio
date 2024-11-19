@@ -1,4 +1,13 @@
-import { bold, italic, link, strong, small, quote } from "../lib/helpers/html";
+import {
+  bold,
+  italic,
+  link,
+  strong,
+  small,
+  quote,
+  styled,
+} from "../lib/helpers/html";
+import { getAdobeLinkStyle } from "../lib/helpers/style";
 
 /** The spanish strings for the website. */
 export const spanish = {
@@ -115,6 +124,12 @@ export const spanish = {
       introduction: `Especializado en desarrollo de videojuegos, pero apasionado por el desarrollo de cualquier tipo de software. Con
       ${bold("6+&nbsp;años de experiencia programando")}, actualmente busco aprovechar mis ${strong("4+&nbsp;años de experiencia profesional")} para
       transicionar hacia una posición como ${bold("desarrollador backend")}.`,
+
+      introductionEmployed: `
+        Especializado en desarrollo de videojuegos, pero apasionado por el desarrollo de cualquier tipo de software. Trabajo 
+        en ${link("https://adobe.com", strong(styled("Adobe", getAdobeLinkStyle())))} como ${strong("desarrollador de software junior")},
+        un puesto que comencé en noviembre de 2024, donde contribuiré a ${link("https://business.adobe.com/es/products/magento/magento-commerce.html", bold(styled("Adobe Commerce", getAdobeLinkStyle())))}
+      `,
 
       statusLabel: "Disponible para trabajar",
     },
