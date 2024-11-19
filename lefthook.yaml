@@ -7,4 +7,4 @@
 commit-msg:
   commands:
     lint-commit:
-      run: bunx commitlint --edit ${LEFTHOOK_GIT_PARAMS}
+      run: bun x commitlint --edit
