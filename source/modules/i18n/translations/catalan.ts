@@ -112,6 +112,7 @@ export const catalan = {
     bento: "Bento",
     discord: "Discord",
     threads: "Threads",
+    emailAddress: "hola@ivanporto.io"
   },
 
   sections: {

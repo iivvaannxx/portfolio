@@ -47,6 +47,7 @@ export const english = {
     bento: "Bento",
     discord: "Discord",
     threads: "Threads",
+    emailAddress: "hello@ivanporto.io"
   },
 
   pages: {

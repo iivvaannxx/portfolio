@@ -7,7 +7,7 @@ import { ContactForm } from "@modules/contact";
 import { Link } from "@components/base";
 import ParticleCanvas from "@components/particles/particle-canvas.astro";
 
-import { discord, email, linkedIn, xTwitter, threads } from "@lib/data/socials";
+import { discord, linkedIn, xTwitter, threads } from "@lib/data/socials";
 
 const { locale, translations } = Astro.locals;
 const t = translations.sections.contact;
@@ -32,7 +32,7 @@ const t = translations.sections.contact;
         <span set:html={t.text1} />
 
         <a
-          href={email.href}
+          href={`mailto:${translations.socials.emailAddress}`}
           class="mt-7 flex items-center justify-center gap-x-4 py-2 text-primary/80 xl:justify-start"
         >
           <Icon
@@ -40,7 +40,7 @@ const t = translations.sections.contact;
             class="box-content inline-block size-[1.2em]"
           />
           <span class="hover:underline">
-            {email.href.slice(7)}
+            {translations.socials.emailAddress}
           </span>
         </a>
       </p>

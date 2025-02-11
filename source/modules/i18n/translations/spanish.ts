@@ -112,6 +112,7 @@ export const spanish = {
     bento: "Bento",
     discord: "Discord",
     threads: "Threads",
+    emailAddress: "hola@ivanporto.io"
   },
 
   sections: {
