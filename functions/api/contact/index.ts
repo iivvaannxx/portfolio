@@ -32,13 +32,13 @@ export const onRequestPost: PagesFunction<Env> = async ({ data, env }) => {
       JSON.stringify({
         code: ERRORS.turnstileError,
       }),
-      { status: 400 },
+      { status: 400 }
     );
   }
 
   const { error } = await resend.emails.send({
     from: `${contactData.name} <contact@ivanporto.io>`,
-    to: "dev.ivanporto@gmail.com",
+    to: "hello@ivanporto.io",
     subject: `[Contact Form]: ${contactData.subject.trim()}`,
     text: `The sender email is: ${contactData.email.trim()}\n${contactData.message.trim()}`,
   });
@@ -60,7 +60,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ data, env }) => {
       JSON.stringify({
         code,
       }),
-      { status },
+      { status }
     );
   }
 

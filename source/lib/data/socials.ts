@@ -43,7 +43,7 @@ export const resume = {
 
 /** My email address. */
 export const email = {
-  href: "mailto:dev.ivanporto@gmail.com",
+  href: "mailto:hello@ivanporto.io",
   i18nKey: "email",
   iconKey: "lucide:mail",
 } as const satisfies SocialData;
