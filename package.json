@@ -89,6 +89,10 @@
     "lefthook",
     "sharp"
   ],
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.13.1",
   "pnpm": {
     "patchedDependencies": {
       "vaul": "patches/vaul.patch"
