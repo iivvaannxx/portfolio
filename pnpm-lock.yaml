@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  vaul:
+    hash: 435863c31323f2fbc198230670db2c98262a09196364701c70d872f7ddd2be0c
+    path: patches/vaul.patch
+
 importers:
 
   .:
@@ -103,7 +108,7 @@ importers:
         version: 1.2.0(typescript@5.5.2)
       vaul:
         specifier: ^0.9.9
-        version: 0.9.9(@types/react-dom@18.3.7(@types/react@18.3.27))(@types/react@18.3.27)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.9.9(patch_hash=435863c31323f2fbc198230670db2c98262a09196364701c70d872f7ddd2be0c)(@types/react-dom@18.3.7(@types/react@18.3.27))(@types/react@18.3.27)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@astrojs/check':
         specifier: 0.8.0
@@ -7802,7 +7807,7 @@ snapshots:
     dependencies:
       filename-reserved-regex: 3.0.0
 
-  vaul@0.9.9(@types/react-dom@18.3.7(@types/react@18.3.27))(@types/react@18.3.27)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  vaul@0.9.9(patch_hash=435863c31323f2fbc198230670db2c98262a09196364701c70d872f7ddd2be0c)(@types/react-dom@18.3.7(@types/react@18.3.27))(@types/react@18.3.27)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@radix-ui/react-dialog': 1.1.15(@types/react-dom@18.3.7(@types/react@18.3.27))(@types/react@18.3.27)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
