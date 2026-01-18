@@ -1,0 +1,62 @@
+diff --git a/dist/index.js b/dist/index.js
+index 3ebb4ccbf71dbbf06c9da4cd0e7400535fde271b..e2b4cf52941afb6d1325a3e80ec6ef704699bc30 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -724,7 +724,7 @@ function useScaleBackground() {
+     function getScale() {
+         return (window.innerWidth - WINDOW_TOP_OFFSET) / window.innerWidth;
+     }
+-    React__namespace.default.useEffect(()=>{
++    useIsomorphicLayoutEffect(()=>{
+         if (isOpen && shouldScaleBackground) {
+             if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current);
+             const wrapper = document.querySelector('[data-vaul-drawer-wrapper]') || document.querySelector('[vaul-drawer-wrapper]');
+@@ -739,7 +739,7 @@ function useScaleBackground() {
+             }));
+             const wrapperStylesCleanup = assignStyle(wrapper, {
+                 borderRadius: `${BORDER_RADIUS}px`,
+-                overflow: 'hidden',
++                overflow: 'clip',
+                 ...isVertical(direction) ? {
+                     transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`
+                 } : {
+@@ -1180,7 +1180,7 @@ function Root({ open: openProp, onOpenChange, children, onDrag: onDragProp, onRe
+         if (shouldScaleBackground && currentSwipeAmount && currentSwipeAmount > 0 && isOpen) {
+             set(wrapper, {
+                 borderRadius: `${BORDER_RADIUS}px`,
+-                overflow: 'hidden',
++                overflow: 'clip',
+                 ...isVertical(direction) ? {
+                     transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`,
+                     transformOrigin: 'top'
+diff --git a/dist/index.mjs b/dist/index.mjs
+index d49e23ae3f961cc5498e43cf4904f68bdf7ed404..1b15f86bda09f38ae2011ab74f708417a48e0b90 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -702,7 +702,7 @@ function useScaleBackground() {
+     function getScale() {
+         return (window.innerWidth - WINDOW_TOP_OFFSET) / window.innerWidth;
+     }
+-    React__default.useEffect(()=>{
++    useIsomorphicLayoutEffect(()=>{
+         if (isOpen && shouldScaleBackground) {
+             if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current);
+             const wrapper = document.querySelector('[data-vaul-drawer-wrapper]') || document.querySelector('[vaul-drawer-wrapper]');
+@@ -717,7 +717,7 @@ function useScaleBackground() {
+             }));
+             const wrapperStylesCleanup = assignStyle(wrapper, {
+                 borderRadius: `${BORDER_RADIUS}px`,
+-                overflow: 'hidden',
++                overflow: 'clip',
+                 ...isVertical(direction) ? {
+                     transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`
+                 } : {
+@@ -1158,7 +1158,7 @@ function Root({ open: openProp, onOpenChange, children, onDrag: onDragProp, onRe
+         if (shouldScaleBackground && currentSwipeAmount && currentSwipeAmount > 0 && isOpen) {
+             set(wrapper, {
+                 borderRadius: `${BORDER_RADIUS}px`,
+-                overflow: 'hidden',
++                overflow: 'clip',
+                 ...isVertical(direction) ? {
+                     transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`,
+                     transformOrigin: 'top'
