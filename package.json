@@ -20,7 +20,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-toast": "^1.2.15",
     "@tailwindcss/container-queries": "^0.1.1",
-    "astro": "4.11.5",
+    "astro": "5.15.9",
     "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
     "balance-text": "^3.3.1",
