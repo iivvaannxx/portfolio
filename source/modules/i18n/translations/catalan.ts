@@ -127,7 +127,7 @@ export const catalan = {
         transicionar cap a una posició com a ${bold("desenvolupador backend")}.`,
 
       introductionEmployed: `Especialitzat en desenvolupament de videojocs, però apassionat pel desenvolupament de qualsevol tipus de software. Treballo a 
-        ${link("https://adobe.com", strong(styled("Adobe", getAdobeLinkStyle())), true)} com a ${strong("desenvolupador de software júnior")}, una posició que 
+        ${link("https://adobe.com", strong(styled("Adobe", getAdobeLinkStyle())), true)} com a ${strong("desenvolupador de software")}, una posició que 
         vaig començar al novembre de 2024, contribuint a ${link("https://business.adobe.com/es/products/magento/magento-commerce.html", bold(styled("Adobe Commerce", getAdobeLinkStyle())))}.`,
 
       statusLabel: "Disponible per treballar",

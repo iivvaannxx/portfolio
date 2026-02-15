@@ -128,8 +128,8 @@ export const spanish = {
 
       introductionEmployed: `
         Especializado en desarrollo de videojuegos, pero apasionado por el desarrollo de cualquier tipo de software. Trabajo 
-        en ${link("https://adobe.com", strong(styled("Adobe", getAdobeLinkStyle())))} como ${strong("desarrollador de software junior")},
-        un puesto que comencé en noviembre de 2024, donde contribuiré a ${link("https://business.adobe.com/es/products/magento/magento-commerce.html", bold(styled("Adobe Commerce", getAdobeLinkStyle())))}
+        en ${link("https://adobe.com", strong(styled("Adobe", getAdobeLinkStyle())))} como ${strong("desarrollador de software")},
+        un puesto que comencé en noviembre de 2024, donde contribuyo a ${link("https://business.adobe.com/es/products/magento/magento-commerce.html", bold(styled("Adobe Commerce", getAdobeLinkStyle())))}
       `,
 
       statusLabel: "Disponible para trabajar",

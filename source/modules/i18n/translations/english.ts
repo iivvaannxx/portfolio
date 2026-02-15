@@ -130,8 +130,8 @@ export const english = {
 
       introductionEmployed: `
         Specialized in game development, yet also passionate about developing any kind of software. Currently 
-        working at ${link("https://adobe.com", strong(styled("Adobe", getAdobeLinkStyle())))} as a ${strong("Junior Software Developer")}, a position
-        I started in November 2024, where I will be contributing to ${link("https://business.adobe.com/es/products/magento/magento-commerce.html", bold(styled("Adobe Commerce", getAdobeLinkStyle())))}.
+        working at ${link("https://adobe.com", strong(styled("Adobe", getAdobeLinkStyle())))} as a ${strong("Software Developer")}, a position
+        I started in November 2024, where I am contributing to ${link("https://business.adobe.com/es/products/magento/magento-commerce.html", bold(styled("Adobe Commerce", getAdobeLinkStyle())))}.
       `,
 
       statusLabel: "Available for work",
